@@ -89,7 +89,10 @@ a { color: var(--tronc); }
 
 /* The sheet that rises over the meadow, as in the app */
 .sheet { position: relative; z-index: 2; margin-top: -48px; border-radius: 40px 40px 0 0; background: var(--fond); overflow: clip; }
-.band { max-width: 1160px; margin: 0 auto; padding: clamp(64px, 9vw, 112px) clamp(16px, 4vw, 40px); }
+.band { --pad: clamp(64px, 9vw, 112px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
+/* A menu link lands with the section's label just under the header, not after its top padding.
+   The space stays when scrolling. */
+#how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
 .card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--ombre); }
 .card-tint { background: var(--halo); box-shadow: none; }
 .card p { color: #2c3e66; }
@@ -192,6 +195,15 @@ details p { padding: 0 22px 20px; color: #2c3e66; }
 @keyframes twinkle { from { opacity: .25; } to { opacity: .95; } }
 footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top: 24px; border-top: 1px solid #2c4176; color: var(--nuit-douce); font-size: 15px; line-height: 22px; }
 .foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; }
+
+/* Wide screens: the menu link lands so the heading and all six cards fit on a laptop. */
+@media (min-width: 901px) {
+  #pros { --pad: 96px; }
+  .pros-head { max-width: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: end; }
+  .pros-head .label { grid-column: 1 / -1; }
+  .pros-head .lead { margin-top: 0; font-size: 17px; }
+  .pros-grid { margin-top: 24px; }
+}
 
 @media (max-width: 900px) {
   .nav-link { display: none; }
