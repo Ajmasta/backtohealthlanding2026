@@ -24,7 +24,8 @@ function lookup(dict, key) {
 }
 
 const svg = (p) => read(join(root, p)).replace(/<title>.*?<\/title>/s, '').trim();
-const parts = { tree: svg('design/logo/tree-logo.svg'), sprout: svg('design/logo/sprout.svg') };
+const parts = { tree: svg('design/logo/tree-logo.svg') };
+const stages = ['01-pousse', '02-jeune-arbre', '03-presque-mature', '04-arbre-mature'].map((f) => svg(`design/tree/${f}.svg`).replace(/<desc>.*?<\/desc>/s, ''));
 const template = read(join(here, 'src/template.html'));
 
 rmSync(dist, { recursive: true, force: true });
@@ -66,7 +67,10 @@ for (const [lang, dict] of Object.entries(langs)) {
     mailto: mail(dict.meta.mailSubject),
     mailtoPro: mail(dict.meta.proSubject),
     'svg.tree': parts.tree,
-    'svg.sprout': parts.sprout,
+    'svg.stage1': stages[0],
+    'svg.stage2': stages[1],
+    'svg.stage3': stages[2],
+    'svg.stage4': stages[3],
     painStrings: JSON.stringify(dict.pain).replace(/</g, '\\u003c'),
   };
   const html = template.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, key) => (key in vars ? vars[key] : lookup(dict, key)));

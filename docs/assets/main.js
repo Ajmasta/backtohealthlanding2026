@@ -76,26 +76,25 @@
     }, 350);
   }
 
-  // Water: each activity reached sends its drop, and the sprout grows. The fourth makes it the tree.
+  // Water: each activity reached sends its drop, and the tree moves to the next of its four stages.
   var win = document.querySelector('[data-scene="window"]');
-  var sprout = win.querySelector('.sprout-wrap');
+  var stages = [].slice.call(win.querySelectorAll('.stage'));
   var steps = [].slice.call(document.querySelectorAll('.step'));
-  var SIZES = [.5, .68, .86, 1];
   var reached = -1;
 
+  function setStage(n) {
+    stages.forEach(function (s) { s.classList.toggle('on', +s.dataset.stage === n); });
+  }
   function show(index, animate) {
     steps.forEach(function (s, i) { s.classList.toggle('on', i === index); });
-    var growth = Math.min(index, 3);
-    function apply() {
-      sprout.style.setProperty('--s', SIZES[Math.max(growth, 0)]);
-      win.classList.toggle('full', index >= 3);
-    }
+    var stage = Math.min(index, 3) + 1;
     var color = steps[index].dataset.color;
-    if (animate && color && !reduce && win.animate) fallingDrop(win, color, apply);
-    else apply();
+    if (animate && color && win.animate) fallingDrop(win, color, function () { setStage(stage); });
+    else setStage(stage);
   }
-  if (reduce) { sprout.style.opacity = 0; win.classList.add('full'); }
-  else {
+  // Reduced motion and no-JS keep the full tree from the markup.
+  if (!reduce) {
+    setStage(1);
     var picker = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
