@@ -73,7 +73,7 @@
   "screens": {
     "label": "In the app",
     "title": "One thing at a time.",
-    "note": "The app launches in French first, so these screens are in French.",
+    "note": "These screens are shown in French. The app is also available in English.",
     "s1Title": "Your day",
     "s1Body": "A short program. Nothing to catch up on.",
     "s2Title": "Your path",
@@ -134,7 +134,7 @@
     "q4": "How much does it cost?",
     "a4": "The price isn’t set yet. We’ll tell you clearly before launch.",
     "q5": "What language is it in?",
-    "a5": "French first. English will follow."
+    "a5": "In French and English. It follows your phone’s language, and you can change it whenever you like."
   },
   "end": {
     "kindLabel": "At your pace",
