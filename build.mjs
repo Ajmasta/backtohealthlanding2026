@@ -34,6 +34,7 @@ writeFileSync(join(dist, '.nojekyll'), '');
 cpSync(join(here, 'src/styles.css'), join(assets, 'styles.css'));
 cpSync(join(here, 'src/main.js'), join(assets, 'main.js'));
 cpSync(join(root, 'mobile/assets/landscape'), join(assets, 'landscape'), { recursive: true });
+for (const f of ['icon-48.png', 'icon-512.png', 'apple-touch-icon.png', 'og-fr.png', 'og-en.png']) cpSync(join(here, 'src/share', f), join(assets, f));
 for (const s of ['home', 'path', 'mind', 'progress']) cpSync(join(root, `design/figma-v4.3/${s}.png`), join(assets, `screen-${s}.png`));
 const fonts = join(root, 'mobile/node_modules/@expo-google-fonts');
 for (const [family, file] of [['fraunces', 'Fraunces_500Medium'], ['figtree', 'Figtree_400Regular'], ['figtree', 'Figtree_600SemiBold']]) {
@@ -46,8 +47,20 @@ for (const [family, file] of [['fraunces', 'Fraunces_500Medium'], ['figtree', 'F
 for (const [lang, dict] of Object.entries(langs)) {
   const base = lang === 'fr' ? '' : '../';
   const mail = (subject) => `mailto:${CONTACT}?subject=${encodeURIComponent(subject)}`;
+  const pageUrl = lang === 'fr' ? SITE : `${SITE}${lang}/`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'Organization', '@id': `${SITE}#org`, name: 'BackToHealth', url: SITE, logo: `${SITE}assets/icon-512.png`, email: CONTACT },
+      { '@type': 'WebSite', '@id': `${SITE}#site`, name: 'BackToHealth', url: SITE, publisher: { '@id': `${SITE}#org` }, inLanguage: ['fr', 'en'] },
+      { '@type': 'WebPage', url: pageUrl, name: dict.meta.title, description: dict.meta.description, inLanguage: lang, isPartOf: { '@id': `${SITE}#site` } },
+    ],
+  };
   const vars = {
     base,
+    pageUrl,
+    ogImage: `${SITE}assets/og-${lang}.png`,
+    jsonLd: JSON.stringify(jsonLd).replace(/</g, '\u003c'),
     contact: CONTACT,
     site: SITE,
     mailto: mail(dict.meta.mailSubject),
@@ -61,4 +74,16 @@ for (const [lang, dict] of Object.entries(langs)) {
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'index.html'), html);
 }
+writeFileSync(join(dist, 'robots.txt'), `User-agent: *
+Allow: /
+
+Sitemap: ${SITE}sitemap.xml
+`);
+const links = `<xhtml:link rel="alternate" hreflang="fr" href="${SITE}"/><xhtml:link rel="alternate" hreflang="en" href="${SITE}en/"/>`;
+writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url><loc>${SITE}</loc>${links}</url>
+<url><loc>${SITE}en/</loc>${links}</url>
+</urlset>
+`);
 console.log('Built', Object.keys(langs).join(', '), '→', dist);

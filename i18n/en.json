@@ -2,7 +2,10 @@
   "lang": "en",
   "meta": {
     "title": "BackToHealth · Live better with back pain",
-    "description": "An app for back pain that has lasted: a little movement, a short read, a moment for the mind and some walking, each day, following what your back tells you.",
+    "description": "An app for chronic low back pain: a little movement, reading, meditation and walking, each day, following what your back tells you.",
+    "locale": "en_CA",
+    "localeAlt": "fr_CA",
+    "imageAlt": "The BackToHealth tree on a hill, with the words: Live better with back pain",
     "mailSubject": "Let me know when BackToHealth launches",
     "proSubject": "BackToHealth: I am a health professional"
   },
@@ -18,7 +21,7 @@
   },
   "hero": {
     "label": "For back pain that has lasted",
-    "title": "Live better with pain, one small step at a time.",
+    "title": "Live better with back pain, one small step at a time.",
     "body": "Each day, a little movement, a short read, a moment for the mind and some walking. BackToHealth follows what your back tells you.",
     "cta": "Notify me at launch"
   },
@@ -30,7 +33,7 @@
     "factSource": "Source: World Health Organization, 2023",
     "forTitle": "It’s made for you if",
     "for1": "you’re an adult and your back pain has lasted several months;",
-    "for2": "no serious cause explains your pain (this is called non-specific low back pain);",
+    "for2": "no serious cause explains your back pain (this is called non-specific low back pain);",
     "for3": "you want to move forward at your own pace, without pressure.",
     "safetyTitle": "And if something needs checking",
     "safetyBody": "Before you start, the app asks 8 questions about signs that call for a doctor’s opinion. If one is present, it points you to a doctor or the ER rather than to the program."
@@ -40,14 +43,14 @@
     "title": "Every effort waters your tree.",
     "body": "You begin with an assessment of about 5 minutes, then choose your rhythm. Each finished activity becomes a drop of water.",
     "step1Label": "Learn",
-    "step1Title": "Understand your pain",
+    "step1Title": "Understand your back pain",
     "step1Body": "About 5 minutes of reading. 14 lessons, written by our doctor and former physiotherapist, to understand what’s going on and regain confidence.",
     "step2Label": "Movement",
     "step2Title": "Move, at your measure",
     "step2Body": "5 to 15 minutes, 2 or 3 times a week. Exercises are chosen from your assessment and shown on video.",
     "step3Label": "Mind",
     "step3Title": "A moment to breathe",
-    "step3Body": "Breathing and meditation, from 3 to 15 minutes, for when the day or the pain feels heavy.",
+    "step3Body": "Breathing and meditation, from 3 to 15 minutes, for when the day or your back pain feels heavy.",
     "step4Label": "Walking",
     "step4Title": "Go for a walk",
     "step4Body": "As far as you like. And if you did yoga or went cycling elsewhere, that counts too: you can log it.",
@@ -55,16 +58,16 @@
   },
   "pain": {
     "label": "An app that listens",
-    "title": "If the pain rises, we ease off.",
-    "body": "During exercises, you say where your pain is, and the program follows. Try it: imagine you just finished a set.",
-    "sliderLabel": "Your pain, from 0 to 10",
+    "title": "If your back pain rises, we ease off.",
+    "body": "During exercises, you say where your back pain is, and the program follows. Try it: imagine you just finished a set.",
+    "sliderLabel": "Your back pain, from 0 to 10",
     "low": "None",
     "high": "Very strong",
     "easyTitle": "That’s going well.",
     "easyBody": "We move forward gently: if your whole session goes like this, you’ll do one more repetition next time.",
     "holdTitle": "That’s the limit.",
     "holdBody": "You can carry on. Next time, we keep the same level.",
-    "stopTitle": "Your pain is above 3/10.",
+    "stopTitle": "Your back pain is above 3/10.",
     "stopBody": "Stop this exercise, it’s the right call. Next time, we start again a little more gently. If you like, a 3-minute comfort moment is waiting for you."
   },
   "screens": {
@@ -87,17 +90,17 @@
   "pros": {
     "label": "Health professionals",
     "title": "Support between your appointments, and after them.",
-    "body": "BackToHealth replaces neither your assessment nor your follow-up. It helps your patients keep moving, understanding and looking after themselves, especially once their sessions end.",
+    "body": "BackToHealth replaces neither your assessment nor your follow-up. It helps your patients with chronic low back pain keep moving, understanding and looking after themselves, especially once their sessions end.",
     "c1Title": "Screening comes first",
     "c1Body": "8 red-flag questions before any program. A positive answer directs the person to a doctor or the ER.",
-    "c2Title": "A clear pain rule",
+    "c2Title": "A clear rule for low back pain",
     "c2Body": "Above 3/10: stop and step down a level. A full session at 2/10 or less: one more repetition, up to 12, then the next level.",
     "c3Title": "A biopsychosocial approach",
-    "c3Body": "Exercise, pain education, mindfulness and walking in one program, as practice guidelines recommend.",
+    "c3Body": "Exercise, low back pain education, mindfulness and walking in one program, as practice guidelines recommend.",
     "c4Title": "Functional goals",
     "c4Body": "The person picks 1 to 3 activities (Patient-Specific Functional Scale) and re-rates them over time. Movement tests are repeated regularly.",
     "c5Title": "Language that reassures",
-    "c5Body": "No frightening words. Pain is real, and it doesn’t mean damage. The back is presented as strong and made to move.",
+    "c5Body": "No frightening words. Low back pain is real, and it doesn’t mean damage. The back is presented as strong and made to move.",
     "c6Title": "What we don’t claim",
     "c6Body": "The app does not diagnose or treat. It has not yet been the subject of a published study. With people’s consent, we will measure what works.",
     "sourcesTitle": "What we build on",
@@ -123,7 +126,7 @@
     "label": "Questions",
     "title": "What people often ask us.",
     "q1": "Does it replace my doctor or physio?",
-    "a1": "No. BackToHealth helps you live better with pain, alongside your care. If something worries you, talk to a health professional.",
+    "a1": "No. BackToHealth helps you live better with back pain, alongside your care. If something worries you, talk to a health professional.",
     "q2": "What if it hurts too much, or I don’t feel like it, on a given day?",
     "a2": "Every activity has a “Not today” button that offers something gentler. During a flare-up, the plan lightens for 3 days. Your tree waits for you, no rush.",
     "q3": "When does the app come out?",
@@ -142,7 +145,7 @@
     "cta": "Notify me at launch"
   },
   "footer": {
-    "disclaimer": "BackToHealth helps you live better with pain. The app does not replace the advice of a health professional.",
+    "disclaimer": "BackToHealth helps you live better with back pain. The app does not replace the advice of a health professional.",
     "place": "Montréal, Québec",
     "contact": "Write to us"
   }

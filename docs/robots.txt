@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajmasta.github.io/backtohealthlanding2026/sitemap.xml
