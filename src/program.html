@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{program.meta.title}}</title>
+<meta name="description" content="{{program.meta.description}}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#86cdfb">
+<link rel="canonical" href="{{pageUrl}}">
+<link rel="alternate" hreflang="fr" href="{{site}}programme/">
+<link rel="alternate" hreflang="en" href="{{site}}en/programme/">
+<link rel="alternate" hreflang="x-default" href="{{site}}programme/">
+<link rel="icon" type="image/png" sizes="48x48" href="{{base}}assets/icon-48.png">
+<link rel="apple-touch-icon" href="{{base}}assets/apple-touch-icon.png">
+<meta property="og:site_name" content="BackToHealth">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{pageUrl}}">
+<meta property="og:title" content="{{program.meta.title}}">
+<meta property="og:description" content="{{program.meta.description}}">
+<meta property="og:locale" content="{{meta.locale}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{meta.imageAlt}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ogImage}}">
+<link rel="stylesheet" href="{{base}}assets/styles.css">
+</head>
+<body class="doc-page">
+
+<header class="top scrolled" id="top">
+  <a class="brand" href="../" aria-label="{{program.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span>BackToHealth</span></a>
+  <nav>
+    <a class="lang" href="{{program.otherLangHref}}" hreflang="{{program.otherLang}}" aria-label="{{program.otherLangLabel}}">{{program.otherLang}}</a>
+    <a class="btn btn-small" href="{{mailto}}">{{nav.cta}}</a>
+  </nav>
+</header>
+
+<main class="doc">
+  <p class="label">{{program.label}}</p>
+  <h1>{{program.title}}</h1>
+  <p class="lead">{{program.lead}}</p>
+  <p class="status">{{program.status}}</p>
+
+  <h2>{{program.glanceTitle}}</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>{{program.colPillar}}</th><th>{{program.colLength}}</th><th>{{program.colRhythm}}</th><th>{{program.colSession}}</th></tr></thead>
+      <tbody>{{glanceRows}}</tbody>
+    </table>
+  </div>
+  <p class="note">{{program.glanceNote}}</p>
+
+  <h2>{{program.evalTitle}}</h2>
+  <ul class="ticks">{{evalItems}}</ul>
+
+  <h2>{{program.eduTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.eduIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.eduProgress}}</dd></div>
+  </dl>
+  <h3>{{program.eduListTitle}}</h3>
+  <div class="families">{{lessonCards}}</div>
+
+  <h2>{{program.exTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.exIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.exProgress}}</dd></div>
+    <div><dt>{{program.exampleLabel}}</dt><dd>{{program.exExample}}</dd></div>
+  </dl>
+  <h3>{{program.familiesTitle}}</h3>
+  <div class="families">{{familyCards}}</div>
+
+  <h2>{{program.medTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.medIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.medProgress}}</dd></div>
+  </dl>
+  <h3>{{program.medThemesTitle}}</h3>
+  <ul class="ticks">{{medThemes}}</ul>
+
+  <h2>{{program.walkTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.walkIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.walkProgress}}</dd></div>
+    <div><dt>{{program.exampleLabel}}</dt><dd>{{program.walkExample}}</dd></div>
+  </dl>
+
+  <h2>{{program.afterTitle}}</h2>
+  <ul class="ticks">{{afterItems}}</ul>
+
+  <h2>{{program.followTitle}}</h2>
+  <ul class="ticks">{{followItems}}</ul>
+
+  <div class="card card-tint philo">
+    <h3>{{program.philoTitle}}</h3>
+    <p>{{program.philoBody}}</p>
+  </div>
+
+  <div class="card doc-cta">
+    <h3>{{pros.ctaTitle}}</h3>
+    <p>{{pros.ctaBody}}</p>
+    <a class="btn" href="{{mailtoPro}}">{{pros.cta}}</a>
+  </div>
+
+  <footer class="doc-foot">
+    <p>{{footer.disclaimer}}</p>
+    <p class="foot-row"><span>© 2026 BackToHealth · {{footer.place}}</span><a href="../">{{program.home}}</a><a href="{{program.otherLangHref}}">{{program.otherLangLabel}}</a></p>
+  </footer>
+</main>
+</body>
+</html>

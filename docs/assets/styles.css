@@ -87,6 +87,13 @@ a { color: var(--tronc); }
 
 .hero .sun { top: 13%; right: 5%; }
 
+/* The app on a phone, standing on the hill beside the tree: it says "this is a mobile app" at first sight. */
+.hero-phone { position: absolute; left: calc(var(--tree-h) * .5); bottom: calc(var(--tree-h) * -.06); width: calc(var(--tree-h) * .5); padding: calc(var(--tree-h) * .018); border-radius: calc(var(--tree-h) * .07); background: #0f2147; box-shadow: 0 18px 40px rgba(15, 33, 71, .28); transform: rotate(4deg); transform-origin: 50% 100%; }
+.hero-phone img { width: 100%; height: auto; border-radius: calc(var(--tree-h) * .055); }
+.stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+.store { display: inline-flex; flex-direction: column; align-items: flex-start; padding: 7px 16px; border-radius: 12px; background: rgba(15, 33, 71, .88); color: #fff; font: 600 16px/1.15 var(--sans); }
+.store small { font: 400 11px/1.2 var(--sans); opacity: .85; }
+
 /* The sheet that rises over the meadow, as in the app */
 .sheet { position: relative; z-index: 2; margin-top: -48px; border-radius: 40px 40px 0 0; background: var(--fond); overflow: clip; }
 .band { --pad: clamp(64px, 9vw, 112px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
@@ -98,6 +105,14 @@ a { color: var(--tronc); }
 .card p { color: #2c3e66; }
 .reveal { transition: opacity .26s ease-out, transform .26s ease-out; }
 .js .reveal:not(.seen) { opacity: 0; transform: translateY(12px); }
+
+/* Offer: the four programs, right after the hero */
+.offer-head { max-width: 760px; }
+.offer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.offer-grid .tag { margin-bottom: 10px; }
+.dur { font: 500 26px/1.2 var(--display); color: var(--encre); margin-bottom: 8px; }
+.goal { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 16px; }
+.goal .btn { flex: none; }
 
 /* Who */
 .who { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
@@ -160,6 +175,7 @@ input[type=range]::-moz-range-thumb { width: 28px; height: 28px; border-radius: 
 /* Pros */
 .pros { max-width: none; background: var(--surface); padding-inline: max(clamp(16px, 4vw, 40px), calc((100% - 1080px) / 2)); }
 .pros-head { max-width: 760px; }
+.pros-link { margin-top: 20px; }
 .pros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
 .pros .card:not(.card-tint) { background: var(--fond); box-shadow: none; }
 .pros-foot { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 72px); margin-top: 48px; }
@@ -202,12 +218,42 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .pros-head { max-width: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: end; }
   .pros-head .label { grid-column: 1 / -1; }
   .pros-head .lead { margin-top: 0; font-size: 17px; }
+  .pros-link { grid-column: 2; justify-self: start; margin-top: 12px; }
   .pros-grid { margin-top: 24px; }
 }
+
+/* The program page */
+.doc-page { background: var(--fond); }
+.doc { max-width: 880px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 40px) 40px; }
+.doc h1 { font-size: clamp(34px, 4.4vw, 52px); }
+.doc h2 { font-size: clamp(26px, 3vw, 34px); margin: 56px 0 14px; }
+.doc h3 { margin-top: 28px; }
+.doc p { margin-bottom: 12px; }
+.doc .ticks { margin: 8px 0 0; }
+.status { padding: 14px 18px; border-radius: 16px; background: var(--halo); color: #2c3e66; font-size: 15px; line-height: 22px; margin-top: 20px; }
+.table-wrap { overflow-x: auto; margin: 8px 0 12px; }
+.doc table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 16px; overflow: hidden; box-shadow: var(--ombre); font-size: 16px; line-height: 22px; }
+.doc th, .doc td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+.doc thead th { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); }
+.doc tbody tr:last-child > * { border-bottom: none; }
+.pillar { display: grid; gap: 14px; margin: 8px 0 0; }
+.pillar dt { font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tronc); margin-bottom: 4px; }
+.pillar dd { margin: 0; }
+.families { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 12px; }
+.family { padding: 18px 20px; }
+.family h4 { margin: 0 0 8px; font: 600 17px/24px var(--sans); }
+.family ol { margin: 0; padding-left: 22px; color: #2c3e66; font-size: 15px; line-height: 22px; display: grid; gap: 4px; }
+.philo { margin-top: 56px; }
+.doc-cta { margin-top: 16px; }
+.doc-cta p { margin-bottom: 16px; }
+.doc-foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--ligne); color: var(--encre-douce); font-size: 15px; line-height: 22px; }
+.doc-foot a { color: var(--encre-douce); }
 
 @media (max-width: 900px) {
   .nav-link { display: none; }
   .who, .pain, .team, .pros-foot { grid-template-columns: 1fr; }
+  .offer-grid { grid-template-columns: 1fr 1fr; }
+  .goal { flex-direction: column; align-items: flex-start; }
   .pros-grid { grid-template-columns: 1fr 1fr; }
   .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 8px 16px 16px; }
   .phone { flex: 0 0 62%; scroll-snap-align: center; }
@@ -220,10 +266,15 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 }
 @media (max-width: 600px) {
   .pros-grid { grid-template-columns: 1fr; }
+  .offer-grid, .families { grid-template-columns: 1fr; }
   .sheet { border-radius: 32px 32px 0 0; }
   .hero-text { padding-top: 84px; }
   .brand { font-size: 18px; }
-  .hero { --tree-h: clamp(150px, calc(86svh - 500px), 240px); --crest: 86%; min-height: max(100svh, 780px); }
+  .hero { --tree-h: 190px; --crest: 86%; min-height: max(100svh, 860px); }
+  /* Tree and phone side by side, both on the hill and inside the screen. */
+  .hero .crest { left: 41%; }
+  .hero-phone { left: calc(var(--tree-h) * .44); width: calc(var(--tree-h) * .42); }
+  .doc table { min-width: 560px; font-size: 15px; }
   .hero .sun { top: 57%; right: 9%; }
   .cloud.c3, .cloud.c4 { display: none; }
   .cloud.c1 { width: 70%; left: -25%; }

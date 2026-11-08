@@ -41,6 +41,7 @@
 <header class="top" id="top">
   <a class="brand" href="#top" aria-label="{{nav.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span>BackToHealth</span></a>
   <nav>
+    <a class="nav-link" href="programme/">{{nav.program}}</a>
     <a class="nav-link" href="#how">{{nav.how}}</a>
     <a class="nav-link" href="#pros">{{nav.pros}}</a>
     <a class="nav-link" href="#faq">{{nav.faq}}</a>
@@ -65,6 +66,7 @@
     </div>
     <div class="crest" aria-hidden="true">
       <div class="tree-wrap"><div class="sway">{{svg.tree}}</div></div>
+      <div class="hero-phone"><img src="{{base}}assets/screen-home.png" width="390" height="844" alt="{{hero.phoneAlt}}"></div>
     </div>
     <div class="hero-text">
       <p class="label">{{hero.label}}</p>
@@ -73,10 +75,32 @@
       <div class="actions">
         <a class="btn" href="{{mailto}}">{{hero.cta}}</a>
       </div>
+      <div class="stores">
+        <span class="store"><small>{{hero.soon}}</small>{{hero.appStore}}</span>
+        <span class="store"><small>{{hero.soon}}</small>{{hero.googlePlay}}</span>
+      </div>
     </div>
   </section>
 
   <div class="sheet">
+    <section class="band offer">
+      <div class="reveal offer-head">
+        <p class="label">{{offer.label}}</p>
+        <h2>{{offer.title}}</h2>
+        <p class="lead">{{offer.body}}</p>
+      </div>
+      <div class="offer-grid">
+        <div class="card reveal"><p class="tag tag-lagon">{{offer.c1Tag}}</p><p class="dur">{{offer.c1Dur}}</p><p>{{offer.c1Body}}</p></div>
+        <div class="card reveal"><p class="tag tag-ciel">{{offer.c2Tag}}</p><p class="dur">{{offer.c2Dur}}</p><p>{{offer.c2Body}}</p></div>
+        <div class="card reveal"><p class="tag tag-pervenche">{{offer.c3Tag}}</p><p class="dur">{{offer.c3Dur}}</p><p>{{offer.c3Body}}</p></div>
+        <div class="card reveal"><p class="tag tag-prairie">{{offer.c4Tag}}</p><p class="dur">{{offer.c4Dur}}</p><p>{{offer.c4Body}}</p></div>
+      </div>
+      <div class="card card-tint goal reveal">
+        <div><h3>{{offer.goalTitle}}</h3><p>{{offer.goalBody}}</p></div>
+        <a class="btn" href="programme/">{{offer.more}}</a>
+      </div>
+    </section>
+
     <section class="band who">
       <div class="who-text reveal">
         <p class="label">{{who.label}}</p>
@@ -91,10 +115,6 @@
         <div class="card">
           <h3>{{who.forTitle}}</h3>
           <ul class="ticks"><li>{{who.for1}}</li><li>{{who.for2}}</li><li>{{who.for3}}</li></ul>
-        </div>
-        <div class="card card-tint">
-          <h3>{{who.safetyTitle}}</h3>
-          <p>{{who.safetyBody}}</p>
         </div>
       </div>
     </section>
@@ -173,6 +193,7 @@
         <p class="label">{{pros.label}}</p>
         <h2>{{pros.title}}</h2>
         <p class="lead">{{pros.body}}</p>
+        <a class="btn pros-link" href="programme/">{{pros.programLink}}</a>
       </div>
       <div class="pros-grid">
         <div class="card reveal"><h3>{{pros.c1Title}}</h3><p>{{pros.c1Body}}</p></div>
