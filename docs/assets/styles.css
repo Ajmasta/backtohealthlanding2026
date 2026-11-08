@@ -96,7 +96,7 @@ a { color: var(--tronc); }
 
 /* The sheet that rises over the meadow, as in the app */
 .sheet { position: relative; z-index: 2; margin-top: -48px; border-radius: 40px 40px 0 0; background: var(--fond); overflow: clip; }
-.band { --pad: clamp(64px, 9vw, 112px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
+.band { --pad: clamp(36px, 4.5vw, 56px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
 /* A menu link lands with the section's label just under the header, not after its top padding.
    The space stays when scrolling. */
 #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
@@ -214,7 +214,7 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 
 /* Wide screens: the menu link lands so the heading and all six cards fit on a laptop. */
 @media (min-width: 901px) {
-  #pros { --pad: 96px; }
+  #pros { --pad: 64px; }
   .pros-head { max-width: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: end; }
   .pros-head .label { grid-column: 1 / -1; }
   .pros-head .lead { margin-top: 0; font-size: 17px; }

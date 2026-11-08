@@ -69,7 +69,8 @@ cpSync(join(here, 'src/styles.css'), join(assets, 'styles.css'));
 cpSync(join(here, 'src/main.js'), join(assets, 'main.js'));
 cpSync(join(root, 'mobile/assets/landscape'), join(assets, 'landscape'), { recursive: true });
 for (const f of ['icon-48.png', 'icon-512.png', 'apple-touch-icon.png', 'og-fr.png', 'og-en.png']) cpSync(join(here, 'src/share', f), join(assets, f));
-for (const s of ['home', 'path', 'mind', 'progress']) cpSync(join(root, `design/figma-v4.3/${s}.png`), join(assets, `screen-${s}.png`));
+// Captured from the app at 3x (390 × 844 points), so they stay sharp on retina screens.
+for (const s of ['home', 'path', 'mind', 'progress']) cpSync(join(here, `src/screens/${s}.png`), join(assets, `screen-${s}.png`));
 const fonts = join(root, 'mobile/node_modules/@expo-google-fonts');
 for (const [family, file] of [['fraunces', 'Fraunces_500Medium'], ['figtree', 'Figtree_400Regular'], ['figtree', 'Figtree_600SemiBold']]) {
   const weight = file.match(/_(\d+)/)[1];
