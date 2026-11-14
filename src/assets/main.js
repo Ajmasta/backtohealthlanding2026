@@ -8,6 +8,26 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Small screens: the menu button opens the section links; choosing one, or Escape, closes it.
+  var toggle = top.querySelector('.menu-toggle');
+  function setMenu(open) {
+    top.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  }
+  toggle.addEventListener('click', function () { setMenu(!top.classList.contains('open')); });
+  top.querySelectorAll('.nav-link').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // The menu underlines the section in view.
+  var links = [].slice.call(top.querySelectorAll('.nav-link[href^="#"]'));
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+
   // Sections rise as they arrive (260 ms, no bounce).
   var revealer = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
@@ -60,7 +80,7 @@
     }, 780);
   }
 
-  // Hero: planting. The drop lands on the empty hill and the tree grows, one small overshoot.
+  // Hero: planting. The drop lands on the empty hill, the tree springs up from the ground and settles, then sways.
   var hero = document.querySelector('[data-scene="hero"]');
   if (!reduce && hero.animate) {
     var heroTree = hero.querySelector('.tree-wrap');
@@ -68,12 +88,42 @@
     setTimeout(function () {
       fallingDrop(hero, '#37b5ff', function () {
         heroTree.animate([
-          { transform: 'scale(0)' },
-          { transform: 'scale(1.05)', offset: .75 },
+          { transform: 'scale(0, 0)' },
+          { transform: 'scale(.55, .8)', offset: .35 },
+          { transform: 'scale(1.1, 1.06)', offset: .65 },
+          { transform: 'rotate(-2deg) scale(.97, .99)', offset: .82 },
+          { transform: 'rotate(1deg) scale(1.01)', offset: .92 },
           { transform: 'scale(1)' }
-        ], { duration: 1200, delay: 120, easing: 'cubic-bezier(.2, .8, .3, 1)', fill: 'forwards' });
+        ], { duration: 1600, delay: 80, easing: 'cubic-bezier(.25, .8, .35, 1)', fill: 'forwards' }).onfinish = settle;
       });
-    }, 350);
+    }, 300);
+  }
+
+  // Once planted, the tree lives quietly in its corner: an uneven breeze (in CSS) and, now and then, a leaf
+  // that lets go and drifts down. Only while the hero is on screen.
+  var LEAVES = ['#59dee7', '#37b5ff', '#5074ff', '#8fd9a8'];
+  function settle() {
+    heroTree.classList.add('alive');
+    var visible = true, timer;
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(hero);
+    (function next() {
+      timer = setTimeout(function () { if (visible && !document.hidden) leaf(); next(); }, 3500 + Math.random() * 4000);
+    })();
+  }
+  function leaf() {
+    var el = document.createElement('div');
+    el.className = 'leaf';
+    el.style.color = LEAVES[Math.floor(Math.random() * LEAVES.length)];
+    el.style.left = 25 + Math.random() * 50 + '%';
+    el.style.top = 18 + Math.random() * 30 + '%';
+    heroTree.appendChild(el);
+    var side = Math.random() < .5 ? -1 : 1, fall = heroTree.offsetHeight * (.45 + Math.random() * .2);
+    el.animate([
+      { transform: 'translate(0, 0) rotate(0deg)', opacity: 0 },
+      { transform: 'translate(' + side * 14 + 'px, ' + fall * .25 + 'px) rotate(' + side * 70 + 'deg)', opacity: 1, offset: .15 },
+      { transform: 'translate(' + side * -6 + 'px, ' + fall * .55 + 'px) rotate(' + side * -30 + 'deg)', opacity: 1, offset: .55 },
+      { transform: 'translate(' + side * 30 + 'px, ' + fall + 'px) rotate(' + side * 110 + 'deg)', opacity: 0 }
+    ], { duration: 4200 + Math.random() * 1500, easing: 'ease-in-out' }).onfinish = function () { el.remove(); };
   }
 
   // Water: each activity reached sends its drop, and the tree moves to the next of its four stages.

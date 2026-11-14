@@ -1,8 +1,8 @@
 /* BackToHealth site. Tokens come from the design system; the page runs from morning to night as you scroll. */
 
-@font-face { font-family: Fraunces; src: url(Fraunces_500Medium.ttf); font-weight: 500; font-display: swap; }
-@font-face { font-family: Figtree; src: url(Figtree_400Regular.ttf); font-weight: 400; font-display: swap; }
-@font-face { font-family: Figtree; src: url(Figtree_600SemiBold.ttf); font-weight: 600; font-display: swap; }
+@font-face { font-family: Fraunces; src: url(fonts/Fraunces_500Medium.ttf); font-weight: 500; font-display: swap; }
+@font-face { font-family: Figtree; src: url(fonts/Figtree_400Regular.ttf); font-weight: 400; font-display: swap; }
+@font-face { font-family: Figtree; src: url(fonts/Figtree_600SemiBold.ttf); font-weight: 600; font-display: swap; }
 
 :root {
   --ciel: #37b5ff; --lagon: #59dee7; --pervenche: #5074ff; --tronc: #004aad;
@@ -34,7 +34,15 @@ a { color: var(--tronc); }
 
 .btn { display: inline-block; background: var(--tronc); color: #fff; font: 600 17px/22px var(--sans); text-decoration: none; padding: 16px 28px; border-radius: 16px; transition: transform .2s, background .2s; }
 .btn:hover { background: #003a8a; transform: translateY(-1px); }
-.btn-small { padding: 10px 16px; font-size: 15px; border-radius: 12px; }
+.btn-small { padding: 10px 16px; font-size: 15px; border-radius: 12px; white-space: nowrap; }
+.btn-ghost { background: transparent; color: var(--tronc); box-shadow: inset 0 0 0 2px var(--tronc); }
+.btn-ghost:hover { background: rgba(0, 74, 173, .08); }
+/* A link to another page of the site carries a small arrow pointing out of the page. */
+.to-page { display: inline-flex; align-items: center; gap: 8px; }
+.to-page::after { content: ""; flex: none; width: 14px; height: 14px; background: currentColor; transition: transform .2s;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 2h8v8M12 2 2 12' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 2h8v8M12 2 2 12' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.to-page:hover::after { transform: translate(2px, -2px); }
 .btn-night { background: var(--nuit-action); color: var(--nuit); }
 .btn-night:hover { background: #a6b7ff; }
 
@@ -44,19 +52,30 @@ a { color: var(--tronc); }
 .brand { display: flex; align-items: center; gap: 8px; color: var(--tronc); font: 500 20px/1 var(--display); text-decoration: none; }
 .brand-tree svg { width: 30px; height: 36px; }
 .top nav { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
-.nav-link, .lang { color: var(--encre); text-decoration: none; font-weight: 600; font-size: 15px; }
-.nav-link:hover, .lang:hover { text-decoration: underline; text-underline-offset: 4px; }
+.nav-links { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
+.nav-link, .lang { color: var(--encre); text-decoration: none; font-weight: 600; font-size: 15px; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.nav-link:hover, .lang:hover { text-decoration-line: underline; }
+.nav-link.active { color: var(--tronc); text-decoration-line: underline; }
+.menu-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 12px; background: transparent; color: var(--encre); cursor: pointer; position: relative; }
+.menu-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s; }
+.menu-toggle span:first-child { top: 17px; } .menu-toggle span:last-child { top: 25px; }
+.top.open .menu-toggle span:first-child { transform: translateY(4px) rotate(45deg); }
+.top.open .menu-toggle span:last-child { transform: translateY(-4px) rotate(-45deg); }
 
 /* The landscape, shared by the hero and the small window */
 .scene { position: relative; overflow: hidden; --crest: 76%; --tree-h: 300px; }
 .sky { position: absolute; inset: 0; background: linear-gradient(var(--ciel-haut), var(--halo) var(--crest)); }
 .sun { position: absolute; right: 13%; top: 16%; width: clamp(48px, 7vw, 96px); aspect-ratio: 1; border-radius: 50%; background: var(--abricot); box-shadow: 0 0 60px 20px rgba(255, 178, 122, .45); }
-.cloud { position: absolute; opacity: .95; animation: drift 11s ease-in-out infinite alternate; }
+.cloud { position: absolute; opacity: .95; --from: -90px; --far: 36px;
+  animation: cloud-in 1.8s cubic-bezier(.2, .7, .3, 1) var(--in, 0s) both, drift var(--slow, 28s) ease-in-out calc(var(--in, 0s) + 1.8s) infinite; }
 .cloud.c1 { width: 40%; left: -7%; top: 12%; }
-.cloud.c2 { width: 34%; right: -5%; top: 34%; animation-duration: 9s; animation-direction: alternate-reverse; }
-.cloud.c3 { width: 26%; left: 8%; top: 48%; animation-duration: 12s; }
-.cloud.c4 { width: 30%; right: 20%; top: 58%; animation-duration: 10s; animation-direction: alternate-reverse; }
-@keyframes drift { from { transform: translateX(-10px); } to { transform: translateX(10px); } }
+.cloud.c2 { width: 34%; right: -5%; top: 34%; --from: 90px; --far: -30px; --slow: 24s; --in: .15s; }
+.cloud.c3 { width: 26%; left: 8%; top: 48%; --far: 26px; --slow: 32s; --in: .3s; }
+.cloud.c4 { width: 30%; right: 20%; top: 58%; --from: 90px; --far: -40px; --slow: 26s; --in: .45s; }
+@keyframes cloud-in { from { opacity: 0; transform: translateX(var(--from)); } }
+@keyframes drift { 0%, 100% { translate: 0 0; } 25% { translate: var(--far) -4px; } 75% { translate: calc(var(--far) * -1) 3px; } }
+.sun { animation: glow 6s ease-in-out infinite alternate; }
+@keyframes glow { to { box-shadow: 0 0 80px 30px rgba(255, 178, 122, .55); } }
 
 .terrain { position: absolute; left: 50%; top: var(--crest); width: max(100%, 820px); aspect-ratio: 1024 / 736; transform: translate(-50%, -17.12%); }
 .terrain img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -64,9 +83,21 @@ a { color: var(--tronc); }
 
 .crest { position: absolute; left: 50%; top: var(--crest); width: 0; height: 0; }
 .tree-wrap { position: absolute; bottom: calc(var(--tree-h) * -.03); left: calc(var(--tree-h) * -.42); width: calc(var(--tree-h) * .848); height: var(--tree-h); transform-origin: 49.5% 97.6%; }
-.sway { width: 100%; height: 100%; transform-origin: 49.5% 97.6%; animation: sway 8s ease-in-out infinite alternate; }
+.sway { width: 100%; height: 100%; transform-origin: 49.5% 97.6%; animation: sway 6s ease-in-out infinite alternate; }
 .sway svg { width: 100%; height: 100%; }
-@keyframes sway { from { transform: rotate(-.7deg); } to { transform: rotate(.7deg); } }
+/* The planted hero tree: an uneven breeze, a gust then calm, and the crown breathing a little. */
+.tree-wrap.alive .sway { animation: breeze 11s ease-in-out infinite; }
+@keyframes breeze {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  14% { transform: rotate(1.8deg) scale(1.012, .996); }
+  22% { transform: rotate(.7deg) scale(1.004, 1); }
+  30% { transform: rotate(1.3deg) scale(1.008, .998); }
+  48% { transform: rotate(-.9deg) scale(.996, 1.006); }
+  66% { transform: rotate(.4deg) scale(1.002, 1.01); }
+  82% { transform: rotate(-.6deg) scale(.998, 1.004); }
+}
+.leaf { position: absolute; z-index: 1; width: 10px; height: 14px; margin: -7px 0 0 -5px; background: currentColor; border-radius: 0 100% 0 100%; pointer-events: none; }
+@keyframes sway { from { transform: rotate(-1.4deg) scale(1, .995); } to { transform: rotate(1.4deg) scale(1.01, 1.005); } }
 
 /* Drop, ripples and droplets, added by main.js */
 .drop { position: absolute; left: -13px; top: 0; width: 26px; height: 42px; z-index: 3; }
@@ -89,6 +120,8 @@ a { color: var(--tronc); }
 
 /* The app on a phone, standing on the hill beside the tree: it says "this is a mobile app" at first sight. */
 .hero-phone { position: absolute; left: calc(var(--tree-h) * .5); bottom: calc(var(--tree-h) * -.06); width: calc(var(--tree-h) * .5); padding: calc(var(--tree-h) * .018); border-radius: calc(var(--tree-h) * .07); background: #0f2147; box-shadow: 0 18px 40px rgba(15, 33, 71, .28); transform: rotate(4deg); transform-origin: 50% 100%; }
+.js .hero-phone { animation: phone-in .9s cubic-bezier(.2, .8, .3, 1) 2s both; }
+@keyframes phone-in { from { opacity: 0; transform: translateY(50px) rotate(10deg); } }
 .hero-phone img { width: 100%; height: auto; border-radius: calc(var(--tree-h) * .055); }
 .stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
 .store { display: inline-flex; flex-direction: column; align-items: flex-start; padding: 7px 16px; border-radius: 12px; background: rgba(15, 33, 71, .88); color: #fff; font: 600 16px/1.15 var(--sans); }
@@ -99,7 +132,7 @@ a { color: var(--tronc); }
 .band { --pad: clamp(36px, 4.5vw, 56px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
 /* A menu link lands with the section's label just under the header, not after its top padding.
    The space stays when scrolling. */
-#how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
+#program, #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
 .card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--ombre); }
 .card-tint { background: var(--halo); box-shadow: none; }
 .card p { color: #2c3e66; }
@@ -250,7 +283,12 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 .doc-foot a { color: var(--encre-douce); }
 
 @media (max-width: 900px) {
-  .nav-link { display: none; }
+  .nav-links { display: none; }
+  .js .menu-toggle { display: block; }
+  .top.open { background: #fff; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+  .top.open .nav-links { display: flex; flex-direction: column; align-items: stretch; gap: 0; position: absolute; top: 100%; left: 0; right: 0; padding: 8px clamp(16px, 3vw, 40px) 16px; background: #fff; box-shadow: 0 12px 24px rgba(15, 33, 71, .08); }
+  .top.open .nav-link { padding: 14px 4px; font-size: 18px; border-bottom: 1px solid var(--ligne); }
+  .top.open .nav-link:last-child { border-bottom: 0; }
   .who, .pain, .team, .pros-foot { grid-template-columns: 1fr; }
   .offer-grid { grid-template-columns: 1fr 1fr; }
   .goal { flex-direction: column; align-items: flex-start; }
@@ -270,6 +308,11 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .sheet { border-radius: 32px 32px 0 0; }
   .hero-text { padding-top: 84px; }
   .brand { font-size: 18px; }
+  .top { padding-inline: 12px 6px; gap: 8px; }
+  .top nav { gap: 10px; }
+  .btn-small { padding: 9px 12px; font-size: 14px; }
+  .menu-toggle { width: 40px; }
+  .menu-toggle span { left: 10px; right: 10px; }
   .hero { --tree-h: 190px; --crest: 86%; min-height: max(100svh, 860px); }
   /* Tree and phone side by side, both on the hill and inside the screen. */
   .hero .crest { left: 41%; }
@@ -283,6 +326,6 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .cloud, .sway, .stars i, .js .hero-text > * { animation: none; }
-  .reveal, .step, .btn { transition: none; }
+  .cloud, .sun, .sway, .stars i, .js .hero-text > *, .js .hero-phone { animation: none; }
+  .reveal, .step, .btn, .to-page::after { transition: none; }
 }

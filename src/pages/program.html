@@ -1,38 +1,9 @@
-<!doctype html>
-<html lang="{{lang}}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{program.meta.title}}</title>
-<meta name="description" content="{{program.meta.description}}">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#86cdfb">
-<link rel="canonical" href="{{pageUrl}}">
-<link rel="alternate" hreflang="fr" href="{{site}}programme/">
-<link rel="alternate" hreflang="en" href="{{site}}en/programme/">
-<link rel="alternate" hreflang="x-default" href="{{site}}programme/">
-<link rel="icon" type="image/png" sizes="48x48" href="{{base}}assets/icon-48.png">
-<link rel="apple-touch-icon" href="{{base}}assets/apple-touch-icon.png">
-<meta property="og:site_name" content="BackToHealth">
-<meta property="og:type" content="article">
-<meta property="og:url" content="{{pageUrl}}">
-<meta property="og:title" content="{{program.meta.title}}">
-<meta property="og:description" content="{{program.meta.description}}">
-<meta property="og:locale" content="{{meta.locale}}">
-<meta property="og:image" content="{{ogImage}}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{meta.imageAlt}}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{{ogImage}}">
-<link rel="stylesheet" href="{{base}}assets/styles.css">
-</head>
-<body class="doc-page">
+{{> head}}<body class="doc-page">
 
 <header class="top scrolled" id="top">
   <a class="brand" href="../" aria-label="{{program.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span>BackToHealth</span></a>
   <nav>
-    <a class="lang" href="{{program.otherLangHref}}" hreflang="{{program.otherLang}}" aria-label="{{program.otherLangLabel}}">{{program.otherLang}}</a>
+    <a class="lang" href="{{otherLangHref}}" hreflang="{{program.otherLang}}" aria-label="{{program.otherLangLabel}}">{{program.otherLang}}</a>
     <a class="btn btn-small" href="{{mailto}}">{{nav.cta}}</a>
   </nav>
 </header>
@@ -106,7 +77,7 @@
 
   <footer class="doc-foot">
     <p>{{footer.disclaimer}}</p>
-    <p class="foot-row"><span>© 2026 BackToHealth · {{footer.place}}</span><a href="../">{{program.home}}</a><a href="{{program.otherLangHref}}">{{program.otherLangLabel}}</a></p>
+    <p class="foot-row"><span>© 2026 BackToHealth · {{footer.place}}</span><a href="../">{{program.home}}</a><a href="{{otherLangHref}}">{{program.otherLangLabel}}</a></p>
   </footer>
 </main>
 </body>

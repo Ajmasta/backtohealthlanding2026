@@ -16,9 +16,9 @@
     "cta": "Notify me",
     "otherLang": "FR",
     "otherLangLabel": "Lire cette page en français",
-    "otherLangHref": "../",
     "home": "BackToHealth, home",
-    "program": "The program"
+    "program": "The program",
+    "menu": "Menu"
   },
   "hero": {
     "label": "Mobile app · iPhone and Android",
@@ -180,7 +180,6 @@
     },
     "otherLang": "FR",
     "otherLangLabel": "Lire cette page en français",
-    "otherLangHref": "../../programme/",
     "home": "Back to the home page",
     "label": "The program in detail",
     "title": "What BackToHealth contains, step by step.",

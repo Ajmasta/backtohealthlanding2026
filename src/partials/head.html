@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{page.title}}</title>
+<meta name="description" content="{{page.description}}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#86cdfb">
+<link rel="canonical" href="{{pageUrl}}">
+{{hreflangLinks}}
+<link rel="icon" type="image/png" sizes="48x48" href="{{base}}assets/share/icon-48.png">
+<link rel="icon" type="image/png" sizes="512x512" href="{{base}}assets/share/icon-512.png">
+<link rel="apple-touch-icon" href="{{base}}assets/share/apple-touch-icon.png">
+<meta property="og:site_name" content="BackToHealth">
+<meta property="og:type" content="{{page.ogType}}">
+<meta property="og:url" content="{{pageUrl}}">
+<meta property="og:title" content="{{page.title}}">
+<meta property="og:description" content="{{page.description}}">
+<meta property="og:locale" content="{{meta.locale}}">
+<meta property="og:locale:alternate" content="{{meta.localeAlt}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:secure_url" content="{{ogImage}}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{meta.imageAlt}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{page.title}}">
+<meta name="twitter:description" content="{{page.description}}">
+<meta name="twitter:image" content="{{ogImage}}">
+<meta name="twitter:image:alt" content="{{meta.imageAlt}}">
+<script type="application/ld+json">{{jsonLd}}</script>
+<link rel="stylesheet" href="{{base}}assets/styles.css?v={{v.styles}}">
+<script>document.documentElement.classList.add('js')</script>
+</head>

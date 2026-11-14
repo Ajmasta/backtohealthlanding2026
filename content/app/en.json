@@ -1,0 +1,115 @@
+{
+  "lessonModules": [
+    {
+      "title": "Getting started",
+      "lessons": [
+        "Why this program"
+      ]
+    },
+    {
+      "title": "General concepts",
+      "lessons": [
+        "Pain",
+        "Chronic back pain",
+        "General principle of treatment"
+      ]
+    },
+    {
+      "title": "Regaining confidence",
+      "lessons": [
+        "My back is strong",
+        "The movements I fear",
+        "The brain’s alarm",
+        "Flare-ups"
+      ]
+    },
+    {
+      "title": "Healthy lifestyle",
+      "lessons": [
+        "General introduction",
+        "Nutrition",
+        "Sleep",
+        "Physical activity",
+        "Work and loved ones"
+      ]
+    },
+    {
+      "title": "Pain management techniques",
+      "lessons": [
+        "Muscle tension",
+        "Heat and cold therapy",
+        "Medications",
+        "Finding your way through care"
+      ]
+    },
+    {
+      "title": "Acceptance and commitment approach",
+      "lessons": [
+        "Cognitive restructuring",
+        "Acceptance",
+        "Psychomotor activation",
+        "Anxiety and chronic pain",
+        "Mood: when to ask for help"
+      ]
+    },
+    {
+      "title": "What comes next",
+      "lessons": [
+        "Continuing your own way"
+      ]
+    }
+  ],
+  "exerciseFamilies": [
+    [
+      "Assisted lying lumbar extension",
+      "Lying lumbar extension on the elbows",
+      "Lying lumbar extension on the elbows (longer)",
+      "Assisted standing lumbar extension",
+      "Standing lumbar extension"
+    ],
+    [
+      "Lying pelvic tilt",
+      "Lying, one knee to chest",
+      "Lying, both knees to chest",
+      "Child’s pose",
+      "Seated flexion",
+      "Seated flexion, to one side",
+      "Spine roll-down against a wall",
+      "Standing spine roll-down"
+    ],
+    [
+      "Assisted seated rotation",
+      "Active seated rotation",
+      "Passive lying rotation",
+      "Active lying rotation"
+    ],
+    [
+      "Lying deep abdominal activation",
+      "Glute bridge",
+      "Bird-dog (on all fours, opposite arm and leg)",
+      "Side plank"
+    ],
+    [
+      "Wall push-up",
+      "Raised push-up",
+      "Raised push-up (lower)",
+      "Classic push-up"
+    ],
+    [
+      "Assisted squat with support",
+      "Quarter squat",
+      "Full squat",
+      "Squat with a band",
+      "Jump squat"
+    ],
+    [
+      "Lunge",
+      "Bulgarian lunge",
+      "Single-leg squat"
+    ],
+    [
+      "Hip abduction, lying on your side",
+      "Crab walk with a band"
+    ]
+  ]
+}

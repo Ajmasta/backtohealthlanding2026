@@ -1,52 +1,17 @@
-<!doctype html>
-<html lang="{{lang}}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{meta.title}}</title>
-<meta name="description" content="{{meta.description}}">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#86cdfb">
-<link rel="canonical" href="{{pageUrl}}">
-<link rel="alternate" hreflang="fr" href="{{site}}">
-<link rel="alternate" hreflang="en" href="{{site}}en/">
-<link rel="alternate" hreflang="x-default" href="{{site}}">
-<link rel="icon" type="image/png" sizes="48x48" href="{{base}}assets/icon-48.png">
-<link rel="icon" type="image/png" sizes="512x512" href="{{base}}assets/icon-512.png">
-<link rel="apple-touch-icon" href="{{base}}assets/apple-touch-icon.png">
-<meta property="og:site_name" content="BackToHealth">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{pageUrl}}">
-<meta property="og:title" content="{{meta.title}}">
-<meta property="og:description" content="{{meta.description}}">
-<meta property="og:locale" content="{{meta.locale}}">
-<meta property="og:locale:alternate" content="{{meta.localeAlt}}">
-<meta property="og:image" content="{{ogImage}}">
-<meta property="og:image:secure_url" content="{{ogImage}}">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{meta.imageAlt}}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{meta.title}}">
-<meta name="twitter:description" content="{{meta.description}}">
-<meta name="twitter:image" content="{{ogImage}}">
-<meta name="twitter:image:alt" content="{{meta.imageAlt}}">
-<script type="application/ld+json">{{jsonLd}}</script>
-<link rel="stylesheet" href="{{base}}assets/styles.css">
-<script>document.documentElement.classList.add('js')</script>
-</head>
-<body>
+{{> head}}<body>
 
 <header class="top" id="top">
   <a class="brand" href="#top" aria-label="{{nav.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span>BackToHealth</span></a>
   <nav>
-    <a class="nav-link" href="programme/">{{nav.program}}</a>
-    <a class="nav-link" href="#how">{{nav.how}}</a>
-    <a class="nav-link" href="#pros">{{nav.pros}}</a>
-    <a class="nav-link" href="#faq">{{nav.faq}}</a>
-    <a class="lang" href="{{nav.otherLangHref}}" hreflang="{{nav.otherLang}}" aria-label="{{nav.otherLangLabel}}">{{nav.otherLang}}</a>
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" href="#program">{{nav.program}}</a>
+      <a class="nav-link" href="#how">{{nav.how}}</a>
+      <a class="nav-link" href="#pros">{{nav.pros}}</a>
+      <a class="nav-link" href="#faq">{{nav.faq}}</a>
+    </div>
+    <a class="lang" href="{{otherLangHref}}" hreflang="{{nav.otherLang}}" aria-label="{{nav.otherLangLabel}}">{{nav.otherLang}}</a>
     <a class="btn btn-small" href="{{mailto}}">{{nav.cta}}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="{{nav.menu}}"><span></span><span></span></button>
   </nav>
 </header>
 
@@ -66,7 +31,7 @@
     </div>
     <div class="crest" aria-hidden="true">
       <div class="tree-wrap"><div class="sway">{{svg.tree}}</div></div>
-      <div class="hero-phone"><img src="{{base}}assets/screen-home.png" width="390" height="844" alt="{{hero.phoneAlt}}"></div>
+      <div class="hero-phone"><img src="{{base}}assets/screens/home.png" width="390" height="844" alt="{{hero.phoneAlt}}"></div>
     </div>
     <div class="hero-text">
       <p class="label">{{hero.label}}</p>
@@ -83,7 +48,7 @@
   </section>
 
   <div class="sheet">
-    <section class="band offer">
+    <section class="band offer" id="program">
       <div class="reveal offer-head">
         <p class="label">{{offer.label}}</p>
         <h2>{{offer.title}}</h2>
@@ -97,7 +62,7 @@
       </div>
       <div class="card card-tint goal reveal">
         <div><h3>{{offer.goalTitle}}</h3><p>{{offer.goalBody}}</p></div>
-        <a class="btn" href="programme/">{{offer.more}}</a>
+        <a class="btn btn-ghost to-page" href="programme/">{{offer.more}}</a>
       </div>
     </section>
 
@@ -181,10 +146,10 @@
         <p class="note">{{screens.note}}</p>
       </div>
       <div class="phones">
-        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screen-home.png" alt="{{screens.alt1}}"><figcaption><strong>{{screens.s1Title}}</strong>{{screens.s1Body}}</figcaption></figure>
-        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screen-path.png" alt="{{screens.alt2}}"><figcaption><strong>{{screens.s2Title}}</strong>{{screens.s2Body}}</figcaption></figure>
-        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screen-mind.png" alt="{{screens.alt3}}"><figcaption><strong>{{screens.s3Title}}</strong>{{screens.s3Body}}</figcaption></figure>
-        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screen-progress.png" alt="{{screens.alt4}}"><figcaption><strong>{{screens.s4Title}}</strong>{{screens.s4Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/home.png" alt="{{screens.alt1}}"><figcaption><strong>{{screens.s1Title}}</strong>{{screens.s1Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/path.png" alt="{{screens.alt2}}"><figcaption><strong>{{screens.s2Title}}</strong>{{screens.s2Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/mind.png" alt="{{screens.alt3}}"><figcaption><strong>{{screens.s3Title}}</strong>{{screens.s3Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/progress.png" alt="{{screens.alt4}}"><figcaption><strong>{{screens.s4Title}}</strong>{{screens.s4Body}}</figcaption></figure>
       </div>
     </section>
 
@@ -193,7 +158,7 @@
         <p class="label">{{pros.label}}</p>
         <h2>{{pros.title}}</h2>
         <p class="lead">{{pros.body}}</p>
-        <a class="btn pros-link" href="programme/">{{pros.programLink}}</a>
+        <a class="btn btn-ghost to-page pros-link" href="programme/">{{pros.programLink}}</a>
       </div>
       <div class="pros-grid">
         <div class="card reveal"><h3>{{pros.c1Title}}</h3><p>{{pros.c1Body}}</p></div>
@@ -270,13 +235,13 @@
       </div>
       <footer>
         <p>{{footer.disclaimer}}</p>
-        <p class="foot-row"><span>© 2026 BackToHealth · {{footer.place}}</span><a href="mailto:{{contact}}">{{footer.contact}}</a><a href="{{nav.otherLangHref}}">{{nav.otherLangLabel}}</a></p>
+        <p class="foot-row"><span>© 2026 BackToHealth · {{footer.place}}</span><a href="mailto:{{contact}}">{{footer.contact}}</a><a href="{{otherLangHref}}">{{nav.otherLangLabel}}</a></p>
       </footer>
     </section>
   </div>
 </main>
 
 <script>window.PAIN = {{painStrings}};</script>
-<script src="{{base}}assets/main.js"></script>
+<script src="{{base}}assets/main.js?v={{v.main}}"></script>
 </body>
 </html>

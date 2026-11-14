@@ -1,5 +1,6 @@
-// Draws the share images and icons into src/share/ with headless Edge. Rerun only when the logo or tagline changes.
-// Run: node make-images.mjs
+// Draws the share images and icons into src/assets/share/ with a headless Chromium browser (Chrome or Edge).
+// Rerun only when the logo or the tagline changes. Set CHROME to the browser's path if it is not found.
+// Run: npm run images
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -7,17 +8,26 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const here = dirname(fileURLToPath(import.meta.url));
-const root = join(here, '..');
-const out = join(here, 'src/share');
-const edge = ['C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', 'C:/Program Files/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
-if (!edge) throw new Error('Edge not found');
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const assets = join(root, 'src/assets');
+const out = join(assets, 'share');
+const browser = [
+  process.env.CHROME,
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium',
+].find((p) => p && existsSync(p));
+if (!browser) throw new Error('No Chrome or Edge found. Set CHROME to its path.');
 
-const tree = readFileSync(join(root, 'design/logo/tree-logo.svg'), 'utf8').replace(/<title>.*?<\/title>/s, '');
-const fontUrl = (p) => pathToFileURL(join(root, 'mobile/node_modules/@expo-google-fonts', p)).href;
-const land = (f) => pathToFileURL(join(root, 'mobile/assets/landscape', f)).href;
+const tree = readFileSync(join(assets, 'svg/tree-logo.svg'), 'utf8');
+const fontUrl = (f) => pathToFileURL(join(assets, 'fonts', f)).href;
+const land = (f) => pathToFileURL(join(assets, 'landscape', f)).href;
 const base = `<!doctype html><meta charset="utf-8"><style>
-@font-face { font-family: Fraunces; src: url(${fontUrl('fraunces/500Medium/Fraunces_500Medium.ttf')}); }
+@font-face { font-family: Fraunces; src: url(${fontUrl('Fraunces_500Medium.ttf')}); }
 html, body { margin: 0; overflow: hidden; }
 </style>`;
 
@@ -51,8 +61,8 @@ function shot(name, html, w, h) {
   const target = join(out, name);
   rmSync(target, { force: true });
   writeFileSync(tmp, html);
-  execFileSync(edge, ['--headless', '--no-sandbox', '--disable-gpu', `--user-data-dir=${join(tmpdir(), 'bth-edge')}`, '--hide-scrollbars', '--force-device-scale-factor=1', `--window-size=${w},${h}`, '--virtual-time-budget=3000', `--screenshot=${target}`, pathToFileURL(tmp).href], { stdio: 'ignore', timeout: 90000 });
-  // Edge's launcher returns before the picture is written, so wait for the file.
+  execFileSync(browser, ['--headless', '--no-sandbox', '--disable-gpu', `--user-data-dir=${join(tmpdir(), 'bth-browser')}`, '--hide-scrollbars', '--force-device-scale-factor=1', `--window-size=${w},${h}`, '--virtual-time-budget=3000', `--screenshot=${target}`, pathToFileURL(tmp).href], { stdio: 'ignore', timeout: 90000 });
+  // Some launchers return before the picture is written, so wait for the file.
   const end = Date.now() + 60000;
   while (!existsSync(target)) {
     if (Date.now() > end) throw new Error(`No picture for ${name}`);
