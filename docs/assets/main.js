@@ -229,6 +229,14 @@
     document.getElementById('did-it').addEventListener('click', function () { phone.classList.add('tried'); setStep(1); });
     dots.forEach(function (d) { d.addEventListener('click', function () { setStep(+d.dataset.step); }); });
     setStep(0);
+    // The pointer comes in when the button is fully in the window and clear of its bottom edge,
+    // so the person sees it arrive. Once started, it stays.
+    var hinter = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      phone.classList.add('hint-on');
+      hinter.disconnect();
+    }, { threshold: 1, rootMargin: '0px 0px -18% 0px' });
+    hinter.observe(document.getElementById('did-it'));
   }
 
   // Pain during a session: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
