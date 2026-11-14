@@ -135,9 +135,6 @@ a { color: var(--tronc); }
 /* The sheet that rises over the meadow, as in the app */
 .sheet { position: relative; z-index: 2; margin-top: -48px; border-radius: 40px 40px 0 0; background: var(--fond); overflow: clip; }
 .band { --pad: clamp(44px, 5.5vw, 76px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
-/* A menu link lands with the section's label just under the header, not after its top padding.
-   The space stays when scrolling. */
-#evaluation, #exercises, #program, #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
 .card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--ombre); }
 .card-tint { background: var(--halo); box-shadow: none; }
 .card p { color: var(--encre-texte); }
@@ -374,6 +371,26 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 .doc-cta p { margin-bottom: 16px; }
 .doc-foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--ligne); color: var(--encre-douce); font-size: 15px; line-height: 22px; }
 .doc-foot a { color: var(--encre-douce); }
+
+/* One section at a time, like slides: the page settles on the start of a section, never between two.
+   Each section fills the window with its content centred; a section taller than the window scrolls
+   freely inside, then the page moves on to the next one. */
+.hero, .band { scroll-snap-align: start; }
+/* A section lands with its label just under the header, not after its top padding (menu links too). */
+.band { scroll-margin-top: calc(-4px - var(--pad)); }
+.night { scroll-snap-align: end; }
+@media (min-width: 901px) and (min-height: 600px) {
+  html { scroll-snap-type: y mandatory; }
+  /* From just under the header to the bottom of the window. */
+  .band { min-height: calc(100svh - 84px + var(--pad)); }
+  .who, .pain, .eval { align-content: center; }
+  .moves, .screens, .offer, .pros, .team, .faq { display: flex; flex-direction: column; justify-content: center; }
+  .faq { padding-top: var(--pad); }
+}
+/* On small screens the sections are much taller than the window: only a gentle pull to their start. */
+@media (max-width: 900px), (max-height: 599px) {
+  html { scroll-snap-type: y proximity; }
+}
 
 @media (max-width: 1100px) {
   .pros-grid { grid-template-columns: 1fr 1fr; }

@@ -8,6 +8,38 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // One section at a time (wide screens): a turn of the wheel moves to the next section instead of leaving
+  // the page between two. A section taller than the window scrolls normally until its end.
+  // Touch, keyboard and the scrollbar are left to the browser, which settles on sections by itself (CSS scroll snap).
+  var slides = matchMedia('(min-width: 901px) and (min-height: 600px)');
+  var stops = [].slice.call(document.querySelectorAll('.hero, .band, .night'));
+  var busy = 0;
+  function stopAt(el) {
+    var r = el.getBoundingClientRect();
+    if (el.classList.contains('night')) return r.bottom + scrollY - innerHeight;
+    if (el.classList.contains('hero')) return 0;
+    return r.top + scrollY - 88 - parseFloat(getComputedStyle(el).scrollMarginTop);
+  }
+  addEventListener('wheel', function (e) {
+    if (!slides.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+    // While a move is under way, the rest of the gesture (a trackpad keeps sending events) is ignored.
+    if (Date.now() < busy) { e.preventDefault(); return; }
+    var current = 0;
+    stops.forEach(function (el, i) { if (stopAt(el) <= scrollY + 4) current = i; });
+    var down = e.deltaY > 0;
+    var target = stops[current + (down ? 1 : -1)];
+    if (!target) return;
+    // More of this section below (or above): let it scroll.
+    if (down ? stops[current].getBoundingClientRect().bottom > innerHeight + 4 && stopAt(target) > scrollY + innerHeight * .5 : scrollY > stopAt(stops[current]) + 4) return;
+    e.preventDefault();
+    busy = Date.now() + 900;
+    // The browser's own snapping would pull the page back while it travels: it is off for the trip.
+    var root = document.documentElement;
+    root.style.scrollSnapType = 'none';
+    scrollTo(0, stopAt(target));
+    setTimeout(function () { root.style.scrollSnapType = ''; }, 900);
+  }, { passive: false });
+
   // Small screens: the menu button opens the section links; choosing one, or Escape, closes it.
   var toggle = top.querySelector('.menu-toggle');
   function setMenu(open) {
