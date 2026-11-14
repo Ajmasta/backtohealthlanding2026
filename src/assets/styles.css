@@ -51,6 +51,10 @@ a { color: var(--tronc); }
 .top.scrolled { background: rgba(255, 255, 255, .78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 1px 0 rgba(15, 33, 71, .06); }
 .brand { display: flex; align-items: center; gap: 8px; color: var(--tronc); font: 500 20px/1 var(--display); text-decoration: none; }
 .brand-tree svg { width: 30px; height: 36px; }
+/* "Crescendos" in French: crescen-DOS, the back is in the name. */
+.brand-name { display: flex; align-items: baseline; gap: 6px; }
+.brand-alt { font: 500 .8em/1 var(--display); color: var(--pervenche); }
+.brand-alt:empty { display: none; }
 .top nav { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
 .nav-links { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
 .nav-link, .lang { color: var(--encre); text-decoration: none; font-weight: 600; font-size: 15px; text-underline-offset: 6px; text-decoration-thickness: 2px; }
@@ -314,6 +318,8 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .sheet { border-radius: 32px 32px 0 0; }
   .hero-text { padding-top: 84px; }
   .brand { font-size: 18px; }
+  .brand-name { flex-direction: column; gap: 2px; }
+  .brand-alt { font-size: 13px; }
   .top { padding-inline: 12px 6px; gap: 8px; }
   .top nav { gap: 10px; }
   .btn-small { padding: 9px 12px; font-size: 14px; }

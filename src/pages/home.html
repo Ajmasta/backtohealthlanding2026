@@ -1,7 +1,7 @@
 {{> head}}<body>
 
 <header class="top" id="top">
-  <a class="brand" href="#top" aria-label="{{nav.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span>BackToHealth</span></a>
+  <a class="brand" href="#top" aria-label="{{nav.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span class="brand-name">BackToHealth <small class="brand-alt">{{nav.brandAlt}}</small></span></a>
   <nav>
     <div class="nav-links" id="nav-links">
       <a class="nav-link" href="#program">{{nav.program}}</a>
@@ -204,7 +204,7 @@
       </div>
       <footer>
         <p>{{footer.disclaimer}}</p>
-        <p class="foot-row"><span>© 2026 BackToHealth · {{footer.place}}</span><a href="mailto:{{contact}}">{{footer.contact}}</a><a href="{{otherLangHref}}">{{nav.otherLangLabel}}</a></p>
+        <p class="foot-row"><span>© 2026 BackToHealth {{nav.brandAlt}} · {{footer.place}}</span><a href="mailto:{{contact}}">{{footer.contact}}</a><a href="{{otherLangHref}}">{{nav.otherLangLabel}}</a></p>
       </footer>
     </section>
   </div>

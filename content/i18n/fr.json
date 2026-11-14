@@ -1,8 +1,8 @@
 {
   "lang": "fr",
   "meta": {
-    "title": "BackToHealth · Mieux vivre avec la douleur au dos",
-    "description": "Une application mobile pour la lombalgie chronique : un peu de mouvement, de lecture, de méditation et de marche, chaque jour, selon ce que ton dos te dit.",
+    "title": "BackToHealth (Crescendos) · Mieux vivre avec la douleur au dos",
+    "description": "L’application pour la lombalgie chronique : bouger, comprendre, respirer et marcher, un peu chaque jour, au rythme de ton dos.",
     "locale": "fr_CA",
     "localeAlt": "en_CA",
     "imageAlt": "L’arbre de BackToHealth sur une colline, avec les mots : Mieux vivre avec la douleur au dos",
@@ -18,72 +18,73 @@
     "otherLangLabel": "Read this page in English",
     "home": "BackToHealth, accueil",
     "program": "Le programme",
-    "menu": "Menu"
+    "menu": "Menu",
+    "brandAlt": "(Crescendos)"
   },
   "hero": {
     "label": "Application mobile · iPhone et Android",
     "title": "Mieux vivre avec la douleur au dos, un petit pas à la fois.",
-    "body": "Chaque jour, un peu de mouvement, une courte lecture, un moment pour l’esprit et de la marche. BackToHealth s’adapte à ce que ton dos te dit.",
+    "body": "Un peu de mouvement, de lecture, de calme et de marche, chaque jour. L’application s’adapte à ton dos.",
     "cta": "Me prévenir du lancement",
     "soon": "Bientôt sur",
     "appStore": "l’App Store",
     "googlePlay": "Google Play",
-    "phoneAlt": "L’application BackToHealth sur un téléphone : l’arbre sur la colline et le programme du jour"
+    "phoneAlt": "L’application sur un téléphone : l’arbre sur la colline et le programme du jour"
   },
   "who": {
     "label": "Pour qui",
     "title": "Ton dos te fait mal depuis des mois. Peut-être des années.",
-    "body": "Tu as entendu beaucoup de choses et essayé pas mal aussi. Tu aimerais surtout reprendre ce qui compte : jardiner, porter tes enfants, conduire sans penser à ton dos.",
-    "fact": "Tu n’es pas un cas à part : environ 9 fois sur 10, le mal de dos n’a pas de cause précise que l’on puisse identifier.",
-    "factSource": "Source : Organisation mondiale de la santé, 2023",
-    "forTitle": "C’est fait pour toi si",
+    "body": "Tu as tout entendu, beaucoup essayé. Tu veux surtout reprendre ta vie : jardiner, porter tes enfants, conduire sans y penser.",
+    "fact": "Environ 9 fois sur 10, le mal de dos n’a pas de cause précise. Tu n’es pas un cas à part.",
+    "factSource": "Source : OMS, 2023",
+    "forTitle": "C’est pour toi si",
     "for": [
-      "Tu es adulte, et ton mal de dos dure depuis plusieurs mois.",
-      "Aucune cause grave n’explique ta douleur lombaire : on parle de lombalgie non spécifique.",
+      "Tu es adulte, et ton dos te fait mal depuis des mois.",
+      "Aucune cause grave ne l’explique : c’est une lombalgie non spécifique.",
       "Tu veux avancer à ton rythme, sans pression."
     ]
   },
   "water": {
     "label": "Comment ça marche",
     "title": "Chaque effort arrose ton arbre.",
-    "body": "Tu commences par une évaluation d’environ 5 minutes, puis tu choisis ton rythme. Chaque activité terminée devient une goutte d’eau.",
-    "end": "Ton arbre grandit avec les jours où tu as pris soin de toi, pas avec une série à tenir. Il ne fane jamais.",
+    "body": "Une évaluation de 5 minutes, puis ton rythme. Chaque activité terminée devient une goutte d’eau.",
+    "end": "Ton arbre pousse avec les jours où tu prends soin de toi. Pas de série à tenir. Il ne fane jamais.",
     "steps": [
       {
         "label": "Apprendre",
-        "title": "Comprendre sa douleur au dos",
-        "body": "Environ 5 minutes de lecture. 23 courtes leçons, écrites par notre médecin, aussi diplômé en physiothérapie, pour comprendre ce qui se passe et reprendre confiance."
+        "title": "Comprendre ta douleur",
+        "body": "23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie, pour reprendre confiance."
       },
       {
         "label": "Mouvement",
         "title": "Bouger, à ta mesure",
-        "body": "De 5 à 15 minutes, 2 ou 3 fois par semaine. Les exercices sont choisis selon ton évaluation et démontrés avec des animations 3D."
+        "body": "5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour toi, montrés en 3D."
       },
       {
         "label": "Esprit",
         "title": "Un moment pour respirer",
-        "body": "De la pleine conscience, de 3 à 30 minutes, pour souffler quand la journée ou ton mal de dos pèse."
+        "body": "3 à 30 minutes de pleine conscience, quand la journée ou ton dos pèse."
       },
       {
         "label": "Marche",
         "title": "Sortir marcher",
-        "body": "La distance que tu veux. Et si tu as fait du yoga ou du vélo ailleurs, ça compte aussi : tu peux le noter."
+        "body": "La distance que tu veux. Yoga ou vélo ailleurs ? Ça compte aussi."
       }
     ]
   },
   "pain": {
     "label": "Une application qui écoute",
-    "title": "Si ta douleur au dos monte, on allège.",
-    "body": "Pendant les exercices, tu dis où en est ta douleur au dos, et le programme suit. Essaie : imagine que tu viens de finir une série.",
+    "title": "Ta douleur monte ? On allège.",
+    "body": "Pendant les exercices, tu notes ta douleur et le programme s’ajuste. Essaie, comme après une série :",
     "sliderLabel": "Ta douleur au dos, de 0 à 10",
     "low": "Aucune",
     "high": "Très forte",
     "easyTitle": "Ça va bien.",
-    "easyBody": "On avance doucement : si toute ta séance se passe ainsi, tu feras une répétition de plus la prochaine fois.",
+    "easyBody": "Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.",
     "holdTitle": "C’est la limite.",
-    "holdBody": "Tu peux continuer. La prochaine fois, on garde le même niveau.",
-    "stopTitle": "Ta douleur au dos dépasse 3/10.",
-    "stopBody": "Arrête cet exercice, c’est la bonne décision. La prochaine fois, on repart un peu plus doucement. Si tu veux, un moment de réconfort de 3 minutes t’attend."
+    "holdBody": "Tu peux continuer. La prochaine fois, même niveau.",
+    "stopTitle": "Ta douleur dépasse 3/10.",
+    "stopBody": "Arrête cet exercice : c’est la bonne décision. La prochaine fois, on repart plus doucement. Un moment de réconfort de 3 minutes t’attend."
   },
   "screens": {
     "label": "Dans l’application",
@@ -91,11 +92,11 @@
     "s1Title": "Ta journée",
     "s1Body": "Un programme court. Rien à rattraper.",
     "s2Title": "Ton parcours",
-    "s2Body": "Les leçons, une à la fois, à travers le paysage.",
+    "s2Body": "Les leçons, une à une, à travers le paysage.",
     "s3Title": "Ton esprit",
     "s3Body": "Tu choisis le temps que tu as.",
     "s4Title": "Tes progrès",
-    "s4Body": "Ce qui redevient plus facile, avec tes mots.",
+    "s4Body": "Ce qui redevient facile, avec tes mots.",
     "alt1": "Écran Aujourd’hui : un arbre sur une colline et un programme de quatre activités",
     "alt2": "Écran du parcours de lecture : des leçons reliées par un chemin sur les collines",
     "alt3": "Écran de méditation sur fond de nuit : choix de 5, 10 ou 15 minutes",
@@ -104,28 +105,28 @@
   "pros": {
     "label": "Professionnels de la santé",
     "title": "Un relais entre vos rendez-vous, et après.",
-    "body": "BackToHealth ne remplace ni votre évaluation ni votre suivi. Il aide vos patients qui ont une lombalgie chronique à continuer de bouger, de comprendre et de prendre soin d’eux, surtout une fois les séances terminées.",
-    "sourcesTitle": "Sur quoi nous nous appuyons",
-    "ctaTitle": "Vous aimeriez l’essayer ou nous donner votre avis ?",
-    "ctaBody": "Nous cherchons des cliniciens pour relire le contenu et proposer l’application à leurs patients.",
+    "body": "BackToHealth ne remplace ni votre évaluation ni votre suivi. Il aide vos patients lombalgiques à bouger, comprendre et prendre soin d’eux, surtout après les séances.",
+    "sourcesTitle": "Nos sources",
+    "ctaTitle": "Envie de l’essayer ou de donner votre avis ?",
+    "ctaBody": "Nous cherchons des cliniciens pour relire le contenu et le proposer à leurs patients.",
     "cta": "Écrire à l’équipe",
-    "programLink": "Voir ce que contient l’application",
+    "programLink": "Voir le contenu de l’application",
     "cards": [
       {
-        "title": "Dépistage avant tout",
-        "body": "8 questions sur les drapeaux rouges avant tout programme. Une réponse positive oriente vers un médecin ou les urgences."
+        "title": "Dépistage d’abord",
+        "body": "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences."
       },
       {
-        "title": "Une règle claire sur la douleur lombaire",
-        "body": "Au-dessus de 3/10 : arrêt et niveau inférieur. Séance complète à 2/10 ou moins : progression d’une répétition, jusqu’à 12, puis niveau suivant."
+        "title": "Une règle de douleur claire",
+        "body": "Au-dessus de 3/10 : arrêt, niveau inférieur. Séance à 2/10 ou moins : une répétition de plus, jusqu’à 12, puis niveau suivant."
       },
       {
         "title": "Une approche biopsychosociale",
-        "body": "Exercice, éducation sur la douleur lombaire, pleine conscience et marche, dans le même programme, comme le recommandent les guides de pratique."
+        "body": "Exercice, éducation, pleine conscience et marche, réunis comme le recommandent les guides de pratique."
       },
       {
         "title": "Ce que nous ne prétendons pas",
-        "body": "L’application ne pose pas de diagnostic et ne traite pas. Elle n’a pas encore fait l’objet d’une étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne."
+        "body": "Pas de diagnostic, pas de traitement, pas encore d’étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne."
       }
     ],
     "sources": [
@@ -150,107 +151,107 @@
   "team": {
     "label": "Qui nous sommes",
     "title": "Une équipe d’innovateurs engagés, à Montréal.",
-    "body": "BackToHealth s’appuie sur les études récentes sur le mal de dos chronique. Derrière l’application, trois personnes qui y consacrent leur énergie.",
+    "body": "Trois personnes, une même base : les études récentes sur le mal de dos chronique.",
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
         "title": "Initiateur du projet",
-        "bio": "Médecin, aussi diplômé en physiothérapie, et spécialiste des études récentes sur le mal de dos chronique. Il a conçu le contenu clinique, le valide et dirige le projet."
+        "bio": "Médecin diplômé en physiothérapie, spécialiste du mal de dos chronique. Il conçoit et valide le contenu clinique, et dirige le projet."
       },
       {
         "name": "Adrien Moevus",
         "title": "Responsable de l’application",
-        "bio": "Étudiant en médecine et développeur full stack. Il conçoit l’architecture du service et construit l’application de bout en bout. Il écrit aussi les méditations."
+        "bio": "Étudiant en médecine et développeur full stack. Il conçoit l’architecture et construit l’application. Il écrit aussi les méditations."
       },
       {
         "name": "Antoine Moevus",
         "title": "Affaires et développement",
-        "bio": "Il dirige les affaires et le développement. Il est responsable de la gouvernance des données et de l’IA, dont l’apprentissage automatique dans l’application."
+        "bio": "Il dirige les affaires et le développement. Responsable de la gouvernance des données et de l’IA, dont l’apprentissage automatique."
       }
     ]
   },
   "faq": {
     "label": "Questions",
-    "title": "Ce qu’on nous demande souvent.",
+    "title": "Tes questions.",
     "items": [
       {
-        "q": "Est-ce que ça remplace mon médecin ou mon physio ?",
-        "a": "Non. BackToHealth t’aide à mieux vivre avec la douleur au dos, en complément de ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé."
+        "q": "Ça remplace mon médecin ou mon physio ?",
+        "a": "Non. L’application complète ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé."
       },
       {
-        "q": "Et si j’ai trop mal, ou pas envie, un jour donné ?",
-        "a": "Chaque activité a un bouton « Pas aujourd’hui », qui te propose autre chose de plus doux. Pendant une poussée, le plan s’allège pour 3 jours. Ton arbre t’attend, sans presse."
+        "q": "Et si j’ai trop mal, ou pas envie ?",
+        "a": "Le bouton « Pas aujourd’hui » te propose plus doux. Pendant une poussée, le plan s’allège 3 jours. Ton arbre t’attend."
       },
       {
         "q": "Quand sort l’application ?",
-        "a": "Nous la testons en ce moment, sur iPhone et Android. Écris-nous pour être prévenu du lancement."
+        "a": "Elle est en test sur iPhone et Android. Écris-nous pour être prévenu du lancement."
       },
       {
         "q": "Combien ça coûte ?",
-        "a": "Le prix n’est pas encore fixé. Nous te le dirons clairement avant le lancement."
+        "a": "Le prix n’est pas encore fixé. Tu le sauras clairement avant le lancement."
       },
       {
-        "q": "En quelle langue est-elle ?",
-        "a": "En français et en anglais. Elle suit la langue de ton téléphone, et tu peux la changer quand tu veux."
+        "q": "En quelle langue ?",
+        "a": "Français et anglais, selon ton téléphone. Tu peux changer quand tu veux."
       },
       {
-        "q": "Que faites-vous de mes données ?",
-        "a": "Ces informations touchent à ta santé : on les protège, on ne les vend jamais, et tu peux les exporter ou les supprimer à tout moment. Leur usage pour la recherche est facultatif, et se fait sous un code, jamais avec ton nom ou ton courriel."
+        "q": "Et mes données ?",
+        "a": "Protégées, jamais vendues. Tu peux les exporter ou les supprimer à tout moment. La recherche est facultative et se fait sous un code, jamais avec ton nom ni ton courriel."
       }
     ]
   },
   "end": {
     "title": "Ton arbre t’attend.",
-    "body": "Laisse-nous ton courriel en nous écrivant : on te préviendra quand tu pourras le planter.",
+    "body": "Écris-nous : on te prévient dès que tu peux le planter.",
     "cta": "Me prévenir du lancement"
   },
   "footer": {
-    "disclaimer": "BackToHealth t’aide à mieux vivre avec la douleur au dos. L’application ne remplace pas l’avis d’un professionnel de la santé.",
+    "disclaimer": "BackToHealth ne remplace pas l’avis d’un professionnel de la santé.",
     "place": "Montréal, Québec",
     "contact": "Nous écrire"
   },
   "offer": {
     "label": "Le programme",
-    "title": "Pour commencer, quatre programmes d’introduction.",
-    "body": "Ce sont tes premiers pas. Pendant quelques semaines, l’application t’apprend à comprendre ton dos, à bouger, à méditer et à marcher. Ensuite, elle reste avec toi aussi longtemps que tu veux.",
+    "title": "Quatre programmes pour bien démarrer.",
+    "body": "Quelques semaines pour comprendre ton dos, bouger, méditer et marcher. Ensuite, l’application reste avec toi, aussi longtemps que tu veux.",
     "goalTitle": "Et après ? On reste avec toi.",
-    "goalBody": "Une fois les introductions terminées, tu gardes tes outils : tes exercices continuent de s’adapter à ta douleur, tu médites à ta façon, tu gardes ton rythme de marche et tu refais tes tests pour voir le chemin parcouru. Et si tu veux aller plus loin, un cours de Pilates, de yoga ou de méditation, c’est encore mieux.",
-    "more": "Voir le programme en détail",
+    "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche et tu mesures le chemin parcouru. Un cours de Pilates ou de yoga en plus ? Encore mieux.",
+    "more": "Le programme en détail",
     "cards": [
       {
         "tag": "Comprendre",
         "dur": "4 semaines",
-        "body": "23 leçons de 5 minutes, environ une par jour, pour comprendre ta douleur au dos et reprendre confiance."
+        "body": "23 leçons de 5 minutes pour comprendre ta douleur et reprendre confiance."
       },
       {
         "tag": "Bouger",
         "dur": "8 à 12 semaines",
-        "body": "Des exercices progressifs, choisis selon ton évaluation et adaptés à ta douleur, 2 à 3 fois par semaine."
+        "body": "Des exercices progressifs, adaptés à ta douleur, 2 à 3 fois par semaine."
       },
       {
         "tag": "Méditer",
         "dur": "8 à 11 semaines",
-        "body": "Un programme de pleine conscience, puis deux chemins : la bienveillance envers toi, et ce qui compte pour toi."
+        "body": "La pleine conscience, puis la bienveillance envers toi et ce qui compte pour toi."
       },
       {
         "tag": "Marcher",
         "dur": "8 semaines",
-        "body": "Un programme de marche progressif, avec un objectif par semaine qui part de ce que tu fais déjà."
+        "body": "Un objectif par semaine, à partir de ce que tu fais déjà."
       }
     ]
   },
   "program": {
     "meta": {
-      "title": "Le programme en détail · BackToHealth",
-      "description": "Les exercices et leur dosage, les 23 leçons, le programme de méditation et la marche de l’application BackToHealth, pour les patients et les professionnels de la santé."
+      "title": "Le programme en détail · BackToHealth (Crescendos)",
+      "description": "Exercices et dosage, 23 leçons, méditation et marche : le contenu de BackToHealth, pour les patients et les professionnels de la santé."
     },
     "otherLang": "EN",
     "otherLangLabel": "Read this page in English",
     "home": "Retour à l’accueil",
     "label": "Le programme en détail",
     "title": "Ce que contient BackToHealth, pas à pas.",
-    "lead": "Pour les personnes curieuses et les professionnels de la santé : l’évaluation, les exercices, les leçons, la méditation et la marche, tels qu’ils sont dans l’application.",
-    "status": "Le contenu clinique est en cours de validation par notre médecin, aussi diplômé en physiothérapie. Il peut encore changer.",
+    "lead": "Pour les curieux et les professionnels de la santé : l’évaluation, les exercices, les leçons, la méditation et la marche, tels qu’ils sont dans l’application.",
+    "status": "Contenu clinique en cours de validation par notre médecin, diplômé en physiothérapie. Il peut encore changer.",
     "glanceTitle": "En un coup d’œil",
     "colPillar": "Volet",
     "colLength": "Durée",
@@ -280,13 +281,13 @@
       "Un objectif par semaine",
       "La durée qu’on veut"
     ],
-    "evalTitle": "Au départ : une évaluation d’environ 5 minutes",
+    "evalTitle": "Au départ : une évaluation de 5 minutes",
     "eval": [
-      "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences, et le programme ne commence pas.",
+      "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences, et le programme ne démarre pas.",
       "La douleur au repos, de 0 à 10.",
-      "4 tests de mouvement : flexion, extension, rotation à droite et à gauche, avec la douleur pendant chacun. Ils déterminent les exercices de départ et leur niveau.",
-      "1 à 3 activités que la personne veut retrouver, notées de 0 à 10 (échelle fonctionnelle spécifique au patient).",
-      "Le rythme : un peu chaque jour, des jours légers et d’autres plus actifs, ou quelques jours choisis dans la semaine."
+      "4 tests de mouvement (flexion, extension, rotations droite et gauche), avec la douleur ressentie. Ils fixent les exercices de départ et leur niveau.",
+      "1 à 3 activités à retrouver, notées de 0 à 10 (échelle fonctionnelle spécifique au patient).",
+      "Le rythme : un peu chaque jour, des jours légers et d’autres actifs, ou quelques jours choisis."
     ],
     "exTitle": "Exercices : 8 à 12 semaines",
     "familiesTitle": "Les exercices, du plus facile au plus exigeant",
@@ -302,37 +303,37 @@
     ],
     "eduTitle": "Éducation : 23 leçons en 4 semaines environ",
     "medTitle": "Méditation : 8 à 11 semaines",
-    "medDaily": "Entre les séances, l’idée est de retrouver cet état quelques instants dans la journée, de 30 secondes à 2 minutes, sans effort.",
+    "medDaily": "Entre les séances : retrouver cet état quelques instants, de 30 secondes à 2 minutes, sans effort.",
     "walkTitle": "Marche : un programme de 8 semaines",
     "followTitle": "Le suivi",
     "follow": [
-      "Les activités choisies au départ sont réévaluées environ toutes les 2 semaines.",
-      "Les tests de mouvement sont refaits environ toutes les 4 semaines, pour comparer avant et maintenant.",
-      "La douleur est suivie dans le temps, et un résumé de la semaine montre ce qui a été fait.",
-      "Pendant une poussée, le plan s’allège pendant 3 jours : pas de séance d’exercices, des moments de réconfort et de la marche douce.",
-      "La personne peut exporter ses données à tout moment."
+      "Les activités choisies sont réévaluées environ toutes les 2 semaines.",
+      "Les tests de mouvement sont refaits environ toutes les 4 semaines, pour comparer.",
+      "La douleur est suivie dans le temps, avec un résumé de la semaine.",
+      "Pendant une poussée, 3 jours allégés : pas d’exercices, du réconfort et de la marche douce.",
+      "Les données sont exportables à tout moment."
     ],
     "philoTitle": "Une boîte à outils, pas une prise en charge totale",
-    "philoBody": "BackToHealth donne les outils et les premiers pas sur chaque chemin. Le programme suffit à lui seul, et aller plus loin ailleurs (un cours de Pilates, un atelier de méditation, un suivi en clinique) est encore mieux. La personne reste maître de son parcours.",
-    "glanceNote": "Ces durées sont celles des programmes d’introduction. L’application continue ensuite, sans limite de temps.",
+    "philoBody": "BackToHealth donne les outils et les premiers pas. Le programme se suffit à lui-même ; aller plus loin ailleurs (Pilates, méditation, suivi en clinique) est encore mieux. La personne reste maître de son parcours.",
+    "glanceNote": "Ce sont les durées des programmes d’introduction. L’application continue ensuite, sans limite.",
     "afterTitle": "Après les programmes d’introduction",
     "after": [
-      "Les exercices continuent de s’adapter à la douleur, et de nouveaux exercices sont proposés quand un niveau devient facile.",
-      "La méditation se poursuit avec la pratique que la personne s’est construite, de 10 à 30 minutes.",
-      "La marche garde son rythme, ou vise un peu plus, jusqu’à environ 2 heures par semaine.",
-      "Les leçons restent disponibles à relire, et les tests de mouvement peuvent être refaits pour comparer.",
+      "Les exercices continuent de s’adapter, avec de nouveaux défis quand un niveau devient facile.",
+      "La méditation continue avec la pratique construite, de 10 à 30 minutes.",
+      "La marche garde son rythme, ou monte jusqu’à environ 2 heures par semaine.",
+      "Les leçons restent disponibles, et les tests de mouvement peuvent être refaits.",
       "Aller plus loin ailleurs (Pilates, yoga, méditation, suivi en clinique) est encouragé."
     ],
     "ideaLabel": "L’idée",
     "progressLabel": "Comment on progresse",
     "exampleLabel": "Exemple",
-    "exIdea": "Bouger sans peur, guidé par la douleur. Les exercices de départ sont choisis à partir des tests de mouvement. Ils couvrent l’extension, la flexion, la rotation et la stabilisation du tronc, puis la force (haut du corps, squat, fente, hanches). Une douleur jusqu’à 3/10 est acceptable : elle ne veut pas dire dommage.",
-    "exProgress": "3 séries de 10 à 12 répétitions. Une séance faite à 2/10 ou moins ajoute une répétition ; à 12, on passe au niveau suivant. Au-dessus de 3/10, on arrête et on redescend d’un niveau. Quand le dernier niveau d’une famille devient facile, l’application propose un exercice plus exigeant d’une autre famille.",
+    "exIdea": "Bouger sans peur, guidé par la douleur. Les tests de mouvement fixent les exercices de départ : extension, flexion, rotation, stabilisation du tronc, puis force (haut du corps, squat, fente, hanches). Jusqu’à 3/10, la douleur est acceptable : elle ne veut pas dire dommage.",
+    "exProgress": "3 séries de 10 à 12 répétitions. Séance à 2/10 ou moins : une répétition de plus ; à 12, niveau suivant. Au-dessus de 3/10 : arrêt, et un niveau plus bas. Quand le dernier niveau d’une famille devient facile, un exercice plus exigeant d’une autre famille est proposé.",
     "exExample": "Pont fessier : 3 × 10, puis 3 × 11, puis 3 × 12, puis Bird-dog à 3 × 10.",
-    "eduIdea": "Comprendre la douleur chronique pour reprendre confiance : la douleur est réelle, mais elle ne veut pas dire que le dos est abîmé. Puis l’hygiène de vie, des techniques de gestion de la douleur, et une approche d’acceptation et d’engagement.",
-    "eduProgress": "Une leçon d’environ 5 minutes par jour actif, dans l’ordre, avec une question à chaque étape.",
-    "medIdea": "Apprendre à vivre avec la douleur au dos plutôt qu’à la faire disparaître. Une pleine conscience laïque, qui s’entraîne en séance et sert ensuite dans la journée.",
-    "medProgress": "Une première séance guidée pour chaque pratique, puis des séances libres avec de courts rappels. 10 minutes la semaine 1, 15 ensuite, et jusqu’à 30 si la personne le souhaite.",
+    "eduIdea": "Comprendre la douleur chronique pour reprendre confiance : elle est réelle, mais ne veut pas dire que le dos est abîmé. Puis l’hygiène de vie, la gestion de la douleur et l’approche d’acceptation et d’engagement.",
+    "eduProgress": "Une leçon de 5 minutes par jour actif, dans l’ordre, avec une question à chaque étape.",
+    "medIdea": "Vivre avec la douleur plutôt que lutter contre elle. Une pleine conscience laïque, pratiquée en séance, puis utile dans la journée.",
+    "medProgress": "Une séance guidée par pratique, puis des séances libres avec de courts rappels. 10 minutes la semaine 1, 15 ensuite, jusqu’à 30 au choix.",
     "medThemesTitle": "Les grands thèmes",
     "medThemes": [
       "La respiration, et revenir quand l’esprit part",
@@ -344,8 +345,8 @@
       "La marche en pleine conscience (facultative)",
       "Construire sa propre pratique"
     ],
-    "walkIdea": "Reprendre l’habitude de marcher, à son rythme. Un objectif en minutes par semaine, jamais par jour : un mauvais jour se rattrape plus tard, ou pas du tout.",
-    "walkProgress": "Le programme part de ce que la personne marche déjà (au moins 15 minutes par semaine) et vise environ le double en 8 semaines, entre 45 et 125 minutes, soit environ 10 % de plus par semaine. Si la douleur dépasse 3/10, on garde le même objectif ; deux semaines de suite, on marche autant qu’on peut sans dépasser 3/10, et on repart de là.",
+    "walkIdea": "Reprendre l’habitude de marcher. Un objectif en minutes par semaine, jamais par jour : un mauvais jour se rattrape, ou pas.",
+    "walkProgress": "On part de ce que la personne marche déjà (au moins 15 minutes par semaine) et on vise environ le double en 8 semaines, de 45 à 125 minutes : environ 10 % de plus par semaine. Douleur au-dessus de 3/10 : même objectif. Deux semaines de suite : on marche autant que possible sous 3/10, et on repart de là.",
     "walkExample": "Départ à 30 minutes par semaine : 30, 33, 37, 40, 45, 49, 54, puis 60 minutes.",
     "eduListTitle": "Les leçons"
   }
