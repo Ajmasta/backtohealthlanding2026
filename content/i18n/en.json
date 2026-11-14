@@ -149,20 +149,23 @@
   },
   "team": {
     "label": "Who we are",
-    "title": "A small team in Montréal.",
-    "body": "Based on recent research on back pain, and designed with a doctor who also holds a degree in physiotherapy.",
+    "title": "A team of committed innovators, in Montréal.",
+    "body": "BackToHealth builds on recent research on chronic back pain. Behind the app are three people who put their energy into it.",
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "role": "Doctor, also holds a degree in physiotherapy. Validates all clinical content."
+        "title": "Project founder",
+        "bio": "Physician, also trained in physiotherapy, with expertise in recent research on chronic back pain. He created the clinical content, validates it and leads the project."
       },
       {
         "name": "Adrien Moevus",
-        "role": "Technology, and medical student. Also writes the meditations."
+        "title": "App lead",
+        "bio": "Medical student and full-stack developer. He designs the service’s architecture and builds the app end to end. He also writes the meditations."
       },
       {
         "name": "Antoine Moevus",
-        "role": "Leadership and development. Responsible for business decisions."
+        "title": "Business and development",
+        "bio": "He leads business and development, and is responsible for data and AI governance, including the use of machine learning in the app."
       }
     ]
   },

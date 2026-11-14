@@ -221,7 +221,8 @@ input[type=range]::-moz-range-thumb { width: 28px; height: 28px; border-radius: 
 /* Team, FAQ */
 .team-head { max-width: 700px; }
 .people { margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.people dt { font-weight: 600; margin-bottom: 4px; }
+.people dt { font: 500 22px/1.25 var(--display); margin-bottom: 10px; }
+.person-title { display: block; margin-top: 4px; font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tronc); }
 .people dd { margin: 0; color: var(--encre-texte); }
 .faq { max-width: 800px; padding-top: 0; }
 .faq-list { margin-top: 32px; display: grid; gap: 12px; }

@@ -149,20 +149,23 @@
   },
   "team": {
     "label": "Qui nous sommes",
-    "title": "Une petite équipe de Montréal.",
-    "body": "Fondé sur les études récentes sur le mal de dos, et conçu avec un médecin aussi diplômé en physiothérapie.",
+    "title": "Une équipe d’innovateurs engagés, à Montréal.",
+    "body": "BackToHealth s’appuie sur les études récentes sur le mal de dos chronique. Derrière l’application, trois personnes qui y consacrent leur énergie.",
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "role": "Médecin, aussi diplômé en physiothérapie. Il valide tout le contenu clinique."
+        "title": "Initiateur du projet",
+        "bio": "Médecin, aussi diplômé en physiothérapie, et spécialiste des études récentes sur le mal de dos chronique. Il a conçu le contenu clinique, le valide et dirige le projet."
       },
       {
         "name": "Adrien Moevus",
-        "role": "Technologie, et étudiant en médecine. Il écrit aussi les méditations."
+        "title": "Responsable de l’application",
+        "bio": "Étudiant en médecine et développeur full stack. Il conçoit l’architecture du service et construit l’application de bout en bout. Il écrit aussi les méditations."
       },
       {
         "name": "Antoine Moevus",
-        "role": "Direction et développement. Il est responsable des décisions d’affaires."
+        "title": "Affaires et développement",
+        "bio": "Il dirige les affaires et le développement. Il est responsable de la gouvernance des données et de l’IA, dont l’apprentissage automatique dans l’application."
       }
     ]
   },

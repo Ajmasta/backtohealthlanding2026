@@ -178,7 +178,7 @@
         <p class="lead">{{team.body}}</p>
       </div>
       <dl class="people reveal">
-        {{#each team.people}}<div class="card"><dt>{{.name}}</dt><dd>{{.role}}</dd></div>{{/each}}
+        {{#each team.people}}<div class="card"><dt>{{.name}}<span class="person-title">{{.title}}</span></dt><dd>{{.bio}}</dd></div>{{/each}}
       </dl>
     </section>
 
