@@ -326,13 +326,25 @@
     document.getElementById('did-it').addEventListener('click', function () { phone.classList.add('tried'); setStep(1); });
     dots.forEach(function (d) { d.addEventListener('click', function () { setStep(+d.dataset.step); }); });
     setStep(0);
-    // The pointer comes in when the button is fully in the window and clear of its bottom edge,
-    // so the person sees it arrive. Once started, it stays.
-    var hinter = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
+    // The pointer comes in each time the person arrives on the button, as long as they have not pressed it:
+    // when the button is fully in the window and the page has stopped moving,
+    // so the arrival is seen from its start. It stays and keeps tapping; leaving the section resets it.
+    var didIt = document.getElementById('did-it'), inPlace = false, lastMove = 0, waiting = 0;
+    addEventListener('scroll', function () { lastMove = Date.now(); }, { passive: true });
+    function arrive() {
+      clearTimeout(waiting);
+      if (!inPlace || phone.classList.contains('hint-on')) return;
+      if (Date.now() - lastMove < 180) { waiting = setTimeout(arrive, 90); return; }
       phone.classList.add('hint-on');
-      hinter.disconnect();
-    }, { threshold: 1, rootMargin: '0px 0px -18% 0px' });
+    }
+    var hinter = new IntersectionObserver(function (entries) {
+      inPlace = entries[0].isIntersecting;
+      arrive();
+    }, { threshold: 1, rootMargin: '0px 0px -16px 0px' });
+    // Gone from the window altogether: the next arrival plays again.
+    new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) phone.classList.remove('hint-on');
+    }).observe(phone);
     hinter.observe(document.getElementById('did-it'));
   }
 

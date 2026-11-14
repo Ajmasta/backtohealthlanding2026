@@ -215,7 +215,7 @@ html:not(.js) .app-range { visibility: visible; }
    at each click a halo spreads and a glint crosses the button.
    It all stops for good once the person has pressed the button (.tried). */
 .app-btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .45) 50%, transparent 65%); transform: translateX(-110%); }
-/* The hint starts only when the button is well inside the window (.hint-on, set by main.js). */
+/* The hint starts when the button is in the window and the page has settled (.hint-on, set by main.js). */
 .hint-on .app-btn::after { animation: glint 1.8s ease-in-out 1.1s infinite; }
 .hint-on .app-btn { animation: halo 1.8s ease-out 1.1s infinite; }
 .tap-hint { position: absolute; right: 22%; top: 55%; pointer-events: none; filter: drop-shadow(0 3px 6px rgba(15, 33, 71, .3)); }
