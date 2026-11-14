@@ -90,7 +90,10 @@
               <p class="app-sub">{{app.intro}}</p>
               <div class="app-card app-media"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="{{base}}assets/evaluation/flexion-0.webp" data-src="{{base}}assets/evaluation/flexion-demo.mp4" aria-label="{{eval.videoAlt}}"></video></div>
               <p class="app-legend">{{app.watch}}</p>
-              <button class="btn app-btn" type="button" id="did-it">{{app.didIt}}</button>
+              <div class="app-cta">
+                <button class="btn app-btn" type="button" id="did-it">{{app.didIt}}</button>
+                <svg class="tap-hint" aria-hidden="true" viewBox="0 0 24 24" width="34" height="34"><path d="M5 3l13.5 8.2-6 1.5 3.6 6.6-2.6 1.4-3.6-6.6-4.4 4.2z" fill="#fff" stroke="#0f2147" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </div>
             </div>
             <div class="app-view app-range">
               <p class="app-label">{{app.step}}</p>
