@@ -3,7 +3,8 @@
 // Run when the app's content or the design changes, then build and commit both:
 //   npm run sync -- /path/to/monorepo     (the folder that holds mobile/ and design/; defaults to ../)
 
-import { cpSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LANGS } from '../site.config.mjs';
@@ -42,10 +43,15 @@ writeFileSync(out('src/assets/svg/tree-logo.svg'), clean(read('design/logo/tree-
   writeFileSync(out(`src/assets/svg/tree-stage-${i + 1}.svg`), clean(read(`design/tree/${f}.svg`))),
 );
 
-cpSync(need('mobile/assets/landscape'), out('src/assets/landscape'), { recursive: true });
+// The landscape is served as WebP (a tenth of the PNG weight, no visible difference). Needs cwebp (brew install webp).
+for (const file of readdirSync(need('mobile/assets/landscape')).filter((f) => f.endsWith('.png'))) {
+  const target = out(`src/assets/landscape/${file.replace(/\.png$/, '.webp')}`);
+  execFileSync('cwebp', ['-quiet', '-q', '88', '-alpha_q', '100', '-m', '6', join(app, 'mobile/assets/landscape', file), '-o', target]);
+}
 const fonts = 'mobile/node_modules/@expo-google-fonts';
 for (const [family, weight, file] of [['fraunces', '500Medium', 'Fraunces_500Medium'], ['figtree', '400Regular', 'Figtree_400Regular'], ['figtree', '600SemiBold', 'Figtree_600SemiBold']]) {
-  cpSync(need(`${fonts}/${family}/${weight}/${file}.ttf`), out(`src/assets/fonts/${file}.ttf`));
+  // WOFF2 is less than half the TTF. Needs fonttools and brotli (pip install fonttools brotli).
+  execFileSync('python3', ['-m', 'fontTools.ttLib.woff2', 'compress', need(`${fonts}/${family}/${weight}/${file}.ttf`), '-o', out(`src/assets/fonts/${file}.woff2`)]);
 }
 
 console.log('Synced from', app);

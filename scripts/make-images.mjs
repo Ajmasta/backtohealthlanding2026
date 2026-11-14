@@ -27,7 +27,7 @@ const tree = readFileSync(join(assets, 'svg/tree-logo.svg'), 'utf8');
 const fontUrl = (f) => pathToFileURL(join(assets, 'fonts', f)).href;
 const land = (f) => pathToFileURL(join(assets, 'landscape', f)).href;
 const base = `<!doctype html><meta charset="utf-8"><style>
-@font-face { font-family: Fraunces; src: url(${fontUrl('Fraunces_500Medium.ttf')}); }
+@font-face { font-family: Fraunces; src: url(${fontUrl('Fraunces_500Medium.woff2')}); }
 html, body { margin: 0; overflow: hidden; }
 </style>`;
 
@@ -43,8 +43,8 @@ function share(line1, line2) {
   .name { font-size: 40px; color: #004aad; margin-bottom: 22px; }
   h1 { font-size: 66px; line-height: 1.1; font-weight: 500; margin: 0; }
   </style><div class="s">
-  <img class="cloud" src="${land('cloud-1.png')}">
-  <div class="t"><img src="${land('hills.png')}"><img src="${land('lake.png')}"><img src="${land('meadow.png')}"></div>
+  <img class="cloud" src="${land('cloud-1.webp')}">
+  <div class="t"><img src="${land('hills.webp')}"><img src="${land('lake.webp')}"><img src="${land('meadow.webp')}"></div>
   <div class="tree">${tree}</div>
   <div class="text"><div class="name">BackToHealth</div><h1>${line1}<br>${line2}</h1></div>
   </div>`;

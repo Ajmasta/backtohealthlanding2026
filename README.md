@@ -17,9 +17,11 @@ content/
   i18n/fr.json, en.json all the page text; both files must have the same keys
   app/fr.json, en.json  exercise and lesson names, copied from the app (do not edit by hand)
 src/
-  pages/                one template per page; {{a.b}} is a text key, {{> head}} a partial
+  pages/                one template per page: {{a.b}} a text key, {{> head}} a partial,
+                        {{#each faq.items}}…{{.q}}…{{@n}}…{{/each}} a list from the text
   partials/head.html    the <head> shared by every page (SEO, social cards, hreflang)
-  assets/               copied to docs/assets/ as is (svg/ is inlined into the pages instead)
+  assets/               copied to docs/assets/ as is (svg/ is inlined into the pages instead);
+                        images in WebP, fonts in WOFF2
 scripts/
   build.mjs             renders every page in every language, plus robots.txt and sitemap.xml
   serve.mjs             local preview of docs/
@@ -30,8 +32,9 @@ scripts/
 ## Common tasks
 
 - **Change a text**: edit `content/i18n/fr.json` and `en.json`, then build. A missing key, or a key in one language and not the other, stops the build.
+- **Add a FAQ question, a card or a team member**: add an item to the list (`faq.items`, `pros.cards`, `team.people`…) in both language files. No template change.
 - **Add a page**: add a template in `src/pages/`, a line in `PAGES` in `site.config.mjs`, and its `title` and `description` in both language files.
-- **The app's exercises or lessons changed**: `npm run sync -- /path/to/monorepo` (the folder holding `mobile/` and `design/`), then build.
+- **The app's exercises or lessons changed**: `npm run sync -- /path/to/monorepo` (the folder holding `mobile/` and `design/`), then build. It needs `cwebp` (`brew install webp`) and `pip install fonttools brotli`.
 - **The logo or tagline changed**: sync, then `npm run images`.
 
 Before publishing: Pierre-Henri validates the text, the contact address is confirmed, and the screens become real app screenshots.

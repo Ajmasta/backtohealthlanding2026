@@ -25,15 +25,33 @@ const get = (obj, key) => key.split('.').reduce((o, k) => o?.[k], obj);
 
 /** All dotted keys of a nested object, to compare languages. */
 const keysOf = (obj, prefix = '') =>
-  Object.entries(obj).flatMap(([k, v]) => (v && typeof v === 'object' && !Array.isArray(v) ? keysOf(v, `${prefix}${k}.`) : [`${prefix}${k}`]));
+  Object.entries(obj).flatMap(([k, v]) => (v && typeof v === 'object' ? keysOf(v, `${prefix}${k}.`) : [`${prefix}${k}`]));
 
 /**
- * Fills a template. `{{> name}}` includes src/partials/name.html; `{{key}}` takes `vars[key]` as is (it is already HTML),
- * or else the text `key` from the language file, escaped. A missing key stops the build.
+ * Fills a template:
+ * - `{{> name}}` includes src/partials/name.html;
+ * - `{{#each list}}…{{/each}}` repeats its content for each item of a list in the language file, where `{{.field}}`
+ *   is a field of the item (or `{{.}}` the item itself) and `{{@n}}` its number, from 1;
+ * - `{{key}}` takes `vars[key]` as is (it is already HTML), or else the text `key` from the language file, escaped.
+ * A missing key stops the build.
  */
 function render(template, vars, dict, where) {
   const withPartials = template.replace(/\{\{>\s*([\w-]+)\s*\}\}/g, (_, name) => partials[name] ?? fail(`Unknown partial "${name}" in ${where}`));
-  return withPartials.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, key) => {
+  const withLists = withPartials.replace(/\{\{#each\s+([\w.]+)\s*\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, body) => {
+    const list = get(dict, key);
+    if (!Array.isArray(list)) fail(`"${key}" is not a list for ${dict.lang} in ${where}`);
+    return list
+      .map((item, i) =>
+        body.replace(/\{\{\s*(@n|\.[\w]*)\s*\}\}/g, (_, ref) => {
+          if (ref === '@n') return String(i + 1);
+          const value = ref === '.' ? item : item?.[ref.slice(1)];
+          if (typeof value !== 'string') fail(`Missing "${key}[${i}]${ref === '.' ? '' : ref}" for ${dict.lang} in ${where}`);
+          return esc(value);
+        }),
+      )
+      .join('');
+  });
+  return withLists.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, key) => {
     if (key in vars) return vars[key];
     const value = get(dict, key);
     if (typeof value !== 'string') fail(`Missing text "${key}" for ${dict.lang} in ${where}`);

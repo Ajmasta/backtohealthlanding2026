@@ -1,15 +1,15 @@
 /* BackToHealth site. Tokens come from the design system; the page runs from morning to night as you scroll. */
 
-@font-face { font-family: Fraunces; src: url(fonts/Fraunces_500Medium.ttf); font-weight: 500; font-display: swap; }
-@font-face { font-family: Figtree; src: url(fonts/Figtree_400Regular.ttf); font-weight: 400; font-display: swap; }
-@font-face { font-family: Figtree; src: url(fonts/Figtree_600SemiBold.ttf); font-weight: 600; font-display: swap; }
+@font-face { font-family: Fraunces; src: url(fonts/Fraunces_500Medium.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: Figtree; src: url(fonts/Figtree_400Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Figtree; src: url(fonts/Figtree_600SemiBold.woff2) format("woff2"); font-weight: 600; font-display: swap; }
 
 :root {
   --ciel: #37b5ff; --lagon: #59dee7; --pervenche: #5074ff; --tronc: #004aad;
   --abricot: #ffb27a; --prairie: #8fd9a8; --crepuscule: #b9a7f5; --halo: #e3f1fb;
   --ciel-haut: #86cdfb; --meadow-bottom: #75c79c;
   --fond: #f4f9fd; --surface: #fff; --ligne: #cfe2f1;
-  --encre: #0f2147; --encre-douce: #4f6385; --pause: #9a4a12;
+  --encre: #0f2147; --encre-texte: #2c3e66; --encre-douce: #4f6385; --pause: #9a4a12;
   --nuit: #0d1a3a; --nuit-encre: #eef4fb; --nuit-douce: #a9b8d3; --nuit-action: #8fa4ff;
   --ombre: 0 8px 24px rgba(15, 33, 71, .08);
   --display: Fraunces, "Iowan Old Style", Georgia, serif;
@@ -135,7 +135,7 @@ a { color: var(--tronc); }
 #program, #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
 .card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--ombre); }
 .card-tint { background: var(--halo); box-shadow: none; }
-.card p { color: #2c3e66; }
+.card p { color: var(--encre-texte); }
 .reveal { transition: opacity .26s ease-out, transform .26s ease-out; }
 .js .reveal:not(.seen) { opacity: 0; transform: translateY(12px); }
 
@@ -155,7 +155,7 @@ a { color: var(--tronc); }
 .fact figcaption { margin-top: 8px; font-size: 14px; line-height: 20px; }
 .fact figcaption a { color: var(--encre-douce); }
 .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.ticks li { position: relative; padding-left: 28px; color: #2c3e66; }
+.ticks li { position: relative; padding-left: 28px; color: var(--encre-texte); }
 .ticks li::before { content: ""; position: absolute; left: 3px; top: 3px; width: 13px; height: 18px; background: var(--lagon); clip-path: path("M6.5 0 C9 5 13 8 13 12 A6.5 6.2 0 1 1 0 12 C0 8 4 5 6.5 0 Z"); }
 
 /* Water */
@@ -174,7 +174,8 @@ a { color: var(--tronc); }
 .step h3 { font: 500 clamp(26px, 2.4vw, 32px)/1.2 var(--display); }
 .step p:last-child { font-size: 18px; line-height: 1.5; max-width: 440px; }
 .tag { align-self: flex-start; font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--encre); padding: 6px 12px; border-radius: 999px; margin-bottom: 12px; }
-.tag-lagon { background: #c9f3f6; } .tag-ciel { background: #c7e9ff; } .tag-pervenche { background: #d8e0ff; } .tag-prairie { background: #d3f1dd; }
+/* The four activities, in order: lagoon, sky, periwinkle, meadow. */
+.tag-1 { background: #c9f3f6; } .tag-2 { background: #c7e9ff; } .tag-3 { background: #d8e0ff; } .tag-4 { background: #d3f1dd; }
 .closing { font: 500 clamp(24px, 2.4vw, 30px)/1.28 var(--display) !important; color: var(--tronc); }
 
 /* Pain */
@@ -202,24 +203,26 @@ input[type=range]::-moz-range-thumb { width: 28px; height: 28px; border-radius: 
 .phone { margin: 0; }
 .phone:nth-child(even) { margin-top: 40px; }
 .phone img { width: 100%; height: auto; border-radius: 28px; box-shadow: 0 16px 40px rgba(15, 33, 71, .16); }
-.phone figcaption { margin-top: 16px; line-height: 1.4; color: #2c3e66; }
+.phone figcaption { margin-top: 16px; line-height: 1.4; color: var(--encre-texte); }
 .phone strong { display: block; color: var(--encre); font-weight: 600; font-size: 18px; margin-bottom: 2px; }
 
 /* Pros */
 .pros { max-width: none; background: var(--surface); padding-inline: max(clamp(16px, 4vw, 40px), calc((100% - 1080px) / 2)); }
 .pros-head { max-width: 760px; }
 .pros-link { margin-top: 20px; }
-.pros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
-.pros .card:not(.card-tint) { background: var(--fond); box-shadow: none; }
+.pros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+.pros .card { background: var(--fond); box-shadow: none; }
+/* The last card says what the app does not claim: set apart. */
+.pros-grid .card:last-child { background: var(--halo); }
 .pros-foot { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 72px); margin-top: 48px; }
-.pros-foot p { margin-bottom: 20px; color: #2c3e66; }
+.pros-foot p { margin-bottom: 20px; color: var(--encre-texte); }
 .sources { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; line-height: 22px; }
 
 /* Team, FAQ */
-.team { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
-.people { margin: 24px 0 0; display: grid; gap: 14px; }
-.people dt { font-weight: 600; }
-.people dd { margin: 0; color: #2c3e66; }
+.team-head { max-width: 700px; }
+.people { margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.people dt { font-weight: 600; margin-bottom: 4px; }
+.people dd { margin: 0; color: var(--encre-texte); }
 .faq { max-width: 800px; padding-top: 0; }
 .faq-list { margin-top: 32px; display: grid; gap: 12px; }
 details { background: var(--surface); border-radius: 20px; box-shadow: var(--ombre); }
@@ -227,11 +230,11 @@ summary { padding: 18px 48px 18px 22px; font-weight: 600; cursor: pointer; list-
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "+"; position: absolute; right: 22px; top: 15px; font-size: 24px; color: var(--tronc); }
 details[open] summary::after { content: "–"; }
-details p { padding: 0 22px 20px; color: #2c3e66; }
+details p { padding: 0 22px 20px; color: var(--encre-texte); }
 
 /* Dusk to night: the end of the day */
-.dusk { background: linear-gradient(var(--fond), #fde3cf 26%, var(--crepuscule) 78%, #4a4f94 100%); padding: 96px 24px 150px; }
-.dusk .label { color: var(--encre); }
+/* No text here: only the sky turning to evening before the night. */
+.dusk { height: clamp(160px, 22vw, 260px); margin-top: 48px; background: linear-gradient(var(--fond), #fde3cf 30%, var(--crepuscule) 75%, #4a4f94 100%); }
 .night { position: relative; background: linear-gradient(#4a4f94, #1e3060 18%, var(--nuit) 46%); color: var(--nuit-encre); padding: 24px 24px 32px; }
 .night a:not(.btn) { color: var(--nuit-encre); }
 .moon { width: 230px; height: 230px; padding: 28px; margin: 0 auto 28px; border-radius: 50%; background: var(--halo); box-shadow: 0 0 70px 14px rgba(227, 241, 251, .28); }
@@ -263,7 +266,7 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 .doc h3 { margin-top: 28px; }
 .doc p { margin-bottom: 12px; }
 .doc .ticks { margin: 8px 0 0; }
-.status { padding: 14px 18px; border-radius: 16px; background: var(--halo); color: #2c3e66; font-size: 15px; line-height: 22px; margin-top: 20px; }
+.status { padding: 14px 18px; border-radius: 16px; background: var(--halo); color: var(--encre-texte); font-size: 15px; line-height: 22px; margin-top: 20px; }
 .table-wrap { overflow-x: auto; margin: 8px 0 12px; }
 .doc table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 16px; overflow: hidden; box-shadow: var(--ombre); font-size: 16px; line-height: 22px; }
 .doc th, .doc td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
@@ -275,13 +278,16 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 .families { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 12px; }
 .family { padding: 18px 20px; }
 .family h4 { margin: 0 0 8px; font: 600 17px/24px var(--sans); }
-.family ol { margin: 0; padding-left: 22px; color: #2c3e66; font-size: 15px; line-height: 22px; display: grid; gap: 4px; }
+.family ol { margin: 0; padding-left: 22px; color: var(--encre-texte); font-size: 15px; line-height: 22px; display: grid; gap: 4px; }
 .philo { margin-top: 56px; }
 .doc-cta { margin-top: 16px; }
 .doc-cta p { margin-bottom: 16px; }
 .doc-foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--ligne); color: var(--encre-douce); font-size: 15px; line-height: 22px; }
 .doc-foot a { color: var(--encre-douce); }
 
+@media (max-width: 1100px) {
+  .pros-grid { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .js .menu-toggle { display: block; }
@@ -289,10 +295,9 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .top.open .nav-links { display: flex; flex-direction: column; align-items: stretch; gap: 0; position: absolute; top: 100%; left: 0; right: 0; padding: 8px clamp(16px, 3vw, 40px) 16px; background: #fff; box-shadow: 0 12px 24px rgba(15, 33, 71, .08); }
   .top.open .nav-link { padding: 14px 4px; font-size: 18px; border-bottom: 1px solid var(--ligne); }
   .top.open .nav-link:last-child { border-bottom: 0; }
-  .who, .pain, .team, .pros-foot { grid-template-columns: 1fr; }
+  .who, .pain, .pros-foot, .people { grid-template-columns: 1fr; }
   .offer-grid { grid-template-columns: 1fr 1fr; }
   .goal { flex-direction: column; align-items: flex-start; }
-  .pros-grid { grid-template-columns: 1fr 1fr; }
   .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 8px 16px 16px; }
   .phone { flex: 0 0 62%; scroll-snap-align: center; }
   .phone:nth-child(even) { margin-top: 0; }

@@ -37,27 +37,39 @@
     "fact": "You are far from alone: about 9 times out of 10, back pain has no specific cause that can be identified.",
     "factSource": "Source: World Health Organization, 2023",
     "forTitle": "It’s made for you if",
-    "for1": "You’re an adult, and your back pain has lasted several months.",
-    "for2": "No serious cause explains your back pain: this is called non-specific low back pain.",
-    "for3": "You want to move forward at your own pace, without pressure."
+    "for": [
+      "You’re an adult, and your back pain has lasted several months.",
+      "No serious cause explains your back pain: this is called non-specific low back pain.",
+      "You want to move forward at your own pace, without pressure."
+    ]
   },
   "water": {
     "label": "How it works",
     "title": "Every effort waters your tree.",
     "body": "You begin with an assessment of about 5 minutes, then choose your rhythm. Each finished activity becomes a drop of water.",
-    "step1Label": "Learn",
-    "step1Title": "Understand your back pain",
-    "step1Body": "About 5 minutes of reading. 23 short lessons, written by our doctor, who also holds a degree in physiotherapy, to understand what’s going on and regain confidence.",
-    "step2Label": "Movement",
-    "step2Title": "Move, at your measure",
-    "step2Body": "5 to 15 minutes, 2 or 3 times a week. Exercises are chosen from your assessment and demonstrated with 3D animations.",
-    "step3Label": "Mind",
-    "step3Title": "A moment to breathe",
-    "step3Body": "Mindfulness, from 3 to 30 minutes, for when the day or your back pain feels heavy.",
-    "step4Label": "Walking",
-    "step4Title": "Go for a walk",
-    "step4Body": "As far as you like. And if you did yoga or went cycling elsewhere, that counts too: you can log it.",
-    "end": "Your tree grows with the days you took care of yourself, not with a streak to keep. It never wilts."
+    "end": "Your tree grows with the days you took care of yourself, not with a streak to keep. It never wilts.",
+    "steps": [
+      {
+        "label": "Learn",
+        "title": "Understand your back pain",
+        "body": "About 5 minutes of reading. 23 short lessons, written by our doctor, who also holds a degree in physiotherapy, to understand what’s going on and regain confidence."
+      },
+      {
+        "label": "Movement",
+        "title": "Move, at your measure",
+        "body": "5 to 15 minutes, 2 or 3 times a week. Exercises are chosen from your assessment and demonstrated with 3D animations."
+      },
+      {
+        "label": "Mind",
+        "title": "A moment to breathe",
+        "body": "Mindfulness, from 3 to 30 minutes, for when the day or your back pain feels heavy."
+      },
+      {
+        "label": "Walking",
+        "title": "Go for a walk",
+        "body": "As far as you like. And if you did yoga or went cycling elsewhere, that counts too: you can log it."
+      }
+    ]
   },
   "pain": {
     "label": "An app that listens",
@@ -76,7 +88,6 @@
   "screens": {
     "label": "In the app",
     "title": "One thing at a time.",
-    "note": "These screens are shown in French. The app is also available in English.",
     "s1Title": "Your day",
     "s1Body": "A short program. Nothing to catch up on.",
     "s2Title": "Your path",
@@ -94,56 +105,98 @@
     "label": "Health professionals",
     "title": "Support between your appointments, and after them.",
     "body": "BackToHealth replaces neither your assessment nor your follow-up. It helps your patients with chronic low back pain keep moving, understanding and looking after themselves, especially once their sessions end.",
-    "c1Title": "Screening comes first",
-    "c1Body": "8 red-flag questions before any program. A positive answer directs the person to a doctor or the ER.",
-    "c2Title": "A clear rule for low back pain",
-    "c2Body": "Above 3/10: stop and step down a level. A full session at 2/10 or less: one more repetition, up to 12, then the next level.",
-    "c3Title": "A biopsychosocial approach",
-    "c3Body": "Exercise, low back pain education, mindfulness and walking in one program, as practice guidelines recommend.",
-    "c4Title": "Functional goals",
-    "c4Body": "The person picks 1 to 3 activities (Patient-Specific Functional Scale) and re-rates them over time. Movement tests are repeated regularly.",
-    "c5Title": "Language that reassures",
-    "c5Body": "No frightening words. Low back pain is real, and it doesn’t mean damage. The back is presented as strong and made to move.",
-    "c6Title": "What we don’t claim",
-    "c6Body": "The app does not diagnose or treat. It has not yet been the subject of a published study. With people’s consent, we will measure what works.",
     "sourcesTitle": "What we build on",
-    "src1": "WHO guideline on chronic primary low back pain in adults (2023)",
-    "src2": "Overview of practice guidelines for non-specific low back pain (European Spine Journal, 2018)",
-    "src3": "Meditation-based therapies for chronic low back pain, review of 12 trials (Pain Medicine, 2022)",
-    "src4": "Exercise type and chronic low back pain, review (Journal of Physiotherapy, 2021)",
     "ctaTitle": "Would you like to try it or tell us what you think?",
     "ctaBody": "We’re looking for clinicians to review the content and offer the app to their patients.",
     "cta": "Write to the team",
-    "programLink": "See what’s in the app"
+    "programLink": "See what’s in the app",
+    "cards": [
+      {
+        "title": "Screening comes first",
+        "body": "8 red-flag questions before any program. A positive answer directs the person to a doctor or the ER."
+      },
+      {
+        "title": "A clear rule for low back pain",
+        "body": "Above 3/10: stop and step down a level. A full session at 2/10 or less: one more repetition, up to 12, then the next level."
+      },
+      {
+        "title": "A biopsychosocial approach",
+        "body": "Exercise, low back pain education, mindfulness and walking in one program, as practice guidelines recommend."
+      },
+      {
+        "title": "What we don’t claim",
+        "body": "The app does not diagnose or treat. It has not yet been the subject of a published study. With people’s consent, we will measure what works."
+      }
+    ],
+    "sources": [
+      {
+        "title": "WHO guideline on chronic primary low back pain in adults (2023)",
+        "url": "https://www.who.int/publications/i/item/9789240081789"
+      },
+      {
+        "title": "Overview of practice guidelines for non-specific low back pain (European Spine Journal, 2018)",
+        "url": "https://doi.org/10.1007/s00586-018-5673-2"
+      },
+      {
+        "title": "Meditation-based therapies for chronic low back pain, review of 12 trials (Pain Medicine, 2022)",
+        "url": "https://doi.org/10.1093/pm/pnac037"
+      },
+      {
+        "title": "Exercise type and chronic low back pain, review (Journal of Physiotherapy, 2021)",
+        "url": "https://doi.org/10.1016/j.jphys.2021.09.004"
+      }
+    ]
   },
   "team": {
     "label": "Who we are",
     "title": "A small team in Montréal.",
     "body": "Based on recent research on back pain, and designed with a doctor who also holds a degree in physiotherapy.",
-    "ph": "Doctor, also holds a degree in physiotherapy. Validates all clinical content.",
-    "adrien": "Technology, and medical student. Also writes the meditations.",
-    "antoine": "Leadership and development. Responsible for business decisions.",
-    "dataTitle": "Your data, your choice",
-    "dataBody": "This information touches on your health: we protect it, we never sell it, and you can export or delete it at any time. Using it for research is optional, and happens under a code, never with your name or email."
+    "people": [
+      {
+        "name": "Pierre-Henri Bao Heitz",
+        "role": "Doctor, also holds a degree in physiotherapy. Validates all clinical content."
+      },
+      {
+        "name": "Adrien Moevus",
+        "role": "Technology, and medical student. Also writes the meditations."
+      },
+      {
+        "name": "Antoine Moevus",
+        "role": "Leadership and development. Responsible for business decisions."
+      }
+    ]
   },
   "faq": {
     "label": "Questions",
     "title": "What people often ask us.",
-    "q1": "Does it replace my doctor or physio?",
-    "a1": "No. BackToHealth helps you live better with back pain, alongside your care. If something worries you, talk to a health professional.",
-    "q2": "What if it hurts too much, or I don’t feel like it, on a given day?",
-    "a2": "Every activity has a “Not today” button that offers something gentler. During a flare-up, the plan lightens for 3 days. Your tree waits for you, no rush.",
-    "q3": "When does the app come out?",
-    "a3": "We’re testing it now, on iPhone and Android. Write to us to hear when it launches.",
-    "q4": "How much does it cost?",
-    "a4": "The price isn’t set yet. We’ll tell you clearly before launch.",
-    "q5": "What language is it in?",
-    "a5": "In French and English. It follows your phone’s language, and you can change it whenever you like."
+    "items": [
+      {
+        "q": "Does it replace my doctor or physio?",
+        "a": "No. BackToHealth helps you live better with back pain, alongside your care. If something worries you, talk to a health professional."
+      },
+      {
+        "q": "What if it hurts too much, or I don’t feel like it, on a given day?",
+        "a": "Every activity has a “Not today” button that offers something gentler. During a flare-up, the plan lightens for 3 days. Your tree waits for you, no rush."
+      },
+      {
+        "q": "When does the app come out?",
+        "a": "We’re testing it now, on iPhone and Android. Write to us to hear when it launches."
+      },
+      {
+        "q": "How much does it cost?",
+        "a": "The price isn’t set yet. We’ll tell you clearly before launch."
+      },
+      {
+        "q": "What language is it in?",
+        "a": "In French and English. It follows your phone’s language, and you can change it whenever you like."
+      },
+      {
+        "q": "What do you do with my data?",
+        "a": "This information touches on your health: we protect it, we never sell it, and you can export or delete it at any time. Using it for research is optional, and happens under a code, never with your name or email."
+      }
+    ]
   },
   "end": {
-    "kindLabel": "At your pace",
-    "kindTitle": "A missed day is fine.",
-    "kindBody": "No lost streak, no blame. When you come back, we pick up gently, right where you were.",
     "title": "Your tree is waiting.",
     "body": "Send us a note: we’ll tell you when you can plant it.",
     "cta": "Notify me at launch"
@@ -157,21 +210,31 @@
     "label": "The program",
     "title": "To start, four introductory programs.",
     "body": "These are your first steps. For a few weeks, the app teaches you to understand your back, to move, to meditate and to walk. Then it stays with you for as long as you like.",
-    "c1Tag": "Understand",
-    "c1Dur": "4 weeks",
-    "c1Body": "23 five-minute lessons, about one a day, to understand your back pain and regain confidence.",
-    "c2Tag": "Move",
-    "c2Dur": "8 to 12 weeks",
-    "c2Body": "Progressive exercises, chosen from your assessment and adapted to your pain, 2 to 3 times a week.",
-    "c3Tag": "Meditate",
-    "c3Dur": "8 to 11 weeks",
-    "c3Body": "A mindfulness program, then two paths: kindness toward yourself, and what matters to you.",
-    "c4Tag": "Walk",
-    "c4Dur": "8 weeks",
-    "c4Body": "A progressive walking program, with a weekly goal that starts from what you already do.",
     "goalTitle": "And after? We stay with you.",
     "goalBody": "Once the introductions are done, you keep your tools: your exercises keep adapting to your pain, you meditate your own way, you keep your walking rhythm, and you redo your tests to see how far you’ve come. And if you want to go further, a Pilates, yoga or meditation class is even better.",
-    "more": "See the program in detail"
+    "more": "See the program in detail",
+    "cards": [
+      {
+        "tag": "Understand",
+        "dur": "4 weeks",
+        "body": "23 five-minute lessons, about one a day, to understand your back pain and regain confidence."
+      },
+      {
+        "tag": "Move",
+        "dur": "8 to 12 weeks",
+        "body": "Progressive exercises, chosen from your assessment and adapted to your pain, 2 to 3 times a week."
+      },
+      {
+        "tag": "Meditate",
+        "dur": "8 to 11 weeks",
+        "body": "A mindfulness program, then two paths: kindness toward yourself, and what matters to you."
+      },
+      {
+        "tag": "Walk",
+        "dur": "8 weeks",
+        "body": "A progressive walking program, with a weekly goal that starts from what you already do."
+      }
+    ]
   },
   "program": {
     "meta": {

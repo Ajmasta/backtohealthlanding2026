@@ -37,27 +37,39 @@
     "fact": "Tu n’es pas un cas à part : environ 9 fois sur 10, le mal de dos n’a pas de cause précise que l’on puisse identifier.",
     "factSource": "Source : Organisation mondiale de la santé, 2023",
     "forTitle": "C’est fait pour toi si",
-    "for1": "Tu es adulte, et ton mal de dos dure depuis plusieurs mois.",
-    "for2": "Aucune cause grave n’explique ta douleur lombaire : on parle de lombalgie non spécifique.",
-    "for3": "Tu veux avancer à ton rythme, sans pression."
+    "for": [
+      "Tu es adulte, et ton mal de dos dure depuis plusieurs mois.",
+      "Aucune cause grave n’explique ta douleur lombaire : on parle de lombalgie non spécifique.",
+      "Tu veux avancer à ton rythme, sans pression."
+    ]
   },
   "water": {
     "label": "Comment ça marche",
     "title": "Chaque effort arrose ton arbre.",
     "body": "Tu commences par une évaluation d’environ 5 minutes, puis tu choisis ton rythme. Chaque activité terminée devient une goutte d’eau.",
-    "step1Label": "Apprendre",
-    "step1Title": "Comprendre sa douleur au dos",
-    "step1Body": "Environ 5 minutes de lecture. 23 courtes leçons, écrites par notre médecin, aussi diplômé en physiothérapie, pour comprendre ce qui se passe et reprendre confiance.",
-    "step2Label": "Mouvement",
-    "step2Title": "Bouger, à ta mesure",
-    "step2Body": "De 5 à 15 minutes, 2 ou 3 fois par semaine. Les exercices sont choisis selon ton évaluation et démontrés avec des animations 3D.",
-    "step3Label": "Esprit",
-    "step3Title": "Un moment pour respirer",
-    "step3Body": "De la pleine conscience, de 3 à 30 minutes, pour souffler quand la journée ou ton mal de dos pèse.",
-    "step4Label": "Marche",
-    "step4Title": "Sortir marcher",
-    "step4Body": "La distance que tu veux. Et si tu as fait du yoga ou du vélo ailleurs, ça compte aussi : tu peux le noter.",
-    "end": "Ton arbre grandit avec les jours où tu as pris soin de toi, pas avec une série à tenir. Il ne fane jamais."
+    "end": "Ton arbre grandit avec les jours où tu as pris soin de toi, pas avec une série à tenir. Il ne fane jamais.",
+    "steps": [
+      {
+        "label": "Apprendre",
+        "title": "Comprendre sa douleur au dos",
+        "body": "Environ 5 minutes de lecture. 23 courtes leçons, écrites par notre médecin, aussi diplômé en physiothérapie, pour comprendre ce qui se passe et reprendre confiance."
+      },
+      {
+        "label": "Mouvement",
+        "title": "Bouger, à ta mesure",
+        "body": "De 5 à 15 minutes, 2 ou 3 fois par semaine. Les exercices sont choisis selon ton évaluation et démontrés avec des animations 3D."
+      },
+      {
+        "label": "Esprit",
+        "title": "Un moment pour respirer",
+        "body": "De la pleine conscience, de 3 à 30 minutes, pour souffler quand la journée ou ton mal de dos pèse."
+      },
+      {
+        "label": "Marche",
+        "title": "Sortir marcher",
+        "body": "La distance que tu veux. Et si tu as fait du yoga ou du vélo ailleurs, ça compte aussi : tu peux le noter."
+      }
+    ]
   },
   "pain": {
     "label": "Une application qui écoute",
@@ -76,7 +88,6 @@
   "screens": {
     "label": "Dans l’application",
     "title": "Une seule chose à la fois.",
-    "note": "",
     "s1Title": "Ta journée",
     "s1Body": "Un programme court. Rien à rattraper.",
     "s2Title": "Ton parcours",
@@ -94,56 +105,98 @@
     "label": "Professionnels de la santé",
     "title": "Un relais entre vos rendez-vous, et après.",
     "body": "BackToHealth ne remplace ni votre évaluation ni votre suivi. Il aide vos patients qui ont une lombalgie chronique à continuer de bouger, de comprendre et de prendre soin d’eux, surtout une fois les séances terminées.",
-    "c1Title": "Dépistage avant tout",
-    "c1Body": "8 questions sur les drapeaux rouges avant tout programme. Une réponse positive oriente vers un médecin ou les urgences.",
-    "c2Title": "Une règle claire sur la douleur lombaire",
-    "c2Body": "Au-dessus de 3/10 : arrêt et niveau inférieur. Séance complète à 2/10 ou moins : progression d’une répétition, jusqu’à 12, puis niveau suivant.",
-    "c3Title": "Une approche biopsychosociale",
-    "c3Body": "Exercice, éducation sur la douleur lombaire, pleine conscience et marche, dans le même programme, comme le recommandent les guides de pratique.",
-    "c4Title": "Des objectifs fonctionnels",
-    "c4Body": "Le patient choisit 1 à 3 activités (échelle spécifique au patient) et les réévalue au fil du temps. Les tests de mouvement sont refaits régulièrement.",
-    "c5Title": "Un langage qui rassure",
-    "c5Body": "Aucun mot qui fait peur. La douleur lombaire est réelle, elle ne veut pas dire dommage. Le dos est présenté comme solide et fait pour bouger.",
-    "c6Title": "Ce que nous ne prétendons pas",
-    "c6Body": "L’application ne pose pas de diagnostic et ne traite pas. Elle n’a pas encore fait l’objet d’une étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne.",
     "sourcesTitle": "Sur quoi nous nous appuyons",
-    "src1": "OMS : ligne directrice sur la lombalgie chronique primaire de l’adulte (2023)",
-    "src2": "Aperçu des guides de pratique sur la lombalgie non spécifique (European Spine Journal, 2018)",
-    "src3": "Thérapies basées sur la méditation et lombalgie chronique, revue de 12 essais (Pain Medicine, 2022)",
-    "src4": "Type d’exercice et lombalgie chronique, revue (Journal of Physiotherapy, 2021)",
     "ctaTitle": "Vous aimeriez l’essayer ou nous donner votre avis ?",
     "ctaBody": "Nous cherchons des cliniciens pour relire le contenu et proposer l’application à leurs patients.",
     "cta": "Écrire à l’équipe",
-    "programLink": "Voir ce que contient l’application"
+    "programLink": "Voir ce que contient l’application",
+    "cards": [
+      {
+        "title": "Dépistage avant tout",
+        "body": "8 questions sur les drapeaux rouges avant tout programme. Une réponse positive oriente vers un médecin ou les urgences."
+      },
+      {
+        "title": "Une règle claire sur la douleur lombaire",
+        "body": "Au-dessus de 3/10 : arrêt et niveau inférieur. Séance complète à 2/10 ou moins : progression d’une répétition, jusqu’à 12, puis niveau suivant."
+      },
+      {
+        "title": "Une approche biopsychosociale",
+        "body": "Exercice, éducation sur la douleur lombaire, pleine conscience et marche, dans le même programme, comme le recommandent les guides de pratique."
+      },
+      {
+        "title": "Ce que nous ne prétendons pas",
+        "body": "L’application ne pose pas de diagnostic et ne traite pas. Elle n’a pas encore fait l’objet d’une étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne."
+      }
+    ],
+    "sources": [
+      {
+        "title": "OMS : ligne directrice sur la lombalgie chronique primaire de l’adulte (2023)",
+        "url": "https://www.who.int/publications/i/item/9789240081789"
+      },
+      {
+        "title": "Aperçu des guides de pratique sur la lombalgie non spécifique (European Spine Journal, 2018)",
+        "url": "https://doi.org/10.1007/s00586-018-5673-2"
+      },
+      {
+        "title": "Thérapies basées sur la méditation et lombalgie chronique, revue de 12 essais (Pain Medicine, 2022)",
+        "url": "https://doi.org/10.1093/pm/pnac037"
+      },
+      {
+        "title": "Type d’exercice et lombalgie chronique, revue (Journal of Physiotherapy, 2021)",
+        "url": "https://doi.org/10.1016/j.jphys.2021.09.004"
+      }
+    ]
   },
   "team": {
     "label": "Qui nous sommes",
     "title": "Une petite équipe de Montréal.",
     "body": "Fondé sur les études récentes sur le mal de dos, et conçu avec un médecin aussi diplômé en physiothérapie.",
-    "ph": "Médecin, aussi diplômé en physiothérapie. Il valide tout le contenu clinique.",
-    "adrien": "Technologie, et étudiant en médecine. Il écrit aussi les méditations.",
-    "antoine": "Direction et développement. Il est responsable des décisions d’affaires.",
-    "dataTitle": "Tes données, ton choix",
-    "dataBody": "Ces informations touchent à ta santé : on les protège, on ne les vend jamais, et tu peux les exporter ou les supprimer à tout moment. Leur usage pour la recherche est facultatif, et se fait sous un code, jamais avec ton nom ou ton courriel."
+    "people": [
+      {
+        "name": "Pierre-Henri Bao Heitz",
+        "role": "Médecin, aussi diplômé en physiothérapie. Il valide tout le contenu clinique."
+      },
+      {
+        "name": "Adrien Moevus",
+        "role": "Technologie, et étudiant en médecine. Il écrit aussi les méditations."
+      },
+      {
+        "name": "Antoine Moevus",
+        "role": "Direction et développement. Il est responsable des décisions d’affaires."
+      }
+    ]
   },
   "faq": {
     "label": "Questions",
     "title": "Ce qu’on nous demande souvent.",
-    "q1": "Est-ce que ça remplace mon médecin ou mon physio ?",
-    "a1": "Non. BackToHealth t’aide à mieux vivre avec la douleur au dos, en complément de ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé.",
-    "q2": "Et si j’ai trop mal, ou pas envie, un jour donné ?",
-    "a2": "Chaque activité a un bouton « Pas aujourd’hui », qui te propose autre chose de plus doux. Pendant une poussée, le plan s’allège pour 3 jours. Ton arbre t’attend, sans presse.",
-    "q3": "Quand sort l’application ?",
-    "a3": "Nous la testons en ce moment, sur iPhone et Android. Écris-nous pour être prévenu du lancement.",
-    "q4": "Combien ça coûte ?",
-    "a4": "Le prix n’est pas encore fixé. Nous te le dirons clairement avant le lancement.",
-    "q5": "En quelle langue est-elle ?",
-    "a5": "En français et en anglais. Elle suit la langue de ton téléphone, et tu peux la changer quand tu veux."
+    "items": [
+      {
+        "q": "Est-ce que ça remplace mon médecin ou mon physio ?",
+        "a": "Non. BackToHealth t’aide à mieux vivre avec la douleur au dos, en complément de ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé."
+      },
+      {
+        "q": "Et si j’ai trop mal, ou pas envie, un jour donné ?",
+        "a": "Chaque activité a un bouton « Pas aujourd’hui », qui te propose autre chose de plus doux. Pendant une poussée, le plan s’allège pour 3 jours. Ton arbre t’attend, sans presse."
+      },
+      {
+        "q": "Quand sort l’application ?",
+        "a": "Nous la testons en ce moment, sur iPhone et Android. Écris-nous pour être prévenu du lancement."
+      },
+      {
+        "q": "Combien ça coûte ?",
+        "a": "Le prix n’est pas encore fixé. Nous te le dirons clairement avant le lancement."
+      },
+      {
+        "q": "En quelle langue est-elle ?",
+        "a": "En français et en anglais. Elle suit la langue de ton téléphone, et tu peux la changer quand tu veux."
+      },
+      {
+        "q": "Que faites-vous de mes données ?",
+        "a": "Ces informations touchent à ta santé : on les protège, on ne les vend jamais, et tu peux les exporter ou les supprimer à tout moment. Leur usage pour la recherche est facultatif, et se fait sous un code, jamais avec ton nom ou ton courriel."
+      }
+    ]
   },
   "end": {
-    "kindLabel": "À ton rythme",
-    "kindTitle": "Un jour manqué, ce n’est pas grave.",
-    "kindBody": "Pas de série perdue, pas de reproche. Quand tu reviens, on reprend doucement, là où tu en étais.",
     "title": "Ton arbre t’attend.",
     "body": "Laisse-nous ton courriel en nous écrivant : on te préviendra quand tu pourras le planter.",
     "cta": "Me prévenir du lancement"
@@ -157,21 +210,31 @@
     "label": "Le programme",
     "title": "Pour commencer, quatre programmes d’introduction.",
     "body": "Ce sont tes premiers pas. Pendant quelques semaines, l’application t’apprend à comprendre ton dos, à bouger, à méditer et à marcher. Ensuite, elle reste avec toi aussi longtemps que tu veux.",
-    "c1Tag": "Comprendre",
-    "c1Dur": "4 semaines",
-    "c1Body": "23 leçons de 5 minutes, environ une par jour, pour comprendre ta douleur au dos et reprendre confiance.",
-    "c2Tag": "Bouger",
-    "c2Dur": "8 à 12 semaines",
-    "c2Body": "Des exercices progressifs, choisis selon ton évaluation et adaptés à ta douleur, 2 à 3 fois par semaine.",
-    "c3Tag": "Méditer",
-    "c3Dur": "8 à 11 semaines",
-    "c3Body": "Un programme de pleine conscience, puis deux chemins : la bienveillance envers toi, et ce qui compte pour toi.",
-    "c4Tag": "Marcher",
-    "c4Dur": "8 semaines",
-    "c4Body": "Un programme de marche progressif, avec un objectif par semaine qui part de ce que tu fais déjà.",
     "goalTitle": "Et après ? On reste avec toi.",
     "goalBody": "Une fois les introductions terminées, tu gardes tes outils : tes exercices continuent de s’adapter à ta douleur, tu médites à ta façon, tu gardes ton rythme de marche et tu refais tes tests pour voir le chemin parcouru. Et si tu veux aller plus loin, un cours de Pilates, de yoga ou de méditation, c’est encore mieux.",
-    "more": "Voir le programme en détail"
+    "more": "Voir le programme en détail",
+    "cards": [
+      {
+        "tag": "Comprendre",
+        "dur": "4 semaines",
+        "body": "23 leçons de 5 minutes, environ une par jour, pour comprendre ta douleur au dos et reprendre confiance."
+      },
+      {
+        "tag": "Bouger",
+        "dur": "8 à 12 semaines",
+        "body": "Des exercices progressifs, choisis selon ton évaluation et adaptés à ta douleur, 2 à 3 fois par semaine."
+      },
+      {
+        "tag": "Méditer",
+        "dur": "8 à 11 semaines",
+        "body": "Un programme de pleine conscience, puis deux chemins : la bienveillance envers toi, et ce qui compte pour toi."
+      },
+      {
+        "tag": "Marcher",
+        "dur": "8 semaines",
+        "body": "Un programme de marche progressif, avec un objectif par semaine qui part de ce que tu fais déjà."
+      }
+    ]
   },
   "program": {
     "meta": {

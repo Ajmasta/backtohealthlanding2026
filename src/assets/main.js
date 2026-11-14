@@ -131,6 +131,8 @@
   var stages = [].slice.call(win.querySelectorAll('.stage'));
   var steps = [].slice.call(document.querySelectorAll('.step'));
   var reached = -1;
+  // One color per activity, as in the app; the closing line sends no drop.
+  var STEP_COLORS = ['#59dee7', '#37b5ff', '#5074ff', '#8fd9a8'];
 
   function setStage(n) {
     stages.forEach(function (s) { s.classList.toggle('on', +s.dataset.stage === n); });
@@ -138,7 +140,7 @@
   function show(index, animate) {
     steps.forEach(function (s, i) { s.classList.toggle('on', i === index); });
     var stage = Math.min(index, 3) + 1;
-    var color = steps[index].dataset.color;
+    var color = STEP_COLORS[index];
     if (animate && color && win.animate) fallingDrop(win, color, function () { setStage(stage); });
     else setStage(stage);
   }
