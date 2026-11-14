@@ -31,7 +31,7 @@ const base = `<!doctype html><meta charset="utf-8"><style>
 html, body { margin: 0; overflow: hidden; }
 </style>`;
 
-function share(line1, line2) {
+function share(name, line1, line2) {
   return `${base}<style>
   .s { position: relative; width: 1200px; height: 630px; overflow: hidden; background: linear-gradient(#86cdfb, #e3f1fb 80%); font-family: Fraunces; color: #0f2147; }
   .t { position: absolute; left: 0; top: 330px; width: 1200px; height: 862px; }
@@ -41,12 +41,13 @@ function share(line1, line2) {
   .tree svg { width: 100%; height: 100%; }
   .text { position: absolute; left: 72px; top: 150px; width: 660px; }
   .name { font-size: 40px; color: #004aad; margin-bottom: 22px; }
+  .name small { font-size: 28px; color: #5074ff; }
   h1 { font-size: 66px; line-height: 1.1; font-weight: 500; margin: 0; }
   </style><div class="s">
   <img class="cloud" src="${land('cloud-1.webp')}">
   <div class="t"><img src="${land('hills.webp')}"><img src="${land('lake.webp')}"><img src="${land('meadow.webp')}"></div>
   <div class="tree">${tree}</div>
-  <div class="text"><div class="name">BackToHealth</div><h1>${line1}<br>${line2}</h1></div>
+  <div class="text"><div class="name">${name}</div><h1>${line1}<br>${line2}</h1></div>
   </div>`;
 }
 
@@ -73,8 +74,8 @@ function shot(name, html, w, h) {
 }
 
 mkdirSync(out, { recursive: true });
-shot('og-fr.png', share('Mieux vivre avec', 'la douleur au dos'), 1200, 630);
-shot('og-en.png', share('Live better', 'with back pain'), 1200, 630);
+shot('og-fr.png', share('Crescendos <small>(BackToHealth)</small>', 'Mieux vivre avec', 'la douleur au dos'), 1200, 630);
+shot('og-en.png', share('BackToHealth <small>/ Crescendos</small>', 'Live better', 'with back pain'), 1200, 630);
 shot('icon-512.png', icon(512), 512, 512);
 shot('apple-touch-icon.png', icon(180), 180, 180);
 shot('icon-48.png', icon(48), 48, 48);

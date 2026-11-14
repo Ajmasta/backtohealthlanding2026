@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "meta": {
-    "title": "BackToHealth · Live better with back pain",
+    "title": "BackToHealth / Crescendos · Live better with back pain",
     "description": "The app for chronic low back pain: move, understand, breathe and walk, a little each day, at your back’s pace.",
     "locale": "en_CA",
     "localeAlt": "fr_CA",
@@ -19,7 +19,9 @@
     "home": "BackToHealth, home",
     "program": "The program",
     "menu": "Menu",
-    "brandAlt": ""
+    "brandAlt": "/ Crescendos",
+    "brand": "BackToHealth",
+    "brandFull": "BackToHealth / Crescendos"
   },
   "hero": {
     "label": "Mobile app · iPhone and Android",
@@ -150,23 +152,23 @@
   },
   "team": {
     "label": "Who we are",
-    "title": "A team of committed innovators, in Montréal.",
-    "body": "Three people, one foundation: recent research on chronic back pain.",
+    "title": "Three committed cofounders, in Montréal.",
+    "body": "Medicine, technology and business, united by one belief: you can live better with back pain.",
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "title": "Project founder",
-        "bio": "Physician, also trained in physiotherapy, specialised in chronic back pain. He creates and validates the clinical content, and leads the project."
+        "title": "Cofounder · Vision and health expertise",
+        "bio": "Physician, also trained in physiotherapy, specialised in chronic back pain. He carries the clinical vision of BackToHealth and signs off every piece of content."
       },
       {
         "name": "Adrien Moevus",
-        "title": "App lead",
-        "bio": "Medical student and full-stack developer. He designs the architecture and builds the app. He also writes the meditations."
+        "title": "Cofounder · App lead",
+        "bio": "Medical student and full-stack developer. He built the app from the ground up, from the architecture to the meditations he writes himself."
       },
       {
         "name": "Antoine Moevus",
-        "title": "Business and development",
-        "bio": "He leads business and development. Responsible for data and AI governance, including machine learning."
+        "title": "Cofounder · Business and development",
+        "bio": "He drives business and growth, and makes sure AI is used responsibly: data governance and machine learning working for your back."
       }
     ]
   },
@@ -242,7 +244,7 @@
   },
   "program": {
     "meta": {
-      "title": "The program in detail · BackToHealth",
+      "title": "The program in detail · BackToHealth / Crescendos",
       "description": "Exercises and dosing, 23 lessons, meditation and walking: what’s in BackToHealth, for patients and health professionals."
     },
     "otherLang": "FR",

@@ -134,7 +134,7 @@ for (const [li, lang] of LANGS.entries()) {
     const jsonLd = {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'Organization', '@id': `${SITE}#org`, name: 'BackToHealth', url: SITE, logo: `${SITE}assets/share/icon-512.png`, email: CONTACT },
+        { '@type': 'Organization', '@id': `${SITE}#org`, name: 'BackToHealth', alternateName: 'Crescendos', url: SITE, logo: `${SITE}assets/share/icon-512.png`, email: CONTACT },
         { '@type': 'WebSite', '@id': `${SITE}#site`, name: 'BackToHealth', url: SITE, publisher: { '@id': `${SITE}#org` }, inLanguage: LANGS.map((l) => l.code) },
         { '@type': 'WebPage', url: pageUrl, name: title, description, inLanguage: lang.code, isPartOf: { '@id': `${SITE}#site` } },
       ],
