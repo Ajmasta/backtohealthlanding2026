@@ -356,7 +356,7 @@
   },
   "eval": {
     "label": "Ton point de départ",
-    "title": "Un plan fait pour ton dos, pas pour un dos moyen.",
+    "title": "Un plan fait pour ton dos, pas pour tous les dos.",
     "body": "Les programmes génériques ignorent où tu en es. En 5 minutes, Crescendos regarde comment ton dos bouge et ce que tu veux retrouver. Ton plan part de là.",
     "steps": [
       {
@@ -376,7 +376,9 @@
     "rangeAlt": "La position de flexion choisie avec le curseur",
     "result": "Position {n} sur 10, douleur {p}/10 : tes exercices seraient choisis à partir de là.",
     "tryLabel": "Essaie : c’est le vrai test de l’application",
-    "resultUnset": "Position {n} sur 10. Indique ta douleur pour continuer."
+    "resultUnset": "Position {n} sur 10. Indique ta douleur pour continuer.",
+    "stepWatch": "Étape 1 : regarder le mouvement",
+    "stepRange": "Étape 2 : indiquer ta position et ta douleur"
   },
   "moves": {
     "label": "Tes exercices",
@@ -389,7 +391,6 @@
     "intro": "Debout, penche-toi vers l’avant doucement, aussi loin que c’est confortable.",
     "watch": "Regarde le mouvement, puis fais-le une fois, doucement. Arrête-toi si ça fait trop mal.",
     "didIt": "Je l’ai fait",
-    "again": "Revoir le mouvement",
     "rangeTitle": "Jusqu’où es-tu allé·e ?",
     "rangeHint": "Fais glisser jusqu’à l’image la plus proche de ta position la plus loin.",
     "painTitle": "Ta douleur pendant ce mouvement",

@@ -108,9 +108,12 @@
                 <p class="app-card-title">{{app.painTitle}}</p>
                 {{> pain-scale}}
               </div>
-              <button class="app-link" type="button" id="watch-again">{{app.again}}</button>
             </div>
           </div>
+        </div>
+        <div class="app-dots">
+          <button type="button" class="app-dot" data-step="0" aria-label="{{eval.stepWatch}}"></button>
+          <button type="button" class="app-dot" data-step="1" aria-label="{{eval.stepRange}}"></button>
         </div>
       </figure>
     </section>

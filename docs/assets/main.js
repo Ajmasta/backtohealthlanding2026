@@ -218,8 +218,17 @@
     };
     rangeTest.addEventListener('input', showResult);
     painScale(document.querySelector('#range-pain .pscale'), null, function (v) { testPain = v; showResult(); });
-    document.getElementById('did-it').addEventListener('click', function () { phone.classList.add('ranging'); showResult(); });
-    document.getElementById('watch-again').addEventListener('click', function () { phone.classList.remove('ranging'); showResult(); });
+    // Two steps, as in the app. The dots under the phone go back and forth between them.
+    var dots = [].slice.call(document.querySelectorAll('.app-dot'));
+    var setStep = function (step) {
+      phone.classList.toggle('ranging', step === 1);
+      dots.forEach(function (d, i) { d.classList.toggle('on', i === step); d.setAttribute('aria-current', i === step ? 'step' : 'false'); });
+      showResult();
+    };
+    // Once the person has pressed the button, the pointer has done its job: it does not come back.
+    document.getElementById('did-it').addEventListener('click', function () { phone.classList.add('tried'); setStep(1); });
+    dots.forEach(function (d) { d.addEventListener('click', function () { setStep(+d.dataset.step); }); });
+    setStep(0);
   }
 
   // Pain during a session: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.

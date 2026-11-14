@@ -356,7 +356,7 @@
   },
   "eval": {
     "label": "Your starting point",
-    "title": "A plan made for your back, not for an average one.",
+    "title": "A plan made for your back, not for everyone’s.",
     "body": "Generic programs ignore where you are. In 5 minutes, BackToHealth looks at how your back moves and what you want to get back to. Your plan starts from there.",
     "steps": [
       {
@@ -376,7 +376,9 @@
     "rangeAlt": "The flexion position chosen with the slider",
     "result": "Position {n} out of 10, pain {p}/10: your exercises would be chosen from there.",
     "tryLabel": "Try it: this is the app’s real test",
-    "resultUnset": "Position {n} out of 10. Rate your pain to continue."
+    "resultUnset": "Position {n} out of 10. Rate your pain to continue.",
+    "stepWatch": "Step 1: watch the movement",
+    "stepRange": "Step 2: show your position and your pain"
   },
   "moves": {
     "label": "Your exercises",
@@ -389,7 +391,6 @@
     "intro": "Standing, bend forward gently, as far as is comfortable.",
     "watch": "Watch the movement, then do it once, gently. Stop if it hurts too much.",
     "didIt": "I did it",
-    "again": "Watch the movement again",
     "rangeTitle": "How far did you go?",
     "rangeHint": "Slide to the picture closest to your furthest position.",
     "painTitle": "Your pain during this movement",
