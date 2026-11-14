@@ -50,13 +50,23 @@ a { color: var(--tronc); }
 /* Header */
 .top { position: fixed; z-index: 10; inset: 0 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px clamp(16px, 3vw, 40px); transition: background .3s, box-shadow .3s; }
 .top.scrolled { background: rgba(255, 255, 255, .78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 1px 0 rgba(15, 33, 71, .06); }
-.brand { display: flex; align-items: center; gap: 8px; color: var(--tronc); font: 500 20px/1 var(--display); text-decoration: none; }
+.brand { display: flex; flex: none; align-items: center; gap: 8px; white-space: nowrap; color: var(--tronc); font: 500 20px/1 var(--display); text-decoration: none; }
 .brand-tree svg { width: 30px; height: 36px; }
 /* "Crescendos" in French: crescen-DOS, the back is in the name. */
 .brand-name { display: flex; align-items: baseline; gap: 6px; }
 .brand-alt { font: 500 .8em/1 var(--display); color: var(--pervenche); }
 .brand-alt:empty { display: none; }
 .top nav { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
+.top nav a { white-space: nowrap; }
+/* Between tablet and laptop the full menu is tight: closer links, so nothing wraps. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .top nav { gap: 14px; }
+  .top nav a { font-size: 15px; }
+}
+/* Narrower still: the second name gives its place to the menu. */
+@media (min-width: 901px) and (max-width: 1040px) {
+  .top .brand-alt { display: none; }
+}
 .nav-links { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
 .nav-link, .lang { color: var(--encre); text-decoration: none; font-weight: 600; font-size: 15px; text-underline-offset: 6px; text-decoration-thickness: 2px; }
 .nav-link:hover, .lang:hover { text-decoration-line: underline; }
@@ -113,6 +123,11 @@ a { color: var(--tronc); }
 .hero { min-height: max(100svh, 760px); --crest: 86%; --tree-h: clamp(170px, calc(86svh - 490px), 340px); padding-bottom: 80px; }
 .hero-text { position: relative; z-index: 2; max-width: 1040px; margin: 0 auto; padding: 96px 24px 0; text-align: center; }
 .hero-text .lead { max-width: 620px; margin-inline: auto; }
+/* The text sits in the middle of the sky left above the tree and the phone (the phone stands a little taller than the tree),
+   and the script sizes the tree to fill what the text leaves: no empty band on a tall window. */
+@media (min-width: 601px) {
+  .hero-text { box-sizing: border-box; min-height: calc(max(100svh, 760px) * .86 - var(--tree-h) * 1.1); display: flex; flex-direction: column; justify-content: center; }
+}
 .hero .label { color: var(--encre); }
 .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; margin-top: 24px; }
 .js .hero-text > * { animation: rise .26s ease-out both; }

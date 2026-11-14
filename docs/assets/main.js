@@ -160,6 +160,23 @@
     }, 780);
   }
 
+  // Hero: the tree and the phone take the room the text leaves above the hill, whatever the window.
+  (function () {
+    var scene = document.querySelector('[data-scene="hero"]'), text = scene && scene.querySelector('.hero-text');
+    if (!text) return;
+    var wide = matchMedia('(min-width: 601px)');
+    function fit() {
+      if (!wide.matches) { scene.style.removeProperty('--tree-h'); return; }
+      var words = text.lastElementChild.getBoundingClientRect().bottom - text.firstElementChild.getBoundingClientRect().top;
+      // From under the header to the crest of the hill, less the text and some air; the phone is 1.1 tree tall.
+      var room = (scene.offsetHeight * .86 - 96 - words - 56) / 1.1;
+      scene.style.setProperty('--tree-h', Math.round(Math.max(170, Math.min(room, 480))) + 'px');
+    }
+    fit();
+    addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
+
   // Hero: planting. The drop lands on the empty hill, the tree springs up from the ground and settles, then sways.
   var hero = document.querySelector('[data-scene="hero"]');
   if (!reduce && hero.animate) {
