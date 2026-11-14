@@ -1,0 +1,483 @@
+/* BackToHealth site. Tokens come from the design system; the page runs from morning to night as you scroll. */
+
+@font-face { font-family: Fraunces; src: url(fonts/Fraunces_500Medium.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: Figtree; src: url(fonts/Figtree_400Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Figtree; src: url(fonts/Figtree_600SemiBold.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  --ciel: #37b5ff; --lagon: #59dee7; --pervenche: #5074ff; --tronc: #004aad;
+  --abricot: #ffb27a; --prairie: #8fd9a8; --crepuscule: #b9a7f5; --halo: #e3f1fb;
+  --ciel-haut: #86cdfb; --meadow-bottom: #75c79c;
+  --fond: #f4f9fd; --surface: #fff; --ligne: #cfe2f1;
+  --encre: #0f2147; --encre-texte: #2c3e66; --encre-douce: #4f6385; --pause: #9a4a12;
+  --nuit: #0d1a3a; --nuit-encre: #eef4fb; --nuit-douce: #a9b8d3; --nuit-action: #8fa4ff;
+  --ombre: 0 8px 24px rgba(15, 33, 71, .08);
+  --display: Fraunces, "Iowan Old Style", Georgia, serif;
+  --sans: Figtree, "SF Pro Text", Roboto, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 88px; }
+body { margin: 0; background: var(--fond); color: var(--encre); font: 400 17px/26px var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, svg { display: block; max-width: 100%; }
+h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+h1 { font-size: clamp(34px, 4.8vw, 58px); line-height: 1.1; }
+h2 { font-size: clamp(26px, 3vw, 40px); line-height: 1.18; }
+h3 { font: 600 20px/26px var(--sans); margin: 0 0 8px; }
+p { margin: 0; }
+a { color: var(--tronc); }
+:focus-visible { outline: 3px solid #3d5be0; outline-offset: 3px; border-radius: 6px; }
+.label { font: 600 12px/16px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--tronc); margin-bottom: 14px; }
+.lead { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.55; margin-top: 14px; color: var(--encre-texte); }
+.hero .lead, .night .lead { color: inherit; }
+.center { text-align: center; }
+.center .lead { max-width: 620px; margin-inline: auto; }
+
+.btn { display: inline-block; background: var(--tronc); color: #fff; font: 600 17px/22px var(--sans); text-decoration: none; padding: 17px 28px; border-radius: 16px; transition: transform .2s, background .2s; }
+.btn:hover { background: #003a8a; transform: translateY(-1px); }
+.btn-small { padding: 10px 16px; font-size: 15px; border-radius: 12px; white-space: nowrap; }
+.btn-ghost { background: transparent; color: var(--tronc); box-shadow: inset 0 0 0 2px var(--tronc); }
+.btn-ghost:hover { background: rgba(0, 74, 173, .08); }
+/* A link to another page of the site carries a small arrow pointing out of the page. */
+.to-page { display: inline-flex; align-items: center; gap: 8px; }
+.to-page::after { content: ""; flex: none; width: 14px; height: 14px; background: currentColor; transition: transform .2s;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 2h8v8M12 2 2 12' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 2h8v8M12 2 2 12' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.to-page:hover::after { transform: translate(2px, -2px); }
+.btn-night { background: var(--nuit-action); color: var(--nuit); }
+.btn-night:hover { background: #a6b7ff; }
+
+/* Header */
+.top { position: fixed; z-index: 10; inset: 0 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px clamp(16px, 3vw, 40px); transition: background .3s, box-shadow .3s; }
+.top.scrolled { background: rgba(255, 255, 255, .78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 1px 0 rgba(15, 33, 71, .06); }
+.brand { display: flex; flex: none; align-items: center; gap: 8px; white-space: nowrap; color: var(--tronc); font: 500 20px/1 var(--display); text-decoration: none; }
+.brand-tree svg { width: 30px; height: 36px; }
+/* "Crescendos" in French: crescen-DOS, the back is in the name. */
+.brand-name { display: flex; align-items: baseline; gap: 6px; }
+.brand-alt { font: 500 .8em/1 var(--display); color: var(--pervenche); }
+.brand-alt:empty { display: none; }
+.top nav { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
+.top nav a { white-space: nowrap; }
+/* Between tablet and laptop the full menu is tight: closer links, so nothing wraps. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .top nav { gap: 14px; }
+  .top nav a { font-size: 15px; }
+}
+/* Narrower still: the second name gives its place to the menu. */
+@media (min-width: 901px) and (max-width: 1040px) {
+  .top .brand-alt { display: none; }
+}
+.nav-links { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); }
+.nav-link, .lang { color: var(--encre); text-decoration: none; font-weight: 600; font-size: 15px; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.nav-link:hover, .lang:hover { text-decoration-line: underline; }
+.nav-link.active { color: var(--tronc); text-decoration-line: underline; }
+.menu-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 12px; background: transparent; color: var(--encre); cursor: pointer; position: relative; }
+.menu-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s; }
+.menu-toggle span:first-child { top: 17px; } .menu-toggle span:last-child { top: 25px; }
+.top.open .menu-toggle span:first-child { transform: translateY(4px) rotate(45deg); }
+.top.open .menu-toggle span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+/* The landscape, shared by the hero and the small window */
+.scene { position: relative; overflow: hidden; --crest: 76%; --tree-h: 300px; }
+.sky { position: absolute; inset: 0; background: linear-gradient(var(--ciel-haut), var(--halo) var(--crest)); }
+.sun { position: absolute; right: 13%; top: 16%; width: clamp(48px, 7vw, 96px); aspect-ratio: 1; border-radius: 50%; background: var(--abricot); box-shadow: 0 0 60px 20px rgba(255, 178, 122, .45); }
+.cloud { position: absolute; opacity: .95; --from: -90px; --far: 36px;
+  animation: cloud-in 1.8s cubic-bezier(.2, .7, .3, 1) var(--in, 0s) both, drift var(--slow, 28s) ease-in-out calc(var(--in, 0s) + 1.8s) infinite; }
+.cloud.c1 { width: 40%; left: -7%; top: 12%; }
+.cloud.c2 { width: 34%; right: -5%; top: 34%; --from: 90px; --far: -30px; --slow: 24s; --in: .15s; }
+.cloud.c3 { width: 26%; left: 8%; top: 48%; --far: 26px; --slow: 32s; --in: .3s; }
+.cloud.c4 { width: 30%; right: 20%; top: 58%; --from: 90px; --far: -40px; --slow: 26s; --in: .45s; }
+@keyframes cloud-in { from { opacity: 0; transform: translateX(var(--from)); } }
+@keyframes drift { 0%, 100% { translate: 0 0; } 25% { translate: var(--far) -4px; } 75% { translate: calc(var(--far) * -1) 3px; } }
+.sun { animation: glow 6s ease-in-out infinite alternate; }
+@keyframes glow { to { box-shadow: 0 0 80px 30px rgba(255, 178, 122, .55); } }
+
+.terrain { position: absolute; left: 50%; top: var(--crest); width: max(100%, 820px); aspect-ratio: 1024 / 736; transform: translate(-50%, -17.12%); }
+.terrain img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.terrain::after { content: ""; position: absolute; left: 0; right: 0; top: calc(100% - 2px); height: 100vh; background: var(--meadow-bottom); }
+
+.crest { position: absolute; left: 50%; top: var(--crest); width: 0; height: 0; }
+.tree-wrap { position: absolute; bottom: calc(var(--tree-h) * -.03); left: calc(var(--tree-h) * -.42); width: calc(var(--tree-h) * .848); height: var(--tree-h); transform-origin: 49.5% 97.6%; }
+.sway { width: 100%; height: 100%; transform-origin: 49.5% 97.6%; animation: sway 6s ease-in-out infinite alternate; }
+.sway svg { width: 100%; height: 100%; }
+/* The planted hero tree: an uneven breeze, a gust then calm, and the crown breathing a little. */
+.tree-wrap.alive .sway { animation: breeze 11s ease-in-out infinite; }
+@keyframes breeze {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  14% { transform: rotate(1.8deg) scale(1.012, .996); }
+  22% { transform: rotate(.7deg) scale(1.004, 1); }
+  30% { transform: rotate(1.3deg) scale(1.008, .998); }
+  48% { transform: rotate(-.9deg) scale(.996, 1.006); }
+  66% { transform: rotate(.4deg) scale(1.002, 1.01); }
+  82% { transform: rotate(-.6deg) scale(.998, 1.004); }
+}
+.leaf { position: absolute; z-index: 1; width: 10px; height: 14px; margin: -7px 0 0 -5px; background: currentColor; border-radius: 0 100% 0 100%; pointer-events: none; }
+@keyframes sway { from { transform: rotate(-1.4deg) scale(1, .995); } to { transform: rotate(1.4deg) scale(1.01, 1.005); } }
+
+/* Drop, ripples and droplets, added by main.js */
+.drop { position: absolute; left: -13px; top: 0; width: 26px; height: 42px; z-index: 3; }
+.ripple { position: absolute; left: 0; top: 0; width: 170px; height: 44px; margin: -22px 0 0 -85px; border: 3px solid currentColor; border-radius: 50%; opacity: 0; z-index: 1; }
+.droplet { position: absolute; left: -3px; top: -6px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; z-index: 3; }
+
+/* Hero */
+.hero { min-height: max(100svh, 760px); --crest: 86%; --tree-h: clamp(170px, calc(86svh - 490px), 340px); padding-bottom: 80px; }
+.hero-text { position: relative; z-index: 2; max-width: 1040px; margin: 0 auto; padding: 96px 24px 0; text-align: center; }
+.hero-text .lead { max-width: 620px; margin-inline: auto; }
+/* The text sits in the middle of the sky left above the tree and the phone (the phone stands a little taller than the tree),
+   and the script sizes the tree to fill what the text leaves: no empty band on a tall window. */
+@media (min-width: 601px) {
+  .hero-text { box-sizing: border-box; min-height: calc(max(100svh, 760px) * .86 - var(--tree-h) * 1.1); display: flex; flex-direction: column; justify-content: center; }
+}
+.hero .label { color: var(--encre); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; margin-top: 24px; }
+.js .hero-text > * { animation: rise .26s ease-out both; }
+.js .hero-text > :nth-child(2) { animation-delay: .06s; }
+.js .hero-text > :nth-child(3) { animation-delay: .12s; }
+.js .hero-text > :nth-child(4) { animation-delay: .18s; }
+@keyframes rise { from { opacity: .4; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.hero .sun { top: 13%; right: 5%; }
+
+/* The app on a phone, standing on the hill beside the tree: it says "this is a mobile app" at first sight. */
+.hero-phone { position: absolute; left: calc(var(--tree-h) * .5); bottom: calc(var(--tree-h) * -.06); width: calc(var(--tree-h) * .5); padding: calc(var(--tree-h) * .018); border-radius: calc(var(--tree-h) * .07); background: #0f2147; box-shadow: 0 18px 40px rgba(15, 33, 71, .28); transform: rotate(4deg); transform-origin: 50% 100%; }
+.js .hero-phone { animation: phone-in .9s cubic-bezier(.2, .8, .3, 1) 2s both; }
+@keyframes phone-in { from { opacity: 0; transform: translateY(50px) rotate(10deg); } }
+.hero-phone img { width: 100%; height: auto; border-radius: calc(var(--tree-h) * .055); }
+.stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+.store { display: inline-flex; flex-direction: column; align-items: flex-start; padding: 7px 16px; border-radius: 12px; background: rgba(15, 33, 71, .88); color: #fff; font: 600 16px/1.15 var(--sans); }
+.store small { font: 400 11px/1.2 var(--sans); opacity: .85; }
+
+/* The sheet that rises over the meadow, as in the app */
+.sheet { position: relative; z-index: 2; margin-top: -48px; border-radius: 40px 40px 0 0; background: var(--fond); overflow: clip; }
+.band { --pad: clamp(44px, 5.5vw, 76px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
+.card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--ombre); }
+.card-tint { background: var(--halo); box-shadow: none; }
+.card p { color: var(--encre-texte); }
+.reveal { transition: opacity .26s ease-out, transform .26s ease-out; }
+.js .reveal:not(.seen) { opacity: 0; transform: translateY(12px); }
+
+/* Offer: the four programs, right after the hero */
+.offer-head { max-width: 760px; }
+.offer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.offer-grid .tag { display: inline-block; margin-bottom: 10px; }
+.dur { font: 500 26px/1.2 var(--display); color: var(--encre); margin-bottom: 8px; }
+.goal { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 16px; }
+.goal .btn { flex: none; }
+
+/* Who */
+.who { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
+.who-cards { display: grid; gap: 16px; }
+.fact { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--ligne); }
+.fact blockquote { margin: 0; font: 500 22px/1.32 var(--display); color: var(--tronc); }
+.fact figcaption { margin-top: 8px; font-size: 14px; line-height: 20px; }
+.fact figcaption a { color: var(--encre-douce); }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ticks li { position: relative; padding-left: 28px; color: var(--encre-texte); }
+.ticks li::before { content: ""; position: absolute; left: 3px; top: 3px; width: 13px; height: 18px; background: var(--lagon); clip-path: path("M6.5 0 C9 5 13 8 13 12 A6.5 6.2 0 1 1 0 12 C0 8 4 5 6.5 0 Z"); }
+
+/* Assessment: what it covers on the left, the app's own movement test to try on the right */
+.eval { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.eval-steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 20px; }
+.eval-steps li { display: flex; gap: 16px; }
+.eval-steps h3 { margin-bottom: 4px; }
+.eval-steps p { color: var(--encre-texte); }
+.eval-n { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--halo); color: var(--tronc); font: 500 20px/1 var(--display); }
+.eval-result { margin-top: 24px; padding: 14px 18px; border-radius: 16px; background: var(--halo); color: var(--tronc); font-weight: 600; }
+.eval-result:empty { visibility: hidden; }
+.eval-app { margin: 0; }
+.eval-try-label { margin-bottom: 14px; text-align: center; font: 600 12px/16px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--encre-douce); }
+
+/* A phone showing one screen of the app, built with the app's measures (theme/tokens.ts):
+   24 px margins, 20 px cards and gaps, 32/38 screen title, 12 px label, 56 px button. */
+.app-phone { width: min(360px, 100%); margin: 0 auto; padding: 8px; border-radius: 44px; background: var(--encre); box-shadow: 0 24px 56px rgba(15, 33, 71, .22); }
+.app-screen { display: grid; border-radius: 36px; overflow: hidden; background: linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .3)), linear-gradient(var(--ciel-haut), var(--halo) 70%, #cfeeda); }
+/* Both views share one cell, so the phone keeps its height when the view changes. */
+.app-view { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 14px; padding: 28px 20px 20px; }
+.app-range, .app-phone.ranging .app-watch { visibility: hidden; }
+.app-phone.ranging .app-range { visibility: visible; }
+/* Without the script, the test opens on its second step, with the first picture. */
+html:not(.js) .app-watch { visibility: hidden; }
+html:not(.js) .app-range { visibility: visible; }
+.app-label { font: 600 12px/16px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--tronc); }
+.app-title { font: 500 28px/34px var(--display); margin-top: -6px; }
+.app-sub { font-size: 15px; line-height: 22px; color: var(--encre-texte); margin-top: -6px; }
+.app-legend { font-size: 14px; line-height: 20px; color: var(--encre-douce); }
+.app-card { display: grid; gap: 10px; padding: 16px; border-radius: 20px; background: var(--surface); box-shadow: var(--ombre); }
+.app-card-title { font: 600 17px/22px var(--sans); }
+.app-media { border-radius: 14px; overflow: hidden; background: var(--halo); }
+.app-card.app-media { padding: 0; aspect-ratio: 1006 / 906; border-radius: 20px; }
+.app-media video, .app-media img { width: 100%; height: 100%; object-fit: cover; }
+.app-position { height: 184px; background: linear-gradient(#e3f1fb, #f4f9fd 81.5%, #cfe2f1 81.5%); }
+.app-position img { object-fit: contain; }
+.app-cta { position: relative; margin-top: auto; }
+.app-btn { position: relative; overflow: hidden; width: 100%; border: 0; cursor: pointer; text-align: center; }
+/* The button asks to be pressed: a pointer glides to it once, then stays on it and keeps clicking;
+   at each click a halo spreads and a glint crosses the button.
+   It all stops for good once the person has pressed the button (.tried). */
+.app-btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .45) 50%, transparent 65%); transform: translateX(-110%); }
+/* The hint starts when the button is in the window and the page has settled (.hint-on, set by main.js). */
+.hint-on .app-btn::after { animation: glint 1.8s ease-in-out 1.1s infinite; }
+.hint-on .app-btn { animation: halo 1.8s ease-out 1.1s infinite; }
+.tap-hint { position: absolute; right: 22%; top: 55%; pointer-events: none; filter: drop-shadow(0 3px 6px rgba(15, 33, 71, .3)); }
+.js .tap-hint { opacity: 0; }
+.js .hint-on .tap-hint { opacity: 1; animation: tap-in 1.1s cubic-bezier(.2, .7, .3, 1) both, tap 1.8s ease-in-out 1.1s infinite; }
+@keyframes tap-in { from { transform: translate(70px, 60px); opacity: 0; } }
+@keyframes tap { 0%, 22%, 100% { transform: scale(1); } 11% { transform: scale(.8); } }
+@keyframes halo { 0%, 8% { box-shadow: 0 0 0 0 rgba(55, 181, 255, 0); } 14% { box-shadow: 0 0 0 0 rgba(55, 181, 255, .6); } 60%, 100% { box-shadow: 0 0 0 14px rgba(55, 181, 255, 0); } }
+@keyframes glint { 0%, 12% { transform: translateX(-110%); } 55%, 100% { transform: translateX(110%); } }
+.app-phone.tried .app-btn, .app-phone.tried .app-btn::after { animation: none; }
+.app-phone.tried .tap-hint { display: none; }
+/* The two steps of the test, as two small dots under the phone. They appear only once the person
+   has pressed the button: before that, the only thing to do is press it. */
+.app-dots { display: flex; justify-content: center; margin-top: 10px; visibility: hidden; }
+.app-phone.tried + .app-dots { visibility: visible; }
+.app-dot { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.app-dot::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #a9bfd6; transition: background .2s; }
+.app-dot.on::before { background: var(--tronc); }
+
+/* Sliders, as the app's StepSlider: 14 px track, large white thumb. */
+.slider { width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.slider::-webkit-slider-runnable-track { height: 14px; border-radius: 7px; background: var(--track); }
+.slider::-moz-range-track { height: 14px; border-radius: 7px; background: var(--track); }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 36px; height: 36px; margin-top: -11px; border-radius: 50%; background: #fff; border: 4px solid var(--encre); box-shadow: var(--ombre); }
+.slider::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 4px solid var(--encre); }
+.slider-pain { --track: linear-gradient(90deg, #3db86b, #a6cf45 30%, #ffc93c 50%, #ff9443 70%, #f25a52); }
+.slider-ciel { --track: linear-gradient(90deg, var(--ciel) var(--fill, 0%), var(--halo) var(--fill, 0%)); }
+.slider-ends { display: flex; justify-content: space-between; margin-top: -6px; font-size: 14px; line-height: 20px; color: var(--encre-douce); }
+
+/* The pain scale, as the app's PainScale: the number on a disc in its clinical colour, its band and meaning. */
+.pscale { display: grid; gap: 8px; }
+.pscale-readout { display: flex; align-items: center; gap: 14px; min-height: 64px; }
+.pscale-disc { flex: none; display: grid; grid-auto-flow: column; align-items: baseline; justify-content: center; align-content: center; width: 64px; height: 64px; border-radius: 50%; background: var(--dot, var(--halo)); color: var(--encre); transition: background .2s; }
+.pscale-n { font: 500 28px/32px var(--display); font-variant-numeric: tabular-nums; }
+.pscale-disc small { font-size: 13px; }
+.pscale-text { display: grid; }
+.pscale-band { font: 600 17px/22px var(--sans); }
+.pscale-meaning { font-size: 14px; line-height: 20px; color: var(--encre-douce); }
+.pscale.unset .pscale-disc, .pscale.unset .pscale-band { color: var(--encre-douce); }
+.pscale.unset .slider::-webkit-slider-thumb { opacity: 0; }
+.pscale.unset .slider::-moz-range-thumb { opacity: 0; }
+.pscale-ticks { display: flex; justify-content: space-between; padding: 0 8px; margin-top: -8px; font: 600 12px/16px var(--sans); color: var(--encre-douce); }
+.pscale-ticks span { width: 20px; text-align: center; }
+
+/* Exercises in 3D. The files are already framed on the figure (scripts/make-exercise-media.mjs). */
+.moves-head { max-width: 720px; }
+.moves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+.move { margin: 0; }
+.move-frame { border-radius: 24px; overflow: hidden; background: #4d6a8a; aspect-ratio: 4 / 3; box-shadow: var(--ombre); }
+.move-frame video { width: 100%; height: 100%; object-fit: cover; }
+.move figcaption { margin-top: 12px; font: 600 17px/22px var(--sans); }
+.move .tag { display: table; margin-bottom: 8px; }
+
+/* Water */
+.water { padding-bottom: 40px; }
+.water-head { max-width: 700px; }
+.water-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 6vw, 72px); margin-top: 32px; }
+.water-stage { position: sticky; top: 88px; align-self: start; }
+.window { height: min(64svh, 480px); border-radius: 32px; box-shadow: var(--ombre); --crest: 70%; --tree-h: clamp(170px, 38svh, 290px); }
+.window .terrain { width: max(180%, 820px); }
+.stage { position: absolute; bottom: calc(var(--tree-h) * -.024); left: calc(var(--tree-h) * -.416); width: calc(var(--tree-h) * .848); height: var(--tree-h); transform-origin: 49.06% 97.6%; opacity: 0; transform: scale(.82); transition: transform .9s cubic-bezier(.2, 1.3, .4, 1), opacity .45s; }
+.stage.on { opacity: 1; transform: scale(1); }
+.stage .sway { transform-origin: 49.06% 97.6%; }
+.steps { list-style: none; margin: 0; padding: 0; }
+.step { min-height: min(56svh, 380px); display: flex; flex-direction: column; justify-content: center; opacity: .35; transition: opacity .26s; }
+.step.on, .no-motion .step { opacity: 1; }
+.step h3 { font: 500 clamp(26px, 2.4vw, 32px)/1.2 var(--display); }
+.step p:last-child { font-size: 18px; line-height: 1.5; max-width: 440px; }
+.tag { align-self: flex-start; font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--encre); padding: 6px 12px; border-radius: 999px; margin-bottom: 12px; }
+/* The four activities, in order: lagoon, sky, periwinkle, meadow. */
+.tag-1 { background: #c9f3f6; } .tag-2 { background: #c7e9ff; } .tag-3 { background: #d8e0ff; } .tag-4 { background: #d3f1dd; }
+.closing { font: 500 clamp(24px, 2.4vw, 30px)/1.28 var(--display) !important; color: var(--tronc); }
+
+/* Pain */
+.pain { display: grid; grid-template-columns: 1fr minmax(0, 440px); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.pain-card { padding: clamp(20px, 3vw, 28px); display: grid; gap: 14px; }
+.pain-q { font: 600 17px/22px var(--sans); color: var(--encre) !important; }
+.pain-reply { padding: 18px 20px; border-radius: 16px; background: var(--halo); min-height: 138px; }
+.pain-reply.stop { background: #fdeee2; }
+.pain-reply.stop h3 { color: var(--pause); }
+
+/* Screens */
+.screens { max-width: 1240px; }
+.note { margin-top: 12px; color: var(--encre-douce); font-size: 15px; }
+.phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.4vw, 32px); margin-top: 40px; }
+.phone { margin: 0; }
+.phone:nth-child(even) { margin-top: 40px; }
+.phone img { width: 100%; height: auto; border-radius: 28px; box-shadow: 0 16px 40px rgba(15, 33, 71, .16); }
+.phone figcaption { margin-top: 16px; line-height: 1.4; color: var(--encre-texte); }
+.phone strong { display: block; color: var(--encre); font-weight: 600; font-size: 18px; margin-bottom: 2px; }
+
+/* Pros */
+.pros { max-width: none; background: var(--surface); padding-inline: max(clamp(16px, 4vw, 40px), calc((100% - 1080px) / 2)); }
+.pros-head { max-width: 760px; }
+/* Never break « rendez-vous » at its hyphen. */
+.pros-head h2 { hyphens: manual; text-wrap: balance; }
+.pros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+.pros .card { background: var(--fond); box-shadow: none; }
+/* The last card says what the app does not claim: set apart. */
+.pros-grid .card:last-child { background: var(--halo); }
+.pros-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--ligne); }
+.pros-foot p { margin: 0; flex: 1 1 320px; color: var(--encre-texte); }
+.pros-foot strong { color: var(--encre); font-weight: 600; }
+.pros-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.sources { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; line-height: 22px; }
+
+/* Team, FAQ */
+.team-head { max-width: 700px; }
+.people { margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.people dt { font: 500 22px/1.25 var(--display); margin-bottom: 10px; }
+.person-title { display: block; margin-top: 4px; font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tronc); }
+.people dd { margin: 0; color: var(--encre-texte); }
+.faq { max-width: 800px; padding-top: 0; }
+.faq-list { margin-top: 32px; display: grid; gap: 12px; }
+details { background: var(--surface); border-radius: 20px; box-shadow: var(--ombre); }
+summary { padding: 18px 48px 18px 22px; font-weight: 600; cursor: pointer; list-style: none; position: relative; min-height: 48px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 22px; top: 15px; font-size: 24px; color: var(--tronc); }
+details[open] summary::after { content: "–"; }
+details p { padding: 0 22px 20px; color: var(--encre-texte); }
+
+/* Dusk to night: the end of the day */
+/* No text here: only the sky turning to evening before the night. */
+.dusk { height: clamp(160px, 22vw, 260px); margin-top: 48px; background: linear-gradient(var(--fond), #fde3cf 30%, var(--crepuscule) 75%, #4a4f94 100%); }
+.night { position: relative; background: linear-gradient(#4a4f94, #1e3060 18%, var(--nuit) 46%); color: var(--nuit-encre); padding: 24px 24px 32px; }
+.night a:not(.btn) { color: var(--nuit-encre); }
+.moon { width: 230px; height: 230px; padding: 28px; margin: 0 auto 28px; border-radius: 50%; background: var(--halo); box-shadow: 0 0 70px 14px rgba(227, 241, 251, .28); }
+.moon svg { width: 100%; height: 100%; }
+.night .lead { color: var(--nuit-encre); margin-bottom: 28px; }
+.stars i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #fff; animation: twinkle 7s ease-in-out infinite alternate; }
+.stars i:nth-child(1) { left: 8%; top: 12%; } .stars i:nth-child(2) { left: 20%; top: 38%; animation-delay: -2s; } .stars i:nth-child(3) { left: 31%; top: 8%; animation-delay: -4s; }
+.stars i:nth-child(4) { left: 70%; top: 10%; animation-delay: -1s; } .stars i:nth-child(5) { left: 82%; top: 32%; animation-delay: -5s; } .stars i:nth-child(6) { left: 92%; top: 14%; animation-delay: -3s; }
+.stars i:nth-child(7) { left: 12%; top: 58%; animation-delay: -6s; } .stars i:nth-child(8) { left: 88%; top: 56%; animation-delay: -2.5s; } .stars i:nth-child(9) { left: 60%; top: 4%; animation-delay: -3.5s; }
+@keyframes twinkle { from { opacity: .25; } to { opacity: .95; } }
+footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top: 24px; border-top: 1px solid #2c4176; color: var(--nuit-douce); font-size: 15px; line-height: 22px; }
+.foot-row { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; }
+
+/* Wide screens: the menu link lands so the heading and all six cards fit on a laptop. */
+@media (min-width: 901px) {
+  #pros { --pad: 64px; }
+  .pros-head { max-width: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: end; }
+  .pros-head .label { grid-column: 1 / -1; }
+  .pros-head .lead { margin-top: 0; font-size: 17px; }
+  .pros-grid { margin-top: 24px; }
+  .pros-grid .card { padding: 20px; }
+  .pros-grid h3 { font-size: 18px; line-height: 24px; }
+  .pros-grid p { font-size: 15px; line-height: 22px; }
+}
+/* Low laptop windows: tighter still, so the professionals section stays on one screen. */
+@media (min-width: 901px) and (max-height: 760px) {
+  #pros { --pad: 40px; }
+  .pros-grid { margin-top: 16px; }
+  .pros-grid .card { padding: 16px 20px; }
+  .pros-foot { margin-top: 20px; padding-top: 16px; }
+}
+
+/* The program page */
+.doc-page { background: var(--fond); }
+.doc { max-width: 880px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 40px) 40px; }
+.doc h1 { font-size: clamp(34px, 4.4vw, 52px); }
+.doc h2 { font-size: clamp(26px, 3vw, 34px); margin: 56px 0 14px; }
+.doc h3 { margin-top: 28px; }
+.doc p { margin-bottom: 12px; }
+.doc .ticks { margin: 8px 0 0; }
+.status { padding: 14px 18px; border-radius: 16px; background: var(--halo); color: var(--encre-texte); font-size: 15px; line-height: 22px; margin-top: 20px; }
+.table-wrap { overflow-x: auto; margin: 8px 0 12px; }
+.doc table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 16px; overflow: hidden; box-shadow: var(--ombre); font-size: 16px; line-height: 22px; }
+.doc th, .doc td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+.doc thead th { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); }
+.doc tbody tr:last-child > * { border-bottom: none; }
+.pillar { display: grid; gap: 14px; margin: 8px 0 0; }
+.pillar dt { font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tronc); margin-bottom: 4px; }
+.pillar dd { margin: 0; }
+.families { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 12px; }
+.family { padding: 18px 20px; }
+.family h4 { margin: 0 0 8px; font: 600 17px/24px var(--sans); }
+.family ol { margin: 0; padding-left: 22px; color: var(--encre-texte); font-size: 15px; line-height: 22px; display: grid; gap: 4px; }
+.philo { margin-top: 56px; }
+.doc-cta { margin-top: 16px; }
+.doc-cta p { margin-bottom: 16px; }
+.doc-foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--ligne); color: var(--encre-douce); font-size: 15px; line-height: 22px; }
+.doc-foot a { color: var(--encre-douce); }
+
+/* One section at a time, like slides: each section fills the window with its content centred, and the
+   script glides from one to the next. A section taller than the window scrolls freely inside.
+   No CSS scroll snap: it pulls the page abruptly. */
+/* A section lands with its label just under the header, not after its top padding (menu links too). */
+.band { scroll-margin-top: calc(-4px - var(--pad)); }
+@media (min-width: 901px) and (min-height: 600px) {
+  /* From just under the header to the bottom of the window. */
+  .band { min-height: calc(100svh - 84px + var(--pad)); }
+  .who, .pain, .eval { align-content: center; }
+  .screens, .offer, .pros, .team, .faq { display: flex; flex-direction: column; justify-content: center; }
+  .faq { padding-top: var(--pad); }
+  /* Exercises: the text on the left, the six clips on the right, so the whole section fits a laptop. */
+  .moves { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr); gap: clamp(32px, 4vw, 64px); align-items: center; align-content: center; }
+  .moves-grid { margin-top: 0; gap: 16px; }
+  .move figcaption { font-size: 15px; line-height: 20px; }
+  /* The app screens never taller than half the window. */
+  .phone img { width: auto; height: min(44svh, 520px); margin-inline: auto; }
+  .phones { margin-top: 28px; }
+  .offer-grid { margin-top: 24px; }
+  .phone figcaption { text-align: center; }
+}
+/* Short laptop windows: the phone of the assessment is scaled down to stay whole on screen. */
+@media (min-width: 901px) and (min-height: 600px) and (max-height: 860px) {
+  .app-phone { zoom: .84; }
+}
+@media (max-width: 1100px) {
+  .pros-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .js .menu-toggle { display: block; }
+  .top.open { background: #fff; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+  .top.open .nav-links { display: flex; flex-direction: column; align-items: stretch; gap: 0; position: absolute; top: 100%; left: 0; right: 0; padding: 8px clamp(16px, 3vw, 40px) 16px; background: #fff; box-shadow: 0 12px 24px rgba(15, 33, 71, .08); }
+  .top.open .nav-link { padding: 14px 4px; font-size: 18px; border-bottom: 1px solid var(--ligne); }
+  .top.open .nav-link:last-child { border-bottom: 0; }
+  .who, .pain, .people { grid-template-columns: 1fr; }
+  .pain-card { max-width: 440px; }
+  .eval { grid-template-columns: 1fr; }
+  .moves-grid { grid-template-columns: 1fr 1fr; }
+  .offer-grid { grid-template-columns: 1fr 1fr; }
+  .goal { flex-direction: column; align-items: flex-start; }
+  .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 8px 16px 16px; }
+  .phone { flex: 0 0 62%; scroll-snap-align: center; }
+  .phone:nth-child(even) { margin-top: 0; }
+  /* Scene stays at the top while the four steps scroll under it. */
+  .water-grid { grid-template-columns: 1fr; gap: 0; margin-top: 24px; }
+  .water-stage { top: 64px; z-index: 2; }
+  .window { height: 38svh; --crest: 74%; --tree-h: 26svh; border-radius: 24px; }
+  .step { min-height: 50svh; justify-content: flex-start; padding-top: 40px; }
+}
+@media (max-width: 600px) {
+  .pros-grid { grid-template-columns: 1fr; }
+  .offer-grid, .families { grid-template-columns: 1fr; }
+  .sheet { border-radius: 32px 32px 0 0; }
+  .hero-text { padding-top: 84px; }
+  .brand { font-size: 18px; }
+  .app-title { font-size: 25px; line-height: 31px; }
+  .app-dot { width: 44px; height: 44px; }
+  .brand-name { flex-direction: column; gap: 2px; }
+  .brand-alt { font-size: 13px; }
+  .top { padding-inline: 12px 6px; gap: 8px; }
+  .top nav { gap: 10px; }
+  .btn-small { padding: 9px 12px; font-size: 14px; }
+  .menu-toggle { width: 40px; }
+  .menu-toggle span { left: 10px; right: 10px; }
+  .hero { --tree-h: 190px; --crest: 86%; min-height: max(100svh, 860px); }
+  /* Tree and phone side by side, both on the hill and inside the screen. */
+  .hero .crest { left: 41%; }
+  .hero-phone { left: calc(var(--tree-h) * .44); width: calc(var(--tree-h) * .42); }
+  .doc table { min-width: 560px; font-size: 15px; }
+  .hero .sun { top: 66%; right: 6%; }
+  .cloud.c3, .cloud.c4 { display: none; }
+  .cloud.c1 { width: 70%; left: -25%; }
+  .cloud.c2 { width: 60%; right: -22%; top: 42%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud, .sun, .sway, .stars i, .js .hero-text > *, .js .hero-phone { animation: none; }
+  .hint-on .app-btn, .hint-on .app-btn::after, .js .hint-on .tap-hint { animation: none; }
+  .js .tap-hint { opacity: 1; }
+  .reveal, .step, .btn, .to-page::after, .app-dot::before { transition: none; }
+}

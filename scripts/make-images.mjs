@@ -1,0 +1,82 @@
+// Draws the share images and icons into src/assets/share/ with a headless Chromium browser (Chrome or Edge).
+// Rerun only when the logo or the tagline changes. Set CHROME to the browser's path if it is not found.
+// Run: npm run images
+
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, join } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const assets = join(root, 'src/assets');
+const out = join(assets, 'share');
+const browser = [
+  process.env.CHROME,
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium',
+].find((p) => p && existsSync(p));
+if (!browser) throw new Error('No Chrome or Edge found. Set CHROME to its path.');
+
+const tree = readFileSync(join(assets, 'svg/tree-logo.svg'), 'utf8');
+const fontUrl = (f) => pathToFileURL(join(assets, 'fonts', f)).href;
+const land = (f) => pathToFileURL(join(assets, 'landscape', f)).href;
+const base = `<!doctype html><meta charset="utf-8"><style>
+@font-face { font-family: Fraunces; src: url(${fontUrl('Fraunces_500Medium.woff2')}); }
+html, body { margin: 0; overflow: hidden; }
+</style>`;
+
+function share(name, line1, line2) {
+  return `${base}<style>
+  .s { position: relative; width: 1200px; height: 630px; overflow: hidden; background: linear-gradient(#86cdfb, #e3f1fb 80%); font-family: Fraunces; color: #0f2147; }
+  .t { position: absolute; left: 0; top: 330px; width: 1200px; height: 862px; }
+  .t img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .cloud { position: absolute; left: 400px; top: 24px; width: 280px; }
+  .tree { position: absolute; left: 730px; top: 72px; width: 370px; height: 436px; }
+  .tree svg { width: 100%; height: 100%; }
+  .text { position: absolute; left: 72px; top: 150px; width: 660px; }
+  .name { font-size: 40px; color: #004aad; margin-bottom: 22px; }
+  .name small { font-size: 28px; color: #5074ff; }
+  h1 { font-size: 66px; line-height: 1.1; font-weight: 500; margin: 0; }
+  </style><div class="s">
+  <img class="cloud" src="${land('cloud-1.webp')}">
+  <div class="t"><img src="${land('hills.webp')}"><img src="${land('lake.webp')}"><img src="${land('meadow.webp')}"></div>
+  <div class="tree">${tree}</div>
+  <div class="text"><div class="name">${name}</div><h1>${line1}<br>${line2}</h1></div>
+  </div>`;
+}
+
+function icon(size) {
+  const pad = Math.round(size * 0.1);
+  return `${base}<style>body { width: ${size}px; height: ${size}px; background: #e3f1fb; }
+  svg { position: absolute; left: ${pad}px; top: ${pad}px; width: ${size - 2 * pad}px; height: ${size - 2 * pad}px; }</style>${tree}`;
+}
+
+function shot(name, html, w, h) {
+  const tmp = join(out, '_tmp.html');
+  const target = join(out, name);
+  rmSync(target, { force: true });
+  writeFileSync(tmp, html);
+  execFileSync(browser, ['--headless', '--no-sandbox', '--disable-gpu', `--user-data-dir=${join(tmpdir(), 'bth-browser')}`, '--hide-scrollbars', '--force-device-scale-factor=1', `--window-size=${w},${h}`, '--virtual-time-budget=3000', `--screenshot=${target}`, pathToFileURL(tmp).href], { stdio: 'ignore', timeout: 90000 });
+  // Some launchers return before the picture is written, so wait for the file.
+  const end = Date.now() + 60000;
+  while (!existsSync(target)) {
+    if (Date.now() > end) throw new Error(`No picture for ${name}`);
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 300);
+  }
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1500);
+  rmSync(tmp);
+}
+
+mkdirSync(out, { recursive: true });
+shot('og-fr.png', share('Crescendos <small>(BackToHealth)</small>', 'Mieux vivre avec', 'la douleur au dos'), 1200, 630);
+shot('og-en.png', share('BackToHealth <small>/ Crescendos</small>', 'Live better', 'with back pain'), 1200, 630);
+shot('icon-512.png', icon(512), 512, 512);
+shot('apple-touch-icon.png', icon(180), 180, 180);
+shot('icon-48.png', icon(48), 48, 48);
+console.log('Images written to', out);

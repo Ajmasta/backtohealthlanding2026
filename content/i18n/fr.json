@@ -1,0 +1,420 @@
+{
+  "lang": "fr",
+  "meta": {
+    "title": "Crescendos (BackToHealth) · Mieux vivre avec la douleur au dos",
+    "description": "Mal de dos depuis des mois ? Crescendos t’aide à reprendre confiance en ton dos : un plan fait pour toi, des exercices guidés et une douleur toujours respectée.",
+    "locale": "fr_CA",
+    "localeAlt": "en_CA",
+    "imageAlt": "L’arbre de Crescendos sur une colline, avec les mots : Mieux vivre avec la douleur au dos",
+    "mailSubject": "Me prévenir du lancement de Crescendos",
+    "proSubject": "Crescendos : je suis professionnel de la santé"
+  },
+  "nav": {
+    "pros": "Professionnels",
+    "faq": "Questions",
+    "cta": "Me prévenir",
+    "otherLang": "EN",
+    "otherLangLabel": "Read this page in English",
+    "home": "Crescendos, accueil",
+    "program": "Le programme",
+    "menu": "Menu",
+    "brandAlt": "(BackToHealth)",
+    "brand": "Crescendos",
+    "brandFull": "Crescendos (BackToHealth)",
+    "evaluation": "Ton évaluation",
+    "exercises": "Tes exercices"
+  },
+  "hero": {
+    "label": "L’application pour le mal de dos chronique",
+    "title": "Reprends ce que ton mal de dos t’a enlevé, un petit pas à la fois.",
+    "body": "Crescendos part de ton dos, pas d’un programme générique : une évaluation en 5 minutes, des exercices guidés et un plan qui ralentit dès que ta douleur monte.",
+    "cta": "Me prévenir du lancement",
+    "soon": "Bientôt sur",
+    "appStore": "l’App Store",
+    "googlePlay": "Google Play",
+    "phoneAlt": "L’application sur un téléphone : l’arbre sur la colline et le programme du jour"
+  },
+  "who": {
+    "label": "Tu te reconnais ?",
+    "title": "Ton dos te fait mal depuis des mois. Peut-être des années.",
+    "body": "Tu as tout entendu, beaucoup essayé. Et tu hésites encore avant de te pencher, de porter, de conduire longtemps. Ce que tu veux, c’est retrouver ces gestes sans y penser.",
+    "fact": "Tu n’es pas un cas à part : environ 9 fois sur 10, le mal de dos n’a pas de cause précise que l’on puisse identifier.",
+    "factSource": "Source : OMS, 2023",
+    "forTitle": "Crescendos est fait pour toi si",
+    "for": [
+      "Tu es adulte, et ton dos te fait mal depuis des mois.",
+      "Aucune cause grave ne l’explique : c’est une lombalgie non spécifique.",
+      "Tu veux avancer à ton rythme, sans pression."
+    ]
+  },
+  "water": {
+    "label": "Ton quotidien",
+    "title": "Un petit plan par jour. Pas une montagne.",
+    "body": "Lecture, mouvement, méditation, marche : quelques minutes chacun, et tu fais ce que tu peux. Chaque activité terminée arrose ton arbre, pour voir tes efforts s’additionner.",
+    "end": "Ton arbre ne fane jamais. Un jour manqué n’efface rien : tu reprends où tu en étais.",
+    "steps": [
+      {
+        "label": "Lecture",
+        "title": "Comprendre, pour ne plus avoir peur",
+        "body": "23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie. Quand on comprend sa douleur, on ose bouger à nouveau."
+      },
+      {
+        "label": "Mouvement",
+        "title": "Bouger sans crainte",
+        "body": "5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour ton dos, qui s’ajustent à ta douleur."
+      },
+      {
+        "label": "Méditation",
+        "title": "Souffler quand la douleur pèse",
+        "body": "3 à 30 minutes de pleine conscience, pour que la douleur prenne moins de place dans ta journée."
+      },
+      {
+        "label": "Marche",
+        "title": "Reprendre l’habitude de marcher",
+        "body": "À ton rythme, avec un objectif par semaine. Le yoga ou le vélo comptent aussi."
+      }
+    ]
+  },
+  "pain": {
+    "label": "Ta douleur décide",
+    "title": "Jamais plus que ce que ton dos accepte.",
+    "body": "La peur d’aggraver les choses, c’est souvent ce qui fait arrêter. Ici, tu indiques ta douleur après chaque série, et le programme s’ajuste aussitôt. Essaie :",
+    "sliderLabel": "Ta douleur pendant cette série ?",
+    "easyTitle": "Ça va bien.",
+    "easyBody": "Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.",
+    "holdTitle": "C’est la limite.",
+    "holdBody": "Tu peux continuer. La prochaine fois, même niveau.",
+    "stopTitle": "Ta douleur dépasse 3/10.",
+    "stopBody": "Arrête cet exercice : c’est la bonne décision. La prochaine fois, on repart plus doucement. Un moment de réconfort de 3 minutes t’attend."
+  },
+  "screens": {
+    "label": "L’application",
+    "title": "Simple, même les jours difficiles.",
+    "s1Title": "Ta journée",
+    "s1Body": "Un plan court. Rien à rattraper.",
+    "s2Title": "Ton parcours",
+    "s2Body": "Une leçon à la fois.",
+    "s3Title": "Ton esprit",
+    "s3Body": "Tu choisis le temps que tu as.",
+    "s4Title": "Tes progrès",
+    "s4Body": "Ce qui redevient possible, avec tes mots.",
+    "alt1": "Écran Aujourd’hui : un arbre sur une colline et un programme de quatre activités",
+    "alt2": "Écran du parcours de lecture : des leçons reliées par un chemin sur les collines",
+    "alt3": "Écran de méditation sur fond de nuit : choix de 5, 10 ou 15 minutes",
+    "alt4": "Écran des progrès : jardiner, porter ses enfants et conduire, chacun noté sur 10"
+  },
+  "pros": {
+    "label": "Physiothérapeutes et professionnels de la santé",
+    "title": "Vos patients continuent entre vos rendez‑vous. Et après.",
+    "body": "Entre deux séances, Crescendos guide votre patient chaque jour selon vos principes : dépistage, progression dosée par la douleur, éducation. Sans remplacer votre suivi.",
+    "sourcesTitle": "Nos sources",
+    "ctaTitle": "Essayez-la avec vos patients.",
+    "ctaBody": "Nous cherchons des cliniciens pour relire le contenu et la proposer à leurs patients.",
+    "cta": "Écrire à l’équipe",
+    "programLink": "Contenu clinique et sources",
+    "cards": [
+      {
+        "title": "Le dépistage avant tout",
+        "body": "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences, et le programme ne démarre pas."
+      },
+      {
+        "title": "Une progression que vous reconnaîtrez",
+        "body": "Au-dessus de 3/10 : arrêt, niveau inférieur. Séance à 2/10 ou moins : une répétition de plus, jusqu’à 12, puis niveau suivant."
+      },
+      {
+        "title": "Conforme aux guides de pratique",
+        "body": "Exercice, éducation à la douleur, pleine conscience et marche, réunis comme le recommandent les guides récents."
+      },
+      {
+        "title": "Une transparence complète",
+        "body": "Pas de diagnostic, pas de traitement, pas encore d’étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne."
+      }
+    ],
+    "sources": [
+      {
+        "title": "OMS : ligne directrice sur la lombalgie chronique primaire de l’adulte (2023)",
+        "url": "https://www.who.int/publications/i/item/9789240081789"
+      },
+      {
+        "title": "Aperçu des guides de pratique sur la lombalgie non spécifique (European Spine Journal, 2018)",
+        "url": "https://doi.org/10.1007/s00586-018-5673-2"
+      },
+      {
+        "title": "Thérapies basées sur la méditation et lombalgie chronique, revue de 12 essais (Pain Medicine, 2022)",
+        "url": "https://doi.org/10.1093/pm/pnac037"
+      },
+      {
+        "title": "Type d’exercice et lombalgie chronique, revue (Journal of Physiotherapy, 2021)",
+        "url": "https://doi.org/10.1016/j.jphys.2021.09.004"
+      }
+    ]
+  },
+  "team": {
+    "label": "L’équipe",
+    "title": "Trois cofondateurs engagés, à Montréal.",
+    "body": "La médecine, le développement logiciel et la science des données, réunis pour aider à mieux vivre avec le mal de dos.",
+    "people": [
+      {
+        "name": "Pierre-Henri Bao Heitz",
+        "title": "Cofondateur · Sciences de la santé",
+        "bio": "Médecin, diplômé en physiothérapie. Il a conçu le programme de soins de Crescendos avec une approche scientifique et méthodique, fondée sur les études récentes sur la lombalgie chronique. Il en valide chaque contenu."
+      },
+      {
+        "name": "Adrien Moevus",
+        "title": "Cofondateur · Développement de l’application",
+        "bio": "Étudiant en médecine et développeur. Il a conçu l’architecture de l’application mobile et l’a programmée, de l’évaluation au suivi quotidien. Il a aussi rédigé les méditations guidées."
+      },
+      {
+        "name": "Antoine Moevus",
+        "title": "Cofondateur · Informatique, IA et données",
+        "bio": "Doctorant en informatique à l’Université de Montréal (DIRO). Expert en intelligence artificielle et en gestion des données, il a apporté les orientations techniques de Crescendos : la protection des données, la mesure des résultats et l’usage de l’IA."
+      }
+    ]
+  },
+  "faq": {
+    "label": "Questions",
+    "title": "Tes questions, nos réponses.",
+    "items": [
+      {
+        "q": "Ça remplace mon médecin ou mon physio ?",
+        "a": "Non. L’application complète ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé."
+      },
+      {
+        "q": "Et si j’ai trop mal, ou pas envie ?",
+        "a": "Chaque activité a un bouton « Pas aujourd’hui ». Les poussées font partie du chemin : pendant 3 jours, le plan s’allège. Ton arbre et tes progrès sont protégés."
+      },
+      {
+        "q": "Quand sort l’application ?",
+        "a": "Elle est en test sur iPhone et Android. Écris-nous : on te prévient au lancement."
+      },
+      {
+        "q": "Combien ça coûte ?",
+        "a": "Le prix n’est pas encore fixé. Tu le sauras clairement avant le lancement."
+      },
+      {
+        "q": "En quelle langue ?",
+        "a": "Français et anglais, selon ton téléphone. Tu peux changer quand tu veux."
+      },
+      {
+        "q": "Et mes données ?",
+        "a": "Protégées, jamais vendues. Tu peux les exporter ou les supprimer à tout moment. La recherche est facultative et se fait sous un code, jamais avec ton nom ni ton courriel."
+      }
+    ]
+  },
+  "end": {
+    "title": "Ton arbre t’attend.",
+    "body": "Écris-nous : on te prévient dès que tu peux le planter.",
+    "cta": "Me prévenir du lancement"
+  },
+  "footer": {
+    "disclaimer": "Crescendos ne remplace pas l’avis d’un professionnel de la santé.",
+    "place": "Montréal, Québec",
+    "contact": "Nous écrire"
+  },
+  "offer": {
+    "label": "Le programme",
+    "title": "8 à 12 semaines pour reprendre confiance. Ensuite, on reste là.",
+    "body": "Quatre programmes d’introduction t’apprennent à comprendre ton dos, à bouger, à méditer et à marcher. Puis l’application continue avec toi, aussi longtemps que tu veux.",
+    "goalTitle": "Et après ? Tu gardes tes outils.",
+    "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche. Et tu refais tes tests pour voir le chemin parcouru.",
+    "more": "Le programme en détail",
+    "cards": [
+      {
+        "tag": "Comprendre",
+        "dur": "4 semaines",
+        "body": "23 leçons de 5 minutes pour ne plus craindre ta douleur."
+      },
+      {
+        "tag": "Bouger",
+        "dur": "8 à 12 semaines",
+        "body": "Des exercices progressifs qui respectent ta douleur, 2 à 3 fois par semaine."
+      },
+      {
+        "tag": "Méditer",
+        "dur": "8 à 11 semaines",
+        "body": "Apprendre à vivre avec la douleur, plutôt que lutter contre elle."
+      },
+      {
+        "tag": "Marcher",
+        "dur": "8 semaines",
+        "body": "Un objectif par semaine, à partir de ce que tu fais déjà."
+      }
+    ]
+  },
+  "program": {
+    "meta": {
+      "title": "Le programme en détail · Crescendos (BackToHealth)",
+      "description": "Exercices et dosage, 23 leçons, méditation et marche : le contenu de Crescendos, pour les patients et les professionnels de la santé."
+    },
+    "otherLang": "EN",
+    "otherLangLabel": "Read this page in English",
+    "home": "Retour à l’accueil",
+    "label": "Le programme en détail",
+    "title": "Ce que contient Crescendos, pas à pas.",
+    "lead": "Pour les curieux et les professionnels de la santé : l’évaluation, les exercices, les leçons, la méditation et la marche, tels qu’ils sont dans l’application.",
+    "status": "Contenu clinique en cours de validation par notre médecin, diplômé en physiothérapie. Il peut encore changer.",
+    "glanceTitle": "En un coup d’œil",
+    "colPillar": "Volet",
+    "colLength": "Durée",
+    "colRhythm": "Fréquence",
+    "colSession": "Par séance",
+    "g1": [
+      "Éducation",
+      "23 leçons, en 4 semaines environ",
+      "1 leçon par jour actif",
+      "Environ 5 min"
+    ],
+    "g2": [
+      "Exercices",
+      "8 à 12 semaines",
+      "2 à 3 séances par semaine",
+      "5 à 15 min"
+    ],
+    "g3": [
+      "Méditation",
+      "8 à 11 semaines",
+      "Presque chaque jour",
+      "10 à 30 min, ou 3 min de réconfort"
+    ],
+    "g4": [
+      "Marche",
+      "8 semaines, puis à son rythme",
+      "Un objectif par semaine",
+      "La durée qu’on veut"
+    ],
+    "evalTitle": "Au départ : une évaluation de 5 minutes",
+    "eval": [
+      "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences, et le programme ne démarre pas.",
+      "La douleur au repos, de 0 à 10.",
+      "4 tests de mouvement (flexion, extension, rotations droite et gauche), avec la douleur ressentie. Ils fixent les exercices de départ et leur niveau.",
+      "1 à 3 activités à retrouver, notées de 0 à 10 (échelle fonctionnelle spécifique au patient).",
+      "Le rythme : un peu chaque jour, des jours légers et d’autres actifs, ou quelques jours choisis."
+    ],
+    "exTitle": "Exercices : 8 à 12 semaines",
+    "familiesTitle": "Les exercices, du plus facile au plus exigeant",
+    "families": [
+      "Extension lombaire",
+      "Flexion",
+      "Rotation",
+      "Stabilisation du tronc",
+      "Haut du corps",
+      "Squat",
+      "Fente",
+      "Hanches"
+    ],
+    "eduTitle": "Éducation : 23 leçons en 4 semaines environ",
+    "medTitle": "Méditation : 8 à 11 semaines",
+    "medDaily": "Entre les séances : retrouver cet état quelques instants, de 30 secondes à 2 minutes, sans effort.",
+    "walkTitle": "Marche : un programme de 8 semaines",
+    "followTitle": "Le suivi",
+    "follow": [
+      "Les activités choisies sont réévaluées environ toutes les 2 semaines.",
+      "Les tests de mouvement sont refaits environ toutes les 4 semaines, pour comparer.",
+      "La douleur est suivie dans le temps, avec un résumé de la semaine.",
+      "Pendant une poussée, 3 jours allégés : pas d’exercices, du réconfort et de la marche douce.",
+      "Les données sont exportables à tout moment."
+    ],
+    "philoTitle": "Une boîte à outils, pas une prise en charge totale",
+    "philoBody": "Crescendos donne les outils et les premiers pas. Le programme se suffit à lui-même ; aller plus loin ailleurs (Pilates, méditation, suivi en clinique) est encore mieux. La personne reste maître de son parcours.",
+    "glanceNote": "Ce sont les durées des programmes d’introduction. L’application continue ensuite, sans limite.",
+    "afterTitle": "Après les programmes d’introduction",
+    "after": [
+      "Les exercices continuent de s’adapter, avec de nouveaux défis quand un niveau devient facile.",
+      "La méditation continue avec la pratique construite, de 10 à 30 minutes.",
+      "La marche garde son rythme, ou monte jusqu’à environ 2 heures par semaine.",
+      "Les leçons restent disponibles, et les tests de mouvement peuvent être refaits.",
+      "Aller plus loin ailleurs (Pilates, yoga, méditation, suivi en clinique) est encouragé."
+    ],
+    "ideaLabel": "L’idée",
+    "progressLabel": "Comment on progresse",
+    "exampleLabel": "Exemple",
+    "exIdea": "Bouger sans peur, guidé par la douleur. Les tests de mouvement fixent les exercices de départ : extension, flexion, rotation, stabilisation du tronc, puis force (haut du corps, squat, fente, hanches). Jusqu’à 3/10, la douleur est acceptable : elle ne veut pas dire dommage.",
+    "exProgress": "3 séries de 10 à 12 répétitions. Séance à 2/10 ou moins : une répétition de plus ; à 12, niveau suivant. Au-dessus de 3/10 : arrêt, et un niveau plus bas. Quand le dernier niveau d’une famille devient facile, un exercice plus exigeant d’une autre famille est proposé.",
+    "exExample": "Pont fessier : 3 × 10, puis 3 × 11, puis 3 × 12, puis Bird-dog à 3 × 10.",
+    "eduIdea": "Comprendre la douleur chronique pour reprendre confiance : elle est réelle, mais ne veut pas dire que le dos est abîmé. Puis l’hygiène de vie, la gestion de la douleur et l’approche d’acceptation et d’engagement.",
+    "eduProgress": "Une leçon de 5 minutes par jour actif, dans l’ordre, avec une question à chaque étape.",
+    "medIdea": "Vivre avec la douleur plutôt que lutter contre elle. Une pleine conscience laïque, pratiquée en séance, puis utile dans la journée.",
+    "medProgress": "Une séance guidée par pratique, puis des séances libres avec de courts rappels. 10 minutes la semaine 1, 15 ensuite, jusqu’à 30 au choix.",
+    "medThemesTitle": "Les grands thèmes",
+    "medThemes": [
+      "La respiration, et revenir quand l’esprit part",
+      "Le scan du corps, de la tête aux pieds",
+      "Faire connaissance avec son dos",
+      "Une conscience plus ouverte",
+      "Bienveillance : se parler comme à un ami",
+      "Ce qui compte : arrêter de lutter, les pensées comme des nuages, ses valeurs",
+      "La marche en pleine conscience (facultative)",
+      "Construire sa propre pratique"
+    ],
+    "walkIdea": "Reprendre l’habitude de marcher. Un objectif en minutes par semaine, jamais par jour : un mauvais jour se rattrape, ou pas.",
+    "walkProgress": "On part de ce que la personne marche déjà (au moins 15 minutes par semaine) et on vise environ le double en 8 semaines, de 45 à 125 minutes : environ 10 % de plus par semaine. Douleur au-dessus de 3/10 : même objectif. Deux semaines de suite : on marche autant que possible sous 3/10, et on repart de là.",
+    "walkExample": "Départ à 30 minutes par semaine : 30, 33, 37, 40, 45, 49, 54, puis 60 minutes.",
+    "eduListTitle": "Les leçons"
+  },
+  "eval": {
+    "label": "Ton point de départ",
+    "title": "Un plan fait pour ton dos, pas pour tous les dos.",
+    "body": "Les programmes génériques ignorent où tu en es. En 5 minutes, Crescendos regarde comment ton dos bouge et ce que tu veux retrouver. Ton plan part de là.",
+    "steps": [
+      {
+        "title": "Ta sécurité d’abord",
+        "body": "8 questions repèrent les signes qui demandent un médecin. Tu commences en confiance."
+      },
+      {
+        "title": "Ton dos, tel qu’il est aujourd’hui",
+        "body": "4 mouvements guidés en vidéo. Tu montres jusqu’où tu vas et ce que tu ressens : tes exercices sont choisis à partir de là."
+      },
+      {
+        "title": "Ce qui compte pour toi",
+        "body": "Jardiner, porter tes enfants, conduire : tu choisis 1 à 3 activités à retrouver. Ce sont elles qui mesurent tes progrès."
+      }
+    ],
+    "videoAlt": "Démonstration : debout, se pencher doucement vers l’avant",
+    "rangeAlt": "La position de flexion choisie avec le curseur",
+    "result": "Position {n} sur 10, douleur {p}/10 : tes exercices seraient choisis à partir de là.",
+    "tryLabel": "Essaie : c’est le vrai test de l’application",
+    "resultUnset": "Position {n} sur 10. Indique ta douleur pour continuer.",
+    "stepWatch": "Étape 1 : regarder le mouvement",
+    "stepRange": "Étape 2 : indiquer ta position et ta douleur"
+  },
+  "moves": {
+    "label": "Tes exercices",
+    "title": "Tu sais toujours exactement quoi faire.",
+    "body": "Fini les feuilles d’exercices qu’on ne comprend plus une fois à la maison. Chaque mouvement est montré en 3D, du plus doux au plus exigeant. Tu passes au niveau suivant quand ton dos est prêt."
+  },
+  "app": {
+    "step": "Flexion · 1 sur 4",
+    "name": "Flexion",
+    "intro": "Debout, penche-toi vers l’avant doucement, aussi loin que c’est confortable.",
+    "watch": "Regarde le mouvement, puis fais-le une fois, doucement. Arrête-toi si ça fait trop mal.",
+    "didIt": "Je l’ai fait",
+    "rangeTitle": "Jusqu’où es-tu allé·e ?",
+    "rangeHint": "Fais glisser jusqu’à l’image la plus proche de ta position la plus loin.",
+    "painTitle": "Ta douleur pendant ce mouvement",
+    "less": "Moins loin",
+    "more": "Plus loin",
+    "painA11y": "Niveau de douleur, de 0 à 10",
+    "pain": {
+      "unset": "Touche l’échelle pour répondre",
+      "bands": [
+        "Aucune douleur",
+        "Douleur légère",
+        "Douleur modérée",
+        "Douleur forte"
+      ],
+      "meaning": [
+        "Aucune douleur",
+        "Très légère, à peine perceptible",
+        "Légère, gênante par moments",
+        "Légère, présente mais supportable",
+        "Difficile à ignorer",
+        "Elle prend beaucoup de place",
+        "Elle gêne ce que tu fais",
+        "Difficile de te concentrer",
+        "Elle te limite beaucoup",
+        "À peine supportable",
+        "La pire douleur imaginable"
+      ]
+    }
+  }
+}

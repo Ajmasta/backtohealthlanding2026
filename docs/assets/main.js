@@ -8,6 +8,106 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // One section at a time (wide screens): one scroll gesture glides the page to the next section, slowly,
+  // starting and landing softly, instead of leaving the page between two sections.
+  // A section taller than the window scrolls normally until its end. Touch and the scrollbar stay free.
+  var slides = matchMedia('(min-width: 901px) and (min-height: 600px)');
+  var stops = [].slice.call(document.querySelectorAll('.hero, .band, .night'));
+  var gliding = false, lastWheel = 0, pushed = 0, free = false, frame = 0;
+  function stopAt(el) {
+    var r = el.getBoundingClientRect();
+    if (el.classList.contains('night')) return r.bottom + scrollY - innerHeight;
+    if (el.classList.contains('hero')) return 0;
+    return r.top + scrollY - 88 - parseFloat(getComputedStyle(el).scrollMarginTop);
+  }
+  // Slow start, slow landing.
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function glide(to) {
+    to = Math.max(0, Math.min(to, document.documentElement.scrollHeight - innerHeight));
+    var from = scrollY, distance = to - from;
+    if (Math.abs(distance) < 2) return;
+    cancelAnimationFrame(frame);
+    if (reduce) { scrollTo({ top: to, behavior: 'instant' }); return; }
+    // Longer trips take longer, within reason: about a second for one section.
+    var length = Math.max(700, Math.min(1400, 550 + Math.abs(distance) * .6)), start = performance.now();
+    gliding = true;
+    (function step(now) {
+      var t = Math.min(1, (now - start) / length);
+      scrollTo({ top: from + distance * ease(t), behavior: 'instant' });
+      if (t < 1) frame = requestAnimationFrame(step); else gliding = false;
+    })(start);
+  }
+  function neighbour(down) {
+    var current = 0;
+    stops.forEach(function (el, i) { if (stopAt(el) <= scrollY + 4) current = i; });
+    // A good deal more of this section below (or above): let it scroll. A small remainder is not worth a stop.
+    var room = innerHeight * .2;
+    if (down) return stops[current].getBoundingClientRect().bottom - innerHeight > room ? null : stops[current + 1] || null;
+    var above = scrollY - stopAt(stops[current]);
+    if (above > room) return null;
+    var target = above > 4 ? stops[current] : stops[current - 1] || null;
+    return target;
+  }
+  addEventListener('wheel', function (e) {
+    if (reduce || !slides.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+    // A gesture is a run of wheel events with no pause; a trackpad keeps sending them long after the fingers lift.
+    var fresh = e.timeStamp - lastWheel > 160;
+    lastWheel = e.timeStamp;
+    if (fresh) { pushed = 0; free = false; }
+    // One gesture moves one section: the rest of it is swallowed, during the glide and after.
+    if (gliding || pushed === Infinity) { e.preventDefault(); return; }
+    // A gesture that scrolled inside a tall section keeps doing only that.
+    if (free) return;
+    var target = neighbour(e.deltaY > 0);
+    if (!target) { free = true; return; }
+    e.preventDefault();
+    // A light brush of the wheel is not a decision to leave the section.
+    pushed += e.deltaY * (e.deltaMode ? 32 : 1);
+    if (Math.abs(pushed) < 24) return;
+    pushed = Infinity;
+    glide(stopAt(target));
+  }, { passive: false });
+  // The keyboard moves the same way.
+  addEventListener('keydown', function (e) {
+    if (reduce || !slides.matches || e.altKey || e.ctrlKey || e.metaKey || /^(INPUT|TEXTAREA|SELECT|BUTTON|SUMMARY|VIDEO)$/.test(e.target.tagName)) return;
+    var down = e.key === 'PageDown' || e.key === 'ArrowDown' || (e.key === ' ' && !e.shiftKey);
+    var up = e.key === 'PageUp' || e.key === 'ArrowUp' || (e.key === ' ' && e.shiftKey);
+    if (!down && !up) return;
+    var target = neighbour(down);
+    if (!target) return;
+    e.preventDefault();
+    if (!gliding) glide(stopAt(target));
+  });
+  // Links to a section of this page glide there too.
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href^="#"]');
+    var el = link && link.getAttribute('href').length > 1 && document.getElementById(link.getAttribute('href').slice(1));
+    if (!el || reduce || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    history.pushState(null, '', link.getAttribute('href'));
+    glide(stops.indexOf(el) >= 0 ? stopAt(el) : el.getBoundingClientRect().top + scrollY - 88);
+  });
+
+  // Small screens: the menu button opens the section links; choosing one, or Escape, closes it.
+  var toggle = top.querySelector('.menu-toggle');
+  function setMenu(open) {
+    top.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  }
+  toggle.addEventListener('click', function () { setMenu(!top.classList.contains('open')); });
+  top.querySelectorAll('.nav-link').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // The menu underlines the section in view.
+  var links = [].slice.call(top.querySelectorAll('.nav-link[href^="#"]'));
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+
   // Sections rise as they arrive (260 ms, no bounce).
   var revealer = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
@@ -60,7 +160,24 @@
     }, 780);
   }
 
-  // Hero: planting. The drop lands on the empty hill and the tree grows, one small overshoot.
+  // Hero: the tree and the phone take the room the text leaves above the hill, whatever the window.
+  (function () {
+    var scene = document.querySelector('[data-scene="hero"]'), text = scene && scene.querySelector('.hero-text');
+    if (!text) return;
+    var wide = matchMedia('(min-width: 601px)');
+    function fit() {
+      if (!wide.matches) { scene.style.removeProperty('--tree-h'); return; }
+      var words = text.lastElementChild.getBoundingClientRect().bottom - text.firstElementChild.getBoundingClientRect().top;
+      // From under the header to the crest of the hill, less the text and some air; the phone is 1.1 tree tall.
+      var room = (scene.offsetHeight * .86 - 96 - words - 56) / 1.1;
+      scene.style.setProperty('--tree-h', Math.round(Math.max(170, Math.min(room, 480))) + 'px');
+    }
+    fit();
+    addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
+
+  // Hero: planting. The drop lands on the empty hill, the tree springs up from the ground and settles, then sways.
   var hero = document.querySelector('[data-scene="hero"]');
   if (!reduce && hero.animate) {
     var heroTree = hero.querySelector('.tree-wrap');
@@ -68,12 +185,42 @@
     setTimeout(function () {
       fallingDrop(hero, '#37b5ff', function () {
         heroTree.animate([
-          { transform: 'scale(0)' },
-          { transform: 'scale(1.05)', offset: .75 },
+          { transform: 'scale(0, 0)' },
+          { transform: 'scale(.55, .8)', offset: .35 },
+          { transform: 'scale(1.1, 1.06)', offset: .65 },
+          { transform: 'rotate(-2deg) scale(.97, .99)', offset: .82 },
+          { transform: 'rotate(1deg) scale(1.01)', offset: .92 },
           { transform: 'scale(1)' }
-        ], { duration: 1200, delay: 120, easing: 'cubic-bezier(.2, .8, .3, 1)', fill: 'forwards' });
+        ], { duration: 1600, delay: 80, easing: 'cubic-bezier(.25, .8, .35, 1)', fill: 'forwards' }).onfinish = settle;
       });
-    }, 350);
+    }, 300);
+  }
+
+  // Once planted, the tree lives quietly in its corner: an uneven breeze (in CSS) and, now and then, a leaf
+  // that lets go and drifts down. Only while the hero is on screen.
+  var LEAVES = ['#59dee7', '#37b5ff', '#5074ff', '#8fd9a8'];
+  function settle() {
+    heroTree.classList.add('alive');
+    var visible = true, timer;
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(hero);
+    (function next() {
+      timer = setTimeout(function () { if (visible && !document.hidden) leaf(); next(); }, 3500 + Math.random() * 4000);
+    })();
+  }
+  function leaf() {
+    var el = document.createElement('div');
+    el.className = 'leaf';
+    el.style.color = LEAVES[Math.floor(Math.random() * LEAVES.length)];
+    el.style.left = 25 + Math.random() * 50 + '%';
+    el.style.top = 18 + Math.random() * 30 + '%';
+    heroTree.appendChild(el);
+    var side = Math.random() < .5 ? -1 : 1, fall = heroTree.offsetHeight * (.45 + Math.random() * .2);
+    el.animate([
+      { transform: 'translate(0, 0) rotate(0deg)', opacity: 0 },
+      { transform: 'translate(' + side * 14 + 'px, ' + fall * .25 + 'px) rotate(' + side * 70 + 'deg)', opacity: 1, offset: .15 },
+      { transform: 'translate(' + side * -6 + 'px, ' + fall * .55 + 'px) rotate(' + side * -30 + 'deg)', opacity: 1, offset: .55 },
+      { transform: 'translate(' + side * 30 + 'px, ' + fall + 'px) rotate(' + side * 110 + 'deg)', opacity: 0 }
+    ], { duration: 4200 + Math.random() * 1500, easing: 'ease-in-out' }).onfinish = function () { el.remove(); };
   }
 
   // Water: each activity reached sends its drop, and the tree moves to the next of its four stages.
@@ -81,6 +228,8 @@
   var stages = [].slice.call(win.querySelectorAll('.stage'));
   var steps = [].slice.call(document.querySelectorAll('.step'));
   var reached = -1;
+  // One color per activity, as in the app; the closing line sends no drop.
+  var STEP_COLORS = ['#59dee7', '#37b5ff', '#5074ff', '#8fd9a8'];
 
   function setStage(n) {
     stages.forEach(function (s) { s.classList.toggle('on', +s.dataset.stage === n); });
@@ -88,7 +237,7 @@
   function show(index, animate) {
     steps.forEach(function (s, i) { s.classList.toggle('on', i === index); });
     var stage = Math.min(index, 3) + 1;
-    var color = steps[index].dataset.color;
+    var color = STEP_COLORS[index];
     if (animate && color && win.animate) fallingDrop(win, color, function () { setStage(stage); });
     else setStage(stage);
   }
@@ -106,21 +255,116 @@
     steps.forEach(function (s) { picker.observe(s); });
   }
 
-  // Pain: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
+  // Videos load only when they come into view, and pause when they leave it. With reduced motion they
+  // stay on their still picture, with controls to play them on demand.
+  var player = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src) v.src = v.dataset.src;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      } else if (v.src) v.pause();
+    });
+  }, { threshold: .25 });
+  document.querySelectorAll('.lazy-video').forEach(function (v) {
+    if (reduce) { v.src = v.dataset.src; v.controls = true; v.loop = false; }
+    else player.observe(v);
+  });
+
+  // The pain scale, as in the app (PainScale): a disc with the number in its clinical colour, the band
+  // and what the number means. `start` null means no answer yet: no thumb until the scale is touched.
   var COLORS = ['#3db86b', '#68c062', '#89c855', '#a6cf45', '#d5cd41', '#ffc93c', '#ffaf40', '#ff9443', '#fb824a', '#f76f4e', '#f25a52'];
-  var range = document.getElementById('pain-range');
-  var out = document.getElementById('pain-out');
+  var SCALE = window.PAIN.scale;
+  function painScale(root, start, onChange) {
+    var input = root.querySelector('input');
+    var answered = start !== null;
+    function show() {
+      var v = +input.value;
+      root.classList.toggle('unset', !answered);
+      root.style.setProperty('--dot', answered ? COLORS[v] : '');
+      root.querySelector('.pscale-n').textContent = answered ? v : '?';
+      root.querySelector('.pscale-band').textContent = answered ? SCALE.bands[v === 0 ? 0 : v <= 3 ? 1 : v <= 6 ? 2 : 3] : SCALE.unset;
+      root.querySelector('.pscale-meaning').textContent = answered && v > 0 ? SCALE.meaning[v] : '';
+      onChange(answered ? v : null);
+    }
+    function answer() { answered = true; show(); }
+    input.value = answered ? start : 0;
+    input.addEventListener('input', answer);
+    // A first touch counts even on the current value, as in the app.
+    input.addEventListener('pointerdown', answer);
+    show();
+  }
+
+  // The movement test, as in the app: watch the demo, then slide through 10 pictures to the furthest
+  // position reached and rate the pain.
+  var phone = document.querySelector('.app-phone');
+  if (phone) {
+    var rangeTest = document.getElementById('range-test');
+    var rangeImg = document.getElementById('range-img');
+    var rangeResult = document.getElementById('range-result');
+    var testPain = null;
+    var frames = [];
+    for (var f = 0; f < 10; f++) { frames[f] = new Image(); frames[f].src = phone.dataset.frames + f + '.webp'; }
+    var showResult = function () {
+      var n = +rangeTest.value;
+      rangeImg.src = frames[n].src;
+      rangeTest.style.setProperty('--fill', n / 9 * 100 + '%');
+      if (!phone.classList.contains('ranging')) { rangeResult.textContent = ''; return; }
+      rangeResult.textContent = (testPain === null ? rangeResult.dataset.unset : rangeResult.dataset.set).replace('{n}', n + 1).replace('{p}', testPain);
+    };
+    rangeTest.addEventListener('input', showResult);
+    painScale(document.querySelector('#range-pain .pscale'), null, function (v) { testPain = v; showResult(); });
+    // Two steps, as in the app. The dots under the phone go back and forth between them.
+    var dots = [].slice.call(document.querySelectorAll('.app-dot'));
+    var setStep = function (step) {
+      phone.classList.toggle('ranging', step === 1);
+      dots.forEach(function (d, i) { d.classList.toggle('on', i === step); d.setAttribute('aria-current', i === step ? 'step' : 'false'); });
+      showResult();
+    };
+    // Once the person has pressed the button, the pointer has done its job: it does not come back.
+    document.getElementById('did-it').addEventListener('click', function () { phone.classList.add('tried'); setStep(1); });
+    dots.forEach(function (d) { d.addEventListener('click', function () { setStep(+d.dataset.step); }); });
+    setStep(0);
+    // The pointer comes in each time the person arrives on the button, as long as they have not pressed it:
+    // when the button is fully in the window and the page has stopped moving,
+    // so the arrival is seen from its start. It stays and keeps tapping; leaving the section resets it.
+    var didIt = document.getElementById('did-it'), inPlace = false, lastMove = 0, waiting = 0;
+    addEventListener('scroll', function () { lastMove = Date.now(); }, { passive: true });
+    function arrive() {
+      clearTimeout(waiting);
+      if (!inPlace || phone.classList.contains('hint-on')) return;
+      if (Date.now() - lastMove < 180) { waiting = setTimeout(arrive, 90); return; }
+      phone.classList.add('hint-on');
+      // The demonstration starts again from standing, so the person sees the whole bend on arrival.
+      if (demo && !phone.classList.contains('tried') && !reduce) {
+        if (!demo.src) demo.src = demo.dataset.src;
+        try { demo.currentTime = 0; } catch (e) {}
+        var p = demo.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+    }
+    // The clip from the app is a slow 16 seconds: shown faster here, the movement reads at a glance.
+    var demo = phone.querySelector('.app-watch video');
+    if (demo) { demo.defaultPlaybackRate = 2.5; demo.playbackRate = 2.5; demo.addEventListener('loadeddata', function () { demo.playbackRate = 2.5; }); }
+    var hinter = new IntersectionObserver(function (entries) {
+      inPlace = entries[0].isIntersecting;
+      arrive();
+    }, { threshold: 1, rootMargin: '0px 0px -16px 0px' });
+    // Gone from the window altogether: the next arrival plays again.
+    new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) phone.classList.remove('hint-on');
+    }).observe(phone);
+    hinter.observe(document.getElementById('did-it'));
+  }
+
+  // Pain during a session: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
+  var card = document.querySelector('.pain-card');
   var reply = document.getElementById('pain-reply');
-  var card = range.closest('.pain-card');
-  function render() {
-    var v = +range.value;
+  painScale(card.querySelector('.pscale'), +card.dataset.painStart, function (v) {
     var kind = v > 3 ? 'stop' : v === 3 ? 'hold' : 'easy';
-    out.textContent = v;
-    card.style.setProperty('--dot', COLORS[v]);
     reply.classList.toggle('stop', kind === 'stop');
     reply.querySelector('h3').textContent = window.PAIN[kind + 'Title'];
     reply.querySelector('p').textContent = window.PAIN[kind + 'Body'];
-  }
-  range.addEventListener('input', render);
-  render();
+  });
 })();

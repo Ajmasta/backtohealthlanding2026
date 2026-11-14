@@ -1,0 +1,265 @@
+{{> head}}<body>
+
+<header class="top" id="top">
+  <a class="brand" href="#top" aria-label="{{nav.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span class="brand-name">{{nav.brand}} <small class="brand-alt">{{nav.brandAlt}}</small></span></a>
+  <nav>
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" href="#evaluation">{{nav.evaluation}}</a>
+      <a class="nav-link" href="#exercises">{{nav.exercises}}</a>
+      <a class="nav-link" href="#program">{{nav.program}}</a>
+      <a class="nav-link" href="#pros">{{nav.pros}}</a>
+      <a class="nav-link" href="#faq">{{nav.faq}}</a>
+    </div>
+    <a class="lang" href="{{otherLangHref}}" hreflang="{{nav.otherLang}}" aria-label="{{nav.otherLangLabel}}">{{nav.otherLang}}</a>
+    <a class="btn btn-small" href="{{mailto}}">{{nav.cta}}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="{{nav.menu}}"><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero scene" data-scene="hero">
+    <div class="sky" aria-hidden="true">
+      <div class="sun"></div>
+      <img class="cloud c1" src="{{base}}assets/landscape/cloud-1.webp" alt="">
+      <img class="cloud c2" src="{{base}}assets/landscape/cloud-2.webp" alt="">
+      <img class="cloud c3" src="{{base}}assets/landscape/cloud-3.webp" alt="">
+      <img class="cloud c4" src="{{base}}assets/landscape/cloud-4.webp" alt="">
+    </div>
+    <div class="terrain" aria-hidden="true">
+      <img src="{{base}}assets/landscape/hills.webp" alt="">
+      <img src="{{base}}assets/landscape/lake.webp" alt="">
+      <img src="{{base}}assets/landscape/meadow.webp" alt="">
+    </div>
+    <div class="crest" aria-hidden="true">
+      <div class="tree-wrap"><div class="sway">{{svg.tree}}</div></div>
+      <div class="hero-phone"><img src="{{base}}assets/screens/home.webp" width="390" height="844" alt="{{hero.phoneAlt}}"></div>
+    </div>
+    <div class="hero-text">
+      <p class="label">{{hero.label}}</p>
+      <h1>{{hero.title}}</h1>
+      <p class="lead">{{hero.body}}</p>
+      <div class="actions">
+        <a class="btn" href="{{mailto}}">{{hero.cta}}</a>
+      </div>
+      <div class="stores">
+        <span class="store"><small>{{hero.soon}}</small>{{hero.appStore}}</span>
+        <span class="store"><small>{{hero.soon}}</small>{{hero.googlePlay}}</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="sheet">
+    <section class="band who" id="for-you">
+      <div class="who-text reveal">
+        <p class="label">{{who.label}}</p>
+        <h2>{{who.title}}</h2>
+        <p class="lead">{{who.body}}</p>
+        <figure class="fact">
+          <blockquote>{{who.fact}}</blockquote>
+          <figcaption><a href="https://www.who.int/news-room/fact-sheets/detail/low-back-pain">{{who.factSource}}</a></figcaption>
+        </figure>
+      </div>
+      <div class="who-cards reveal">
+        <div class="card">
+          <h3>{{who.forTitle}}</h3>
+          <ul class="ticks">{{#each who.for}}<li>{{.}}</li>{{/each}}</ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band eval" id="evaluation">
+      <div class="eval-text">
+        <div class="reveal">
+          <p class="label">{{eval.label}}</p>
+          <h2>{{eval.title}}</h2>
+          <p class="lead">{{eval.body}}</p>
+        </div>
+        <ol class="eval-steps reveal">
+          {{#each eval.steps}}<li><span class="eval-n">{{@n}}</span><div><h3>{{.title}}</h3><p>{{.body}}</p></div></li>{{/each}}
+        </ol>
+        <p class="eval-result reveal" id="range-result" aria-live="polite" data-unset="{{eval.resultUnset}}" data-set="{{eval.result}}"></p>
+      </div>
+      <!-- The app's own movement test, in the app's own words: watch, do it, then show how far and how it felt. -->
+      <figure class="eval-app reveal">
+        <figcaption class="eval-try-label">{{eval.tryLabel}}</figcaption>
+        <div class="app-phone" data-frames="{{base}}assets/evaluation/flexion-">
+          <div class="app-screen">
+            <div class="app-view app-watch">
+              <p class="app-label">{{app.step}}</p>
+              <p class="app-title">{{app.name}}</p>
+              <p class="app-sub">{{app.intro}}</p>
+              <div class="app-card app-media"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="{{base}}assets/evaluation/flexion-0.webp" data-src="{{base}}assets/evaluation/flexion-demo.mp4" aria-label="{{eval.videoAlt}}"></video></div>
+              <p class="app-legend">{{app.watch}}</p>
+              <div class="app-cta">
+                <button class="btn app-btn" type="button" id="did-it">{{app.didIt}}</button>
+                <svg class="tap-hint" aria-hidden="true" viewBox="0 0 24 24" width="34" height="34"><path d="M5 3l13.5 8.2-6 1.5 3.6 6.6-2.6 1.4-3.6-6.6-4.4 4.2z" fill="#fff" stroke="#0f2147" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="app-view app-range">
+              <p class="app-label">{{app.step}}</p>
+              <p class="app-title">{{app.rangeTitle}}</p>
+              <p class="app-sub">{{app.rangeHint}}</p>
+              <div class="app-card">
+                <div class="app-media app-position"><img id="range-img" src="{{base}}assets/evaluation/flexion-0.webp" width="640" height="576" alt="{{eval.rangeAlt}}"></div>
+                <input id="range-test" class="slider slider-ciel" type="range" min="0" max="9" step="1" value="0" aria-label="{{app.rangeTitle}}">
+                <div class="slider-ends"><span>{{app.less}}</span><span>{{app.more}}</span></div>
+              </div>
+              <div class="app-card" id="range-pain">
+                <p class="app-card-title">{{app.painTitle}}</p>
+                {{> pain-scale}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-dots">
+          <button type="button" class="app-dot" data-step="0" aria-label="{{eval.stepWatch}}"></button>
+          <button type="button" class="app-dot" data-step="1" aria-label="{{eval.stepRange}}"></button>
+        </div>
+      </figure>
+    </section>
+
+    <section class="band moves" id="exercises">
+      <div class="reveal moves-head">
+        <p class="label">{{moves.label}}</p>
+        <h2>{{moves.title}}</h2>
+        <p class="lead">{{moves.body}}</p>
+      </div>
+      <div class="moves-grid">{{exerciseCards}}</div>
+    </section>
+
+    <section class="band pain" id="pain">
+      <div class="pain-text reveal">
+        <p class="label">{{pain.label}}</p>
+        <h2>{{pain.title}}</h2>
+        <p class="lead">{{pain.body}}</p>
+      </div>
+      <div class="card pain-card reveal" data-pain-start="2">
+        <p class="pain-q">{{pain.sliderLabel}}</p>
+        {{> pain-scale}}
+        <div class="pain-reply" id="pain-reply" aria-live="polite">
+          <h3>{{pain.easyTitle}}</h3>
+          <p>{{pain.easyBody}}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band water" id="how">
+      <div class="water-head reveal">
+        <p class="label">{{water.label}}</p>
+        <h2>{{water.title}}</h2>
+        <p class="lead">{{water.body}}</p>
+      </div>
+      <div class="water-grid">
+        <div class="water-stage">
+          <div class="window scene" data-scene="window" aria-hidden="true">
+            <div class="sky">
+              <div class="sun"></div>
+              <img class="cloud c1" src="{{base}}assets/landscape/cloud-1.webp" alt="">
+              <img class="cloud c2" src="{{base}}assets/landscape/cloud-2.webp" alt="">
+            </div>
+            <div class="terrain">
+              <img src="{{base}}assets/landscape/hills.webp" alt="">
+              <img src="{{base}}assets/landscape/lake.webp" alt="">
+              <img src="{{base}}assets/landscape/meadow.webp" alt="">
+            </div>
+            <div class="crest">
+              <div class="stage" data-stage="1"><div class="sway">{{svg.stage1}}</div></div>
+              <div class="stage" data-stage="2"><div class="sway">{{svg.stage2}}</div></div>
+              <div class="stage" data-stage="3"><div class="sway">{{svg.stage3}}</div></div>
+              <div class="stage on" data-stage="4"><div class="sway">{{svg.stage4}}</div></div>
+            </div>
+          </div>
+        </div>
+        <ol class="steps">
+          {{#each water.steps}}<li class="step"><p class="tag tag-{{@n}}">{{.label}}</p><h3>{{.title}}</h3><p>{{.body}}</p></li>{{/each}}
+          <li class="step step-end"><p class="closing">{{water.end}}</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band screens" id="app">
+      <div class="reveal center">
+        <p class="label">{{screens.label}}</p>
+        <h2>{{screens.title}}</h2>
+      </div>
+      <div class="phones">
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/home.webp" alt="{{screens.alt1}}"><figcaption><strong>{{screens.s1Title}}</strong>{{screens.s1Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/path.webp" alt="{{screens.alt2}}"><figcaption><strong>{{screens.s2Title}}</strong>{{screens.s2Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/mind.webp" alt="{{screens.alt3}}"><figcaption><strong>{{screens.s3Title}}</strong>{{screens.s3Body}}</figcaption></figure>
+        <figure class="phone reveal"><img loading="lazy" width="390" height="844" src="{{base}}assets/screens/progress.webp" alt="{{screens.alt4}}"><figcaption><strong>{{screens.s4Title}}</strong>{{screens.s4Body}}</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="band offer" id="program">
+      <div class="reveal offer-head">
+        <p class="label">{{offer.label}}</p>
+        <h2>{{offer.title}}</h2>
+        <p class="lead">{{offer.body}}</p>
+      </div>
+      <div class="offer-grid">
+        {{#each offer.cards}}<div class="card reveal"><p class="tag tag-{{@n}}">{{.tag}}</p><p class="dur">{{.dur}}</p><p>{{.body}}</p></div>{{/each}}
+      </div>
+      <div class="card card-tint goal reveal">
+        <div><h3>{{offer.goalTitle}}</h3><p>{{offer.goalBody}}</p></div>
+        <a class="btn btn-ghost to-page" href="programme/">{{offer.more}}</a>
+      </div>
+    </section>
+
+    <section class="band pros" id="pros">
+      <div class="reveal pros-head">
+        <p class="label">{{pros.label}}</p>
+        <h2>{{pros.title}}</h2>
+        <p class="lead">{{pros.body}}</p>
+      </div>
+      <div class="pros-grid">
+        {{#each pros.cards}}<div class="card reveal"><h3>{{.title}}</h3><p>{{.body}}</p></div>{{/each}}
+      </div>
+      <div class="pros-foot reveal">
+        <p><strong>{{pros.ctaTitle}}</strong> {{pros.ctaBody}}</p>
+        <span class="pros-actions"><a class="btn btn-ghost to-page" href="programme/">{{pros.programLink}}</a><a class="btn" href="{{mailtoPro}}">{{pros.cta}}</a></span>
+      </div>
+    </section>
+
+    <section class="band team" id="team">
+      <div class="reveal team-head">
+        <p class="label">{{team.label}}</p>
+        <h2>{{team.title}}</h2>
+        <p class="lead">{{team.body}}</p>
+      </div>
+      <dl class="people reveal">
+        {{#each team.people}}<div class="card"><dt>{{.name}}<span class="person-title">{{.title}}</span></dt><dd>{{.bio}}</dd></div>{{/each}}
+      </dl>
+    </section>
+
+    <section class="band faq" id="faq">
+      <div class="reveal center">
+        <p class="label">{{faq.label}}</p>
+        <h2>{{faq.title}}</h2>
+      </div>
+      <div class="faq-list reveal">
+        {{#each faq.items}}<details><summary>{{.q}}</summary><p>{{.a}}</p></details>{{/each}}
+      </div>
+    </section>
+
+    <div class="dusk" aria-hidden="true"></div>
+
+    <section class="night">
+      <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="reveal center">
+        <div class="moon" aria-hidden="true">{{svg.tree}}</div>
+        <h2>{{end.title}}</h2>
+        <p class="lead">{{end.body}}</p>
+        <a class="btn btn-night" href="{{mailto}}">{{end.cta}}</a>
+      </div>
+      <footer>
+        <p>{{footer.disclaimer}}</p>
+        <p class="foot-row"><span>© 2026 {{nav.brandFull}} · {{footer.place}}</span><a href="mailto:{{contact}}">{{footer.contact}}</a><a href="{{otherLangHref}}">{{nav.otherLangLabel}}</a></p>
+      </footer>
+    </section>
+  </div>
+</main>
+
+<script>window.PAIN = {{painStrings}};</script>
+<script src="{{base}}assets/main.js?v={{v.main}}"></script>
+</body>
+</html>
