@@ -407,7 +407,7 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .hero .crest { left: 41%; }
   .hero-phone { left: calc(var(--tree-h) * .44); width: calc(var(--tree-h) * .42); }
   .doc table { min-width: 560px; font-size: 15px; }
-  .hero .sun { top: 57%; right: 9%; }
+  .hero .sun { top: 66%; right: 6%; }
   .cloud.c3, .cloud.c4 { display: none; }
   .cloud.c1 { width: 70%; left: -25%; }
   .cloud.c2 { width: 60%; right: -22%; top: 42%; }

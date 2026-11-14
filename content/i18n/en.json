@@ -2,7 +2,7 @@
   "lang": "en",
   "meta": {
     "title": "BackToHealth / Crescendos · Live better with back pain",
-    "description": "The app for chronic low back pain: move, understand, breathe and walk, a little each day, at your back’s pace.",
+    "description": "Back pain for months? BackToHealth helps you trust your back again: a plan made for you, guided exercises and pain that is always respected.",
     "locale": "en_CA",
     "localeAlt": "fr_CA",
     "imageAlt": "The BackToHealth tree on a hill, with the words: Live better with back pain",
@@ -22,13 +22,13 @@
     "brandAlt": "/ Crescendos",
     "brand": "BackToHealth",
     "brandFull": "BackToHealth / Crescendos",
-    "evaluation": "Assessment",
-    "exercises": "Exercises"
+    "evaluation": "Your assessment",
+    "exercises": "Your exercises"
   },
   "hero": {
-    "label": "Mobile app · iPhone and Android",
-    "title": "Live better with back pain, one small step at a time.",
-    "body": "An assessment of your back, exercises shown in 3D and a plan that adapts to your pain, every day.",
+    "label": "The app for chronic back pain",
+    "title": "Take back what back pain took from you, one small step at a time.",
+    "body": "BackToHealth starts from your back, not from a generic program: a 5-minute assessment, guided exercises and a plan that slows down as soon as your pain goes up.",
     "cta": "Notify me at launch",
     "soon": "Coming soon to",
     "appStore": "the App Store",
@@ -36,12 +36,12 @@
     "phoneAlt": "The app on a phone: the tree on the hill and today’s program"
   },
   "who": {
-    "label": "Who it’s for",
+    "label": "Sound familiar?",
     "title": "Your back has hurt for months. Maybe years.",
-    "body": "You’ve heard it all and tried a lot. Mostly, you want your life back: gardening, carrying your kids, driving without thinking about it.",
-    "fact": "About 9 times out of 10, back pain has no specific cause. You’re not a special case.",
+    "body": "You’ve heard it all and tried a lot. And you still hesitate before bending, lifting or driving for long. What you want is to do those things again without thinking about it.",
+    "fact": "About 9 times out of 10, back pain has no specific cause. Hurting does not mean your back is damaged.",
     "factSource": "Source: WHO, 2023",
-    "forTitle": "It’s for you if",
+    "forTitle": "BackToHealth is made for you if",
     "for": [
       "You’re an adult, and your back has hurt for months.",
       "No serious cause explains it: this is non-specific low back pain.",
@@ -49,37 +49,37 @@
     ]
   },
   "water": {
-    "label": "How it works",
-    "title": "Every effort waters your tree.",
-    "body": "A small plan each day: a short read, a little movement, a moment for the mind and some walking. You do what you can.",
-    "end": "Your tree grows with you, and it never wilts.",
+    "label": "Your day",
+    "title": "A small plan each day. Not a mountain.",
+    "body": "Reading, movement, meditation, walking: a few minutes each, and you do what you can. Every activity you finish waters your tree, so you can see your efforts add up.",
+    "end": "Your tree never wilts. A missed day erases nothing: you pick up where you left off.",
     "steps": [
       {
         "label": "Reading",
-        "title": "Your reading path",
-        "body": "23 five-minute lessons, written by our doctor, also trained in physiotherapy, to understand your pain and regain confidence."
+        "title": "Understand, so you stop being afraid",
+        "body": "23 five-minute lessons, written by our doctor, also trained in physiotherapy. When you understand your pain, you dare to move again."
       },
       {
         "label": "Movement",
-        "title": "Your exercises",
-        "body": "5 to 15 minutes, 2 to 3 times a week. Exercises chosen for you, shown in 3D."
+        "title": "Move without fear",
+        "body": "5 to 15 minutes, 2 to 3 times a week. Exercises chosen for your back, which adjust to your pain."
       },
       {
         "label": "Meditation",
-        "title": "A moment for the mind",
-        "body": "3 to 30 minutes of mindfulness, when the day or your back weighs on you."
+        "title": "Breathe when pain weighs on you",
+        "body": "3 to 30 minutes of mindfulness, so pain takes up less room in your day."
       },
       {
         "label": "Walking",
-        "title": "Walk, at your pace",
-        "body": "As far as you like. Another activity elsewhere, like yoga or cycling, counts too."
+        "title": "Get back into walking",
+        "body": "At your pace, with one goal a week. Yoga or cycling count too."
       }
     ]
   },
   "pain": {
-    "label": "During your session",
-    "title": "The app adapts to your pain.",
-    "body": "After each set, you rate your pain. If it goes up, we ease off. If it’s going well, we move forward gently.",
+    "label": "Your pain decides",
+    "title": "Never more than your back accepts.",
+    "body": "The fear of making things worse is often what makes people stop. Here, you rate your pain after each set, and the program adjusts right away. Try it:",
     "sliderLabel": "Your pain during this set?",
     "low": "None",
     "high": "Very strong",
@@ -91,45 +91,45 @@
     "stopBody": "Stop this exercise: it’s the right call. Next time, we start a little gentler. A 3-minute comfort moment is waiting for you."
   },
   "screens": {
-    "label": "In the app",
-    "title": "One thing at a time.",
+    "label": "The app",
+    "title": "Simple, even on hard days.",
     "s1Title": "Your day",
-    "s1Body": "A short program. Nothing to catch up on.",
+    "s1Body": "A short plan. Nothing to catch up on.",
     "s2Title": "Your path",
-    "s2Body": "The lessons, one by one, across the landscape.",
+    "s2Body": "One lesson at a time.",
     "s3Title": "Your mind",
     "s3Body": "You choose how much time you have.",
     "s4Title": "Your progress",
-    "s4Body": "What’s getting easier, in your own words.",
+    "s4Body": "What’s becoming possible again, in your own words.",
     "alt1": "Today screen: a tree on a hill and a program of four activities",
     "alt2": "Reading path screen: lessons joined by a trail across the hills",
     "alt3": "Meditation screen on a night background: a choice of 5, 10 or 15 minutes",
     "alt4": "Progress screen: gardening, carrying children and driving, each rated out of 10"
   },
   "pros": {
-    "label": "Health professionals",
-    "title": "Support between your appointments, and after them.",
-    "body": "BackToHealth replaces neither your assessment nor your follow-up. It helps your patients with low back pain keep moving, understanding and caring for themselves, especially after their sessions.",
+    "label": "Physiotherapists and health professionals",
+    "title": "Your patients keep going between appointments. And after.",
+    "body": "Between two sessions, everything depends on what your patient does at home. BackToHealth guides them every day with your principles: screening, pain-dosed progression, education. Without replacing your assessment or your follow-up.",
     "sourcesTitle": "Our sources",
-    "ctaTitle": "Want to try it or share your feedback?",
-    "ctaBody": "We’re looking for clinicians to review the content and offer it to their patients.",
+    "ctaTitle": "Try it with your patients.",
+    "ctaBody": "We’re looking for clinicians to review the content and offer BackToHealth to their patients. Your feedback shapes the app.",
     "cta": "Write to the team",
-    "programLink": "See what’s in the app",
+    "programLink": "See all the clinical content",
     "cards": [
       {
-        "title": "Screening first",
-        "body": "8 red-flag questions. A positive answer points to a doctor or the ER."
+        "title": "Screening comes first",
+        "body": "8 red-flag questions. A positive answer points to a doctor or the ER, and the program doesn’t start."
       },
       {
-        "title": "A clear pain rule",
+        "title": "A progression you’ll recognise",
         "body": "Above 3/10: stop, lower level. Session at 2/10 or less: one more repetition, up to 12, then the next level."
       },
       {
-        "title": "A biopsychosocial approach",
-        "body": "Exercise, education, mindfulness and walking, together, as practice guidelines recommend."
+        "title": "In line with practice guidelines",
+        "body": "Exercise, pain education, mindfulness and walking, together, as recent guidelines recommend."
       },
       {
-        "title": "What we don’t claim",
+        "title": "Full transparency",
         "body": "No diagnosis, no treatment, no published study yet. With people’s consent, we will measure what works."
       }
     ],
@@ -153,7 +153,7 @@
     ]
   },
   "team": {
-    "label": "Who we are",
+    "label": "The team",
     "title": "Three committed cofounders, in Montréal.",
     "body": "Medicine, software development and data science, brought together to help people live better with back pain.",
     "people": [
@@ -176,7 +176,7 @@
   },
   "faq": {
     "label": "Questions",
-    "title": "Your questions.",
+    "title": "Your questions, our answers.",
     "items": [
       {
         "q": "Does it replace my doctor or physio?",
@@ -216,26 +216,26 @@
   },
   "offer": {
     "label": "The program",
-    "title": "Four programs to get you started.",
-    "body": "A few weeks to understand your back, move, meditate and walk. Then the app stays with you, for as long as you like.",
-    "goalTitle": "And after? We stay with you.",
-    "goalBody": "Your exercises keep adapting, you meditate your way, you keep your walking rhythm and you see how far you’ve come.",
+    "title": "8 to 12 weeks to trust your back again. Then we stay.",
+    "body": "Four introductory programs teach you to understand your back, to move, to meditate and to walk. Then the app continues with you, for as long as you like.",
+    "goalTitle": "And after? You keep your tools.",
+    "goalBody": "Your exercises keep adapting, you meditate your way, you keep your walking rhythm. And you redo your tests to see how far you’ve come.",
     "more": "The program in detail",
     "cards": [
       {
         "tag": "Understand",
         "dur": "4 weeks",
-        "body": "23 five-minute lessons to understand your pain and regain confidence."
+        "body": "23 five-minute lessons to stop fearing your pain."
       },
       {
         "tag": "Move",
         "dur": "8 to 12 weeks",
-        "body": "Progressive exercises, adapted to your pain, 2 to 3 times a week."
+        "body": "Progressive exercises that respect your pain, 2 to 3 times a week."
       },
       {
         "tag": "Meditate",
         "dur": "8 to 11 weeks",
-        "body": "Mindfulness, then kindness toward yourself and what matters to you."
+        "body": "Learning to live with pain, rather than fighting it."
       },
       {
         "tag": "Walk",
@@ -355,33 +355,33 @@
     "eduListTitle": "The lessons"
   },
   "eval": {
-    "label": "The assessment",
-    "title": "It all starts with your back.",
-    "body": "In 5 minutes, the app gets to know your back. Your plan starts from there.",
+    "label": "Your starting point",
+    "title": "A plan made for your back, not for an average one.",
+    "body": "Generic programs ignore where you are. In 5 minutes, BackToHealth looks at how your back moves and what you want to get back to. Your plan starts from there.",
     "steps": [
       {
-        "title": "Before you start",
-        "body": "8 questions to check that the app is right for you. At the slightest doubt, it points you to a doctor."
+        "title": "Your safety first",
+        "body": "8 questions spot the signs that call for a doctor. You start with confidence."
       },
       {
-        "title": "How your back is doing",
-        "body": "Your pain at rest, then 4 movements: you watch the video, do the movement, and show how far you go."
+        "title": "Your back, as it is today",
+        "body": "4 movements guided by video. You show how far you go and what you feel: your exercises are chosen from there."
       },
       {
-        "title": "What you want to get back to",
-        "body": "1 to 3 activities, like gardening or driving. They will become fruit on your tree."
+        "title": "What matters to you",
+        "body": "Gardening, carrying your kids, driving: you choose 1 to 3 activities to get back to. They are what measures your progress."
       }
     ],
     "videoAlt": "Demonstration: standing, bending gently forward",
     "rangeAlt": "The flexion position chosen with the slider",
-    "result": "Position {n} out of 10, pain {p}/10. Your exercises start from there.",
-    "tryLabel": "Try the flexion test, as in the app",
+    "result": "Position {n} out of 10, pain {p}/10: your exercises would be chosen from there.",
+    "tryLabel": "Try it: this is the app’s real test",
     "resultUnset": "Position {n} out of 10. Rate your pain to continue."
   },
   "moves": {
-    "label": "The exercises",
-    "title": "Every movement, shown in 3D.",
-    "body": "Your exercises are chosen from your assessment, from the gentlest to the most demanding. You see exactly what to do."
+    "label": "Your exercises",
+    "title": "You always know exactly what to do.",
+    "body": "No more exercise sheets you can’t make sense of once you’re home. Every movement is shown in 3D, from the gentlest to the most demanding. You move up a level when your back is ready."
   },
   "app": {
     "step": "Flexion · 1 of 4",

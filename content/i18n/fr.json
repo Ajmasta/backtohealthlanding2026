@@ -2,7 +2,7 @@
   "lang": "fr",
   "meta": {
     "title": "Crescendos (BackToHealth) · Mieux vivre avec la douleur au dos",
-    "description": "L’application pour la lombalgie chronique : bouger, comprendre, respirer et marcher, un peu chaque jour, au rythme de ton dos.",
+    "description": "Mal de dos depuis des mois ? Crescendos t’aide à reprendre confiance en ton dos : un plan fait pour toi, des exercices guidés et une douleur toujours respectée.",
     "locale": "fr_CA",
     "localeAlt": "en_CA",
     "imageAlt": "L’arbre de Crescendos sur une colline, avec les mots : Mieux vivre avec la douleur au dos",
@@ -22,13 +22,13 @@
     "brandAlt": "(BackToHealth)",
     "brand": "Crescendos",
     "brandFull": "Crescendos (BackToHealth)",
-    "evaluation": "L’évaluation",
-    "exercises": "Les exercices"
+    "evaluation": "Ton évaluation",
+    "exercises": "Tes exercices"
   },
   "hero": {
-    "label": "Application mobile · iPhone et Android",
-    "title": "Mieux vivre avec la douleur au dos, un petit pas à la fois.",
-    "body": "Une évaluation de ton dos, des exercices montrés en 3D et un plan qui s’adapte à ta douleur, chaque jour.",
+    "label": "L’application pour le mal de dos chronique",
+    "title": "Reprends ce que ton mal de dos t’a enlevé, un petit pas à la fois.",
+    "body": "Crescendos part de ton dos, pas d’un programme générique : une évaluation en 5 minutes, des exercices guidés et un plan qui ralentit dès que ta douleur monte.",
     "cta": "Me prévenir du lancement",
     "soon": "Bientôt sur",
     "appStore": "l’App Store",
@@ -36,12 +36,12 @@
     "phoneAlt": "L’application sur un téléphone : l’arbre sur la colline et le programme du jour"
   },
   "who": {
-    "label": "Pour qui",
+    "label": "Tu te reconnais ?",
     "title": "Ton dos te fait mal depuis des mois. Peut-être des années.",
-    "body": "Tu as tout entendu, beaucoup essayé. Tu veux surtout reprendre ta vie : jardiner, porter tes enfants, conduire sans y penser.",
-    "fact": "Environ 9 fois sur 10, le mal de dos n’a pas de cause précise. Tu n’es pas un cas à part.",
+    "body": "Tu as tout entendu, beaucoup essayé. Et tu hésites encore avant de te pencher, de porter, de conduire longtemps. Ce que tu veux, c’est retrouver ces gestes sans y penser.",
+    "fact": "Environ 9 fois sur 10, le mal de dos n’a pas de cause précise. Avoir mal ne veut pas dire que ton dos est abîmé.",
     "factSource": "Source : OMS, 2023",
-    "forTitle": "C’est pour toi si",
+    "forTitle": "Crescendos est fait pour toi si",
     "for": [
       "Tu es adulte, et ton dos te fait mal depuis des mois.",
       "Aucune cause grave ne l’explique : c’est une lombalgie non spécifique.",
@@ -49,37 +49,37 @@
     ]
   },
   "water": {
-    "label": "Comment ça marche",
-    "title": "Chaque effort arrose ton arbre.",
-    "body": "Un petit plan chaque jour : une courte lecture, un peu de mouvement, un moment pour l’esprit et de la marche. Tu fais ce que tu peux.",
-    "end": "Ton arbre grandit avec toi, et il ne fane jamais.",
+    "label": "Ton quotidien",
+    "title": "Un petit plan par jour. Pas une montagne.",
+    "body": "Lecture, mouvement, méditation, marche : quelques minutes chacun, et tu fais ce que tu peux. Chaque activité terminée arrose ton arbre, pour voir tes efforts s’additionner.",
+    "end": "Ton arbre ne fane jamais. Un jour manqué n’efface rien : tu reprends où tu en étais.",
     "steps": [
       {
         "label": "Lecture",
-        "title": "Ton parcours de lecture",
-        "body": "23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie, pour comprendre ta douleur et reprendre confiance."
+        "title": "Comprendre, pour ne plus avoir peur",
+        "body": "23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie. Quand on comprend sa douleur, on ose bouger à nouveau."
       },
       {
         "label": "Mouvement",
-        "title": "Tes exercices",
-        "body": "5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour toi, montrés en 3D."
+        "title": "Bouger sans crainte",
+        "body": "5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour ton dos, qui s’ajustent à ta douleur."
       },
       {
         "label": "Méditation",
-        "title": "Un moment pour l’esprit",
-        "body": "3 à 30 minutes de pleine conscience, quand la journée ou ton dos pèse."
+        "title": "Souffler quand la douleur pèse",
+        "body": "3 à 30 minutes de pleine conscience, pour que la douleur prenne moins de place dans ta journée."
       },
       {
         "label": "Marche",
-        "title": "Marcher, à ton rythme",
-        "body": "La distance que tu veux. Une autre activité ailleurs, comme le yoga ou le vélo, compte aussi."
+        "title": "Reprendre l’habitude de marcher",
+        "body": "À ton rythme, avec un objectif par semaine. Le yoga ou le vélo comptent aussi."
       }
     ]
   },
   "pain": {
-    "label": "Pendant ta séance",
-    "title": "L’application s’adapte à ta douleur.",
-    "body": "Après chaque série, tu indiques ta douleur. Si elle monte, on allège. Si ça va bien, on avance doucement.",
+    "label": "Ta douleur décide",
+    "title": "Jamais plus que ce que ton dos accepte.",
+    "body": "La peur d’aggraver les choses, c’est souvent ce qui fait arrêter. Ici, tu indiques ta douleur après chaque série, et le programme s’ajuste aussitôt. Essaie :",
     "sliderLabel": "Ta douleur pendant cette série ?",
     "low": "Aucune",
     "high": "Très forte",
@@ -91,45 +91,45 @@
     "stopBody": "Arrête cet exercice : c’est la bonne décision. La prochaine fois, on repart plus doucement. Un moment de réconfort de 3 minutes t’attend."
   },
   "screens": {
-    "label": "Dans l’application",
-    "title": "Une seule chose à la fois.",
+    "label": "L’application",
+    "title": "Simple, même les jours difficiles.",
     "s1Title": "Ta journée",
-    "s1Body": "Un programme court. Rien à rattraper.",
+    "s1Body": "Un plan court. Rien à rattraper.",
     "s2Title": "Ton parcours",
-    "s2Body": "Les leçons, une à une, à travers le paysage.",
+    "s2Body": "Une leçon à la fois.",
     "s3Title": "Ton esprit",
     "s3Body": "Tu choisis le temps que tu as.",
     "s4Title": "Tes progrès",
-    "s4Body": "Ce qui redevient facile, avec tes mots.",
+    "s4Body": "Ce qui redevient possible, avec tes mots.",
     "alt1": "Écran Aujourd’hui : un arbre sur une colline et un programme de quatre activités",
     "alt2": "Écran du parcours de lecture : des leçons reliées par un chemin sur les collines",
     "alt3": "Écran de méditation sur fond de nuit : choix de 5, 10 ou 15 minutes",
     "alt4": "Écran des progrès : jardiner, porter ses enfants et conduire, chacun noté sur 10"
   },
   "pros": {
-    "label": "Professionnels de la santé",
-    "title": "Un relais entre vos rendez-vous, et après.",
-    "body": "Crescendos ne remplace ni votre évaluation ni votre suivi. Il aide vos patients lombalgiques à bouger, comprendre et prendre soin d’eux, surtout après les séances.",
+    "label": "Physiothérapeutes et professionnels de la santé",
+    "title": "Vos patients continuent entre vos rendez-vous. Et après.",
+    "body": "Entre deux séances, tout repose sur ce que votre patient fait à la maison. Crescendos le guide chaque jour avec vos principes : dépistage, progression dosée par la douleur, éducation. Sans remplacer votre évaluation ni votre suivi.",
     "sourcesTitle": "Nos sources",
-    "ctaTitle": "Envie de l’essayer ou de donner votre avis ?",
-    "ctaBody": "Nous cherchons des cliniciens pour relire le contenu et le proposer à leurs patients.",
+    "ctaTitle": "Essayez-la avec vos patients.",
+    "ctaBody": "Nous cherchons des cliniciens pour relire le contenu et proposer Crescendos à leurs patients. Votre avis façonne l’application.",
     "cta": "Écrire à l’équipe",
-    "programLink": "Voir le contenu de l’application",
+    "programLink": "Voir tout le contenu clinique",
     "cards": [
       {
-        "title": "Dépistage d’abord",
-        "body": "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences."
+        "title": "Le dépistage avant tout",
+        "body": "8 questions sur les drapeaux rouges. Une réponse positive oriente vers un médecin ou les urgences, et le programme ne démarre pas."
       },
       {
-        "title": "Une règle de douleur claire",
+        "title": "Une progression que vous reconnaîtrez",
         "body": "Au-dessus de 3/10 : arrêt, niveau inférieur. Séance à 2/10 ou moins : une répétition de plus, jusqu’à 12, puis niveau suivant."
       },
       {
-        "title": "Une approche biopsychosociale",
-        "body": "Exercice, éducation, pleine conscience et marche, réunis comme le recommandent les guides de pratique."
+        "title": "Conforme aux guides de pratique",
+        "body": "Exercice, éducation à la douleur, pleine conscience et marche, réunis comme le recommandent les guides récents."
       },
       {
-        "title": "Ce que nous ne prétendons pas",
+        "title": "Une transparence complète",
         "body": "Pas de diagnostic, pas de traitement, pas encore d’étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne."
       }
     ],
@@ -153,7 +153,7 @@
     ]
   },
   "team": {
-    "label": "Qui nous sommes",
+    "label": "L’équipe",
     "title": "Trois cofondateurs engagés, à Montréal.",
     "body": "La médecine, le développement logiciel et la science des données, réunis pour aider à mieux vivre avec le mal de dos.",
     "people": [
@@ -176,7 +176,7 @@
   },
   "faq": {
     "label": "Questions",
-    "title": "Tes questions.",
+    "title": "Tes questions, nos réponses.",
     "items": [
       {
         "q": "Ça remplace mon médecin ou mon physio ?",
@@ -216,26 +216,26 @@
   },
   "offer": {
     "label": "Le programme",
-    "title": "Quatre programmes pour bien démarrer.",
-    "body": "Quelques semaines pour comprendre ton dos, bouger, méditer et marcher. Ensuite, l’application reste avec toi, aussi longtemps que tu veux.",
-    "goalTitle": "Et après ? On reste avec toi.",
-    "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche et tu mesures le chemin parcouru.",
+    "title": "8 à 12 semaines pour reprendre confiance. Ensuite, on reste là.",
+    "body": "Quatre programmes d’introduction t’apprennent à comprendre ton dos, à bouger, à méditer et à marcher. Puis l’application continue avec toi, aussi longtemps que tu veux.",
+    "goalTitle": "Et après ? Tu gardes tes outils.",
+    "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche. Et tu refais tes tests pour voir le chemin parcouru.",
     "more": "Le programme en détail",
     "cards": [
       {
         "tag": "Comprendre",
         "dur": "4 semaines",
-        "body": "23 leçons de 5 minutes pour comprendre ta douleur et reprendre confiance."
+        "body": "23 leçons de 5 minutes pour ne plus craindre ta douleur."
       },
       {
         "tag": "Bouger",
         "dur": "8 à 12 semaines",
-        "body": "Des exercices progressifs, adaptés à ta douleur, 2 à 3 fois par semaine."
+        "body": "Des exercices progressifs qui respectent ta douleur, 2 à 3 fois par semaine."
       },
       {
         "tag": "Méditer",
         "dur": "8 à 11 semaines",
-        "body": "La pleine conscience, puis la bienveillance envers toi et ce qui compte pour toi."
+        "body": "Apprendre à vivre avec la douleur, plutôt que lutter contre elle."
       },
       {
         "tag": "Marcher",
@@ -355,33 +355,33 @@
     "eduListTitle": "Les leçons"
   },
   "eval": {
-    "label": "L’évaluation",
-    "title": "Tout commence par ton dos.",
-    "body": "En 5 minutes, l’application apprend à connaître ton dos. Ton plan part de là.",
+    "label": "Ton point de départ",
+    "title": "Un plan fait pour ton dos, pas pour un dos moyen.",
+    "body": "Les programmes génériques ignorent où tu en es. En 5 minutes, Crescendos regarde comment ton dos bouge et ce que tu veux retrouver. Ton plan part de là.",
     "steps": [
       {
-        "title": "Avant de commencer",
-        "body": "8 questions pour vérifier que l’application te convient. Au moindre doute, elle t’oriente vers un médecin."
+        "title": "Ta sécurité d’abord",
+        "body": "8 questions repèrent les signes qui demandent un médecin. Tu commences en confiance."
       },
       {
-        "title": "Comment va ton dos",
-        "body": "Ta douleur au repos, puis 4 mouvements : tu regardes la vidéo, tu fais le geste, tu indiques jusqu’où tu vas."
+        "title": "Ton dos, tel qu’il est aujourd’hui",
+        "body": "4 mouvements guidés en vidéo. Tu montres jusqu’où tu vas et ce que tu ressens : tes exercices sont choisis à partir de là."
       },
       {
-        "title": "Ce que tu veux retrouver",
-        "body": "1 à 3 activités, comme jardiner ou conduire. Elles deviendront des fruits sur ton arbre."
+        "title": "Ce qui compte pour toi",
+        "body": "Jardiner, porter tes enfants, conduire : tu choisis 1 à 3 activités à retrouver. Ce sont elles qui mesurent tes progrès."
       }
     ],
     "videoAlt": "Démonstration : debout, se pencher doucement vers l’avant",
     "rangeAlt": "La position de flexion choisie avec le curseur",
-    "result": "Position {n} sur 10, douleur {p}/10. Tes exercices partent de là.",
-    "tryLabel": "Essaie le test de flexion, comme dans l’application",
+    "result": "Position {n} sur 10, douleur {p}/10 : tes exercices seraient choisis à partir de là.",
+    "tryLabel": "Essaie : c’est le vrai test de l’application",
     "resultUnset": "Position {n} sur 10. Indique ta douleur pour continuer."
   },
   "moves": {
-    "label": "Les exercices",
-    "title": "Chaque mouvement, montré en 3D.",
-    "body": "Tes exercices sont choisis à partir de ton évaluation, du plus doux au plus exigeant. Tu vois exactement quoi faire."
+    "label": "Tes exercices",
+    "title": "Tu sais toujours exactement quoi faire.",
+    "body": "Fini les feuilles d’exercices qu’on ne comprend plus une fois à la maison. Chaque mouvement est montré en 3D, du plus doux au plus exigeant. Tu passes au niveau suivant quand ton dos est prêt."
   },
   "app": {
     "step": "Flexion · 1 sur 4",
