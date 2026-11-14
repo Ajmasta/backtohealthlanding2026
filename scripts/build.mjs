@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { CONTACT, LANGS, PAGES, SITE } from '../site.config.mjs';
+import { CONTACT, LANGS, PAGES, SHOWCASE, SITE } from '../site.config.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'docs');
@@ -116,6 +116,17 @@ function programVars(dict, app) {
   };
 }
 
+/** The 3D exercise cards of the home page, named from the app's own content. */
+function exerciseCards(dict, app, base) {
+  return SHOWCASE.map((code) => {
+    const [family, level] = code.split('.').map(Number);
+    const name = app.exerciseFamilies[family - 1]?.[level - 1] ?? fail(`No exercise ${code} in content/app/${dict.lang}.json`);
+    const src = `${base}assets/exercises/${code}`;
+    return `<figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="${src}.webp" data-src="${src}.mp4" aria-label="${esc(name)}"></video></div>`
+      + `<figcaption><span class="tag tag-${((family - 1) % 4) + 1}">${esc(dict.program.families[family - 1])}</span>${esc(name)}</figcaption></figure>`;
+  }).join('');
+}
+
 for (const [li, lang] of LANGS.entries()) {
   const dict = dicts[lang.code];
   const other = LANGS[(li + 1) % LANGS.length];
@@ -155,6 +166,7 @@ for (const [li, lang] of LANGS.entries()) {
       painStrings: scriptJson(dict.pain),
       'page.ogType': page.ogType,
       ...(page.id === 'program' ? programVars(dict, appContent[lang.code]) : {}),
+      ...(page.id === 'home' ? { exerciseCards: exerciseCards(dict, appContent[lang.code], base) } : {}),
     };
     const html = render(templates[page.id], vars, { ...dict, page: { title, description } }, `${page.template} (${lang.code})`);
     mkdirSync(join(dist, path), { recursive: true });

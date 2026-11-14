@@ -36,5 +36,6 @@ scripts/
 - **Add a page**: add a template in `src/pages/`, a line in `PAGES` in `site.config.mjs`, and its `title` and `description` in both language files.
 - **The app's exercises or lessons changed**: `npm run sync -- /path/to/monorepo` (the folder holding `mobile/` and `design/`), then build. It needs `cwebp` (`brew install webp`) and `pip install fonttools brotli`.
 - **The logo or tagline changed**: sync, then `npm run images`.
+- **The 3D exercises shown**: `SHOWCASE` in `site.config.mjs`. Each code needs `src/assets/exercises/<code>.mp4` and `.webp`, made from the 3D delivery (`animations-completes/<code>/realistic/`) with ffmpeg and cwebp at 480 px. The movement test pictures and demo come from the app's `assets/movement/flexion/`.
 
 Before publishing: Pierre-Henri validates the text, the contact address is confirmed, and the screens become real app screenshots.

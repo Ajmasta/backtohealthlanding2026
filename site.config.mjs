@@ -17,3 +17,7 @@ export const PAGES = [
   { id: 'home', template: 'home.html', dir: '', meta: 'meta', ogType: 'website' },
   { id: 'program', template: 'program.html', dir: 'programme/', meta: 'program.meta', ogType: 'article' },
 ];
+
+/** The exercises shown in 3D on the home page, one per family, as app codes (family.level).
+ *  Their videos and stills are in src/assets/exercises/<code>.mp4 and .webp. */
+export const SHOWCASE = ['1.2', '2.4', '3.3', '4.2', '6.2', '7.1'];

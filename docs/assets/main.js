@@ -158,6 +158,40 @@
     steps.forEach(function (s) { picker.observe(s); });
   }
 
+  // Videos load only when they come into view, and pause when they leave it. With reduced motion they
+  // stay on their still picture, with controls to play them on demand.
+  var player = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src) v.src = v.dataset.src;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      } else if (v.src) v.pause();
+    });
+  }, { threshold: .25 });
+  document.querySelectorAll('.lazy-video').forEach(function (v) {
+    if (reduce) { v.src = v.dataset.src; v.controls = true; v.loop = false; }
+    else player.observe(v);
+  });
+
+  // The movement test, as in the app: slide through 10 pictures to the furthest position reached.
+  var tryBox = document.querySelector('.eval-try');
+  if (tryBox) {
+    var rangeTest = document.getElementById('range-test');
+    var rangeImg = document.getElementById('range-img');
+    var rangeResult = document.getElementById('range-result');
+    var frames = [];
+    for (var f = 0; f < 10; f++) { frames[f] = new Image(); frames[f].src = tryBox.dataset.frames + f + '.webp'; }
+    var showRange = function () {
+      var n = +rangeTest.value;
+      rangeImg.src = frames[n].src;
+      rangeResult.textContent = tryBox.dataset.result.replace('{n}', n + 1);
+    };
+    rangeTest.addEventListener('input', showRange);
+    showRange();
+  }
+
   // Pain: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
   var COLORS = ['#3db86b', '#68c062', '#89c855', '#a6cf45', '#d5cd41', '#ffc93c', '#ffaf40', '#ff9443', '#fb824a', '#f76f4e', '#f25a52'];
   var range = document.getElementById('pain-range');

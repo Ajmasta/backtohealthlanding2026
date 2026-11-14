@@ -136,7 +136,7 @@ a { color: var(--tronc); }
 .band { --pad: clamp(36px, 4.5vw, 56px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
 /* A menu link lands with the section's label just under the header, not after its top padding.
    The space stays when scrolling. */
-#program, #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
+#evaluation, #exercises, #program, #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
 .card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--ombre); }
 .card-tint { background: var(--halo); box-shadow: none; }
 .card p { color: var(--encre-texte); }
@@ -161,6 +161,32 @@ a { color: var(--tronc); }
 .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .ticks li { position: relative; padding-left: 28px; color: var(--encre-texte); }
 .ticks li::before { content: ""; position: absolute; left: 3px; top: 3px; width: 13px; height: 18px; background: var(--lagon); clip-path: path("M6.5 0 C9 5 13 8 13 12 A6.5 6.2 0 1 1 0 12 C0 8 4 5 6.5 0 Z"); }
+
+/* Assessment: three steps, then the movement test to try */
+.eval-head { max-width: 720px; }
+.eval-steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.eval-n { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 14px; border-radius: 50%; background: var(--halo); color: var(--tronc); font: 500 18px/1 var(--display); }
+.eval-demo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); margin-top: 16px; padding: clamp(20px, 3vw, 32px); }
+.eval-watch { margin: 0; }
+.eval-watch .tag { display: inline-block; }
+.eval-frame { border-radius: 18px; overflow: hidden; background: var(--halo); aspect-ratio: 640 / 576; }
+.eval-frame video, .eval-frame img { width: 100%; height: 100%; object-fit: cover; }
+.eval-watch figcaption { margin-top: 10px; }
+.eval-try h3 { margin-bottom: 4px; }
+.eval-try .eval-frame { margin-top: 12px; }
+.eval-try input[type=range] { accent-color: var(--ciel); }
+.eval-try input[type=range]::-webkit-slider-runnable-track { background: linear-gradient(90deg, var(--halo), var(--ciel)); }
+.eval-try input[type=range]::-moz-range-track { background: linear-gradient(90deg, var(--halo), var(--ciel)); }
+.eval-result { margin-top: 12px; padding: 14px 16px; border-radius: 14px; background: var(--halo); color: var(--tronc); font-weight: 600; }
+
+/* Exercises in 3D */
+.moves-head { max-width: 720px; }
+.moves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+.move { margin: 0; }
+.move-frame { border-radius: 20px; overflow: hidden; background: #4d6a8a; aspect-ratio: 1; box-shadow: var(--ombre); }
+.move-frame video { width: 100%; height: 100%; object-fit: cover; }
+.move figcaption { margin-top: 12px; font-weight: 600; line-height: 1.35; }
+.move .tag { display: table; margin-bottom: 8px; }
 
 /* Water */
 .water { padding-bottom: 40px; }
@@ -301,6 +327,8 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .top.open .nav-link { padding: 14px 4px; font-size: 18px; border-bottom: 1px solid var(--ligne); }
   .top.open .nav-link:last-child { border-bottom: 0; }
   .who, .pain, .pros-foot, .people { grid-template-columns: 1fr; }
+  .eval-steps, .eval-demo { grid-template-columns: 1fr; }
+  .moves-grid { grid-template-columns: 1fr 1fr; }
   .offer-grid { grid-template-columns: 1fr 1fr; }
   .goal { flex-direction: column; align-items: flex-start; }
   .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 8px 16px 16px; }
@@ -315,6 +343,8 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 @media (max-width: 600px) {
   .pros-grid { grid-template-columns: 1fr; }
   .offer-grid, .families { grid-template-columns: 1fr; }
+  /* On a phone, the slider is the demo: the watching video would double its length. */
+  .eval-watch { display: none; }
   .sheet { border-radius: 32px 32px 0 0; }
   .hero-text { padding-top: 84px; }
   .brand { font-size: 18px; }

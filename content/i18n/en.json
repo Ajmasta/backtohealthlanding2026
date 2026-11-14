@@ -21,12 +21,14 @@
     "menu": "Menu",
     "brandAlt": "/ Crescendos",
     "brand": "BackToHealth",
-    "brandFull": "BackToHealth / Crescendos"
+    "brandFull": "BackToHealth / Crescendos",
+    "evaluation": "Assessment",
+    "exercises": "Exercises"
   },
   "hero": {
     "label": "Mobile app · iPhone and Android",
     "title": "Live better with back pain, one small step at a time.",
-    "body": "A little movement, reading, calm and walking, every day. The app adapts to your back.",
+    "body": "An assessment of your back, exercises shown in 3D and a program that adjusts to your pain, every day.",
     "cta": "Notify me at launch",
     "soon": "Coming soon to",
     "appStore": "the App Store",
@@ -351,5 +353,38 @@
     "walkProgress": "It starts from what the person already walks (at least 15 minutes a week) and aims for about double in 8 weeks, from 45 to 125 minutes: about 10% more each week. Pain above 3/10: same goal. Two weeks in a row: walk as much as possible under 3/10, and start again from there.",
     "walkExample": "Starting at 30 minutes a week: 30, 33, 37, 40, 45, 49, 54, then 60 minutes.",
     "eduListTitle": "The lessons"
+  },
+  "eval": {
+    "label": "The assessment",
+    "title": "It all starts with you.",
+    "body": "In 5 minutes, the app gets to know your back. Your program starts from there, not from a generic template.",
+    "steps": [
+      {
+        "title": "Your safety",
+        "body": "8 warning-sign questions. At the slightest doubt, we point you to a doctor."
+      },
+      {
+        "title": "Your movements",
+        "body": "4 filmed tests: you watch, you do the movement, then you show how far you go and your pain."
+      },
+      {
+        "title": "Your goals",
+        "body": "1 to 3 activities to get back to, like gardening or driving, rated from 0 to 10."
+      }
+    ],
+    "demoTag": "Try it: the flexion test",
+    "watch": "Watch the movement, then do it once, gently.",
+    "videoAlt": "Demonstration: standing, bending gently forward",
+    "rangeTitle": "How far did you go?",
+    "rangeHint": "Slide to the picture closest to your position.",
+    "rangeAlt": "The flexion position chosen with the slider",
+    "less": "Less far",
+    "more": "Further",
+    "result": "Position {n} out of 10. With your pain, that’s where your exercises start."
+  },
+  "moves": {
+    "label": "The exercises",
+    "title": "Every movement, shown in 3D.",
+    "body": "Over 30 exercises, from the gentlest to the most demanding. You see exactly what to do, and the app adjusts to your pain."
   }
 }

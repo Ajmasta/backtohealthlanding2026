@@ -21,12 +21,14 @@
     "menu": "Menu",
     "brandAlt": "(BackToHealth)",
     "brand": "Crescendos",
-    "brandFull": "Crescendos (BackToHealth)"
+    "brandFull": "Crescendos (BackToHealth)",
+    "evaluation": "L’évaluation",
+    "exercises": "Les exercices"
   },
   "hero": {
     "label": "Application mobile · iPhone et Android",
     "title": "Mieux vivre avec la douleur au dos, un petit pas à la fois.",
-    "body": "Un peu de mouvement, de lecture, de calme et de marche, chaque jour. L’application s’adapte à ton dos.",
+    "body": "Une évaluation de ton dos, des exercices montrés en 3D et un programme qui s’ajuste à ta douleur, chaque jour.",
     "cta": "Me prévenir du lancement",
     "soon": "Bientôt sur",
     "appStore": "l’App Store",
@@ -351,5 +353,38 @@
     "walkProgress": "On part de ce que la personne marche déjà (au moins 15 minutes par semaine) et on vise environ le double en 8 semaines, de 45 à 125 minutes : environ 10 % de plus par semaine. Douleur au-dessus de 3/10 : même objectif. Deux semaines de suite : on marche autant que possible sous 3/10, et on repart de là.",
     "walkExample": "Départ à 30 minutes par semaine : 30, 33, 37, 40, 45, 49, 54, puis 60 minutes.",
     "eduListTitle": "Les leçons"
+  },
+  "eval": {
+    "label": "L’évaluation",
+    "title": "Tout commence par toi.",
+    "body": "En 5 minutes, l’application apprend à connaître ton dos. Ton programme part de là, pas d’un modèle générique.",
+    "steps": [
+      {
+        "title": "Ta sécurité",
+        "body": "8 questions sur les signaux d’alerte. Au moindre doute, on t’oriente vers un médecin."
+      },
+      {
+        "title": "Tes mouvements",
+        "body": "4 tests filmés : tu regardes, tu fais le geste, puis tu montres jusqu’où tu vas et ta douleur."
+      },
+      {
+        "title": "Tes objectifs",
+        "body": "1 à 3 activités à retrouver, comme jardiner ou conduire, notées de 0 à 10."
+      }
+    ],
+    "demoTag": "Essaie : le test de flexion",
+    "watch": "Regarde le mouvement, puis fais-le une fois, doucement.",
+    "videoAlt": "Démonstration : debout, se pencher doucement vers l’avant",
+    "rangeTitle": "Jusqu’où es-tu allé·e ?",
+    "rangeHint": "Fais glisser jusqu’à l’image la plus proche de ta position.",
+    "rangeAlt": "La position de flexion choisie avec le curseur",
+    "less": "Moins loin",
+    "more": "Plus loin",
+    "result": "Position {n} sur 10. Avec ta douleur, c’est le point de départ de tes exercices."
+  },
+  "moves": {
+    "label": "Les exercices",
+    "title": "Chaque mouvement, montré en 3D.",
+    "body": "Plus de 30 exercices, du plus doux au plus exigeant. Tu vois exactement quoi faire, et l’application ajuste selon ta douleur."
   }
 }
