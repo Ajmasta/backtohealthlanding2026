@@ -336,7 +336,17 @@
       if (!inPlace || phone.classList.contains('hint-on')) return;
       if (Date.now() - lastMove < 180) { waiting = setTimeout(arrive, 90); return; }
       phone.classList.add('hint-on');
+      // The demonstration starts again from standing, so the person sees the whole bend on arrival.
+      if (demo && !phone.classList.contains('tried') && !reduce) {
+        if (!demo.src) demo.src = demo.dataset.src;
+        try { demo.currentTime = 0; } catch (e) {}
+        var p = demo.play();
+        if (p && p.catch) p.catch(function () {});
+      }
     }
+    // The clip from the app is a slow 16 seconds: shown faster here, the movement reads at a glance.
+    var demo = phone.querySelector('.app-watch video');
+    if (demo) { demo.defaultPlaybackRate = 2.5; demo.playbackRate = 2.5; demo.addEventListener('loadeddata', function () { demo.playbackRate = 2.5; }); }
     var hinter = new IntersectionObserver(function (entries) {
       inPlace = entries[0].isIntersecting;
       arrive();
