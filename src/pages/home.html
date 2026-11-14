@@ -210,23 +210,13 @@
         <p class="label">{{pros.label}}</p>
         <h2>{{pros.title}}</h2>
         <p class="lead">{{pros.body}}</p>
-        <a class="btn btn-ghost to-page pros-link" href="programme/">{{pros.programLink}}</a>
       </div>
       <div class="pros-grid">
         {{#each pros.cards}}<div class="card reveal"><h3>{{.title}}</h3><p>{{.body}}</p></div>{{/each}}
       </div>
       <div class="pros-foot reveal">
-        <div>
-          <h3>{{pros.sourcesTitle}}</h3>
-          <ul class="sources">
-            {{#each pros.sources}}<li><a href="{{.url}}">{{.title}}</a></li>{{/each}}
-          </ul>
-        </div>
-        <div>
-          <h3>{{pros.ctaTitle}}</h3>
-          <p>{{pros.ctaBody}}</p>
-          <a class="btn" href="{{mailtoPro}}">{{pros.cta}}</a>
-        </div>
+        <p><strong>{{pros.ctaTitle}}</strong> {{pros.ctaBody}}</p>
+        <span class="pros-actions"><a class="btn btn-ghost to-page" href="programme/">{{pros.programLink}}</a><a class="btn" href="{{mailtoPro}}">{{pros.cta}}</a></span>
       </div>
     </section>
 

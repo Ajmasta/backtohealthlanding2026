@@ -3,7 +3,7 @@
 The landing site: plain HTML, CSS and JS, no framework and no dependencies (Node 20+ only). French at `/`, English at `/en/`.
 
 ```bash
-npm run dev      # build, then preview at http://localhost:8095
+npm run dev      # build, then preview at http://localhost:8095 (same as ./start.sh)
 npm run build    # write docs/
 ```
 

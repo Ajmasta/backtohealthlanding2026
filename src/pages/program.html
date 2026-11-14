@@ -64,6 +64,11 @@
   <h2>{{program.followTitle}}</h2>
   <ul class="ticks">{{followItems}}</ul>
 
+  <h2>{{pros.sourcesTitle}}</h2>
+  <ul class="sources">
+    {{#each pros.sources}}<li><a href="{{.url}}">{{.title}}</a></li>{{/each}}
+  </ul>
+
   <div class="card card-tint philo">
     <h3>{{program.philoTitle}}</h3>
     <p>{{program.philoBody}}</p>
