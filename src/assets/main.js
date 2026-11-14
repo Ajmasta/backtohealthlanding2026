@@ -8,37 +8,85 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // One section at a time (wide screens): a turn of the wheel moves to the next section instead of leaving
-  // the page between two. A section taller than the window scrolls normally until its end.
-  // Touch, keyboard and the scrollbar are left to the browser, which settles on sections by itself (CSS scroll snap).
+  // One section at a time (wide screens): one scroll gesture glides the page to the next section, slowly,
+  // starting and landing softly, instead of leaving the page between two sections.
+  // A section taller than the window scrolls normally until its end. Touch and the scrollbar stay free.
   var slides = matchMedia('(min-width: 901px) and (min-height: 600px)');
   var stops = [].slice.call(document.querySelectorAll('.hero, .band, .night'));
-  var busy = 0;
+  var gliding = false, lastWheel = 0, pushed = 0, free = false, frame = 0;
   function stopAt(el) {
     var r = el.getBoundingClientRect();
     if (el.classList.contains('night')) return r.bottom + scrollY - innerHeight;
     if (el.classList.contains('hero')) return 0;
     return r.top + scrollY - 88 - parseFloat(getComputedStyle(el).scrollMarginTop);
   }
-  addEventListener('wheel', function (e) {
-    if (!slides.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-    // While a move is under way, the rest of the gesture (a trackpad keeps sending events) is ignored.
-    if (Date.now() < busy) { e.preventDefault(); return; }
+  // Slow start, slow landing.
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function glide(to) {
+    to = Math.max(0, Math.min(to, document.documentElement.scrollHeight - innerHeight));
+    var from = scrollY, distance = to - from;
+    if (Math.abs(distance) < 2) return;
+    cancelAnimationFrame(frame);
+    if (reduce) { scrollTo({ top: to, behavior: 'instant' }); return; }
+    // Longer trips take longer, within reason: about a second for one section.
+    var length = Math.max(700, Math.min(1400, 550 + Math.abs(distance) * .6)), start = performance.now();
+    gliding = true;
+    (function step(now) {
+      var t = Math.min(1, (now - start) / length);
+      scrollTo({ top: from + distance * ease(t), behavior: 'instant' });
+      if (t < 1) frame = requestAnimationFrame(step); else gliding = false;
+    })(start);
+  }
+  function neighbour(down) {
     var current = 0;
     stops.forEach(function (el, i) { if (stopAt(el) <= scrollY + 4) current = i; });
-    var down = e.deltaY > 0;
-    var target = stops[current + (down ? 1 : -1)];
-    if (!target) return;
-    // More of this section below (or above): let it scroll.
-    if (down ? stops[current].getBoundingClientRect().bottom > innerHeight + 4 && stopAt(target) > scrollY + innerHeight * .5 : scrollY > stopAt(stops[current]) + 4) return;
+    // A good deal more of this section below (or above): let it scroll. A small remainder is not worth a stop.
+    var room = innerHeight * .2;
+    if (down) return stops[current].getBoundingClientRect().bottom - innerHeight > room ? null : stops[current + 1] || null;
+    var above = scrollY - stopAt(stops[current]);
+    if (above > room) return null;
+    var target = above > 4 ? stops[current] : stops[current - 1] || null;
+    return target;
+  }
+  addEventListener('wheel', function (e) {
+    if (reduce || !slides.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+    // A gesture is a run of wheel events with no pause; a trackpad keeps sending them long after the fingers lift.
+    var fresh = e.timeStamp - lastWheel > 160;
+    lastWheel = e.timeStamp;
+    if (fresh) { pushed = 0; free = false; }
+    // One gesture moves one section: the rest of it is swallowed, during the glide and after.
+    if (gliding || pushed === Infinity) { e.preventDefault(); return; }
+    // A gesture that scrolled inside a tall section keeps doing only that.
+    if (free) return;
+    var target = neighbour(e.deltaY > 0);
+    if (!target) { free = true; return; }
     e.preventDefault();
-    busy = Date.now() + 900;
-    // The browser's own snapping would pull the page back while it travels: it is off for the trip.
-    var root = document.documentElement;
-    root.style.scrollSnapType = 'none';
-    scrollTo(0, stopAt(target));
-    setTimeout(function () { root.style.scrollSnapType = ''; }, 900);
+    // A light brush of the wheel is not a decision to leave the section.
+    pushed += e.deltaY * (e.deltaMode ? 32 : 1);
+    if (Math.abs(pushed) < 24) return;
+    pushed = Infinity;
+    glide(stopAt(target));
   }, { passive: false });
+  // The keyboard moves the same way.
+  addEventListener('keydown', function (e) {
+    if (reduce || !slides.matches || e.altKey || e.ctrlKey || e.metaKey || /^(INPUT|TEXTAREA|SELECT|BUTTON|SUMMARY|VIDEO)$/.test(e.target.tagName)) return;
+    var down = e.key === 'PageDown' || e.key === 'ArrowDown' || (e.key === ' ' && !e.shiftKey);
+    var up = e.key === 'PageUp' || e.key === 'ArrowUp' || (e.key === ' ' && e.shiftKey);
+    if (!down && !up) return;
+    var target = neighbour(down);
+    if (!target) return;
+    e.preventDefault();
+    if (!gliding) glide(stopAt(target));
+  });
+  // Links to a section of this page glide there too.
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href^="#"]');
+    var el = link && link.getAttribute('href').length > 1 && document.getElementById(link.getAttribute('href').slice(1));
+    if (!el || reduce || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    history.pushState(null, '', link.getAttribute('href'));
+    glide(stops.indexOf(el) >= 0 ? stopAt(el) : el.getBoundingClientRect().top + scrollY - 88);
+  });
 
   // Small screens: the menu button opens the section links; choosing one, or Escape, closes it.
   var toggle = top.querySelector('.menu-toggle');

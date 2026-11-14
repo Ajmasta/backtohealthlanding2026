@@ -17,7 +17,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+html { scroll-padding-top: 88px; }
 body { margin: 0; background: var(--fond); color: var(--encre); font: 400 17px/26px var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img, svg { display: block; max-width: 100%; }
 h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
@@ -384,15 +384,12 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 .doc-foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--ligne); color: var(--encre-douce); font-size: 15px; line-height: 22px; }
 .doc-foot a { color: var(--encre-douce); }
 
-/* One section at a time, like slides: the page settles on the start of a section, never between two.
-   Each section fills the window with its content centred; a section taller than the window scrolls
-   freely inside, then the page moves on to the next one. */
-.hero, .band { scroll-snap-align: start; }
+/* One section at a time, like slides: each section fills the window with its content centred, and the
+   script glides from one to the next. A section taller than the window scrolls freely inside.
+   No CSS scroll snap: it pulls the page abruptly. */
 /* A section lands with its label just under the header, not after its top padding (menu links too). */
 .band { scroll-margin-top: calc(-4px - var(--pad)); }
-.night { scroll-snap-align: end; }
 @media (min-width: 901px) and (min-height: 600px) {
-  html { scroll-snap-type: y mandatory; }
   /* From just under the header to the bottom of the window. */
   .band { min-height: calc(100svh - 84px + var(--pad)); }
   .who, .pain, .eval { align-content: center; }
@@ -412,11 +409,6 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 @media (min-width: 901px) and (min-height: 600px) and (max-height: 860px) {
   .app-phone { zoom: .84; }
 }
-/* On small screens the sections are much taller than the window: only a gentle pull to their start. */
-@media (max-width: 900px), (max-height: 599px) {
-  html { scroll-snap-type: y proximity; }
-}
-
 @media (max-width: 1100px) {
   .pros-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -469,7 +461,6 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .cloud, .sun, .sway, .stars i, .js .hero-text > *, .js .hero-phone { animation: none; }
   .hint-on .app-btn, .hint-on .app-btn::after, .js .hint-on .tap-hint { animation: none; }
   .js .tap-hint { opacity: 1; }
