@@ -10,7 +10,6 @@
     "proSubject": "Crescendos : je suis professionnel de la santé"
   },
   "nav": {
-    "how": "Comment ça marche",
     "pros": "Professionnels",
     "faq": "Questions",
     "cta": "Me prévenir",
@@ -81,8 +80,6 @@
     "title": "Jamais plus que ce que ton dos accepte.",
     "body": "La peur d’aggraver les choses, c’est souvent ce qui fait arrêter. Ici, tu indiques ta douleur après chaque série, et le programme s’ajuste aussitôt. Essaie :",
     "sliderLabel": "Ta douleur pendant cette série ?",
-    "low": "Aucune",
-    "high": "Très forte",
     "easyTitle": "Ça va bien.",
     "easyBody": "Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.",
     "holdTitle": "C’est la limite.",
@@ -188,7 +185,7 @@
       },
       {
         "q": "Quand sort l’application ?",
-        "a": "Elle est en test sur iPhone et Android. Écris-nous pour être prévenu du lancement."
+        "a": "Elle est en test sur iPhone et Android. Écris-nous : on te prévient au lancement."
       },
       {
         "q": "Combien ça coûte ?",

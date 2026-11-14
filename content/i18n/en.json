@@ -10,7 +10,6 @@
     "proSubject": "BackToHealth: I am a health professional"
   },
   "nav": {
-    "how": "How it works",
     "pros": "Professionals",
     "faq": "Questions",
     "cta": "Notify me",
@@ -81,8 +80,6 @@
     "title": "Never more than your back accepts.",
     "body": "The fear of making things worse is often what makes people stop. Here, you rate your pain after each set, and the program adjusts right away. Try it:",
     "sliderLabel": "Your pain during this set?",
-    "low": "None",
-    "high": "Very strong",
     "easyTitle": "That’s going well.",
     "easyBody": "If your whole session goes like this: one more repetition next time.",
     "holdTitle": "That’s the limit.",

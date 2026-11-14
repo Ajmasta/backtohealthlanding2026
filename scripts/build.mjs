@@ -65,7 +65,13 @@ function fail(message) {
 
 // ---------- Inputs ----------
 
-const dicts = Object.fromEntries(LANGS.map(({ code }) => [code, readJson(`content/i18n/${code}.json`)]));
+/** French typography: the space before : ; ? ! and inside « » never breaks, so a sign is never alone at the start of a line. */
+const frenchSpaces = (value, key) => {
+  if (typeof value === 'string') return key === 'url' ? value : value.replace(/ ([:;?!»])/g, '\u00a0$1').replace(/« /g, '«\u00a0');
+  if (Array.isArray(value)) return value.map((v) => frenchSpaces(v));
+  return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, frenchSpaces(v, k)]));
+};
+const dicts = Object.fromEntries(LANGS.map(({ code }) => [code, code === 'fr' ? frenchSpaces(readJson(`content/i18n/${code}.json`)) : readJson(`content/i18n/${code}.json`)]));
 const appContent = Object.fromEntries(LANGS.map(({ code }) => [code, readJson(`content/app/${code}.json`)]));
 const templates = Object.fromEntries(PAGES.map((p) => [p.id, read(`src/pages/${p.template}`)]));
 const partials = Object.fromEntries(readdirSync(join(root, 'src/partials')).map((f) => [f.replace(/\.html$/, ''), read(`src/partials/${f}`).trimEnd() + (f === 'head.html' ? '\n' : '')]));
