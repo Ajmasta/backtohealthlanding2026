@@ -9,9 +9,63 @@
     "mailSubject": "Let me know when BackToHealth launches",
     "proSubject": "BackToHealth: I am a health professional"
   },
+  "rail": {
+    "label": "Page sections",
+    "items": [
+      {
+        "href": "#top",
+        "name": "Home"
+      },
+      {
+        "href": "#for-you",
+        "name": "For you"
+      },
+      {
+        "href": "#evaluation",
+        "name": "Your assessment"
+      },
+      {
+        "href": "#exercises",
+        "name": "Your exercises"
+      },
+      {
+        "href": "#pain",
+        "name": "Your pain decides"
+      },
+      {
+        "href": "#how",
+        "name": "Your day"
+      },
+      {
+        "href": "#app",
+        "name": "The app"
+      },
+      {
+        "href": "#program",
+        "name": "The program"
+      },
+      {
+        "href": "#pros",
+        "name": "Professionals"
+      },
+      {
+        "href": "#team",
+        "name": "The team"
+      },
+      {
+        "href": "#faq",
+        "name": "Questions"
+      },
+      {
+        "href": "#notify",
+        "name": "Notify me"
+      }
+    ]
+  },
   "nav": {
     "pros": "Professionals",
     "faq": "Questions",
+    "team": "The team",
     "cta": "Notify me",
     "otherLang": "FR",
     "otherLangLabel": "Lire cette page en français",
@@ -166,8 +220,8 @@
       },
       {
         "name": "Antoine Moevus",
-        "title": "Cofounder · Computing, AI and data",
-        "bio": "PhD student in computer science at Université de Montréal (DIRO). An expert in artificial intelligence and data management, he set the technical direction of BackToHealth: data protection, outcome measurement and the use of AI."
+        "title": "Cofounder · Data, business and product",
+        "bio": "Industry expert and innovator. He leads data management, business and product at BackToHealth. He is currently pursuing a PhD in computer science at Université de Montréal (DIRO)."
       }
     ]
   },

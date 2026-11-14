@@ -4,6 +4,7 @@ The landing site: plain HTML, CSS and JS, no framework and no dependencies (Node
 
 ```bash
 npm run dev      # build, then preview at http://localhost:8095 (same as ./start.sh)
+npm test         # build, then check every page in a headless Chrome (layout, navigation, scrolling, assessment)
 npm run build    # write docs/
 ```
 

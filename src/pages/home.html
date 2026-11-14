@@ -8,6 +8,7 @@
       <a class="nav-link" href="#exercises">{{nav.exercises}}</a>
       <a class="nav-link" href="#program">{{nav.program}}</a>
       <a class="nav-link" href="#pros">{{nav.pros}}</a>
+      <a class="nav-link" href="#team">{{nav.team}}</a>
       <a class="nav-link" href="#faq">{{nav.faq}}</a>
     </div>
     <a class="lang" href="{{otherLangHref}}" hreflang="{{nav.otherLang}}" aria-label="{{nav.otherLangLabel}}">{{nav.otherLang}}</a>
@@ -15,6 +16,11 @@
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="{{nav.menu}}"><span></span><span></span></button>
   </nav>
 </header>
+
+<!-- One dot per section, on the side: where you are, and a way to any section. -->
+<nav class="rail" aria-label="{{rail.label}}">
+  {{#each rail.items}}<a href="{{.href}}"><span>{{.name}}</span></a>{{/each}}
+</nav>
 
 <main>
   <section class="hero scene" data-scene="hero">
@@ -243,7 +249,7 @@
 
     <div class="dusk" aria-hidden="true"></div>
 
-    <section class="night">
+    <section class="night" id="notify">
       <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="reveal center">
         <div class="moon" aria-hidden="true">{{svg.tree}}</div>

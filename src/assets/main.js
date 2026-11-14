@@ -34,7 +34,7 @@
     (function step(now) {
       var t = Math.min(1, (now - start) / length);
       scrollTo({ top: from + distance * ease(t), behavior: 'instant' });
-      if (t < 1) frame = requestAnimationFrame(step); else gliding = false;
+      if (t < 1) frame = requestAnimationFrame(step); else { gliding = false; if (typeof mark === 'function') mark(); }
     })(start);
   }
   function neighbour(down) {
@@ -85,7 +85,7 @@
     if (!el || reduce || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     history.pushState(null, '', link.getAttribute('href'));
-    glide(stops.indexOf(el) >= 0 ? stopAt(el) : el.getBoundingClientRect().top + scrollY - 88);
+    glide(el === top ? 0 : stops.indexOf(el) >= 0 ? stopAt(el) : el.getBoundingClientRect().top + scrollY - 88);
   });
 
   // Small screens: the menu button opens the section links; choosing one, or Escape, closes it.
@@ -98,15 +98,28 @@
   top.querySelectorAll('.nav-link').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
-  // The menu underlines the section in view.
+  // Where the page is: the side rail fills the dot of the section in view, and the menu underlines
+  // its link only while that very section is on screen (not through the sections that follow it).
   var links = [].slice.call(top.querySelectorAll('.nav-link[href^="#"]'));
-  var spy = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+  var rail = document.querySelector('.rail'), dotsOfRail = rail ? [].slice.call(rail.querySelectorAll('a')) : [];
+  var marking = 0;
+  function mark() {
+    marking = 0;
+    var current = 0, line = scrollY + innerHeight * .4;
+    stops.forEach(function (el, i) { if (el.getBoundingClientRect().top + scrollY <= line) current = i; });
+    var here = '#' + (stops[current].id || 'top');
+    links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === here); });
+    dotsOfRail.forEach(function (a) {
+      var on = a.getAttribute('href') === here;
+      a.classList.toggle('on', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+    // Over the night sky the dots turn light.
+    if (rail) rail.classList.toggle('light', stops[current].classList.contains('night'));
+  }
+  addEventListener('scroll', function () { if (!marking) marking = requestAnimationFrame(mark); }, { passive: true });
+  addEventListener('resize', mark);
+  mark();
 
   // Sections rise as they arrive (260 ms, no bounce).
   var revealer = new IntersectionObserver(function (entries) {

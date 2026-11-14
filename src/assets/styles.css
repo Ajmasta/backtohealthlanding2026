@@ -71,6 +71,18 @@ a { color: var(--tronc); }
 .nav-link, .lang { color: var(--encre); text-decoration: none; font-weight: 600; font-size: 15px; text-underline-offset: 6px; text-decoration-thickness: 2px; }
 .nav-link:hover, .lang:hover { text-decoration-line: underline; }
 .nav-link.active { color: var(--tronc); text-decoration-line: underline; }
+
+/* The side rail: one dot per section. The current one is a filled bar; a name appears beside the dot under the pointer. */
+.rail { position: fixed; z-index: 9; right: 10px; top: 50%; transform: translateY(-50%); display: none; flex-direction: column; align-items: flex-end; }
+@media (min-width: 901px) and (min-height: 600px) { .rail { display: flex; } }
+.rail a { position: relative; display: flex; align-items: center; justify-content: flex-end; gap: 10px; height: 24px; padding-inline: 12px 6px; text-decoration: none; }
+.rail a::after { content: ""; flex: none; width: 8px; height: 8px; border-radius: 4px; background: rgba(0, 71, 171, .28); box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .7); transition: height .25s, background .25s; }
+.rail a:hover::after, .rail a:focus-visible::after { background: var(--tronc); }
+.rail a.on::after { height: 20px; background: var(--tronc); }
+.rail span { padding: 4px 10px; border-radius: 999px; background: #fff; color: var(--encre); font-size: 13px; line-height: 18px; font-weight: 600; white-space: nowrap; box-shadow: 0 4px 14px rgba(15, 33, 71, .14); opacity: 0; transform: translateX(6px); transition: opacity .18s, transform .18s; pointer-events: none; }
+.rail a:hover span, .rail a:focus-visible span { opacity: 1; transform: none; }
+.rail.light a::after { background: rgba(255, 255, 255, .4); box-shadow: none; }
+.rail.light a.on::after, .rail.light a:hover::after { background: #fff; }
 .menu-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 12px; background: transparent; color: var(--encre); cursor: pointer; position: relative; }
 .menu-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s; }
 .menu-toggle span:first-child { top: 17px; } .menu-toggle span:last-child { top: 25px; }
@@ -421,8 +433,13 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .phone figcaption { text-align: center; }
 }
 /* Short laptop windows: the phone of the assessment is scaled down to stay whole on screen. */
-@media (min-width: 901px) and (min-height: 600px) and (max-height: 860px) {
+@media (min-width: 901px) and (min-height: 600px) and (max-height: 940px) {
   .app-phone { zoom: .84; }
+}
+@media (min-width: 901px) and (min-height: 600px) and (max-height: 760px) {
+  #evaluation { --pad: 40px; }
+  .app-phone { zoom: .76; }
+}
 }
 @media (max-width: 1100px) {
   .pros-grid { grid-template-columns: 1fr 1fr; }

@@ -9,9 +9,63 @@
     "mailSubject": "Me prévenir du lancement de Crescendos",
     "proSubject": "Crescendos : je suis professionnel de la santé"
   },
+  "rail": {
+    "label": "Sections de la page",
+    "items": [
+      {
+        "href": "#top",
+        "name": "Accueil"
+      },
+      {
+        "href": "#for-you",
+        "name": "Pour toi"
+      },
+      {
+        "href": "#evaluation",
+        "name": "Ton évaluation"
+      },
+      {
+        "href": "#exercises",
+        "name": "Tes exercices"
+      },
+      {
+        "href": "#pain",
+        "name": "Ta douleur décide"
+      },
+      {
+        "href": "#how",
+        "name": "Ton quotidien"
+      },
+      {
+        "href": "#app",
+        "name": "L’application"
+      },
+      {
+        "href": "#program",
+        "name": "Le programme"
+      },
+      {
+        "href": "#pros",
+        "name": "Professionnels"
+      },
+      {
+        "href": "#team",
+        "name": "L’équipe"
+      },
+      {
+        "href": "#faq",
+        "name": "Questions"
+      },
+      {
+        "href": "#notify",
+        "name": "Me prévenir"
+      }
+    ]
+  },
   "nav": {
     "pros": "Professionnels",
     "faq": "Questions",
+    "team": "L’équipe",
     "cta": "Me prévenir",
     "otherLang": "EN",
     "otherLangLabel": "Read this page in English",
@@ -166,8 +220,8 @@
       },
       {
         "name": "Antoine Moevus",
-        "title": "Cofondateur · Informatique, IA et données",
-        "bio": "Doctorant en informatique à l’Université de Montréal (DIRO). Expert en intelligence artificielle et en gestion des données, il a apporté les orientations techniques de Crescendos : la protection des données, la mesure des résultats et l’usage de l’IA."
+        "title": "Cofondateur · Données, affaires et produit",
+        "bio": "Expert de l’industrie et innovateur. Il dirige la gestion des données, les affaires et le produit de Crescendos. Il mène actuellement un doctorat en informatique à l’Université de Montréal (DIRO)."
       }
     ]
   },
