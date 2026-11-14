@@ -159,18 +159,18 @@
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "title": "Cofounder · Health expertise",
-        "bio": "Physician, also trained in physiotherapy. He originated the clinical approach of BackToHealth, based on recent research on chronic low back pain, and validates all of its content."
+        "title": "Cofounder · Health sciences",
+        "bio": "Physician, also trained in physiotherapy. He designed the BackToHealth care program with a scientific, methodical approach, based on recent research on chronic low back pain. He validates all of its content."
       },
       {
         "name": "Adrien Moevus",
-        "title": "Cofounder · Application",
-        "bio": "Medical student and developer. He is responsible for the design and development of the mobile app, and writes the guided meditations."
+        "title": "Cofounder · App development",
+        "bio": "Medical student and developer. He designed the architecture of the mobile app and built it, from the assessment to daily follow-up. He also wrote the guided meditations."
       },
       {
         "name": "Antoine Moevus",
-        "title": "Cofounder · Data, measurement and AI",
-        "bio": "He is responsible for data, outcome measurement and artificial intelligence, and takes part in the development of the app."
+        "title": "Cofounder · Computing, AI and data",
+        "bio": "Expert in computer science, artificial intelligence and data management. He set the technical direction of BackToHealth: data protection, outcome measurement and the use of AI."
       }
     ]
   },

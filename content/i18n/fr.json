@@ -159,18 +159,18 @@
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "title": "Cofondateur · Expertise santé",
-        "bio": "Médecin, diplômé en physiothérapie. Il est à l’origine de l’approche clinique de Crescendos, fondée sur les études récentes sur la lombalgie chronique, et il en valide chaque contenu."
+        "title": "Cofondateur · Sciences de la santé",
+        "bio": "Médecin, diplômé en physiothérapie. Il a conçu le programme de soins de Crescendos avec une approche scientifique et méthodique, fondée sur les études récentes sur la lombalgie chronique. Il en valide chaque contenu."
       },
       {
         "name": "Adrien Moevus",
-        "title": "Cofondateur · Application",
-        "bio": "Étudiant en médecine et développeur. Il est responsable de la conception et du développement de l’application mobile, et il rédige les méditations guidées."
+        "title": "Cofondateur · Développement de l’application",
+        "bio": "Étudiant en médecine et développeur. Il a conçu l’architecture de l’application mobile et l’a programmée, de l’évaluation au suivi quotidien. Il a aussi rédigé les méditations guidées."
       },
       {
         "name": "Antoine Moevus",
-        "title": "Cofondateur · Données, mesure et IA",
-        "bio": "Il est responsable des données, de la mesure des résultats et de l’intelligence artificielle, et il participe au développement de l’application."
+        "title": "Cofondateur · Informatique, IA et données",
+        "bio": "Expert en informatique, en intelligence artificielle et en gestion des données. Il a apporté les orientations techniques de Crescendos : la protection des données, la mesure des résultats et l’usage de l’IA."
       }
     ]
   },
