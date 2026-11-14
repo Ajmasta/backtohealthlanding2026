@@ -19,5 +19,14 @@ export const PAGES = [
 ];
 
 /** The exercises shown in 3D on the home page, one per family, as app codes (family.level).
- *  Their videos and stills are in src/assets/exercises/<code>.mp4 and .webp. */
-export const SHOWCASE = ['1.2', '2.4', '3.3', '4.2', '6.2', '7.1'];
+ *  `shot` says how the 3D render is framed: the figure lies on the floor, or stands.
+ *  Their videos and stills are made by scripts/make-exercise-media.mjs.
+ *  Not family 4: its 3D clips are still copies of family 1, from before it became trunk stabilisation. */
+export const SHOWCASE = [
+  { code: '1.2', shot: 'floor' },
+  { code: '2.4', shot: 'floor' },
+  { code: '3.3', shot: 'floor' },
+  { code: '6.2', shot: 'standing' },
+  { code: '7.1', shot: 'standing' },
+  { code: '8.1', shot: 'floor' },
+];

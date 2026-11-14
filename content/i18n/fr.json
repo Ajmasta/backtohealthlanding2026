@@ -28,7 +28,7 @@
   "hero": {
     "label": "Application mobile · iPhone et Android",
     "title": "Mieux vivre avec la douleur au dos, un petit pas à la fois.",
-    "body": "Une évaluation de ton dos, des exercices montrés en 3D et un programme qui s’ajuste à ta douleur, chaque jour.",
+    "body": "Une évaluation de ton dos, des exercices montrés en 3D et un plan qui s’adapte à ta douleur, chaque jour.",
     "cta": "Me prévenir du lancement",
     "soon": "Bientôt sur",
     "appStore": "l’App Store",
@@ -51,36 +51,36 @@
   "water": {
     "label": "Comment ça marche",
     "title": "Chaque effort arrose ton arbre.",
-    "body": "Une évaluation de 5 minutes, puis ton rythme. Chaque activité terminée devient une goutte d’eau.",
-    "end": "Ton arbre pousse avec les jours où tu prends soin de toi. Pas de série à tenir. Il ne fane jamais.",
+    "body": "Un petit plan chaque jour : une courte lecture, un peu de mouvement, un moment pour l’esprit et de la marche. Tu fais ce que tu peux.",
+    "end": "Ton arbre grandit avec toi, et il ne fane jamais.",
     "steps": [
       {
-        "label": "Apprendre",
-        "title": "Comprendre ta douleur",
-        "body": "23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie, pour reprendre confiance."
+        "label": "Lecture",
+        "title": "Ton parcours de lecture",
+        "body": "23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie, pour comprendre ta douleur et reprendre confiance."
       },
       {
         "label": "Mouvement",
-        "title": "Bouger, à ta mesure",
+        "title": "Tes exercices",
         "body": "5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour toi, montrés en 3D."
       },
       {
-        "label": "Esprit",
-        "title": "Un moment pour respirer",
+        "label": "Méditation",
+        "title": "Un moment pour l’esprit",
         "body": "3 à 30 minutes de pleine conscience, quand la journée ou ton dos pèse."
       },
       {
         "label": "Marche",
-        "title": "Sortir marcher",
-        "body": "La distance que tu veux. Yoga ou vélo ailleurs ? Ça compte aussi."
+        "title": "Marcher, à ton rythme",
+        "body": "La distance que tu veux. Une autre activité ailleurs, comme le yoga ou le vélo, compte aussi."
       }
     ]
   },
   "pain": {
-    "label": "Une application qui écoute",
-    "title": "Ta douleur monte ? On allège.",
-    "body": "Pendant les exercices, tu notes ta douleur et le programme s’ajuste. Essaie, comme après une série :",
-    "sliderLabel": "Ta douleur au dos, de 0 à 10",
+    "label": "Pendant ta séance",
+    "title": "L’application s’adapte à ta douleur.",
+    "body": "Après chaque série, tu indiques ta douleur. Si elle monte, on allège. Si ça va bien, on avance doucement.",
+    "sliderLabel": "Ta douleur pendant cette série ?",
     "low": "Aucune",
     "high": "Très forte",
     "easyTitle": "Ça va bien.",
@@ -155,22 +155,22 @@
   "team": {
     "label": "Qui nous sommes",
     "title": "Trois cofondateurs engagés, à Montréal.",
-    "body": "La médecine, la technologie et les affaires, réunies autour d’une même conviction : on peut mieux vivre avec le mal de dos.",
+    "body": "La médecine, le développement logiciel et la science des données, réunis pour aider à mieux vivre avec le mal de dos.",
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "title": "Cofondateur · Vision et expertise santé",
-        "bio": "Médecin diplômé en physiothérapie, spécialiste du mal de dos chronique. Il porte la vision clinique de Crescendos et signe chaque contenu."
+        "title": "Cofondateur · Expertise santé",
+        "bio": "Médecin, diplômé en physiothérapie. Il est à l’origine de l’approche clinique de Crescendos, fondée sur les études récentes sur la lombalgie chronique, et il en valide chaque contenu."
       },
       {
         "name": "Adrien Moevus",
-        "title": "Cofondateur · Responsable de l’application",
-        "bio": "Étudiant en médecine et développeur full stack. Il a bâti l’application de A à Z, de l’architecture jusqu’aux méditations, qu’il écrit lui-même."
+        "title": "Cofondateur · Application",
+        "bio": "Étudiant en médecine et développeur. Il est responsable de la conception et du développement de l’application mobile, et il rédige les méditations guidées."
       },
       {
         "name": "Antoine Moevus",
-        "title": "Cofondateur · Affaires et développement",
-        "bio": "Il pilote les affaires et la croissance, et veille à une IA responsable : gouvernance des données et apprentissage automatique au service de ton dos."
+        "title": "Cofondateur · Données, mesure et IA",
+        "bio": "Il est responsable des données, de la mesure des résultats et de l’intelligence artificielle, et il participe au développement de l’application."
       }
     ]
   },
@@ -184,7 +184,7 @@
       },
       {
         "q": "Et si j’ai trop mal, ou pas envie ?",
-        "a": "Le bouton « Pas aujourd’hui » te propose plus doux. Pendant une poussée, le plan s’allège 3 jours. Ton arbre t’attend."
+        "a": "Chaque activité a un bouton « Pas aujourd’hui ». Les poussées font partie du chemin : pendant 3 jours, le plan s’allège. Ton arbre et tes progrès sont protégés."
       },
       {
         "q": "Quand sort l’application ?",
@@ -219,7 +219,7 @@
     "title": "Quatre programmes pour bien démarrer.",
     "body": "Quelques semaines pour comprendre ton dos, bouger, méditer et marcher. Ensuite, l’application reste avec toi, aussi longtemps que tu veux.",
     "goalTitle": "Et après ? On reste avec toi.",
-    "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche et tu mesures le chemin parcouru. Un cours de Pilates ou de yoga en plus ? Encore mieux.",
+    "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche et tu mesures le chemin parcouru.",
     "more": "Le programme en détail",
     "cards": [
       {
@@ -356,35 +356,67 @@
   },
   "eval": {
     "label": "L’évaluation",
-    "title": "Tout commence par toi.",
-    "body": "En 5 minutes, l’application apprend à connaître ton dos. Ton programme part de là, pas d’un modèle générique.",
+    "title": "Tout commence par ton dos.",
+    "body": "En 5 minutes, l’application apprend à connaître ton dos. Ton plan part de là.",
     "steps": [
       {
-        "title": "Ta sécurité",
-        "body": "8 questions sur les signaux d’alerte. Au moindre doute, on t’oriente vers un médecin."
+        "title": "Avant de commencer",
+        "body": "8 questions pour vérifier que l’application te convient. Au moindre doute, elle t’oriente vers un médecin."
       },
       {
-        "title": "Tes mouvements",
-        "body": "4 tests filmés : tu regardes, tu fais le geste, puis tu montres jusqu’où tu vas et ta douleur."
+        "title": "Comment va ton dos",
+        "body": "Ta douleur au repos, puis 4 mouvements : tu regardes la vidéo, tu fais le geste, tu indiques jusqu’où tu vas."
       },
       {
-        "title": "Tes objectifs",
-        "body": "1 à 3 activités à retrouver, comme jardiner ou conduire, notées de 0 à 10."
+        "title": "Ce que tu veux retrouver",
+        "body": "1 à 3 activités, comme jardiner ou conduire. Elles deviendront des fruits sur ton arbre."
       }
     ],
-    "demoTag": "Essaie : le test de flexion",
-    "watch": "Regarde le mouvement, puis fais-le une fois, doucement.",
     "videoAlt": "Démonstration : debout, se pencher doucement vers l’avant",
-    "rangeTitle": "Jusqu’où es-tu allé·e ?",
-    "rangeHint": "Fais glisser jusqu’à l’image la plus proche de ta position.",
     "rangeAlt": "La position de flexion choisie avec le curseur",
-    "less": "Moins loin",
-    "more": "Plus loin",
-    "result": "Position {n} sur 10. Avec ta douleur, c’est le point de départ de tes exercices."
+    "result": "Position {n} sur 10, douleur {p}/10. Tes exercices partent de là.",
+    "tryLabel": "Essaie le test de flexion, comme dans l’application",
+    "resultUnset": "Position {n} sur 10. Indique ta douleur pour continuer."
   },
   "moves": {
     "label": "Les exercices",
     "title": "Chaque mouvement, montré en 3D.",
-    "body": "Plus de 30 exercices, du plus doux au plus exigeant. Tu vois exactement quoi faire, et l’application ajuste selon ta douleur."
+    "body": "Tes exercices sont choisis à partir de ton évaluation, du plus doux au plus exigeant. Tu vois exactement quoi faire."
+  },
+  "app": {
+    "step": "Flexion · 1 sur 4",
+    "name": "Flexion",
+    "intro": "Debout, penche-toi vers l’avant doucement, aussi loin que c’est confortable.",
+    "watch": "Regarde le mouvement, puis fais-le une fois, doucement. Arrête-toi si ça fait trop mal.",
+    "didIt": "Je l’ai fait",
+    "again": "Revoir le mouvement",
+    "rangeTitle": "Jusqu’où es-tu allé·e ?",
+    "rangeHint": "Fais glisser jusqu’à l’image la plus proche de ta position la plus loin.",
+    "painTitle": "Ta douleur pendant ce mouvement",
+    "less": "Moins loin",
+    "more": "Plus loin",
+    "painA11y": "Niveau de douleur, de 0 à 10",
+    "pain": {
+      "unset": "Touche l’échelle pour répondre",
+      "bands": [
+        "Aucune douleur",
+        "Douleur légère",
+        "Douleur modérée",
+        "Douleur forte"
+      ],
+      "meaning": [
+        "Aucune douleur",
+        "Très légère, à peine perceptible",
+        "Légère, gênante par moments",
+        "Légère, présente mais supportable",
+        "Difficile à ignorer",
+        "Elle prend beaucoup de place",
+        "Elle gêne ce que tu fais",
+        "Difficile de te concentrer",
+        "Elle te limite beaucoup",
+        "À peine supportable",
+        "La pire douleur imaginable"
+      ]
+    }
   }
 }

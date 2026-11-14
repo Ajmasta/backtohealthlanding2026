@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="L’arbre de Crescendos sur une colline, avec les mots : Mieux vivre avec la douleur au dos">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ajmasta.github.io/backtohealthlanding2026/#org","name":"BackToHealth","alternateName":"Crescendos","url":"https://ajmasta.github.io/backtohealthlanding2026/","logo":"https://ajmasta.github.io/backtohealthlanding2026/assets/share/icon-512.png","email":"adrien@backtohealth.app"},{"@type":"WebSite","@id":"https://ajmasta.github.io/backtohealthlanding2026/#site","name":"BackToHealth","url":"https://ajmasta.github.io/backtohealthlanding2026/","publisher":{"@id":"https://ajmasta.github.io/backtohealthlanding2026/#org"},"inLanguage":["fr","en"]},{"@type":"WebPage","url":"https://ajmasta.github.io/backtohealthlanding2026/","name":"Crescendos (BackToHealth) · Mieux vivre avec la douleur au dos","description":"L’application pour la lombalgie chronique : bouger, comprendre, respirer et marcher, un peu chaque jour, au rythme de ton dos.","inLanguage":"fr","isPartOf":{"@id":"https://ajmasta.github.io/backtohealthlanding2026/#site"}}]}</script>
 <link rel="preload" href="assets/fonts/Fraunces_500Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles.css?v=e0b31954">
+<link rel="stylesheet" href="assets/styles.css?v=324fd42b">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -88,7 +88,7 @@
     <div class="hero-text">
       <p class="label">Application mobile · iPhone et Android</p>
       <h1>Mieux vivre avec la douleur au dos, un petit pas à la fois.</h1>
-      <p class="lead">Une évaluation de ton dos, des exercices montrés en 3D et un programme qui s’ajuste à ta douleur, chaque jour.</p>
+      <p class="lead">Une évaluation de ton dos, des exercices montrés en 3D et un plan qui s’adapte à ta douleur, chaque jour.</p>
       <div class="actions">
         <a class="btn" href="mailto:adrien@backtohealth.app?subject=Me%20pr%C3%A9venir%20du%20lancement%20de%20Crescendos">Me prévenir du lancement</a>
       </div>
@@ -119,27 +119,79 @@
     </section>
 
     <section class="band eval" id="evaluation">
-      <div class="eval-head reveal">
-        <p class="label">L’évaluation</p>
-        <h2>Tout commence par toi.</h2>
-        <p class="lead">En 5 minutes, l’application apprend à connaître ton dos. Ton programme part de là, pas d’un modèle générique.</p>
+      <div class="eval-text">
+        <div class="reveal">
+          <p class="label">L’évaluation</p>
+          <h2>Tout commence par ton dos.</h2>
+          <p class="lead">En 5 minutes, l’application apprend à connaître ton dos. Ton plan part de là.</p>
+        </div>
+        <ol class="eval-steps reveal">
+          <li><span class="eval-n">1</span><div><h3>Avant de commencer</h3><p>8 questions pour vérifier que l’application te convient. Au moindre doute, elle t’oriente vers un médecin.</p></div></li><li><span class="eval-n">2</span><div><h3>Comment va ton dos</h3><p>Ta douleur au repos, puis 4 mouvements : tu regardes la vidéo, tu fais le geste, tu indiques jusqu’où tu vas.</p></div></li><li><span class="eval-n">3</span><div><h3>Ce que tu veux retrouver</h3><p>1 à 3 activités, comme jardiner ou conduire. Elles deviendront des fruits sur ton arbre.</p></div></li>
+        </ol>
+        <p class="eval-result reveal" id="range-result" aria-live="polite" data-unset="Position {n} sur 10. Indique ta douleur pour continuer." data-set="Position {n} sur 10, douleur {p}/10. Tes exercices partent de là."></p>
       </div>
-      <ol class="eval-steps">
-        <li class="card reveal"><span class="eval-n">1</span><h3>Ta sécurité</h3><p>8 questions sur les signaux d’alerte. Au moindre doute, on t’oriente vers un médecin.</p></li><li class="card reveal"><span class="eval-n">2</span><h3>Tes mouvements</h3><p>4 tests filmés : tu regardes, tu fais le geste, puis tu montres jusqu’où tu vas et ta douleur.</p></li><li class="card reveal"><span class="eval-n">3</span><h3>Tes objectifs</h3><p>1 à 3 activités à retrouver, comme jardiner ou conduire, notées de 0 à 10.</p></li>
-      </ol>
-      <div class="card eval-demo reveal">
-        <figure class="eval-watch">
-          <p class="tag tag-2">Essaie : le test de flexion</p>
-          <div class="eval-frame"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="assets/evaluation/flexion-0.webp" data-src="assets/evaluation/flexion-demo.mp4" aria-label="Démonstration : debout, se pencher doucement vers l’avant"></video></div>
-          <figcaption class="note">Regarde le mouvement, puis fais-le une fois, doucement.</figcaption>
-        </figure>
-        <div class="eval-try" data-frames="assets/evaluation/flexion-" data-result="Position {n} sur 10. Avec ta douleur, c’est le point de départ de tes exercices.">
-          <h3>Jusqu’où es-tu allé·e ?</h3>
-          <p class="note">Fais glisser jusqu’à l’image la plus proche de ta position.</p>
-          <div class="eval-frame"><img id="range-img" src="assets/evaluation/flexion-4.webp" width="640" height="576" alt="La position de flexion choisie avec le curseur"></div>
-          <input id="range-test" type="range" min="0" max="9" step="1" value="4" aria-label="Jusqu’où es-tu allé·e ?">
-          <div class="pain-ends"><span>Moins loin</span><span>Plus loin</span></div>
-          <p class="eval-result" id="range-result" aria-live="polite"></p>
+      <!-- The app's own movement test, in the app's own words: watch, do it, then show how far and how it felt. -->
+      <figure class="eval-app reveal">
+        <figcaption class="eval-try-label">Essaie le test de flexion, comme dans l’application</figcaption>
+        <div class="app-phone" data-frames="assets/evaluation/flexion-">
+          <div class="app-screen">
+            <div class="app-view app-watch">
+              <p class="app-label">Flexion · 1 sur 4</p>
+              <p class="app-title">Flexion</p>
+              <p class="app-sub">Debout, penche-toi vers l’avant doucement, aussi loin que c’est confortable.</p>
+              <div class="app-card app-media"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="assets/evaluation/flexion-0.webp" data-src="assets/evaluation/flexion-demo.mp4" aria-label="Démonstration : debout, se pencher doucement vers l’avant"></video></div>
+              <p class="app-legend">Regarde le mouvement, puis fais-le une fois, doucement. Arrête-toi si ça fait trop mal.</p>
+              <button class="btn app-btn" type="button" id="did-it">Je l’ai fait</button>
+            </div>
+            <div class="app-view app-range">
+              <p class="app-label">Flexion · 1 sur 4</p>
+              <p class="app-title">Jusqu’où es-tu allé·e ?</p>
+              <p class="app-sub">Fais glisser jusqu’à l’image la plus proche de ta position la plus loin.</p>
+              <div class="app-card">
+                <div class="app-media app-position"><img id="range-img" src="assets/evaluation/flexion-0.webp" width="640" height="576" alt="La position de flexion choisie avec le curseur"></div>
+                <input id="range-test" class="slider slider-ciel" type="range" min="0" max="9" step="1" value="0" aria-label="Jusqu’où es-tu allé·e ?">
+                <div class="slider-ends"><span>Moins loin</span><span>Plus loin</span></div>
+              </div>
+              <div class="app-card" id="range-pain">
+                <p class="app-card-title">Ta douleur pendant ce mouvement</p>
+                <div class="pscale">
+  <div class="pscale-readout"><span class="pscale-disc"><b class="pscale-n">?</b><small>/10</small></span><span class="pscale-text"><strong class="pscale-band">Touche l’échelle pour répondre</strong><span class="pscale-meaning"></span></span></div>
+  <input class="slider slider-pain" type="range" min="0" max="10" step="1" value="0" aria-label="Niveau de douleur, de 0 à 10">
+  <div class="pscale-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+</div>
+              </div>
+              <button class="app-link" type="button" id="watch-again">Revoir le mouvement</button>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <section class="band moves" id="exercises">
+      <div class="reveal moves-head">
+        <p class="label">Les exercices</p>
+        <h2>Chaque mouvement, montré en 3D.</h2>
+        <p class="lead">Tes exercices sont choisis à partir de ton évaluation, du plus doux au plus exigeant. Tu vois exactement quoi faire.</p>
+      </div>
+      <div class="moves-grid"><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="assets/exercises/1.2.webp" data-src="assets/exercises/1.2.mp4" aria-label="Extension lombaire couché sur les coudes"></video></div><figcaption><span class="tag tag-2">Extension lombaire</span>Extension lombaire couché sur les coudes</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="assets/exercises/2.4.webp" data-src="assets/exercises/2.4.mp4" aria-label="Posture de l’enfant"></video></div><figcaption><span class="tag tag-2">Flexion</span>Posture de l’enfant</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="assets/exercises/3.3.webp" data-src="assets/exercises/3.3.mp4" aria-label="Rotation couchée passive"></video></div><figcaption><span class="tag tag-2">Rotation</span>Rotation couchée passive</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="assets/exercises/6.2.webp" data-src="assets/exercises/6.2.mp4" aria-label="Quart de squat"></video></div><figcaption><span class="tag tag-2">Squat</span>Quart de squat</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="assets/exercises/7.1.webp" data-src="assets/exercises/7.1.mp4" aria-label="Fente"></video></div><figcaption><span class="tag tag-2">Fente</span>Fente</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="assets/exercises/8.1.webp" data-src="assets/exercises/8.1.mp4" aria-label="Abduction de hanche, couché sur le côté"></video></div><figcaption><span class="tag tag-2">Hanches</span>Abduction de hanche, couché sur le côté</figcaption></figure></div>
+    </section>
+
+    <section class="band pain">
+      <div class="pain-text reveal">
+        <p class="label">Pendant ta séance</p>
+        <h2>L’application s’adapte à ta douleur.</h2>
+        <p class="lead">Après chaque série, tu indiques ta douleur. Si elle monte, on allège. Si ça va bien, on avance doucement.</p>
+      </div>
+      <div class="card pain-card reveal" data-pain-start="2">
+        <p class="pain-q">Ta douleur pendant cette série ?</p>
+        <div class="pscale">
+  <div class="pscale-readout"><span class="pscale-disc"><b class="pscale-n">?</b><small>/10</small></span><span class="pscale-text"><strong class="pscale-band">Touche l’échelle pour répondre</strong><span class="pscale-meaning"></span></span></div>
+  <input class="slider slider-pain" type="range" min="0" max="10" step="1" value="0" aria-label="Niveau de douleur, de 0 à 10">
+  <div class="pscale-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+</div>
+        <div class="pain-reply" id="pain-reply" aria-live="polite">
+          <h3>Ça va bien.</h3>
+          <p>Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.</p>
         </div>
       </div>
     </section>
@@ -148,7 +200,7 @@
       <div class="water-head reveal">
         <p class="label">Comment ça marche</p>
         <h2>Chaque effort arrose ton arbre.</h2>
-        <p class="lead">Une évaluation de 5 minutes, puis ton rythme. Chaque activité terminée devient une goutte d’eau.</p>
+        <p class="lead">Un petit plan chaque jour : une courte lecture, un peu de mouvement, un moment pour l’esprit et de la marche. Tu fais ce que tu peux.</p>
       </div>
       <div class="water-grid">
         <div class="water-stage">
@@ -188,36 +240,9 @@
           </div>
         </div>
         <ol class="steps">
-          <li class="step"><p class="tag tag-1">Apprendre</p><h3>Comprendre ta douleur</h3><p>23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie, pour reprendre confiance.</p></li><li class="step"><p class="tag tag-2">Mouvement</p><h3>Bouger, à ta mesure</h3><p>5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour toi, montrés en 3D.</p></li><li class="step"><p class="tag tag-3">Esprit</p><h3>Un moment pour respirer</h3><p>3 à 30 minutes de pleine conscience, quand la journée ou ton dos pèse.</p></li><li class="step"><p class="tag tag-4">Marche</p><h3>Sortir marcher</h3><p>La distance que tu veux. Yoga ou vélo ailleurs ? Ça compte aussi.</p></li>
-          <li class="step step-end"><p class="closing">Ton arbre pousse avec les jours où tu prends soin de toi. Pas de série à tenir. Il ne fane jamais.</p></li>
+          <li class="step"><p class="tag tag-1">Lecture</p><h3>Ton parcours de lecture</h3><p>23 leçons de 5 minutes, écrites par notre médecin, diplômé en physiothérapie, pour comprendre ta douleur et reprendre confiance.</p></li><li class="step"><p class="tag tag-2">Mouvement</p><h3>Tes exercices</h3><p>5 à 15 minutes, 2 à 3 fois par semaine. Des exercices choisis pour toi, montrés en 3D.</p></li><li class="step"><p class="tag tag-3">Méditation</p><h3>Un moment pour l’esprit</h3><p>3 à 30 minutes de pleine conscience, quand la journée ou ton dos pèse.</p></li><li class="step"><p class="tag tag-4">Marche</p><h3>Marcher, à ton rythme</h3><p>La distance que tu veux. Une autre activité ailleurs, comme le yoga ou le vélo, compte aussi.</p></li>
+          <li class="step step-end"><p class="closing">Ton arbre grandit avec toi, et il ne fane jamais.</p></li>
         </ol>
-      </div>
-    </section>
-
-    <section class="band moves" id="exercises">
-      <div class="reveal moves-head">
-        <p class="label">Les exercices</p>
-        <h2>Chaque mouvement, montré en 3D.</h2>
-        <p class="lead">Plus de 30 exercices, du plus doux au plus exigeant. Tu vois exactement quoi faire, et l’application ajuste selon ta douleur.</p>
-      </div>
-      <div class="moves-grid"><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="assets/exercises/1.2.webp" data-src="assets/exercises/1.2.mp4" aria-label="Extension lombaire couché sur les coudes"></video></div><figcaption><span class="tag tag-1">Extension lombaire</span>Extension lombaire couché sur les coudes</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="assets/exercises/2.4.webp" data-src="assets/exercises/2.4.mp4" aria-label="Posture de l’enfant"></video></div><figcaption><span class="tag tag-2">Flexion</span>Posture de l’enfant</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="assets/exercises/3.3.webp" data-src="assets/exercises/3.3.mp4" aria-label="Rotation couchée passive"></video></div><figcaption><span class="tag tag-3">Rotation</span>Rotation couchée passive</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="assets/exercises/4.2.webp" data-src="assets/exercises/4.2.mp4" aria-label="Pont fessier"></video></div><figcaption><span class="tag tag-4">Stabilisation du tronc</span>Pont fessier</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="assets/exercises/6.2.webp" data-src="assets/exercises/6.2.mp4" aria-label="Quart de squat"></video></div><figcaption><span class="tag tag-2">Squat</span>Quart de squat</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="assets/exercises/7.1.webp" data-src="assets/exercises/7.1.mp4" aria-label="Fente"></video></div><figcaption><span class="tag tag-3">Fente</span>Fente</figcaption></figure></div>
-    </section>
-
-    <section class="band pain">
-      <div class="pain-text reveal">
-        <p class="label">Une application qui écoute</p>
-        <h2>Ta douleur monte ? On allège.</h2>
-        <p class="lead">Pendant les exercices, tu notes ta douleur et le programme s’ajuste. Essaie, comme après une série :</p>
-      </div>
-      <div class="card pain-card reveal">
-        <label for="pain-range">Ta douleur au dos, de 0 à 10</label>
-        <div class="pain-value"><span class="pain-dot" id="pain-dot"></span><output id="pain-out" for="pain-range">2</output><span class="pain-over">/10</span></div>
-        <input id="pain-range" type="range" min="0" max="10" step="1" value="2">
-        <div class="pain-ends"><span>Aucune</span><span>Très forte</span></div>
-        <div class="pain-reply" id="pain-reply" aria-live="polite">
-          <h3>Ça va bien.</h3>
-          <p>Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.</p>
-        </div>
       </div>
     </section>
 
@@ -244,12 +269,10 @@
         <div class="card reveal"><p class="tag tag-1">Comprendre</p><p class="dur">4 semaines</p><p>23 leçons de 5 minutes pour comprendre ta douleur et reprendre confiance.</p></div><div class="card reveal"><p class="tag tag-2">Bouger</p><p class="dur">8 à 12 semaines</p><p>Des exercices progressifs, adaptés à ta douleur, 2 à 3 fois par semaine.</p></div><div class="card reveal"><p class="tag tag-3">Méditer</p><p class="dur">8 à 11 semaines</p><p>La pleine conscience, puis la bienveillance envers toi et ce qui compte pour toi.</p></div><div class="card reveal"><p class="tag tag-4">Marcher</p><p class="dur">8 semaines</p><p>Un objectif par semaine, à partir de ce que tu fais déjà.</p></div>
       </div>
       <div class="card card-tint goal reveal">
-        <div><h3>Et après ? On reste avec toi.</h3><p>Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche et tu mesures le chemin parcouru. Un cours de Pilates ou de yoga en plus ? Encore mieux.</p></div>
+        <div><h3>Et après ? On reste avec toi.</h3><p>Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche et tu mesures le chemin parcouru.</p></div>
         <a class="btn btn-ghost to-page" href="programme/">Le programme en détail</a>
       </div>
     </section>
-
-
 
     <section class="band pros" id="pros">
       <div class="reveal pros-head">
@@ -280,10 +303,10 @@
       <div class="reveal team-head">
         <p class="label">Qui nous sommes</p>
         <h2>Trois cofondateurs engagés, à Montréal.</h2>
-        <p class="lead">La médecine, la technologie et les affaires, réunies autour d’une même conviction : on peut mieux vivre avec le mal de dos.</p>
+        <p class="lead">La médecine, le développement logiciel et la science des données, réunis pour aider à mieux vivre avec le mal de dos.</p>
       </div>
       <dl class="people reveal">
-        <div class="card"><dt>Pierre-Henri Bao Heitz<span class="person-title">Cofondateur · Vision et expertise santé</span></dt><dd>Médecin diplômé en physiothérapie, spécialiste du mal de dos chronique. Il porte la vision clinique de Crescendos et signe chaque contenu.</dd></div><div class="card"><dt>Adrien Moevus<span class="person-title">Cofondateur · Responsable de l’application</span></dt><dd>Étudiant en médecine et développeur full stack. Il a bâti l’application de A à Z, de l’architecture jusqu’aux méditations, qu’il écrit lui-même.</dd></div><div class="card"><dt>Antoine Moevus<span class="person-title">Cofondateur · Affaires et développement</span></dt><dd>Il pilote les affaires et la croissance, et veille à une IA responsable : gouvernance des données et apprentissage automatique au service de ton dos.</dd></div>
+        <div class="card"><dt>Pierre-Henri Bao Heitz<span class="person-title">Cofondateur · Expertise santé</span></dt><dd>Médecin, diplômé en physiothérapie. Il est à l’origine de l’approche clinique de Crescendos, fondée sur les études récentes sur la lombalgie chronique, et il en valide chaque contenu.</dd></div><div class="card"><dt>Adrien Moevus<span class="person-title">Cofondateur · Application</span></dt><dd>Étudiant en médecine et développeur. Il est responsable de la conception et du développement de l’application mobile, et il rédige les méditations guidées.</dd></div><div class="card"><dt>Antoine Moevus<span class="person-title">Cofondateur · Données, mesure et IA</span></dt><dd>Il est responsable des données, de la mesure des résultats et de l’intelligence artificielle, et il participe au développement de l’application.</dd></div>
       </dl>
     </section>
 
@@ -293,7 +316,7 @@
         <h2>Tes questions.</h2>
       </div>
       <div class="faq-list reveal">
-        <details><summary>Ça remplace mon médecin ou mon physio ?</summary><p>Non. L’application complète ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé.</p></details><details><summary>Et si j’ai trop mal, ou pas envie ?</summary><p>Le bouton « Pas aujourd’hui » te propose plus doux. Pendant une poussée, le plan s’allège 3 jours. Ton arbre t’attend.</p></details><details><summary>Quand sort l’application ?</summary><p>Elle est en test sur iPhone et Android. Écris-nous pour être prévenu du lancement.</p></details><details><summary>Combien ça coûte ?</summary><p>Le prix n’est pas encore fixé. Tu le sauras clairement avant le lancement.</p></details><details><summary>En quelle langue ?</summary><p>Français et anglais, selon ton téléphone. Tu peux changer quand tu veux.</p></details><details><summary>Et mes données ?</summary><p>Protégées, jamais vendues. Tu peux les exporter ou les supprimer à tout moment. La recherche est facultative et se fait sous un code, jamais avec ton nom ni ton courriel.</p></details>
+        <details><summary>Ça remplace mon médecin ou mon physio ?</summary><p>Non. L’application complète ton suivi. Si quelque chose t’inquiète, parles-en à un professionnel de la santé.</p></details><details><summary>Et si j’ai trop mal, ou pas envie ?</summary><p>Chaque activité a un bouton « Pas aujourd’hui ». Les poussées font partie du chemin : pendant 3 jours, le plan s’allège. Ton arbre et tes progrès sont protégés.</p></details><details><summary>Quand sort l’application ?</summary><p>Elle est en test sur iPhone et Android. Écris-nous pour être prévenu du lancement.</p></details><details><summary>Combien ça coûte ?</summary><p>Le prix n’est pas encore fixé. Tu le sauras clairement avant le lancement.</p></details><details><summary>En quelle langue ?</summary><p>Français et anglais, selon ton téléphone. Tu peux changer quand tu veux.</p></details><details><summary>Et mes données ?</summary><p>Protégées, jamais vendues. Tu peux les exporter ou les supprimer à tout moment. La recherche est facultative et se fait sous un code, jamais avec ton nom ni ton courriel.</p></details>
       </div>
     </section>
 
@@ -321,7 +344,7 @@
   </div>
 </main>
 
-<script>window.PAIN = {"label":"Une application qui écoute","title":"Ta douleur monte ? On allège.","body":"Pendant les exercices, tu notes ta douleur et le programme s’ajuste. Essaie, comme après une série :","sliderLabel":"Ta douleur au dos, de 0 à 10","low":"Aucune","high":"Très forte","easyTitle":"Ça va bien.","easyBody":"Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.","holdTitle":"C’est la limite.","holdBody":"Tu peux continuer. La prochaine fois, même niveau.","stopTitle":"Ta douleur dépasse 3/10.","stopBody":"Arrête cet exercice : c’est la bonne décision. La prochaine fois, on repart plus doucement. Un moment de réconfort de 3 minutes t’attend."};</script>
-<script src="assets/main.js?v=e2b04aa8"></script>
+<script>window.PAIN = {"label":"Pendant ta séance","title":"L’application s’adapte à ta douleur.","body":"Après chaque série, tu indiques ta douleur. Si elle monte, on allège. Si ça va bien, on avance doucement.","sliderLabel":"Ta douleur pendant cette série ?","low":"Aucune","high":"Très forte","easyTitle":"Ça va bien.","easyBody":"Si toute ta séance se passe ainsi : une répétition de plus la prochaine fois.","holdTitle":"C’est la limite.","holdBody":"Tu peux continuer. La prochaine fois, même niveau.","stopTitle":"Ta douleur dépasse 3/10.","stopBody":"Arrête cet exercice : c’est la bonne décision. La prochaine fois, on repart plus doucement. Un moment de réconfort de 3 minutes t’attend.","scale":{"unset":"Touche l’échelle pour répondre","bands":["Aucune douleur","Douleur légère","Douleur modérée","Douleur forte"],"meaning":["Aucune douleur","Très légère, à peine perceptible","Légère, gênante par moments","Légère, présente mais supportable","Difficile à ignorer","Elle prend beaucoup de place","Elle gêne ce que tu fais","Difficile de te concentrer","Elle te limite beaucoup","À peine supportable","La pire douleur imaginable"]}};</script>
+<script src="assets/main.js?v=195f73ed"></script>
 </body>
 </html>

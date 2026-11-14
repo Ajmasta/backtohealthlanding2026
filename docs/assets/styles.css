@@ -21,18 +21,19 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 body { margin: 0; background: var(--fond); color: var(--encre); font: 400 17px/26px var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img, svg { display: block; max-width: 100%; }
 h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
-h1 { font-size: clamp(36px, 5.2vw, 64px); line-height: 1.08; }
-h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.14; }
+h1 { font-size: clamp(34px, 4.8vw, 58px); line-height: 1.1; }
+h2 { font-size: clamp(26px, 3vw, 40px); line-height: 1.18; }
 h3 { font: 600 20px/26px var(--sans); margin: 0 0 8px; }
 p { margin: 0; }
 a { color: var(--tronc); }
 :focus-visible { outline: 3px solid #3d5be0; outline-offset: 3px; border-radius: 6px; }
-.label { font: 600 13px/16px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tronc); margin-bottom: 14px; }
-.lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.5; margin-top: 16px; }
+.label { font: 600 12px/16px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--tronc); margin-bottom: 14px; }
+.lead { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.55; margin-top: 14px; color: var(--encre-texte); }
+.hero .lead, .night .lead { color: inherit; }
 .center { text-align: center; }
 .center .lead { max-width: 620px; margin-inline: auto; }
 
-.btn { display: inline-block; background: var(--tronc); color: #fff; font: 600 17px/22px var(--sans); text-decoration: none; padding: 16px 28px; border-radius: 16px; transition: transform .2s, background .2s; }
+.btn { display: inline-block; background: var(--tronc); color: #fff; font: 600 17px/22px var(--sans); text-decoration: none; padding: 17px 28px; border-radius: 16px; transition: transform .2s, background .2s; }
 .btn:hover { background: #003a8a; transform: translateY(-1px); }
 .btn-small { padding: 10px 16px; font-size: 15px; border-radius: 12px; white-space: nowrap; }
 .btn-ghost { background: transparent; color: var(--tronc); box-shadow: inset 0 0 0 2px var(--tronc); }
@@ -133,7 +134,7 @@ a { color: var(--tronc); }
 
 /* The sheet that rises over the meadow, as in the app */
 .sheet { position: relative; z-index: 2; margin-top: -48px; border-radius: 40px 40px 0 0; background: var(--fond); overflow: clip; }
-.band { --pad: clamp(36px, 4.5vw, 56px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
+.band { --pad: clamp(44px, 5.5vw, 76px); max-width: 1160px; margin: 0 auto; padding: var(--pad) clamp(16px, 4vw, 40px); }
 /* A menu link lands with the section's label just under the header, not after its top padding.
    The space stays when scrolling. */
 #evaluation, #exercises, #program, #how, #pros { scroll-margin-top: calc(-4px - var(--pad)); }
@@ -162,30 +163,75 @@ a { color: var(--tronc); }
 .ticks li { position: relative; padding-left: 28px; color: var(--encre-texte); }
 .ticks li::before { content: ""; position: absolute; left: 3px; top: 3px; width: 13px; height: 18px; background: var(--lagon); clip-path: path("M6.5 0 C9 5 13 8 13 12 A6.5 6.2 0 1 1 0 12 C0 8 4 5 6.5 0 Z"); }
 
-/* Assessment: three steps, then the movement test to try */
-.eval-head { max-width: 720px; }
-.eval-steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.eval-n { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 14px; border-radius: 50%; background: var(--halo); color: var(--tronc); font: 500 18px/1 var(--display); }
-.eval-demo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); margin-top: 16px; padding: clamp(20px, 3vw, 32px); }
-.eval-watch { margin: 0; }
-.eval-watch .tag { display: inline-block; }
-.eval-frame { border-radius: 18px; overflow: hidden; background: var(--halo); aspect-ratio: 640 / 576; }
-.eval-frame video, .eval-frame img { width: 100%; height: 100%; object-fit: cover; }
-.eval-watch figcaption { margin-top: 10px; }
-.eval-try h3 { margin-bottom: 4px; }
-.eval-try .eval-frame { margin-top: 12px; }
-.eval-try input[type=range] { accent-color: var(--ciel); }
-.eval-try input[type=range]::-webkit-slider-runnable-track { background: linear-gradient(90deg, var(--halo), var(--ciel)); }
-.eval-try input[type=range]::-moz-range-track { background: linear-gradient(90deg, var(--halo), var(--ciel)); }
-.eval-result { margin-top: 12px; padding: 14px 16px; border-radius: 14px; background: var(--halo); color: var(--tronc); font-weight: 600; }
+/* Assessment: what it covers on the left, the app's own movement test to try on the right */
+.eval { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.eval-steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 20px; }
+.eval-steps li { display: flex; gap: 16px; }
+.eval-steps h3 { margin-bottom: 4px; }
+.eval-steps p { color: var(--encre-texte); }
+.eval-n { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--halo); color: var(--tronc); font: 500 20px/1 var(--display); }
+.eval-result { margin-top: 24px; padding: 14px 18px; border-radius: 16px; background: var(--halo); color: var(--tronc); font-weight: 600; }
+.eval-result:empty { visibility: hidden; }
+.eval-app { margin: 0; }
+.eval-try-label { margin-bottom: 14px; text-align: center; font: 600 12px/16px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--encre-douce); }
 
-/* Exercises in 3D */
+/* A phone showing one screen of the app, built with the app's measures (theme/tokens.ts):
+   24 px margins, 20 px cards and gaps, 32/38 screen title, 12 px label, 56 px button. */
+.app-phone { width: min(360px, 100%); margin: 0 auto; padding: 8px; border-radius: 44px; background: var(--encre); box-shadow: 0 24px 56px rgba(15, 33, 71, .22); }
+.app-screen { display: grid; border-radius: 36px; overflow: hidden; background: linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .3)), linear-gradient(var(--ciel-haut), var(--halo) 70%, #cfeeda); }
+/* Both views share one cell, so the phone keeps its height when the view changes. */
+.app-view { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 14px; padding: 28px 20px 20px; }
+.app-range, .app-phone.ranging .app-watch { visibility: hidden; }
+.app-phone.ranging .app-range { visibility: visible; }
+/* Without the script, the test opens on its second step, with the first picture. */
+html:not(.js) .app-watch { visibility: hidden; }
+html:not(.js) .app-range { visibility: visible; }
+.app-label { font: 600 12px/16px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--tronc); }
+.app-title { font: 500 28px/34px var(--display); margin-top: -6px; }
+.app-sub { font-size: 15px; line-height: 22px; color: var(--encre-texte); margin-top: -6px; }
+.app-legend { font-size: 14px; line-height: 20px; color: var(--encre-douce); }
+.app-card { display: grid; gap: 10px; padding: 16px; border-radius: 20px; background: var(--surface); box-shadow: var(--ombre); }
+.app-card-title { font: 600 17px/22px var(--sans); }
+.app-media { border-radius: 14px; overflow: hidden; background: var(--halo); }
+.app-card.app-media { padding: 0; aspect-ratio: 1006 / 906; border-radius: 20px; }
+.app-media video, .app-media img { width: 100%; height: 100%; object-fit: cover; }
+.app-position { height: 184px; background: linear-gradient(#e3f1fb, #f4f9fd 81.5%, #cfe2f1 81.5%); }
+.app-position img { object-fit: contain; }
+.app-btn { margin-top: auto; width: 100%; border: 0; cursor: pointer; text-align: center; }
+.app-link { margin-top: auto; padding: 8px; border: 0; background: none; color: var(--tronc); font: 600 15px/22px var(--sans); cursor: pointer; }
+
+/* Sliders, as the app's StepSlider: 14 px track, large white thumb. */
+.slider { width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.slider::-webkit-slider-runnable-track { height: 14px; border-radius: 7px; background: var(--track); }
+.slider::-moz-range-track { height: 14px; border-radius: 7px; background: var(--track); }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 36px; height: 36px; margin-top: -11px; border-radius: 50%; background: #fff; border: 4px solid var(--encre); box-shadow: var(--ombre); }
+.slider::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 4px solid var(--encre); }
+.slider-pain { --track: linear-gradient(90deg, #3db86b, #a6cf45 30%, #ffc93c 50%, #ff9443 70%, #f25a52); }
+.slider-ciel { --track: linear-gradient(90deg, var(--ciel) var(--fill, 0%), var(--halo) var(--fill, 0%)); }
+.slider-ends { display: flex; justify-content: space-between; margin-top: -6px; font-size: 14px; line-height: 20px; color: var(--encre-douce); }
+
+/* The pain scale, as the app's PainScale: the number on a disc in its clinical colour, its band and meaning. */
+.pscale { display: grid; gap: 8px; }
+.pscale-readout { display: flex; align-items: center; gap: 14px; min-height: 64px; }
+.pscale-disc { flex: none; display: grid; grid-auto-flow: column; align-items: baseline; justify-content: center; align-content: center; width: 64px; height: 64px; border-radius: 50%; background: var(--dot, var(--halo)); color: var(--encre); transition: background .2s; }
+.pscale-n { font: 500 28px/32px var(--display); font-variant-numeric: tabular-nums; }
+.pscale-disc small { font-size: 13px; }
+.pscale-text { display: grid; }
+.pscale-band { font: 600 17px/22px var(--sans); }
+.pscale-meaning { font-size: 14px; line-height: 20px; color: var(--encre-douce); }
+.pscale.unset .pscale-disc, .pscale.unset .pscale-band { color: var(--encre-douce); }
+.pscale.unset .slider::-webkit-slider-thumb { opacity: 0; }
+.pscale.unset .slider::-moz-range-thumb { opacity: 0; }
+.pscale-ticks { display: flex; justify-content: space-between; padding: 0 8px; margin-top: -8px; font: 600 12px/16px var(--sans); color: var(--encre-douce); }
+.pscale-ticks span { width: 20px; text-align: center; }
+
+/* Exercises in 3D. The files are already framed on the figure (scripts/make-exercise-media.mjs). */
 .moves-head { max-width: 720px; }
-.moves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+.moves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
 .move { margin: 0; }
-.move-frame { border-radius: 20px; overflow: hidden; background: #4d6a8a; aspect-ratio: 1; box-shadow: var(--ombre); }
+.move-frame { border-radius: 24px; overflow: hidden; background: #4d6a8a; aspect-ratio: 4 / 3; box-shadow: var(--ombre); }
 .move-frame video { width: 100%; height: 100%; object-fit: cover; }
-.move figcaption { margin-top: 12px; font-weight: 600; line-height: 1.35; }
+.move figcaption { margin-top: 12px; font: 600 17px/22px var(--sans); }
 .move .tag { display: table; margin-bottom: 8px; }
 
 /* Water */
@@ -193,13 +239,13 @@ a { color: var(--tronc); }
 .water-head { max-width: 700px; }
 .water-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 6vw, 72px); margin-top: 32px; }
 .water-stage { position: sticky; top: 88px; align-self: start; }
-.window { height: min(70svh, 560px); border-radius: 32px; box-shadow: var(--ombre); --crest: 70%; --tree-h: clamp(170px, 42svh, 340px); }
+.window { height: min(64svh, 480px); border-radius: 32px; box-shadow: var(--ombre); --crest: 70%; --tree-h: clamp(170px, 38svh, 290px); }
 .window .terrain { width: max(180%, 820px); }
 .stage { position: absolute; bottom: calc(var(--tree-h) * -.024); left: calc(var(--tree-h) * -.416); width: calc(var(--tree-h) * .848); height: var(--tree-h); transform-origin: 49.06% 97.6%; opacity: 0; transform: scale(.82); transition: transform .9s cubic-bezier(.2, 1.3, .4, 1), opacity .45s; }
 .stage.on { opacity: 1; transform: scale(1); }
 .stage .sway { transform-origin: 49.06% 97.6%; }
 .steps { list-style: none; margin: 0; padding: 0; }
-.step { min-height: 62svh; display: flex; flex-direction: column; justify-content: center; opacity: .35; transition: opacity .26s; }
+.step { min-height: min(56svh, 380px); display: flex; flex-direction: column; justify-content: center; opacity: .35; transition: opacity .26s; }
 .step.on, .no-motion .step { opacity: 1; }
 .step h3 { font: 500 clamp(26px, 2.4vw, 32px)/1.2 var(--display); }
 .step p:last-child { font-size: 18px; line-height: 1.5; max-width: 440px; }
@@ -209,20 +255,10 @@ a { color: var(--tronc); }
 .closing { font: 500 clamp(24px, 2.4vw, 30px)/1.28 var(--display) !important; color: var(--tronc); }
 
 /* Pain */
-.pain { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
-.pain-card { padding: clamp(24px, 3vw, 36px); }
-.pain-card label { font-weight: 600; }
-.pain-value { display: flex; align-items: center; gap: 12px; margin: 12px 0 16px; }
-.pain-dot { width: 44px; height: 44px; border-radius: 50%; background: var(--dot, #89c855); transition: background .2s; }
-.pain-value output { font: 500 56px/60px var(--display); font-variant-numeric: tabular-nums; }
-.pain-over { font: 500 28px/1 var(--display); color: var(--encre-douce); }
-input[type=range] { width: 100%; height: 48px; margin: 0; background: transparent; accent-color: var(--dot, #89c855); cursor: pointer; -webkit-appearance: none; appearance: none; }
-input[type=range]::-webkit-slider-runnable-track { height: 12px; border-radius: 6px; background: linear-gradient(90deg, #3db86b, #a6cf45 30%, #ffc93c 50%, #ff9443 70%, #f25a52); }
-input[type=range]::-moz-range-track { height: 12px; border-radius: 6px; background: linear-gradient(90deg, #3db86b, #a6cf45 30%, #ffc93c 50%, #ff9443 70%, #f25a52); }
-input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 36px; height: 36px; margin-top: -12px; border-radius: 50%; background: #fff; border: 4px solid var(--encre); box-shadow: var(--ombre); }
-input[type=range]::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 4px solid var(--encre); }
-.pain-ends { display: flex; justify-content: space-between; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--encre-douce); }
-.pain-reply { margin-top: 20px; padding: 20px; border-radius: 16px; background: var(--halo); min-height: 158px; }
+.pain { display: grid; grid-template-columns: 1fr minmax(0, 440px); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.pain-card { padding: clamp(20px, 3vw, 28px); display: grid; gap: 14px; }
+.pain-q { font: 600 17px/22px var(--sans); color: var(--encre) !important; }
+.pain-reply { padding: 18px 20px; border-radius: 16px; background: var(--halo); min-height: 138px; }
 .pain-reply.stop { background: #fdeee2; }
 .pain-reply.stop h3 { color: var(--pause); }
 
@@ -327,7 +363,8 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .top.open .nav-link { padding: 14px 4px; font-size: 18px; border-bottom: 1px solid var(--ligne); }
   .top.open .nav-link:last-child { border-bottom: 0; }
   .who, .pain, .pros-foot, .people { grid-template-columns: 1fr; }
-  .eval-steps, .eval-demo { grid-template-columns: 1fr; }
+  .pain-card { max-width: 440px; }
+  .eval { grid-template-columns: 1fr; }
   .moves-grid { grid-template-columns: 1fr 1fr; }
   .offer-grid { grid-template-columns: 1fr 1fr; }
   .goal { flex-direction: column; align-items: flex-start; }
@@ -343,11 +380,10 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
 @media (max-width: 600px) {
   .pros-grid { grid-template-columns: 1fr; }
   .offer-grid, .families { grid-template-columns: 1fr; }
-  /* On a phone, the slider is the demo: the watching video would double its length. */
-  .eval-watch { display: none; }
   .sheet { border-radius: 32px 32px 0 0; }
   .hero-text { padding-top: 84px; }
   .brand { font-size: 18px; }
+  .app-title { font-size: 25px; line-height: 31px; }
   .brand-name { flex-direction: column; gap: 2px; }
   .brand-alt { font-size: 13px; }
   .top { padding-inline: 12px 6px; gap: 8px; }

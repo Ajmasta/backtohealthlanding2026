@@ -3,7 +3,7 @@
 // Run: npm run build
 
 import { createHash } from 'node:crypto';
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CONTACT, LANGS, PAGES, SHOWCASE, SITE } from '../site.config.mjs';
@@ -68,7 +68,7 @@ function fail(message) {
 const dicts = Object.fromEntries(LANGS.map(({ code }) => [code, readJson(`content/i18n/${code}.json`)]));
 const appContent = Object.fromEntries(LANGS.map(({ code }) => [code, readJson(`content/app/${code}.json`)]));
 const templates = Object.fromEntries(PAGES.map((p) => [p.id, read(`src/pages/${p.template}`)]));
-const partials = { head: read('src/partials/head.html') };
+const partials = Object.fromEntries(readdirSync(join(root, 'src/partials')).map((f) => [f.replace(/\.html$/, ''), read(`src/partials/${f}`).trimEnd() + (f === 'head.html' ? '\n' : '')]));
 const svg = (name) => read(`src/assets/svg/${name}.svg`).trim();
 const svgVars = {
   'svg.tree': svg('tree-logo'),
@@ -118,12 +118,12 @@ function programVars(dict, app) {
 
 /** The 3D exercise cards of the home page, named from the app's own content. */
 function exerciseCards(dict, app, base) {
-  return SHOWCASE.map((code) => {
+  return SHOWCASE.map(({ code }) => {
     const [family, level] = code.split('.').map(Number);
     const name = app.exerciseFamilies[family - 1]?.[level - 1] ?? fail(`No exercise ${code} in content/app/${dict.lang}.json`);
     const src = `${base}assets/exercises/${code}`;
-    return `<figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="${src}.webp" data-src="${src}.mp4" aria-label="${esc(name)}"></video></div>`
-      + `<figcaption><span class="tag tag-${((family - 1) % 4) + 1}">${esc(dict.program.families[family - 1])}</span>${esc(name)}</figcaption></figure>`;
+    return `<figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="${src}.webp" data-src="${src}.mp4" aria-label="${esc(name)}"></video></div>`
+      + `<figcaption><span class="tag tag-2">${esc(dict.program.families[family - 1])}</span>${esc(name)}</figcaption></figure>`;
   }).join('');
 }
 
@@ -163,7 +163,7 @@ for (const [li, lang] of LANGS.entries()) {
       site: SITE,
       mailto: esc(mail(dict.meta.mailSubject)),
       mailtoPro: esc(mail(dict.meta.proSubject)),
-      painStrings: scriptJson(dict.pain),
+      painStrings: scriptJson({ ...dict.pain, scale: dict.app.pain }),
       'page.ogType': page.ogType,
       ...(page.id === 'program' ? programVars(dict, appContent[lang.code]) : {}),
       ...(page.id === 'home' ? { exerciseCards: exerciseCards(dict, appContent[lang.code], base) } : {}),

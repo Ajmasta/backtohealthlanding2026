@@ -28,7 +28,7 @@
   "hero": {
     "label": "Mobile app · iPhone and Android",
     "title": "Live better with back pain, one small step at a time.",
-    "body": "An assessment of your back, exercises shown in 3D and a program that adjusts to your pain, every day.",
+    "body": "An assessment of your back, exercises shown in 3D and a plan that adapts to your pain, every day.",
     "cta": "Notify me at launch",
     "soon": "Coming soon to",
     "appStore": "the App Store",
@@ -51,36 +51,36 @@
   "water": {
     "label": "How it works",
     "title": "Every effort waters your tree.",
-    "body": "A 5-minute assessment, then your pace. Every activity you finish becomes a drop of water.",
-    "end": "Your tree grows with the days you take care of yourself. No streak to keep. It never wilts.",
+    "body": "A small plan each day: a short read, a little movement, a moment for the mind and some walking. You do what you can.",
+    "end": "Your tree grows with you, and it never wilts.",
     "steps": [
       {
-        "label": "Learn",
-        "title": "Understand your pain",
-        "body": "23 five-minute lessons, written by our doctor, also trained in physiotherapy, to regain confidence."
+        "label": "Reading",
+        "title": "Your reading path",
+        "body": "23 five-minute lessons, written by our doctor, also trained in physiotherapy, to understand your pain and regain confidence."
       },
       {
         "label": "Movement",
-        "title": "Move, your way",
+        "title": "Your exercises",
         "body": "5 to 15 minutes, 2 to 3 times a week. Exercises chosen for you, shown in 3D."
       },
       {
-        "label": "Mind",
-        "title": "A moment to breathe",
+        "label": "Meditation",
+        "title": "A moment for the mind",
         "body": "3 to 30 minutes of mindfulness, when the day or your back weighs on you."
       },
       {
-        "label": "Walk",
-        "title": "Go for a walk",
-        "body": "As far as you like. Yoga or cycling elsewhere? That counts too."
+        "label": "Walking",
+        "title": "Walk, at your pace",
+        "body": "As far as you like. Another activity elsewhere, like yoga or cycling, counts too."
       }
     ]
   },
   "pain": {
-    "label": "An app that listens",
-    "title": "Pain going up? We ease off.",
-    "body": "During exercises, you rate your pain and the program adjusts. Try it, as if you just finished a set:",
-    "sliderLabel": "Your back pain, from 0 to 10",
+    "label": "During your session",
+    "title": "The app adapts to your pain.",
+    "body": "After each set, you rate your pain. If it goes up, we ease off. If it’s going well, we move forward gently.",
+    "sliderLabel": "Your pain during this set?",
     "low": "None",
     "high": "Very strong",
     "easyTitle": "That’s going well.",
@@ -155,22 +155,22 @@
   "team": {
     "label": "Who we are",
     "title": "Three committed cofounders, in Montréal.",
-    "body": "Medicine, technology and business, united by one belief: you can live better with back pain.",
+    "body": "Medicine, software development and data science, brought together to help people live better with back pain.",
     "people": [
       {
         "name": "Pierre-Henri Bao Heitz",
-        "title": "Cofounder · Vision and health expertise",
-        "bio": "Physician, also trained in physiotherapy, specialised in chronic back pain. He carries the clinical vision of BackToHealth and signs off every piece of content."
+        "title": "Cofounder · Health expertise",
+        "bio": "Physician, also trained in physiotherapy. He originated the clinical approach of BackToHealth, based on recent research on chronic low back pain, and validates all of its content."
       },
       {
         "name": "Adrien Moevus",
-        "title": "Cofounder · App lead",
-        "bio": "Medical student and full-stack developer. He built the app from the ground up, from the architecture to the meditations he writes himself."
+        "title": "Cofounder · Application",
+        "bio": "Medical student and developer. He is responsible for the design and development of the mobile app, and writes the guided meditations."
       },
       {
         "name": "Antoine Moevus",
-        "title": "Cofounder · Business and development",
-        "bio": "He drives business and growth, and makes sure AI is used responsibly: data governance and machine learning working for your back."
+        "title": "Cofounder · Data, measurement and AI",
+        "bio": "He is responsible for data, outcome measurement and artificial intelligence, and takes part in the development of the app."
       }
     ]
   },
@@ -184,7 +184,7 @@
       },
       {
         "q": "What if it hurts too much, or I don’t feel like it?",
-        "a": "The “Not today” button offers something gentler. During a flare-up, the plan eases off for 3 days. Your tree waits for you."
+        "a": "Every activity has a “Not today” button. Flare-ups are part of the path: for 3 days, the plan eases off. Your tree and your progress are protected."
       },
       {
         "q": "When does the app come out?",
@@ -219,7 +219,7 @@
     "title": "Four programs to get you started.",
     "body": "A few weeks to understand your back, move, meditate and walk. Then the app stays with you, for as long as you like.",
     "goalTitle": "And after? We stay with you.",
-    "goalBody": "Your exercises keep adapting, you meditate your way, you keep your walking rhythm and you see how far you’ve come. A Pilates or yoga class on top? Even better.",
+    "goalBody": "Your exercises keep adapting, you meditate your way, you keep your walking rhythm and you see how far you’ve come.",
     "more": "The program in detail",
     "cards": [
       {
@@ -356,35 +356,67 @@
   },
   "eval": {
     "label": "The assessment",
-    "title": "It all starts with you.",
-    "body": "In 5 minutes, the app gets to know your back. Your program starts from there, not from a generic template.",
+    "title": "It all starts with your back.",
+    "body": "In 5 minutes, the app gets to know your back. Your plan starts from there.",
     "steps": [
       {
-        "title": "Your safety",
-        "body": "8 warning-sign questions. At the slightest doubt, we point you to a doctor."
+        "title": "Before you start",
+        "body": "8 questions to check that the app is right for you. At the slightest doubt, it points you to a doctor."
       },
       {
-        "title": "Your movements",
-        "body": "4 filmed tests: you watch, you do the movement, then you show how far you go and your pain."
+        "title": "How your back is doing",
+        "body": "Your pain at rest, then 4 movements: you watch the video, do the movement, and show how far you go."
       },
       {
-        "title": "Your goals",
-        "body": "1 to 3 activities to get back to, like gardening or driving, rated from 0 to 10."
+        "title": "What you want to get back to",
+        "body": "1 to 3 activities, like gardening or driving. They will become fruit on your tree."
       }
     ],
-    "demoTag": "Try it: the flexion test",
-    "watch": "Watch the movement, then do it once, gently.",
     "videoAlt": "Demonstration: standing, bending gently forward",
-    "rangeTitle": "How far did you go?",
-    "rangeHint": "Slide to the picture closest to your position.",
     "rangeAlt": "The flexion position chosen with the slider",
-    "less": "Less far",
-    "more": "Further",
-    "result": "Position {n} out of 10. With your pain, that’s where your exercises start."
+    "result": "Position {n} out of 10, pain {p}/10. Your exercises start from there.",
+    "tryLabel": "Try the flexion test, as in the app",
+    "resultUnset": "Position {n} out of 10. Rate your pain to continue."
   },
   "moves": {
     "label": "The exercises",
     "title": "Every movement, shown in 3D.",
-    "body": "Over 30 exercises, from the gentlest to the most demanding. You see exactly what to do, and the app adjusts to your pain."
+    "body": "Your exercises are chosen from your assessment, from the gentlest to the most demanding. You see exactly what to do."
+  },
+  "app": {
+    "step": "Flexion · 1 of 4",
+    "name": "Flexion",
+    "intro": "Standing, bend forward gently, as far as is comfortable.",
+    "watch": "Watch the movement, then do it once, gently. Stop if it hurts too much.",
+    "didIt": "I did it",
+    "again": "Watch the movement again",
+    "rangeTitle": "How far did you go?",
+    "rangeHint": "Slide to the picture closest to your furthest position.",
+    "painTitle": "Your pain during this movement",
+    "less": "Less far",
+    "more": "Further",
+    "painA11y": "Pain level, from 0 to 10",
+    "pain": {
+      "unset": "Touch the scale to answer",
+      "bands": [
+        "No pain",
+        "Mild pain",
+        "Moderate pain",
+        "Severe pain"
+      ],
+      "meaning": [
+        "No pain",
+        "Very mild, barely noticeable",
+        "Mild, bothersome at times",
+        "Mild, present but bearable",
+        "Hard to ignore",
+        "It takes up a lot of room",
+        "It gets in the way of what you do",
+        "Hard to concentrate",
+        "It limits you a lot",
+        "Barely bearable",
+        "The worst pain imaginable"
+      ]
+    }
   }
 }

@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="The BackToHealth tree on a hill, with the words: Live better with back pain">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ajmasta.github.io/backtohealthlanding2026/#org","name":"BackToHealth","alternateName":"Crescendos","url":"https://ajmasta.github.io/backtohealthlanding2026/","logo":"https://ajmasta.github.io/backtohealthlanding2026/assets/share/icon-512.png","email":"adrien@backtohealth.app"},{"@type":"WebSite","@id":"https://ajmasta.github.io/backtohealthlanding2026/#site","name":"BackToHealth","url":"https://ajmasta.github.io/backtohealthlanding2026/","publisher":{"@id":"https://ajmasta.github.io/backtohealthlanding2026/#org"},"inLanguage":["fr","en"]},{"@type":"WebPage","url":"https://ajmasta.github.io/backtohealthlanding2026/en/","name":"BackToHealth / Crescendos · Live better with back pain","description":"The app for chronic low back pain: move, understand, breathe and walk, a little each day, at your back’s pace.","inLanguage":"en","isPartOf":{"@id":"https://ajmasta.github.io/backtohealthlanding2026/#site"}}]}</script>
 <link rel="preload" href="../assets/fonts/Fraunces_500Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/styles.css?v=e0b31954">
+<link rel="stylesheet" href="../assets/styles.css?v=324fd42b">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -88,7 +88,7 @@
     <div class="hero-text">
       <p class="label">Mobile app · iPhone and Android</p>
       <h1>Live better with back pain, one small step at a time.</h1>
-      <p class="lead">An assessment of your back, exercises shown in 3D and a program that adjusts to your pain, every day.</p>
+      <p class="lead">An assessment of your back, exercises shown in 3D and a plan that adapts to your pain, every day.</p>
       <div class="actions">
         <a class="btn" href="mailto:adrien@backtohealth.app?subject=Let%20me%20know%20when%20BackToHealth%20launches">Notify me at launch</a>
       </div>
@@ -119,27 +119,79 @@
     </section>
 
     <section class="band eval" id="evaluation">
-      <div class="eval-head reveal">
-        <p class="label">The assessment</p>
-        <h2>It all starts with you.</h2>
-        <p class="lead">In 5 minutes, the app gets to know your back. Your program starts from there, not from a generic template.</p>
+      <div class="eval-text">
+        <div class="reveal">
+          <p class="label">The assessment</p>
+          <h2>It all starts with your back.</h2>
+          <p class="lead">In 5 minutes, the app gets to know your back. Your plan starts from there.</p>
+        </div>
+        <ol class="eval-steps reveal">
+          <li><span class="eval-n">1</span><div><h3>Before you start</h3><p>8 questions to check that the app is right for you. At the slightest doubt, it points you to a doctor.</p></div></li><li><span class="eval-n">2</span><div><h3>How your back is doing</h3><p>Your pain at rest, then 4 movements: you watch the video, do the movement, and show how far you go.</p></div></li><li><span class="eval-n">3</span><div><h3>What you want to get back to</h3><p>1 to 3 activities, like gardening or driving. They will become fruit on your tree.</p></div></li>
+        </ol>
+        <p class="eval-result reveal" id="range-result" aria-live="polite" data-unset="Position {n} out of 10. Rate your pain to continue." data-set="Position {n} out of 10, pain {p}/10. Your exercises start from there."></p>
       </div>
-      <ol class="eval-steps">
-        <li class="card reveal"><span class="eval-n">1</span><h3>Your safety</h3><p>8 warning-sign questions. At the slightest doubt, we point you to a doctor.</p></li><li class="card reveal"><span class="eval-n">2</span><h3>Your movements</h3><p>4 filmed tests: you watch, you do the movement, then you show how far you go and your pain.</p></li><li class="card reveal"><span class="eval-n">3</span><h3>Your goals</h3><p>1 to 3 activities to get back to, like gardening or driving, rated from 0 to 10.</p></li>
-      </ol>
-      <div class="card eval-demo reveal">
-        <figure class="eval-watch">
-          <p class="tag tag-2">Try it: the flexion test</p>
-          <div class="eval-frame"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="../assets/evaluation/flexion-0.webp" data-src="../assets/evaluation/flexion-demo.mp4" aria-label="Demonstration: standing, bending gently forward"></video></div>
-          <figcaption class="note">Watch the movement, then do it once, gently.</figcaption>
-        </figure>
-        <div class="eval-try" data-frames="../assets/evaluation/flexion-" data-result="Position {n} out of 10. With your pain, that’s where your exercises start.">
-          <h3>How far did you go?</h3>
-          <p class="note">Slide to the picture closest to your position.</p>
-          <div class="eval-frame"><img id="range-img" src="../assets/evaluation/flexion-4.webp" width="640" height="576" alt="The flexion position chosen with the slider"></div>
-          <input id="range-test" type="range" min="0" max="9" step="1" value="4" aria-label="How far did you go?">
-          <div class="pain-ends"><span>Less far</span><span>Further</span></div>
-          <p class="eval-result" id="range-result" aria-live="polite"></p>
+      <!-- The app's own movement test, in the app's own words: watch, do it, then show how far and how it felt. -->
+      <figure class="eval-app reveal">
+        <figcaption class="eval-try-label">Try the flexion test, as in the app</figcaption>
+        <div class="app-phone" data-frames="../assets/evaluation/flexion-">
+          <div class="app-screen">
+            <div class="app-view app-watch">
+              <p class="app-label">Flexion · 1 of 4</p>
+              <p class="app-title">Flexion</p>
+              <p class="app-sub">Standing, bend forward gently, as far as is comfortable.</p>
+              <div class="app-card app-media"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="../assets/evaluation/flexion-0.webp" data-src="../assets/evaluation/flexion-demo.mp4" aria-label="Demonstration: standing, bending gently forward"></video></div>
+              <p class="app-legend">Watch the movement, then do it once, gently. Stop if it hurts too much.</p>
+              <button class="btn app-btn" type="button" id="did-it">I did it</button>
+            </div>
+            <div class="app-view app-range">
+              <p class="app-label">Flexion · 1 of 4</p>
+              <p class="app-title">How far did you go?</p>
+              <p class="app-sub">Slide to the picture closest to your furthest position.</p>
+              <div class="app-card">
+                <div class="app-media app-position"><img id="range-img" src="../assets/evaluation/flexion-0.webp" width="640" height="576" alt="The flexion position chosen with the slider"></div>
+                <input id="range-test" class="slider slider-ciel" type="range" min="0" max="9" step="1" value="0" aria-label="How far did you go?">
+                <div class="slider-ends"><span>Less far</span><span>Further</span></div>
+              </div>
+              <div class="app-card" id="range-pain">
+                <p class="app-card-title">Your pain during this movement</p>
+                <div class="pscale">
+  <div class="pscale-readout"><span class="pscale-disc"><b class="pscale-n">?</b><small>/10</small></span><span class="pscale-text"><strong class="pscale-band">Touch the scale to answer</strong><span class="pscale-meaning"></span></span></div>
+  <input class="slider slider-pain" type="range" min="0" max="10" step="1" value="0" aria-label="Pain level, from 0 to 10">
+  <div class="pscale-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+</div>
+              </div>
+              <button class="app-link" type="button" id="watch-again">Watch the movement again</button>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <section class="band moves" id="exercises">
+      <div class="reveal moves-head">
+        <p class="label">The exercises</p>
+        <h2>Every movement, shown in 3D.</h2>
+        <p class="lead">Your exercises are chosen from your assessment, from the gentlest to the most demanding. You see exactly what to do.</p>
+      </div>
+      <div class="moves-grid"><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="../assets/exercises/1.2.webp" data-src="../assets/exercises/1.2.mp4" aria-label="Lying lumbar extension on the elbows"></video></div><figcaption><span class="tag tag-2">Lumbar extension</span>Lying lumbar extension on the elbows</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="../assets/exercises/2.4.webp" data-src="../assets/exercises/2.4.mp4" aria-label="Child’s pose"></video></div><figcaption><span class="tag tag-2">Flexion</span>Child’s pose</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="../assets/exercises/3.3.webp" data-src="../assets/exercises/3.3.mp4" aria-label="Passive lying rotation"></video></div><figcaption><span class="tag tag-2">Rotation</span>Passive lying rotation</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="../assets/exercises/6.2.webp" data-src="../assets/exercises/6.2.mp4" aria-label="Quarter squat"></video></div><figcaption><span class="tag tag-2">Squat</span>Quarter squat</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="../assets/exercises/7.1.webp" data-src="../assets/exercises/7.1.mp4" aria-label="Lunge"></video></div><figcaption><span class="tag tag-2">Lunge</span>Lunge</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="360" poster="../assets/exercises/8.1.webp" data-src="../assets/exercises/8.1.mp4" aria-label="Hip abduction, lying on your side"></video></div><figcaption><span class="tag tag-2">Hips</span>Hip abduction, lying on your side</figcaption></figure></div>
+    </section>
+
+    <section class="band pain">
+      <div class="pain-text reveal">
+        <p class="label">During your session</p>
+        <h2>The app adapts to your pain.</h2>
+        <p class="lead">After each set, you rate your pain. If it goes up, we ease off. If it’s going well, we move forward gently.</p>
+      </div>
+      <div class="card pain-card reveal" data-pain-start="2">
+        <p class="pain-q">Your pain during this set?</p>
+        <div class="pscale">
+  <div class="pscale-readout"><span class="pscale-disc"><b class="pscale-n">?</b><small>/10</small></span><span class="pscale-text"><strong class="pscale-band">Touch the scale to answer</strong><span class="pscale-meaning"></span></span></div>
+  <input class="slider slider-pain" type="range" min="0" max="10" step="1" value="0" aria-label="Pain level, from 0 to 10">
+  <div class="pscale-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+</div>
+        <div class="pain-reply" id="pain-reply" aria-live="polite">
+          <h3>That’s going well.</h3>
+          <p>If your whole session goes like this: one more repetition next time.</p>
         </div>
       </div>
     </section>
@@ -148,7 +200,7 @@
       <div class="water-head reveal">
         <p class="label">How it works</p>
         <h2>Every effort waters your tree.</h2>
-        <p class="lead">A 5-minute assessment, then your pace. Every activity you finish becomes a drop of water.</p>
+        <p class="lead">A small plan each day: a short read, a little movement, a moment for the mind and some walking. You do what you can.</p>
       </div>
       <div class="water-grid">
         <div class="water-stage">
@@ -188,36 +240,9 @@
           </div>
         </div>
         <ol class="steps">
-          <li class="step"><p class="tag tag-1">Learn</p><h3>Understand your pain</h3><p>23 five-minute lessons, written by our doctor, also trained in physiotherapy, to regain confidence.</p></li><li class="step"><p class="tag tag-2">Movement</p><h3>Move, your way</h3><p>5 to 15 minutes, 2 to 3 times a week. Exercises chosen for you, shown in 3D.</p></li><li class="step"><p class="tag tag-3">Mind</p><h3>A moment to breathe</h3><p>3 to 30 minutes of mindfulness, when the day or your back weighs on you.</p></li><li class="step"><p class="tag tag-4">Walk</p><h3>Go for a walk</h3><p>As far as you like. Yoga or cycling elsewhere? That counts too.</p></li>
-          <li class="step step-end"><p class="closing">Your tree grows with the days you take care of yourself. No streak to keep. It never wilts.</p></li>
+          <li class="step"><p class="tag tag-1">Reading</p><h3>Your reading path</h3><p>23 five-minute lessons, written by our doctor, also trained in physiotherapy, to understand your pain and regain confidence.</p></li><li class="step"><p class="tag tag-2">Movement</p><h3>Your exercises</h3><p>5 to 15 minutes, 2 to 3 times a week. Exercises chosen for you, shown in 3D.</p></li><li class="step"><p class="tag tag-3">Meditation</p><h3>A moment for the mind</h3><p>3 to 30 minutes of mindfulness, when the day or your back weighs on you.</p></li><li class="step"><p class="tag tag-4">Walking</p><h3>Walk, at your pace</h3><p>As far as you like. Another activity elsewhere, like yoga or cycling, counts too.</p></li>
+          <li class="step step-end"><p class="closing">Your tree grows with you, and it never wilts.</p></li>
         </ol>
-      </div>
-    </section>
-
-    <section class="band moves" id="exercises">
-      <div class="reveal moves-head">
-        <p class="label">The exercises</p>
-        <h2>Every movement, shown in 3D.</h2>
-        <p class="lead">Over 30 exercises, from the gentlest to the most demanding. You see exactly what to do, and the app adjusts to your pain.</p>
-      </div>
-      <div class="moves-grid"><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="../assets/exercises/1.2.webp" data-src="../assets/exercises/1.2.mp4" aria-label="Lying lumbar extension on the elbows"></video></div><figcaption><span class="tag tag-1">Lumbar extension</span>Lying lumbar extension on the elbows</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="../assets/exercises/2.4.webp" data-src="../assets/exercises/2.4.mp4" aria-label="Child’s pose"></video></div><figcaption><span class="tag tag-2">Flexion</span>Child’s pose</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="../assets/exercises/3.3.webp" data-src="../assets/exercises/3.3.mp4" aria-label="Passive lying rotation"></video></div><figcaption><span class="tag tag-3">Rotation</span>Passive lying rotation</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="../assets/exercises/4.2.webp" data-src="../assets/exercises/4.2.mp4" aria-label="Glute bridge"></video></div><figcaption><span class="tag tag-4">Trunk stabilisation</span>Glute bridge</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="../assets/exercises/6.2.webp" data-src="../assets/exercises/6.2.mp4" aria-label="Quarter squat"></video></div><figcaption><span class="tag tag-2">Squat</span>Quarter squat</figcaption></figure><figure class="move reveal"><div class="move-frame"><video class="lazy-video" muted loop playsinline preload="none" width="480" height="480" poster="../assets/exercises/7.1.webp" data-src="../assets/exercises/7.1.mp4" aria-label="Lunge"></video></div><figcaption><span class="tag tag-3">Lunge</span>Lunge</figcaption></figure></div>
-    </section>
-
-    <section class="band pain">
-      <div class="pain-text reveal">
-        <p class="label">An app that listens</p>
-        <h2>Pain going up? We ease off.</h2>
-        <p class="lead">During exercises, you rate your pain and the program adjusts. Try it, as if you just finished a set:</p>
-      </div>
-      <div class="card pain-card reveal">
-        <label for="pain-range">Your back pain, from 0 to 10</label>
-        <div class="pain-value"><span class="pain-dot" id="pain-dot"></span><output id="pain-out" for="pain-range">2</output><span class="pain-over">/10</span></div>
-        <input id="pain-range" type="range" min="0" max="10" step="1" value="2">
-        <div class="pain-ends"><span>None</span><span>Very strong</span></div>
-        <div class="pain-reply" id="pain-reply" aria-live="polite">
-          <h3>That’s going well.</h3>
-          <p>If your whole session goes like this: one more repetition next time.</p>
-        </div>
       </div>
     </section>
 
@@ -244,12 +269,10 @@
         <div class="card reveal"><p class="tag tag-1">Understand</p><p class="dur">4 weeks</p><p>23 five-minute lessons to understand your pain and regain confidence.</p></div><div class="card reveal"><p class="tag tag-2">Move</p><p class="dur">8 to 12 weeks</p><p>Progressive exercises, adapted to your pain, 2 to 3 times a week.</p></div><div class="card reveal"><p class="tag tag-3">Meditate</p><p class="dur">8 to 11 weeks</p><p>Mindfulness, then kindness toward yourself and what matters to you.</p></div><div class="card reveal"><p class="tag tag-4">Walk</p><p class="dur">8 weeks</p><p>One goal a week, starting from what you already do.</p></div>
       </div>
       <div class="card card-tint goal reveal">
-        <div><h3>And after? We stay with you.</h3><p>Your exercises keep adapting, you meditate your way, you keep your walking rhythm and you see how far you’ve come. A Pilates or yoga class on top? Even better.</p></div>
+        <div><h3>And after? We stay with you.</h3><p>Your exercises keep adapting, you meditate your way, you keep your walking rhythm and you see how far you’ve come.</p></div>
         <a class="btn btn-ghost to-page" href="programme/">The program in detail</a>
       </div>
     </section>
-
-
 
     <section class="band pros" id="pros">
       <div class="reveal pros-head">
@@ -280,10 +303,10 @@
       <div class="reveal team-head">
         <p class="label">Who we are</p>
         <h2>Three committed cofounders, in Montréal.</h2>
-        <p class="lead">Medicine, technology and business, united by one belief: you can live better with back pain.</p>
+        <p class="lead">Medicine, software development and data science, brought together to help people live better with back pain.</p>
       </div>
       <dl class="people reveal">
-        <div class="card"><dt>Pierre-Henri Bao Heitz<span class="person-title">Cofounder · Vision and health expertise</span></dt><dd>Physician, also trained in physiotherapy, specialised in chronic back pain. He carries the clinical vision of BackToHealth and signs off every piece of content.</dd></div><div class="card"><dt>Adrien Moevus<span class="person-title">Cofounder · App lead</span></dt><dd>Medical student and full-stack developer. He built the app from the ground up, from the architecture to the meditations he writes himself.</dd></div><div class="card"><dt>Antoine Moevus<span class="person-title">Cofounder · Business and development</span></dt><dd>He drives business and growth, and makes sure AI is used responsibly: data governance and machine learning working for your back.</dd></div>
+        <div class="card"><dt>Pierre-Henri Bao Heitz<span class="person-title">Cofounder · Health expertise</span></dt><dd>Physician, also trained in physiotherapy. He originated the clinical approach of BackToHealth, based on recent research on chronic low back pain, and validates all of its content.</dd></div><div class="card"><dt>Adrien Moevus<span class="person-title">Cofounder · Application</span></dt><dd>Medical student and developer. He is responsible for the design and development of the mobile app, and writes the guided meditations.</dd></div><div class="card"><dt>Antoine Moevus<span class="person-title">Cofounder · Data, measurement and AI</span></dt><dd>He is responsible for data, outcome measurement and artificial intelligence, and takes part in the development of the app.</dd></div>
       </dl>
     </section>
 
@@ -293,7 +316,7 @@
         <h2>Your questions.</h2>
       </div>
       <div class="faq-list reveal">
-        <details><summary>Does it replace my doctor or physio?</summary><p>No. The app complements your care. If something worries you, talk to a health professional.</p></details><details><summary>What if it hurts too much, or I don’t feel like it?</summary><p>The “Not today” button offers something gentler. During a flare-up, the plan eases off for 3 days. Your tree waits for you.</p></details><details><summary>When does the app come out?</summary><p>It’s in testing on iPhone and Android. Write to us to hear about the launch.</p></details><details><summary>How much does it cost?</summary><p>The price isn’t set yet. You’ll know clearly before launch.</p></details><details><summary>What language is it in?</summary><p>French and English, following your phone. You can switch any time.</p></details><details><summary>What about my data?</summary><p>Protected, never sold. You can export or delete it any time. Research is optional and uses a code, never your name or email.</p></details>
+        <details><summary>Does it replace my doctor or physio?</summary><p>No. The app complements your care. If something worries you, talk to a health professional.</p></details><details><summary>What if it hurts too much, or I don’t feel like it?</summary><p>Every activity has a “Not today” button. Flare-ups are part of the path: for 3 days, the plan eases off. Your tree and your progress are protected.</p></details><details><summary>When does the app come out?</summary><p>It’s in testing on iPhone and Android. Write to us to hear about the launch.</p></details><details><summary>How much does it cost?</summary><p>The price isn’t set yet. You’ll know clearly before launch.</p></details><details><summary>What language is it in?</summary><p>French and English, following your phone. You can switch any time.</p></details><details><summary>What about my data?</summary><p>Protected, never sold. You can export or delete it any time. Research is optional and uses a code, never your name or email.</p></details>
       </div>
     </section>
 
@@ -321,7 +344,7 @@
   </div>
 </main>
 
-<script>window.PAIN = {"label":"An app that listens","title":"Pain going up? We ease off.","body":"During exercises, you rate your pain and the program adjusts. Try it, as if you just finished a set:","sliderLabel":"Your back pain, from 0 to 10","low":"None","high":"Very strong","easyTitle":"That’s going well.","easyBody":"If your whole session goes like this: one more repetition next time.","holdTitle":"That’s the limit.","holdBody":"You can keep going. Next time, same level.","stopTitle":"Your pain is above 3/10.","stopBody":"Stop this exercise: it’s the right call. Next time, we start a little gentler. A 3-minute comfort moment is waiting for you."};</script>
-<script src="../assets/main.js?v=e2b04aa8"></script>
+<script>window.PAIN = {"label":"During your session","title":"The app adapts to your pain.","body":"After each set, you rate your pain. If it goes up, we ease off. If it’s going well, we move forward gently.","sliderLabel":"Your pain during this set?","low":"None","high":"Very strong","easyTitle":"That’s going well.","easyBody":"If your whole session goes like this: one more repetition next time.","holdTitle":"That’s the limit.","holdBody":"You can keep going. Next time, same level.","stopTitle":"Your pain is above 3/10.","stopBody":"Stop this exercise: it’s the right call. Next time, we start a little gentler. A 3-minute comfort moment is waiting for you.","scale":{"unset":"Touch the scale to answer","bands":["No pain","Mild pain","Moderate pain","Severe pain"],"meaning":["No pain","Very mild, barely noticeable","Mild, bothersome at times","Mild, present but bearable","Hard to ignore","It takes up a lot of room","It gets in the way of what you do","Hard to concentrate","It limits you a lot","Barely bearable","The worst pain imaginable"]}};</script>
+<script src="../assets/main.js?v=195f73ed"></script>
 </body>
 </html>

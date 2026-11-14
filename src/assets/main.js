@@ -175,38 +175,60 @@
     else player.observe(v);
   });
 
-  // The movement test, as in the app: slide through 10 pictures to the furthest position reached.
-  var tryBox = document.querySelector('.eval-try');
-  if (tryBox) {
+  // The pain scale, as in the app (PainScale): a disc with the number in its clinical colour, the band
+  // and what the number means. `start` null means no answer yet: no thumb until the scale is touched.
+  var COLORS = ['#3db86b', '#68c062', '#89c855', '#a6cf45', '#d5cd41', '#ffc93c', '#ffaf40', '#ff9443', '#fb824a', '#f76f4e', '#f25a52'];
+  var SCALE = window.PAIN.scale;
+  function painScale(root, start, onChange) {
+    var input = root.querySelector('input');
+    var answered = start !== null;
+    function show() {
+      var v = +input.value;
+      root.classList.toggle('unset', !answered);
+      root.style.setProperty('--dot', answered ? COLORS[v] : '');
+      root.querySelector('.pscale-n').textContent = answered ? v : '?';
+      root.querySelector('.pscale-band').textContent = answered ? SCALE.bands[v === 0 ? 0 : v <= 3 ? 1 : v <= 6 ? 2 : 3] : SCALE.unset;
+      root.querySelector('.pscale-meaning').textContent = answered && v > 0 ? SCALE.meaning[v] : '';
+      onChange(answered ? v : null);
+    }
+    function answer() { answered = true; show(); }
+    input.value = answered ? start : 0;
+    input.addEventListener('input', answer);
+    // A first touch counts even on the current value, as in the app.
+    input.addEventListener('pointerdown', answer);
+    show();
+  }
+
+  // The movement test, as in the app: watch the demo, then slide through 10 pictures to the furthest
+  // position reached and rate the pain.
+  var phone = document.querySelector('.app-phone');
+  if (phone) {
     var rangeTest = document.getElementById('range-test');
     var rangeImg = document.getElementById('range-img');
     var rangeResult = document.getElementById('range-result');
+    var testPain = null;
     var frames = [];
-    for (var f = 0; f < 10; f++) { frames[f] = new Image(); frames[f].src = tryBox.dataset.frames + f + '.webp'; }
-    var showRange = function () {
+    for (var f = 0; f < 10; f++) { frames[f] = new Image(); frames[f].src = phone.dataset.frames + f + '.webp'; }
+    var showResult = function () {
       var n = +rangeTest.value;
       rangeImg.src = frames[n].src;
-      rangeResult.textContent = tryBox.dataset.result.replace('{n}', n + 1);
+      rangeTest.style.setProperty('--fill', n / 9 * 100 + '%');
+      if (!phone.classList.contains('ranging')) { rangeResult.textContent = ''; return; }
+      rangeResult.textContent = (testPain === null ? rangeResult.dataset.unset : rangeResult.dataset.set).replace('{n}', n + 1).replace('{p}', testPain);
     };
-    rangeTest.addEventListener('input', showRange);
-    showRange();
+    rangeTest.addEventListener('input', showResult);
+    painScale(document.querySelector('#range-pain .pscale'), null, function (v) { testPain = v; showResult(); });
+    document.getElementById('did-it').addEventListener('click', function () { phone.classList.add('ranging'); showResult(); });
+    document.getElementById('watch-again').addEventListener('click', function () { phone.classList.remove('ranging'); showResult(); });
   }
 
-  // Pain: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
-  var COLORS = ['#3db86b', '#68c062', '#89c855', '#a6cf45', '#d5cd41', '#ffc93c', '#ffaf40', '#ff9443', '#fb824a', '#f76f4e', '#f25a52'];
-  var range = document.getElementById('pain-range');
-  var out = document.getElementById('pain-out');
+  // Pain during a session: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
+  var card = document.querySelector('.pain-card');
   var reply = document.getElementById('pain-reply');
-  var card = range.closest('.pain-card');
-  function render() {
-    var v = +range.value;
+  painScale(card.querySelector('.pscale'), +card.dataset.painStart, function (v) {
     var kind = v > 3 ? 'stop' : v === 3 ? 'hold' : 'easy';
-    out.textContent = v;
-    card.style.setProperty('--dot', COLORS[v]);
     reply.classList.toggle('stop', kind === 'stop');
     reply.querySelector('h3').textContent = window.PAIN[kind + 'Title'];
     reply.querySelector('p').textContent = window.PAIN[kind + 'Body'];
-  }
-  range.addEventListener('input', render);
-  render();
+  });
 })();

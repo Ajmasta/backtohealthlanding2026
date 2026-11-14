@@ -68,27 +68,71 @@
     </section>
 
     <section class="band eval" id="evaluation">
-      <div class="eval-head reveal">
-        <p class="label">{{eval.label}}</p>
-        <h2>{{eval.title}}</h2>
-        <p class="lead">{{eval.body}}</p>
+      <div class="eval-text">
+        <div class="reveal">
+          <p class="label">{{eval.label}}</p>
+          <h2>{{eval.title}}</h2>
+          <p class="lead">{{eval.body}}</p>
+        </div>
+        <ol class="eval-steps reveal">
+          {{#each eval.steps}}<li><span class="eval-n">{{@n}}</span><div><h3>{{.title}}</h3><p>{{.body}}</p></div></li>{{/each}}
+        </ol>
+        <p class="eval-result reveal" id="range-result" aria-live="polite" data-unset="{{eval.resultUnset}}" data-set="{{eval.result}}"></p>
       </div>
-      <ol class="eval-steps">
-        {{#each eval.steps}}<li class="card reveal"><span class="eval-n">{{@n}}</span><h3>{{.title}}</h3><p>{{.body}}</p></li>{{/each}}
-      </ol>
-      <div class="card eval-demo reveal">
-        <figure class="eval-watch">
-          <p class="tag tag-2">{{eval.demoTag}}</p>
-          <div class="eval-frame"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="{{base}}assets/evaluation/flexion-0.webp" data-src="{{base}}assets/evaluation/flexion-demo.mp4" aria-label="{{eval.videoAlt}}"></video></div>
-          <figcaption class="note">{{eval.watch}}</figcaption>
-        </figure>
-        <div class="eval-try" data-frames="{{base}}assets/evaluation/flexion-" data-result="{{eval.result}}">
-          <h3>{{eval.rangeTitle}}</h3>
-          <p class="note">{{eval.rangeHint}}</p>
-          <div class="eval-frame"><img id="range-img" src="{{base}}assets/evaluation/flexion-4.webp" width="640" height="576" alt="{{eval.rangeAlt}}"></div>
-          <input id="range-test" type="range" min="0" max="9" step="1" value="4" aria-label="{{eval.rangeTitle}}">
-          <div class="pain-ends"><span>{{eval.less}}</span><span>{{eval.more}}</span></div>
-          <p class="eval-result" id="range-result" aria-live="polite"></p>
+      <!-- The app's own movement test, in the app's own words: watch, do it, then show how far and how it felt. -->
+      <figure class="eval-app reveal">
+        <figcaption class="eval-try-label">{{eval.tryLabel}}</figcaption>
+        <div class="app-phone" data-frames="{{base}}assets/evaluation/flexion-">
+          <div class="app-screen">
+            <div class="app-view app-watch">
+              <p class="app-label">{{app.step}}</p>
+              <p class="app-title">{{app.name}}</p>
+              <p class="app-sub">{{app.intro}}</p>
+              <div class="app-card app-media"><video class="lazy-video" muted loop playsinline preload="none" width="640" height="576" poster="{{base}}assets/evaluation/flexion-0.webp" data-src="{{base}}assets/evaluation/flexion-demo.mp4" aria-label="{{eval.videoAlt}}"></video></div>
+              <p class="app-legend">{{app.watch}}</p>
+              <button class="btn app-btn" type="button" id="did-it">{{app.didIt}}</button>
+            </div>
+            <div class="app-view app-range">
+              <p class="app-label">{{app.step}}</p>
+              <p class="app-title">{{app.rangeTitle}}</p>
+              <p class="app-sub">{{app.rangeHint}}</p>
+              <div class="app-card">
+                <div class="app-media app-position"><img id="range-img" src="{{base}}assets/evaluation/flexion-0.webp" width="640" height="576" alt="{{eval.rangeAlt}}"></div>
+                <input id="range-test" class="slider slider-ciel" type="range" min="0" max="9" step="1" value="0" aria-label="{{app.rangeTitle}}">
+                <div class="slider-ends"><span>{{app.less}}</span><span>{{app.more}}</span></div>
+              </div>
+              <div class="app-card" id="range-pain">
+                <p class="app-card-title">{{app.painTitle}}</p>
+                {{> pain-scale}}
+              </div>
+              <button class="app-link" type="button" id="watch-again">{{app.again}}</button>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <section class="band moves" id="exercises">
+      <div class="reveal moves-head">
+        <p class="label">{{moves.label}}</p>
+        <h2>{{moves.title}}</h2>
+        <p class="lead">{{moves.body}}</p>
+      </div>
+      <div class="moves-grid">{{exerciseCards}}</div>
+    </section>
+
+    <section class="band pain">
+      <div class="pain-text reveal">
+        <p class="label">{{pain.label}}</p>
+        <h2>{{pain.title}}</h2>
+        <p class="lead">{{pain.body}}</p>
+      </div>
+      <div class="card pain-card reveal" data-pain-start="2">
+        <p class="pain-q">{{pain.sliderLabel}}</p>
+        {{> pain-scale}}
+        <div class="pain-reply" id="pain-reply" aria-live="polite">
+          <h3>{{pain.easyTitle}}</h3>
+          <p>{{pain.easyBody}}</p>
         </div>
       </div>
     </section>
@@ -127,33 +171,6 @@
       </div>
     </section>
 
-    <section class="band moves" id="exercises">
-      <div class="reveal moves-head">
-        <p class="label">{{moves.label}}</p>
-        <h2>{{moves.title}}</h2>
-        <p class="lead">{{moves.body}}</p>
-      </div>
-      <div class="moves-grid">{{exerciseCards}}</div>
-    </section>
-
-    <section class="band pain">
-      <div class="pain-text reveal">
-        <p class="label">{{pain.label}}</p>
-        <h2>{{pain.title}}</h2>
-        <p class="lead">{{pain.body}}</p>
-      </div>
-      <div class="card pain-card reveal">
-        <label for="pain-range">{{pain.sliderLabel}}</label>
-        <div class="pain-value"><span class="pain-dot" id="pain-dot"></span><output id="pain-out" for="pain-range">2</output><span class="pain-over">/10</span></div>
-        <input id="pain-range" type="range" min="0" max="10" step="1" value="2">
-        <div class="pain-ends"><span>{{pain.low}}</span><span>{{pain.high}}</span></div>
-        <div class="pain-reply" id="pain-reply" aria-live="polite">
-          <h3>{{pain.easyTitle}}</h3>
-          <p>{{pain.easyBody}}</p>
-        </div>
-      </div>
-    </section>
-
     <section class="band screens">
       <div class="reveal center">
         <p class="label">{{screens.label}}</p>
@@ -181,8 +198,6 @@
         <a class="btn btn-ghost to-page" href="programme/">{{offer.more}}</a>
       </div>
     </section>
-
-
 
     <section class="band pros" id="pros">
       <div class="reveal pros-head">
