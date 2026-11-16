@@ -461,7 +461,8 @@
       // The demonstration starts again from standing, so the person sees the whole bend on arrival.
       if (demo && !phone.classList.contains('tried') && !reduce) {
         if (!demo.src) demo.src = demo.dataset.src;
-        try { demo.currentTime = 0; } catch (e) {}
+        // (Unless it has only just begun as the section came in: starting it twice shows as a jump.)
+        if (demo.currentTime > 5 || demo.ended) { try { demo.currentTime = 0; } catch (e) {} }
         var p = demo.play();
         if (p && p.catch) p.catch(function () {});
       }

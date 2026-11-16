@@ -315,7 +315,11 @@ html:not(.js) .app-range { visibility: visible; }
 .phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.4vw, 32px); margin-top: 40px; }
 .phone { margin: 0; }
 .phone:nth-child(even) { margin-top: 40px; }
-.phone img { width: 100%; height: auto; border-radius: 28px; box-shadow: 0 16px 40px rgba(15, 33, 71, .16); }
+.phone img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: 28px; box-shadow: 0 16px 40px rgba(15, 33, 71, .16); transition: box-shadow .26s, transform .26s; }
+/* Under the pointer a screen lifts a little, in a soft halo of sky. */
+@media (hover: hover) {
+  .phone:hover img { transform: translateY(-6px); box-shadow: 0 0 0 5px var(--halo), 0 0 48px 10px rgba(55, 181, 255, .5), 0 16px 40px rgba(15, 33, 71, .16); }
+}
 .phone figcaption { margin-top: 16px; line-height: 1.4; color: var(--encre-texte); }
 .phone strong { display: block; color: var(--encre); font-weight: 600; font-size: 18px; margin-bottom: 2px; }
 
@@ -441,7 +445,8 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .moves-grid { margin-top: 0; gap: 16px; }
   .move figcaption { font-size: 15px; line-height: 20px; }
   /* The app screens never taller than half the window. */
-  .phone img { width: auto; height: min(44svh, 520px); margin-inline: auto; }
+  /* (The width follows from that height, so a screen is never squeezed.) */
+  .phone img { width: min(100%, calc(min(46svh, 520px) * 390 / 844)); margin-inline: auto; }
   .phones { margin-top: 28px; }
   .offer-grid { margin-top: 24px; }
   .phone figcaption { text-align: center; }
@@ -451,11 +456,15 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .app-phone { zoom: .84; }
 }
 @media (min-width: 901px) and (min-height: 600px) and (max-height: 760px) {
-  #evaluation, #program { --pad: 40px; }
+  #evaluation, #program, #app { --pad: 40px; }
+  .phone:nth-child(even) { margin-top: 20px; }
   .app-phone { zoom: .76; }
 }
-}
 @media (max-width: 1100px) {
+  /* Four screens side by side get too thin here: they become a strip to slide through, as on a phone. */
+  .phones { display: flex; justify-content: safe center; overflow-x: auto; scroll-snap-type: x mandatory; padding: 12px 4px 16px; }
+  .phone { flex: 0 0 min(62%, 250px); scroll-snap-align: center; }
+  .phone:nth-child(even) { margin-top: 0; }
   .pros-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
@@ -471,9 +480,7 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .moves-grid { grid-template-columns: 1fr 1fr; }
   .offer-grid { grid-template-columns: 1fr 1fr; }
   .goal { flex-direction: column; align-items: flex-start; }
-  .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 8px 16px 16px; }
-  .phone { flex: 0 0 62%; scroll-snap-align: center; }
-  .phone:nth-child(even) { margin-top: 0; }
+  .phones { margin-inline: -16px; padding-inline: 16px; }
   /* Scene stays at the top while the four steps scroll under it. */
   .water-grid { grid-template-columns: 1fr; gap: 0; margin-top: 24px; }
   .water-stage { top: 64px; z-index: 2; }
@@ -510,5 +517,6 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .cloud, .sun, .sway, .stars i, .js .hero-text > *, .js .hero-phone { animation: none; }
   .hint-on .app-btn, .hint-on .app-btn::after, .js .hint-on .tap-hint { animation: none; }
   .js .tap-hint { opacity: 1; }
-  .reveal, .step, .btn, .to-page::after, .app-dot::before { transition: none; }
+  .reveal, .step, .btn, .to-page::after, .app-dot::before, .phone img { transition: none; }
+  .phone:hover img { transform: none; }
 }

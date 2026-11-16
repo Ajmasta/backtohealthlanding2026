@@ -4,7 +4,7 @@
 // Run: npm test   (about ten minutes for the six window sizes; one size only: npm test -- 1280x720;
 // CHROME=/path/to/chrome if it is not found)
 import { spawn } from 'node:child_process';
-import { existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -133,6 +133,16 @@ const inPage = {
 // --- The checks
 const results = [];
 const note = (where, what, ok, detail = '') => { results.push({ where, what, ok, detail }); if (!ok) console.log(`  ✗ ${where} · ${what}${detail ? ' — ' + detail : ''}`); };
+
+// A stray closing brace silently switches off every rule after it: the stylesheet's braces must balance at each line.
+{
+  let depth = 0; const stray = [];
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), '../src/assets/styles.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, '')).split('\n').forEach((line, n) => {
+    depth += (line.match(/{/g) ?? []).length - (line.match(/}/g) ?? []).length;
+    if (depth < 0) { stray.push(n + 1); depth = 0; }
+  });
+  note('styles.css', 'braces balance', !stray.length && depth === 0, `stray at line ${stray.join(', ')}; ${depth} left open`);
+}
 
 async function checkHome(path, size) {
   const where = `/${path} ${size.join('×')}`;
@@ -293,6 +303,9 @@ async function checkHome(path, size) {
         ...[...document.querySelectorAll('video')].filter((v) => v.error || !v.currentSrc).map((v) => v.dataset.src)];
     });
     note(where, 'all images and clips load', !media.length, media.join(', '));
+    // The app screens keep the proportions of a phone, and narrow windows get a strip to slide instead of thin columns.
+    const screens = await page.run(() => ({ ratios: [...document.querySelectorAll('.phone img')].map((i) => { const r = i.getBoundingClientRect(); return +(r.width / r.height).toFixed(2); }), width: Math.round(document.querySelector('.phone img').getBoundingClientRect().width), strip: getComputedStyle(document.querySelector('.phones')).display === 'flex' }));
+    note(where, 'app screens keep their proportions', screens.ratios.every((r) => Math.abs(r - 0.46) <= 0.01) && screens.width >= 150 && screens.strip === (size[0] <= 1100), JSON.stringify(screens));
     note(where, 'no script or network error', !page.errors().length, page.errors().join(' | '));
   } catch (e) { note(where, 'check ran', false, e.message); }
   await page.close();
