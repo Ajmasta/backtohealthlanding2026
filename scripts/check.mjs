@@ -175,7 +175,33 @@ async function checkHome(path, size) {
       // One flick of the wheel, one section — down the page, then back up.
       const trail = [];
       for (let i = 1; i < stops.length; i++) {
-        if (stops[i - 1].id === 'how') await page.run((y) => scrollTo({ top: y, behavior: 'instant' }), stops[i].at - 40); // the long story scrolls freely
+        if (stops[i - 1].id === 'how') {
+          // The daily story: each flick lands on the next activity, in order, with the tree whole beside it.
+          const seen = [];
+          for (let n = 0; n < 6; n++) {
+            await page.flick(1);
+            const at = await page.settle();
+            stops = await page.run(inPage.stops);
+            if (Math.abs(at - stops[i].at) <= 2) break;
+            await sleep(500);
+            seen.push(await page.run(() => {
+              const on = [...document.querySelectorAll('#how .step')].map((el, k) => el.classList.contains('on') ? k : -1).filter((k) => k >= 0);
+              const w = document.querySelector('#how .window').getBoundingClientRect();
+              return on.join('+') + (w.top >= 72 && w.bottom <= innerHeight ? '' : ' tree cut');
+            }));
+          }
+          note(where, 'story: one flick per activity', seen.join() === '1,2,3', seen.join());
+          const y = await page.run(() => Math.round(scrollY));
+          trail.push(`${stops[i].id}:${Math.abs(y - stops[i].at) <= 2 ? 'ok' : `y=${y} want=${stops[i].at}`}`);
+          await sleep(400);
+          await page.flick(-1);
+          await page.settle(); await sleep(700);
+          const back = await page.run(() => ({ on: [...document.querySelectorAll('#how .step')].map((el) => +el.classList.contains('on')).join(''), y: Math.round(scrollY), box: Math.round(document.querySelectorAll('#how .step')[3].getBoundingClientRect().top) }));
+          note(where, 'story: back up lands on its last activity', back.on === '00010', JSON.stringify(back));
+          await page.flick(1); await page.settle();
+          await sleep(200);
+          continue;
+        }
         await page.flick(1);
         const y = await page.settle();
         stops = await page.run(inPage.stops);

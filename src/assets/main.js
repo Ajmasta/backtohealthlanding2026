@@ -22,8 +22,12 @@
   }
   // Slow start, slow landing.
   function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  // `to` is a position, or a function giving it: a section may still move while the page finishes loading,
+  // and the glide then follows it to where it really is.
   function glide(to) {
-    to = Math.max(0, Math.min(to, document.documentElement.scrollHeight - innerHeight));
+    var aim = typeof to === 'function' ? to : function () { return to; };
+    function end() { return Math.max(0, Math.min(aim(), document.documentElement.scrollHeight - innerHeight)); }
+    to = end();
     var from = scrollY, distance = to - from;
     if (Math.abs(distance) < 2) return;
     cancelAnimationFrame(frame);
@@ -33,19 +37,37 @@
     gliding = true;
     (function step(now) {
       var t = Math.min(1, (now - start) / length);
-      scrollTo({ top: from + distance * ease(t), behavior: 'instant' });
+      scrollTo({ top: from + (end() - from) * ease(t), behavior: 'instant' });
       if (t < 1) frame = requestAnimationFrame(step); else { gliding = false; if (typeof mark === 'function') mark(); }
     })(start);
   }
+  // Every place a gesture can land: each section, and inside the daily story each activity, centred beside
+  // its tree. Places too close to the one before are dropped.
+  var story = [].slice.call(document.querySelectorAll('#how .step:not(.step-end)'));
+  function places() {
+    var limit = document.documentElement.scrollHeight - innerHeight, gap = innerHeight * .25;
+    function within(y) { return Math.max(0, Math.min(y, limit)); }
+    // The sections first; an activity is added only where it is not too close to a place already there.
+    var list = stops.map(function (el) { return within(stopAt(el)); });
+    var how = document.getElementById('how');
+    if (how && story.length) {
+      var end = how.getBoundingClientRect().bottom + scrollY - innerHeight;
+      story.forEach(function (step) {
+        var r = step.getBoundingClientRect(), y = within(Math.min(end, r.top + r.height / 2 + scrollY - innerHeight / 2));
+        if (list.every(function (other) { return Math.abs(other - y) >= gap; })) list.push(y);
+      });
+    }
+    return list.sort(function (x, y) { return x - y; }).filter(function (y, i, all) { return !i || y - all[i - 1] > 4; });
+  }
+  // Where one gesture leads from here, or null when the next place is more than a window away:
+  // a very tall section scrolls freely until its end comes near.
   function neighbour(down) {
-    var current = 0;
-    stops.forEach(function (el, i) { if (stopAt(el) <= scrollY + 4) current = i; });
-    // A good deal more of this section below (or above): let it scroll. A small remainder is not worth a stop.
-    var room = innerHeight * .2;
-    if (down) return stops[current].getBoundingClientRect().bottom - innerHeight > room ? null : stops[current + 1] || null;
-    var above = scrollY - stopAt(stops[current]);
-    if (above > room) return null;
-    var target = above > 4 ? stops[current] : stops[current - 1] || null;
+    var list = places(), target = null;
+    if (down) { for (var i = 0; i < list.length; i++) if (list[i] > scrollY + 4) { target = list[i]; break; } }
+    else { for (var j = list.length - 1; j >= 0; j--) if (list[j] < scrollY - 4) { target = list[j]; break; } }
+    // The ending is always one gesture away from the last section, whatever lies between.
+    var last = list[list.length - 1], reach = innerHeight * ((down && target === last) || (!down && scrollY >= last - 4) ? 2 : 1.15);
+    if (target === null || Math.abs(target - scrollY) > reach) return null;
     return target;
   }
   addEventListener('wheel', function (e) {
@@ -59,13 +81,13 @@
     // A gesture that scrolled inside a tall section keeps doing only that.
     if (free) return;
     var target = neighbour(e.deltaY > 0);
-    if (!target) { free = true; return; }
+    if (target === null) { free = true; return; }
     e.preventDefault();
     // A light brush of the wheel is not a decision to leave the section.
     pushed += e.deltaY * (e.deltaMode ? 32 : 1);
     if (Math.abs(pushed) < 24) return;
     pushed = Infinity;
-    glide(stopAt(target));
+    glide(target);
   }, { passive: false });
   // The keyboard moves the same way.
   addEventListener('keydown', function (e) {
@@ -74,9 +96,9 @@
     var up = e.key === 'PageUp' || e.key === 'ArrowUp' || (e.key === ' ' && e.shiftKey);
     if (!down && !up) return;
     var target = neighbour(down);
-    if (!target) return;
+    if (target === null) return;
     e.preventDefault();
-    if (!gliding) glide(stopAt(target));
+    if (!gliding) glide(target);
   });
   // Links to a section of this page glide there too.
   document.addEventListener('click', function (e) {
@@ -85,7 +107,7 @@
     if (!el || reduce || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     history.pushState(null, '', link.getAttribute('href'));
-    glide(el === top ? 0 : stops.indexOf(el) >= 0 ? stopAt(el) : el.getBoundingClientRect().top + scrollY - 88);
+    glide(function () { return el === top ? 0 : stops.indexOf(el) >= 0 ? stopAt(el) : el.getBoundingClientRect().top + scrollY - 88; });
   });
 
   // Small screens: the menu button opens the section links; choosing one, or Escape, closes it.
@@ -172,6 +194,40 @@
       if (done) done();
     }, 780);
   }
+
+  // Slides: a section whose content leaves the window half empty is shown larger, up to 1.4 times,
+  // until it takes about four fifths of the height. Phones and tablets scroll freely and stay as they are.
+  (function () {
+    var bands = [].slice.call(document.querySelectorAll('.band:not(#how)'));
+    function tall(band) {
+      var top = Infinity, bottom = -Infinity;
+      for (var i = 0; i < band.children.length; i++) {
+        var r = band.children[i].getBoundingClientRect();
+        if (!r.height) continue;
+        top = Math.min(top, r.top); bottom = Math.max(bottom, r.bottom);
+      }
+      return bottom - top;
+    }
+    function fill() {
+      var room = (innerHeight - 84) * .8;
+      bands.forEach(function (band) {
+        band.style.removeProperty('--z');
+        if (!slides.matches || tall(band) >= room) return;
+        var low = 1, high = 1.4;
+        for (var i = 0; i < 6; i++) {
+          var z = (low + high) / 2;
+          band.style.setProperty('--z', z.toFixed(3));
+          if (tall(band) > room) high = z; else low = z;
+        }
+        band.style.setProperty('--z', low.toFixed(3));
+      });
+      mark();
+    }
+    fill();
+    addEventListener('resize', fill);
+    addEventListener('load', fill);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fill);
+  })();
 
   // Hero: the tree and the phone take the room the text leaves above the hill, whatever the window.
   (function () {

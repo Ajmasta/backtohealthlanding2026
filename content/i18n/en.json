@@ -17,8 +17,12 @@
         "name": "Home"
       },
       {
-        "href": "#for-you",
-        "name": "For you"
+        "href": "#program",
+        "name": "The program"
+      },
+      {
+        "href": "#how",
+        "name": "Your day"
       },
       {
         "href": "#evaluation",
@@ -33,16 +37,12 @@
         "name": "Your pain decides"
       },
       {
-        "href": "#how",
-        "name": "Your day"
-      },
-      {
         "href": "#app",
         "name": "The app"
       },
       {
-        "href": "#program",
-        "name": "The program"
+        "href": "#for-you",
+        "name": "For you"
       },
       {
         "href": "#pros",
@@ -81,7 +81,7 @@
   "hero": {
     "label": "The app for chronic back pain",
     "title": "Take back what back pain took from you, one small step at a time.",
-    "body": "BackToHealth starts from your back, not from a generic program: a 5-minute assessment, guided exercises and a plan that slows down as soon as your pain goes up.",
+    "body": "BackToHealth is a complete program, not just a list of exercises: understand your pain, move, meditate and walk. It starts from your back and slows down as soon as your pain rises.",
     "cta": "Notify me at launch",
     "soon": "Coming soon to",
     "appStore": "the App Store",
@@ -177,11 +177,11 @@
       },
       {
         "title": "In line with practice guidelines",
-        "body": "Exercise, pain education, mindfulness and walking, together, as recent guidelines recommend."
+        "body": "The markers of recent guidelines, including the WHO’s (2023): stay active, understand your pain, progress gradually."
       },
       {
-        "title": "Full transparency",
-        "body": "No diagnosis, no treatment, no published study yet. With people’s consent, we will measure what works."
+        "title": "A biopsychosocial approach",
+        "body": "Body, thoughts and daily life, addressed together: movement, pain education, mindfulness and walking. Language that reassures, never alarms."
       }
     ],
     "sources": [
@@ -216,7 +216,7 @@
       {
         "name": "Adrien Moevus",
         "title": "Cofounder · App development",
-        "bio": "Medical student and developer. He designed the architecture of the mobile app and built it, from the assessment to daily follow-up. He also wrote the guided meditations."
+        "bio": "Medical student and developer. He designed the architecture of the mobile app and built it, from the assessment to daily follow-up. He also created the meditation program."
       },
       {
         "name": "Antoine Moevus",
@@ -266,9 +266,9 @@
     "contact": "Write to us"
   },
   "offer": {
-    "label": "The program",
-    "title": "8 to 12 weeks to trust your back again. Then we stay.",
-    "body": "Four introductory programs teach you to understand your back, to move, to meditate and to walk. Then the app continues with you, for as long as you like.",
+    "label": "A complete program",
+    "title": "Much more than exercises: four parts for your back.",
+    "body": "When pain lasts, the body, thoughts and daily life all play a part. BackToHealth looks after all three: this is the biopsychosocial approach, the one practice guidelines recommend. You learn to understand your pain, to move, to meditate and to walk, at your own pace.",
     "goalTitle": "And after? You keep your tools.",
     "goalBody": "Your exercises keep adapting, you meditate your way, you keep your walking rhythm. And you redo your tests to see how far you’ve come.",
     "more": "The program in detail",

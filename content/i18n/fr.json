@@ -17,8 +17,12 @@
         "name": "Accueil"
       },
       {
-        "href": "#for-you",
-        "name": "Pour toi"
+        "href": "#program",
+        "name": "Le programme"
+      },
+      {
+        "href": "#how",
+        "name": "Ton quotidien"
       },
       {
         "href": "#evaluation",
@@ -33,16 +37,12 @@
         "name": "Ta douleur décide"
       },
       {
-        "href": "#how",
-        "name": "Ton quotidien"
-      },
-      {
         "href": "#app",
         "name": "L’application"
       },
       {
-        "href": "#program",
-        "name": "Le programme"
+        "href": "#for-you",
+        "name": "Pour toi"
       },
       {
         "href": "#pros",
@@ -81,7 +81,7 @@
   "hero": {
     "label": "L’application pour le mal de dos chronique",
     "title": "Reprends ce que ton mal de dos t’a enlevé, un petit pas à la fois.",
-    "body": "Crescendos part de ton dos, pas d’un programme générique : une évaluation en 5 minutes, des exercices guidés et un plan qui ralentit dès que ta douleur monte.",
+    "body": "Crescendos est un programme complet, pas une simple liste d’exercices : comprendre ta douleur, bouger, méditer et marcher. Il part de ton dos et ralentit dès que ta douleur monte.",
     "cta": "Me prévenir du lancement",
     "soon": "Bientôt sur",
     "appStore": "l’App Store",
@@ -177,11 +177,11 @@
       },
       {
         "title": "Conforme aux guides de pratique",
-        "body": "Exercice, éducation à la douleur, pleine conscience et marche, réunis comme le recommandent les guides récents."
+        "body": "Les repères des guides récents, dont celui de l’OMS (2023) : rester actif, comprendre sa douleur, progresser graduellement."
       },
       {
-        "title": "Une transparence complète",
-        "body": "Pas de diagnostic, pas de traitement, pas encore d’étude publiée. Avec le consentement des personnes, nous mesurerons ce qui fonctionne."
+        "title": "Une approche biopsychosociale",
+        "body": "Le corps, les pensées et le quotidien, abordés ensemble : mouvement, éducation à la douleur, pleine conscience et marche. Un langage qui rassure, jamais alarmiste."
       }
     ],
     "sources": [
@@ -216,7 +216,7 @@
       {
         "name": "Adrien Moevus",
         "title": "Cofondateur · Développement de l’application",
-        "bio": "Étudiant en médecine et développeur. Il a conçu l’architecture de l’application mobile et l’a programmée, de l’évaluation au suivi quotidien. Il a aussi rédigé les méditations guidées."
+        "bio": "Étudiant en médecine et développeur. Il a conçu l’architecture de l’application mobile et l’a programmée, de l’évaluation au suivi quotidien. Il a aussi créé le programme de méditation."
       },
       {
         "name": "Antoine Moevus",
@@ -266,9 +266,9 @@
     "contact": "Nous écrire"
   },
   "offer": {
-    "label": "Le programme",
-    "title": "8 à 12 semaines pour reprendre confiance. Ensuite, on reste là.",
-    "body": "Quatre programmes d’introduction t’apprennent à comprendre ton dos, à bouger, à méditer et à marcher. Puis l’application continue avec toi, aussi longtemps que tu veux.",
+    "label": "Un programme complet",
+    "title": "Bien plus que des exercices : quatre volets pour ton dos.",
+    "body": "Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Crescendos s’occupe des trois : c’est l’approche biopsychosociale, celle que recommandent les guides de pratique. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.",
     "goalTitle": "Et après ? Tu gardes tes outils.",
     "goalBody": "Tes exercices continuent de s’adapter, tu médites à ta façon, tu gardes ton rythme de marche. Et tu refais tes tests pour voir le chemin parcouru.",
     "more": "Le programme en détail",

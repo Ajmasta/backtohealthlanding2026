@@ -4,9 +4,9 @@
   <a class="brand" href="#top" aria-label="{{nav.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span class="brand-name">{{nav.brand}} <small class="brand-alt">{{nav.brandAlt}}</small></span></a>
   <nav>
     <div class="nav-links" id="nav-links">
+      <a class="nav-link" href="#program">{{nav.program}}</a>
       <a class="nav-link" href="#evaluation">{{nav.evaluation}}</a>
       <a class="nav-link" href="#exercises">{{nav.exercises}}</a>
-      <a class="nav-link" href="#program">{{nav.program}}</a>
       <a class="nav-link" href="#pros">{{nav.pros}}</a>
       <a class="nav-link" href="#team">{{nav.team}}</a>
       <a class="nav-link" href="#faq">{{nav.faq}}</a>
@@ -55,21 +55,52 @@
   </section>
 
   <div class="sheet">
-    <section class="band who" id="for-you">
-      <div class="who-text reveal">
-        <p class="label">{{who.label}}</p>
-        <h2>{{who.title}}</h2>
-        <p class="lead">{{who.body}}</p>
-        <figure class="fact">
-          <blockquote>{{who.fact}}</blockquote>
-          <figcaption><a href="https://www.who.int/news-room/fact-sheets/detail/low-back-pain">{{who.factSource}}</a></figcaption>
-        </figure>
+    <section class="band offer" id="program">
+      <div class="reveal offer-head">
+        <p class="label">{{offer.label}}</p>
+        <h2>{{offer.title}}</h2>
+        <p class="lead">{{offer.body}}</p>
       </div>
-      <div class="who-cards reveal">
-        <div class="card">
-          <h3>{{who.forTitle}}</h3>
-          <ul class="ticks">{{#each who.for}}<li>{{.}}</li>{{/each}}</ul>
+      <div class="offer-grid">
+        {{#each offer.cards}}<div class="card reveal"><p class="tag tag-{{@n}}">{{.tag}}</p><p class="dur">{{.dur}}</p><p>{{.body}}</p></div>{{/each}}
+      </div>
+      <div class="card card-tint goal reveal">
+        <div><h3>{{offer.goalTitle}}</h3><p>{{offer.goalBody}}</p></div>
+        <a class="btn btn-ghost to-page" href="programme/">{{offer.more}}</a>
+      </div>
+    </section>
+
+    <section class="band water" id="how">
+      <div class="water-head reveal">
+        <p class="label">{{water.label}}</p>
+        <h2>{{water.title}}</h2>
+        <p class="lead">{{water.body}}</p>
+      </div>
+      <div class="water-grid">
+        <div class="water-stage">
+          <div class="window scene" data-scene="window" aria-hidden="true">
+            <div class="sky">
+              <div class="sun"></div>
+              <img class="cloud c1" src="{{base}}assets/landscape/cloud-1.webp" alt="">
+              <img class="cloud c2" src="{{base}}assets/landscape/cloud-2.webp" alt="">
+            </div>
+            <div class="terrain">
+              <img src="{{base}}assets/landscape/hills.webp" alt="">
+              <img src="{{base}}assets/landscape/lake.webp" alt="">
+              <img src="{{base}}assets/landscape/meadow.webp" alt="">
+            </div>
+            <div class="crest">
+              <div class="stage" data-stage="1"><div class="sway">{{svg.stage1}}</div></div>
+              <div class="stage" data-stage="2"><div class="sway">{{svg.stage2}}</div></div>
+              <div class="stage" data-stage="3"><div class="sway">{{svg.stage3}}</div></div>
+              <div class="stage on" data-stage="4"><div class="sway">{{svg.stage4}}</div></div>
+            </div>
+          </div>
         </div>
+        <ol class="steps">
+          {{#each water.steps}}<li class="step"><p class="tag tag-{{@n}}">{{.label}}</p><h3>{{.title}}</h3><p>{{.body}}</p></li>{{/each}}
+          <li class="step step-end"><p class="closing">{{water.end}}</p></li>
+        </ol>
       </div>
     </section>
 
@@ -149,40 +180,6 @@
       </div>
     </section>
 
-    <section class="band water" id="how">
-      <div class="water-head reveal">
-        <p class="label">{{water.label}}</p>
-        <h2>{{water.title}}</h2>
-        <p class="lead">{{water.body}}</p>
-      </div>
-      <div class="water-grid">
-        <div class="water-stage">
-          <div class="window scene" data-scene="window" aria-hidden="true">
-            <div class="sky">
-              <div class="sun"></div>
-              <img class="cloud c1" src="{{base}}assets/landscape/cloud-1.webp" alt="">
-              <img class="cloud c2" src="{{base}}assets/landscape/cloud-2.webp" alt="">
-            </div>
-            <div class="terrain">
-              <img src="{{base}}assets/landscape/hills.webp" alt="">
-              <img src="{{base}}assets/landscape/lake.webp" alt="">
-              <img src="{{base}}assets/landscape/meadow.webp" alt="">
-            </div>
-            <div class="crest">
-              <div class="stage" data-stage="1"><div class="sway">{{svg.stage1}}</div></div>
-              <div class="stage" data-stage="2"><div class="sway">{{svg.stage2}}</div></div>
-              <div class="stage" data-stage="3"><div class="sway">{{svg.stage3}}</div></div>
-              <div class="stage on" data-stage="4"><div class="sway">{{svg.stage4}}</div></div>
-            </div>
-          </div>
-        </div>
-        <ol class="steps">
-          {{#each water.steps}}<li class="step"><p class="tag tag-{{@n}}">{{.label}}</p><h3>{{.title}}</h3><p>{{.body}}</p></li>{{/each}}
-          <li class="step step-end"><p class="closing">{{water.end}}</p></li>
-        </ol>
-      </div>
-    </section>
-
     <section class="band screens" id="app">
       <div class="reveal center">
         <p class="label">{{screens.label}}</p>
@@ -196,18 +193,21 @@
       </div>
     </section>
 
-    <section class="band offer" id="program">
-      <div class="reveal offer-head">
-        <p class="label">{{offer.label}}</p>
-        <h2>{{offer.title}}</h2>
-        <p class="lead">{{offer.body}}</p>
+    <section class="band who" id="for-you">
+      <div class="who-text reveal">
+        <p class="label">{{who.label}}</p>
+        <h2>{{who.title}}</h2>
+        <p class="lead">{{who.body}}</p>
+        <figure class="fact">
+          <blockquote>{{who.fact}}</blockquote>
+          <figcaption><a href="https://www.who.int/news-room/fact-sheets/detail/low-back-pain">{{who.factSource}}</a></figcaption>
+        </figure>
       </div>
-      <div class="offer-grid">
-        {{#each offer.cards}}<div class="card reveal"><p class="tag tag-{{@n}}">{{.tag}}</p><p class="dur">{{.dur}}</p><p>{{.body}}</p></div>{{/each}}
-      </div>
-      <div class="card card-tint goal reveal">
-        <div><h3>{{offer.goalTitle}}</h3><p>{{offer.goalBody}}</p></div>
-        <a class="btn btn-ghost to-page" href="programme/">{{offer.more}}</a>
+      <div class="who-cards reveal">
+        <div class="card">
+          <h3>{{who.forTitle}}</h3>
+          <ul class="ticks">{{#each who.for}}<li>{{.}}</li>{{/each}}</ul>
+        </div>
       </div>
     </section>
 
