@@ -208,12 +208,24 @@ async function checkHome(path, size) {
           note(where, 'story: one flick per activity', seen.join() === '1,2,3', seen.join());
           const y = await page.run(() => Math.round(scrollY));
           trail.push(`${stops[i].id}:${Math.abs(y - stops[i].at) <= 2 ? 'ok' : `y=${y} want=${stops[i].at}`}`);
+          // Arriving on the assessment by the wheel, as a visitor does: the pointer comes in and the demonstration plays.
+          await sleep(1500);
+          const v1 = await page.run(() => { const v = document.querySelector('.app-watch video'); return { hint: document.querySelector('.app-phone').classList.contains('hint-on'), paused: v.paused, t: v.currentTime }; });
+          await sleep(700);
+          const v2 = await page.run(() => document.querySelector('.app-watch video').currentTime);
+          note(where, 'assessment by wheel: pointer and video start', v1.hint && !v1.paused && v2 !== v1.t, JSON.stringify({ ...v1, later: v2 }));
           await sleep(400);
           await page.flick(-1);
           await page.settle(); await sleep(700);
           const back = await page.run(() => ({ on: [...document.querySelectorAll('#how .step')].map((el) => +el.classList.contains('on')).join(''), y: Math.round(scrollY), box: Math.round(document.querySelectorAll('#how .step')[3].getBoundingClientRect().top) }));
           note(where, 'story: back up lands on its last activity', back.on === '00010', JSON.stringify(back));
           await page.flick(1); await page.settle();
+          // Coming back to the assessment: the demonstration starts again from standing.
+          await sleep(1500);
+          const again = await page.run(() => { const v = document.querySelector('.app-watch video'); return { hint: document.querySelector('.app-phone').classList.contains('hint-on'), paused: v.paused, t: v.currentTime }; });
+          await sleep(700);
+          const moved = await page.run(() => document.querySelector('.app-watch video').currentTime);
+          note(where, 'assessment again: video restarts', again.hint && !again.paused && moved !== again.t && again.t < 12, JSON.stringify({ ...again, later: moved }));
           await sleep(200);
           continue;
         }

@@ -443,11 +443,19 @@
     // The pointer comes in each time the person arrives on the button, as long as they have not pressed it:
     // when the button is fully in the window and the page has stopped moving,
     // so the arrival is seen from its start. It stays and keeps tapping; leaving the section resets it.
-    var didIt = document.getElementById('did-it'), inPlace = false, lastMove = 0, waiting = 0;
-    addEventListener('scroll', function () { lastMove = Date.now(); }, { passive: true });
+    var didIt = document.getElementById('did-it'), lastMove = 0, waiting = 0;
+    // Measured, not observed: an observer asked for "fully visible" never fires when the enlarged section
+    // leaves the button a fraction of a pixel short of whole.
+    function inPlace() {
+      var r = didIt.getBoundingClientRect();
+      return r.height > 0 && r.top >= 60 && r.bottom <= innerHeight - 8;
+    }
+    addEventListener('scroll', function () { lastMove = Date.now(); clearTimeout(waiting); waiting = setTimeout(arrive, 200); }, { passive: true });
+    addEventListener('resize', function () { clearTimeout(waiting); waiting = setTimeout(arrive, 200); });
+    addEventListener('load', function () { waiting = setTimeout(arrive, 200); });
     function arrive() {
       clearTimeout(waiting);
-      if (!inPlace || phone.classList.contains('hint-on')) return;
+      if (!inPlace() || phone.classList.contains('hint-on')) return;
       if (Date.now() - lastMove < 180) { waiting = setTimeout(arrive, 90); return; }
       phone.classList.add('hint-on');
       // The demonstration starts again from standing, so the person sees the whole bend on arrival.
@@ -461,15 +469,11 @@
     // The clip from the app is a slow 16 seconds: shown faster here, the movement reads at a glance.
     var demo = phone.querySelector('.app-watch video');
     if (demo) { demo.defaultPlaybackRate = 2.5; demo.playbackRate = 2.5; demo.addEventListener('loadeddata', function () { demo.playbackRate = 2.5; }); }
-    var hinter = new IntersectionObserver(function (entries) {
-      inPlace = entries[0].isIntersecting;
-      arrive();
-    }, { threshold: 1, rootMargin: '0px 0px -16px 0px' });
     // Gone from the window altogether: the next arrival plays again.
     new IntersectionObserver(function (entries) {
       if (!entries[0].isIntersecting) phone.classList.remove('hint-on');
     }).observe(phone);
-    hinter.observe(document.getElementById('did-it'));
+    waiting = setTimeout(arrive, 200);
   }
 
   // Pain during a session: the same rule as the app (domain/dosing): above 3 stop, exactly 3 hold, 2 or less move on.
