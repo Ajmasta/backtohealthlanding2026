@@ -13,32 +13,32 @@
   // A section taller than the window scrolls normally until its end. Touch and the scrollbar stay free.
   var slides = matchMedia('(min-width: 901px) and (min-height: 600px)');
   var stops = [].slice.call(document.querySelectorAll('.hero, .band, .night'));
-  var gliding = false, lastWheel = 0, lastSize = 0, landed = 0, pushed = 0, free = false, frame = 0;
+  var gliding = false, goal = 0, lastWheel = 0, peak = 0, trough = 0, taken = 0, pushed = 0, free = false, frame = 0;
   function stopAt(el) {
     var r = el.getBoundingClientRect();
     if (el.classList.contains('night')) return r.bottom + scrollY - innerHeight;
     if (el.classList.contains('hero')) return 0;
     return r.top + scrollY - 88 - parseFloat(getComputedStyle(el).scrollMarginTop);
   }
-  // Slow start, slow landing.
-  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  // The page answers at once and lands softly: a slow start feels like the page resists.
+  function ease(t) { return 1 - Math.pow(1 - t, 3.2); }
   // `to` is a position, or a function giving it: a section may still move while the page finishes loading,
   // and the glide then follows it to where it really is.
   function glide(to) {
     var aim = typeof to === 'function' ? to : function () { return to; };
     function end() { return Math.max(0, Math.min(aim(), document.documentElement.scrollHeight - innerHeight)); }
-    to = end();
+    to = goal = end();
     var from = scrollY, distance = to - from;
     if (Math.abs(distance) < 2) return;
     cancelAnimationFrame(frame);
     if (reduce) { scrollTo({ top: to, behavior: 'instant' }); return; }
-    // Longer trips take longer, within reason: about a second for one section.
-    var length = Math.max(700, Math.min(1400, 550 + Math.abs(distance) * .6)), start = performance.now();
+    // Longer trips take longer, within reason: about two thirds of a second for one section.
+    var length = Math.max(480, Math.min(950, 380 + Math.abs(distance) * .4)), start = performance.now();
     gliding = true;
     (function step(now) {
       var t = Math.min(1, (now - start) / length);
-      scrollTo({ top: from + (end() - from) * ease(t), behavior: 'instant' });
-      if (t < 1) frame = requestAnimationFrame(step); else { gliding = false; landed = performance.now(); if (typeof mark === 'function') mark(); }
+      scrollTo({ top: from + ((goal = end()) - from) * ease(t), behavior: 'instant' });
+      if (t < 1) frame = requestAnimationFrame(step); else { gliding = false; if (typeof mark === 'function') mark(); }
     })(start);
   }
   // Every place a gesture can land: each section, and inside the daily story each activity, centred beside
@@ -74,13 +74,15 @@
   }
   // Where one gesture leads from here, or null when the next place is more than a window away:
   // a very tall section scrolls freely until its end comes near.
+  // During a glide the next place is counted from where the glide is heading, so gestures can follow one
+  // another without waiting for the page to land.
   function neighbour(down) {
-    var list = places(), target = null;
-    if (down) { for (var i = 0; i < list.length; i++) if (list[i] > scrollY + 4) { target = list[i]; break; } }
-    else { for (var j = list.length - 1; j >= 0; j--) if (list[j] < scrollY - 4) { target = list[j]; break; } }
+    var list = places(), target = null, here = gliding ? goal : scrollY;
+    if (down) { for (var i = 0; i < list.length; i++) if (list[i] > here + 4) { target = list[i]; break; } }
+    else { for (var j = list.length - 1; j >= 0; j--) if (list[j] < here - 4) { target = list[j]; break; } }
     // The ending is always one gesture away from the last section, whatever lies between.
-    var last = list[list.length - 1], reach = innerHeight * ((down && target === last) || (!down && scrollY >= last - 4) ? 2 : 1.15);
-    if (target === null || Math.abs(target - scrollY) > reach) return null;
+    var last = list[list.length - 1], reach = innerHeight * ((down && target === last) || (!down && here >= last - 4) ? 2 : 1.15);
+    if (target === null || Math.abs(target - here) > reach) return null;
     return target;
   }
   addEventListener('wheel', function (e) {
@@ -89,22 +91,23 @@
     var fresh = e.timeStamp - lastWheel > 160;
     lastWheel = e.timeStamp;
     // A trackpad also keeps sending fading events after a swipe: a second swipe arrives in the middle of
-    // them, with no pause, and shows only as a push that grows again. It is a new gesture too.
+    // them, with no pause, and shows only as a push that had faded and grows again. It is a new gesture too,
+    // even while the page is still gliding.
     var size = Math.abs(e.deltaY) * (e.deltaMode ? 32 : 1);
-    var again = !fresh && !gliding && pushed === Infinity && size > 30 && size > lastSize * 2 && e.timeStamp - landed > 150;
-    lastSize = size;
+    var again = !fresh && pushed === Infinity && size > 30 && trough < peak * .4 && size > trough * 2.5 && e.timeStamp - taken > 200;
+    if (size > peak) peak = trough = size; else if (size < trough) trough = size;
     if (fresh || again) { pushed = 0; free = false; }
     // One gesture moves one section: the rest of it is swallowed, during the glide and after.
-    if (gliding || pushed === Infinity) { e.preventDefault(); return; }
+    if (pushed === Infinity) { e.preventDefault(); return; }
     // A gesture that scrolled inside a tall section keeps doing only that.
     if (free) return;
     var target = neighbour(e.deltaY > 0);
-    if (target === null) { free = true; return; }
+    if (target === null) { if (gliding) e.preventDefault(); else free = true; return; }
     e.preventDefault();
     // A light brush of the wheel is not a decision to leave the section.
     pushed += e.deltaY * (e.deltaMode ? 32 : 1);
-    if (Math.abs(pushed) < 24) return;
-    pushed = Infinity;
+    if (Math.abs(pushed) < 16) return;
+    pushed = Infinity; peak = trough = size; taken = e.timeStamp;
     glide(target);
   }, { passive: false });
   // The keyboard moves the same way.
@@ -116,7 +119,7 @@
     var target = neighbour(down);
     if (target === null) return;
     e.preventDefault();
-    if (!gliding) glide(target);
+    if (!gliding || !e.repeat) glide(target);
   });
   // Links to a section of this page glide there too.
   document.addEventListener('click', function (e) {

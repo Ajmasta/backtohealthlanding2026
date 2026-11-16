@@ -253,6 +253,11 @@ async function checkHome(path, size) {
       await page.click('.brand'); await page.settle();
       await page.key('PageDown'); y = await page.settle();
       note(where, 'PageDown moves one section', Math.abs(y - stops[1].at) <= 2, `y=${y} want=${stops[1].at}`);
+      // Two flicks in a row, the second before the page has landed: two sections, without waiting.
+      await page.click('.brand'); await page.settle();
+      await page.flick(1); await page.flick(1); y = await page.settle();
+      stops = await page.run(inPage.stops);
+      note(where, 'two flicks in a row move two sections', Math.abs(y - stops[2].at) <= 2, `y=${y} want=${stops[2].at}`);
     } else {
       note(where, 'rail hidden on small screens', await page.run(() => getComputedStyle(document.querySelector('.rail')).display === 'none'));
       if (size[0] <= 900) {
