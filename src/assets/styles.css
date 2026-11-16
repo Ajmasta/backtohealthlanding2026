@@ -423,11 +423,16 @@ footer { position: relative; max-width: 1080px; margin: 88px auto 0; padding-top
   .band:not(.pros) { max-width: min(1400px, max(1160px, 100vw - 200px)); }
   .pros { padding-inline: max(clamp(16px, 4vw, 40px), calc((100% - min(1320px, max(1080px, 100vw - 280px))) / 2)); }
   .band > * { zoom: var(--z, 1); }
+  /* The phone of the assessment keeps its own width inside: its column grows with it. */
+  .eval { grid-template-columns: minmax(0, 1fr) calc(360px * var(--z, 1)); }
   /* The daily story: the tree stays in the middle of the window, beside the activity the glide lands on. */
-  .water-stage { top: max(88px, calc(50svh - min(64svh, 480px) / 2)); }
+  /* The scene is never taller than what the window leaves under the title, so it arrives whole. */
+  .water-grid { --win-h: min(64svh, 480px, 100svh - 340px); }
+  .water-stage { top: var(--stage-top, max(88px, calc(50svh - var(--win-h) / 2))); }
+  .window { height: var(--win-h); --tree-h: calc(var(--win-h) * .58); }
   /* Its closing line is read from the last activity, so it is never dimmed. */
   .step-end { opacity: 1; justify-content: flex-start; min-height: calc(50svh - 166px - var(--pad)); padding-top: 8px; }
-  /* (That height leaves room to centre the last activity in the window before the section ends.) */
+  /* (That height leaves room to bring the last activity beside the scene before the section ends; the script sets it exactly.) */
   .who, .pain, .eval { align-content: center; }
   .screens, .offer, .pros, .team, .faq { display: flex; flex-direction: column; justify-content: center; }
   .faq { padding-top: var(--pad); }

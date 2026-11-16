@@ -13,7 +13,7 @@
   // A section taller than the window scrolls normally until its end. Touch and the scrollbar stay free.
   var slides = matchMedia('(min-width: 901px) and (min-height: 600px)');
   var stops = [].slice.call(document.querySelectorAll('.hero, .band, .night'));
-  var gliding = false, lastWheel = 0, pushed = 0, free = false, frame = 0;
+  var gliding = false, lastWheel = 0, lastSize = 0, landed = 0, pushed = 0, free = false, frame = 0;
   function stopAt(el) {
     var r = el.getBoundingClientRect();
     if (el.classList.contains('night')) return r.bottom + scrollY - innerHeight;
@@ -38,22 +38,35 @@
     (function step(now) {
       var t = Math.min(1, (now - start) / length);
       scrollTo({ top: from + (end() - from) * ease(t), behavior: 'instant' });
-      if (t < 1) frame = requestAnimationFrame(step); else { gliding = false; if (typeof mark === 'function') mark(); }
+      if (t < 1) frame = requestAnimationFrame(step); else { gliding = false; landed = performance.now(); if (typeof mark === 'function') mark(); }
     })(start);
   }
   // Every place a gesture can land: each section, and inside the daily story each activity, centred beside
   // its tree. Places too close to the one before are dropped.
   var story = [].slice.call(document.querySelectorAll('#how .step:not(.step-end)'));
   function places() {
-    var limit = document.documentElement.scrollHeight - innerHeight, gap = innerHeight * .25;
+    var how = document.getElementById('how'), tale = how && story.length && slides.matches, middle = 0;
+    var grid = how && how.querySelector('.water-grid'), scene = how && how.querySelector('.window'), closing = how && how.querySelector('.step-end');
+    if (how && !tale) { grid.style.removeProperty('--stage-top'); if (closing) closing.style.minHeight = ''; }
+    if (tale) {
+      // The scene sticks in the middle of the window, but never lower than where it sits when the section
+      // arrives (a very tall window): the first activity is then the one beside it.
+      var arrival = grid.getBoundingClientRect().top + scrollY - stopAt(how);
+      var stick = Math.max(88, Math.min(innerHeight / 2 - scene.offsetHeight / 2, arrival));
+      grid.style.setProperty('--stage-top', Math.round(stick) + 'px');
+      middle = stick + scene.offsetHeight / 2;
+      // Room under the last activity, so that it too can come beside the scene before the section ends.
+      var lastStep = story[story.length - 1];
+      if (closing) closing.style.minHeight = Math.max(0, Math.round(innerHeight - middle - lastStep.offsetHeight / 2 - parseFloat(getComputedStyle(how).paddingBottom))) + 'px';
+    }
+    var limit = document.documentElement.scrollHeight - innerHeight, gap = Math.min(innerHeight * .25, 240);
     function within(y) { return Math.max(0, Math.min(y, limit)); }
     // The sections first; an activity is added only where it is not too close to a place already there.
     var list = stops.map(function (el) { return within(stopAt(el)); });
-    var how = document.getElementById('how');
-    if (how && story.length) {
+    if (tale) {
       var end = how.getBoundingClientRect().bottom + scrollY - innerHeight;
       story.forEach(function (step) {
-        var r = step.getBoundingClientRect(), y = within(Math.min(end, r.top + r.height / 2 + scrollY - innerHeight / 2));
+        var r = step.getBoundingClientRect(), y = within(Math.min(end, r.top + r.height / 2 + scrollY - middle));
         if (list.every(function (other) { return Math.abs(other - y) >= gap; })) list.push(y);
       });
     }
@@ -75,7 +88,12 @@
     // A gesture is a run of wheel events with no pause; a trackpad keeps sending them long after the fingers lift.
     var fresh = e.timeStamp - lastWheel > 160;
     lastWheel = e.timeStamp;
-    if (fresh) { pushed = 0; free = false; }
+    // A trackpad also keeps sending fading events after a swipe: a second swipe arrives in the middle of
+    // them, with no pause, and shows only as a push that grows again. It is a new gesture too.
+    var size = Math.abs(e.deltaY) * (e.deltaMode ? 32 : 1);
+    var again = !fresh && !gliding && pushed === Infinity && size > 30 && size > lastSize * 2 && e.timeStamp - landed > 150;
+    lastSize = size;
+    if (fresh || again) { pushed = 0; free = false; }
     // One gesture moves one section: the rest of it is swallowed, during the glide and after.
     if (gliding || pushed === Infinity) { e.preventDefault(); return; }
     // A gesture that scrolled inside a tall section keeps doing only that.
@@ -129,6 +147,8 @@
     marking = 0;
     var current = 0, line = scrollY + innerHeight * .4;
     stops.forEach(function (el, i) { if (el.getBoundingClientRect().top + scrollY <= line) current = i; });
+    // At the very bottom of the page the last section is the one in view, however short it is.
+    if (scrollY >= document.documentElement.scrollHeight - innerHeight - 2) current = stops.length - 1;
     var here = '#' + (stops[current].id || 'top');
     links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === here); });
     dotsOfRail.forEach(function (a) {
@@ -221,6 +241,7 @@
         }
         band.style.setProperty('--z', low.toFixed(3));
       });
+      places();
       mark();
     }
     fill();
@@ -314,6 +335,7 @@
   if (!reduce) {
     setStage(1);
     var picker = new IntersectionObserver(function (entries) {
+      if (slides.matches) return;
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         var i = steps.indexOf(e.target);
@@ -322,6 +344,29 @@
       });
     }, { rootMargin: '-45% 0px -45% 0px' });
     steps.forEach(function (s) { picker.observe(s); });
+    // Wide screens: the activity in view is the one beside the tree, whatever the height of the window
+    // (the middle of a very tall window is already the second activity when the section arrives).
+    var current = -1, queued = false;
+    function beside() {
+      queued = false;
+      if (!slides.matches) return;
+      var box = win.getBoundingClientRect();
+      if (box.bottom < 0 || box.top > innerHeight) return;
+      var middle = (box.top + box.bottom) / 2, best = 0, least = Infinity;
+      steps.forEach(function (step, i) {
+        if (step.classList.contains('step-end')) return;
+        var r = step.getBoundingClientRect(), off = Math.abs((r.top + r.bottom) / 2 - middle);
+        if (off < least) { least = off; best = i; }
+      });
+      if (best === current) return;
+      current = best;
+      show(best, best > reached);
+      reached = Math.max(reached, best);
+    }
+    function ask() { if (!queued) { queued = true; requestAnimationFrame(beside); } }
+    addEventListener('scroll', ask, { passive: true });
+    addEventListener('resize', ask);
+    ask();
   }
 
   // Videos load only when they come into view, and pause when they leave it. With reduced motion they

@@ -15,7 +15,7 @@ const chrome = [process.env.CHROME, '/Applications/Google Chrome.app/Contents/Ma
   '/usr/bin/google-chrome', '/usr/bin/chromium', 'C:/Program Files/Google/Chrome/Application/chrome.exe'].find((p) => p && existsSync(p));
 if (!chrome) throw new Error('No Chrome or Edge found. Set CHROME to its path.');
 
-const SIZES = [[1280, 720], [1440, 900], [1000, 915], [1920, 1080], [768, 1024], [375, 812]];
+const SIZES = [[1280, 720], [1440, 900], [1000, 915], [1920, 1080], [1200, 1400], [768, 1024], [375, 812]];
 const HOMES = ['', 'en/'], PROGRAMS = ['programme/', 'en/programme/'];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -175,6 +175,21 @@ async function checkHome(path, size) {
       // One flick of the wheel, one section — down the page, then back up.
       const trail = [];
       for (let i = 1; i < stops.length; i++) {
+        if (stops[i].id === 'how') {
+          // Arriving on the daily story: the first activity is the one lit, and the scene is whole.
+          await page.flick(1);
+          const at = await page.settle();
+          await sleep(500);
+          stops = await page.run(inPage.stops);
+          const first = await page.run(() => {
+            const w = document.querySelector('#how .window').getBoundingClientRect();
+            return { on: [...document.querySelectorAll('#how .step')].map((el) => +el.classList.contains('on')).join(''), top: Math.round(w.top), bottom: Math.round(w.bottom), h: innerHeight };
+          });
+          note(where, 'story: arrives on the first activity, scene whole', first.on === '10000' && first.top >= 72 && first.bottom <= first.h, JSON.stringify(first));
+          trail.push(`how:${Math.abs(at - stops[i].at) <= 2 ? 'ok' : `y=${at} want=${stops[i].at}`}`);
+          await sleep(200);
+          continue;
+        }
         if (stops[i - 1].id === 'how') {
           // The daily story: each flick lands on the next activity, in order, with the tree whole beside it.
           const seen = [];
@@ -235,6 +250,9 @@ async function checkHome(path, size) {
     await sleep(900);
     const after = await page.run(() => document.querySelector('.app-watch video').currentTime);
     note(where, 'button fully on screen on arrival', before.button);
+    // Nothing inside the phone of the assessment sticks out of its screen, whatever the size of the section.
+    const out = await page.run(() => { const s = document.querySelector('.app-screen').getBoundingClientRect(); return [...document.querySelectorAll('.app-watch > *, .app-watch .btn, .app-watch video')].filter((el) => { const r = el.getBoundingClientRect(); return r.width && (r.left < s.left - 1 || r.right > s.right + 1); }).map((el) => el.className || el.tagName); });
+    note(where, 'assessment phone holds its content', !out.length, out.join(', '));
     note(where, 'pointer arrives on the button', before.hint);
     note(where, 'demonstration plays on arrival', !before.paused && after > before.t, `t ${before.t.toFixed(1)} → ${after.toFixed(1)}`);
     await page.click('#did-it'); await sleep(400);
