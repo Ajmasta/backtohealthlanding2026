@@ -27,13 +27,13 @@ const tree = readFileSync(join(assets, 'svg/tree-logo.svg'), 'utf8');
 const fontUrl = (f) => pathToFileURL(join(assets, 'fonts', f)).href;
 const land = (f) => pathToFileURL(join(assets, 'landscape', f)).href;
 const base = `<!doctype html><meta charset="utf-8"><style>
-@font-face { font-family: Fraunces; src: url(${fontUrl('Fraunces_500Medium.woff2')}); }
+@font-face { font-family: Newsreader; src: url(${fontUrl('Newsreader_500Medium.woff2')}); }
 html, body { margin: 0; overflow: hidden; }
 </style>`;
 
 function share(name, line1, line2) {
   return `${base}<style>
-  .s { position: relative; width: 1200px; height: 630px; overflow: hidden; background: linear-gradient(#86cdfb, #e3f1fb 80%); font-family: Fraunces; color: #0f2147; }
+  .s { position: relative; width: 1200px; height: 630px; overflow: hidden; background: linear-gradient(#86cdfb, #e3f1fb 80%); font-family: Newsreader; color: #0f2147; }
   .t { position: absolute; left: 0; top: 330px; width: 1200px; height: 862px; }
   .t img { position: absolute; inset: 0; width: 100%; height: 100%; }
   .cloud { position: absolute; left: 400px; top: 24px; width: 280px; }

@@ -49,7 +49,7 @@ for (const file of readdirSync(need('mobile/assets/landscape')).filter((f) => f.
   execFileSync('cwebp', ['-quiet', '-q', '88', '-alpha_q', '100', '-m', '6', join(app, 'mobile/assets/landscape', file), '-o', target]);
 }
 const fonts = 'mobile/node_modules/@expo-google-fonts';
-for (const [family, weight, file] of [['fraunces', '500Medium', 'Fraunces_500Medium'], ['figtree', '400Regular', 'Figtree_400Regular'], ['figtree', '600SemiBold', 'Figtree_600SemiBold']]) {
+for (const [family, weight, file] of [['figtree', '400Regular', 'Figtree_400Regular'], ['figtree', '600SemiBold', 'Figtree_600SemiBold']]) {
   // WOFF2 is less than half the TTF. Needs fonttools and brotli (pip install fonttools brotli).
   execFileSync('python3', ['-m', 'fontTools.ttLib.woff2', 'compress', need(`${fonts}/${family}/${weight}/${file}.ttf`), '-o', out(`src/assets/fonts/${file}.woff2`)]);
 }

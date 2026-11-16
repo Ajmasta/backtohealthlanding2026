@@ -1,6 +1,6 @@
 /* BackToHealth site. Tokens come from the design system; the page runs from morning to night as you scroll. */
 
-@font-face { font-family: Fraunces; src: url(fonts/Fraunces_500Medium.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: Newsreader; src: url(fonts/Newsreader_500Medium.woff2) format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: Figtree; src: url(fonts/Figtree_400Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: Figtree; src: url(fonts/Figtree_600SemiBold.woff2) format("woff2"); font-weight: 600; font-display: swap; }
 
@@ -12,7 +12,7 @@
   --encre: #0f2147; --encre-texte: #2c3e66; --encre-douce: #4f6385; --pause: #9a4a12;
   --nuit: #0d1a3a; --nuit-encre: #eef4fb; --nuit-douce: #a9b8d3; --nuit-action: #8fa4ff;
   --ombre: 0 8px 24px rgba(15, 33, 71, .08);
-  --display: Fraunces, "Iowan Old Style", Georgia, serif;
+  --display: Newsreader, "Iowan Old Style", Georgia, serif;
   --sans: Figtree, "SF Pro Text", Roboto, system-ui, sans-serif;
 }
 
