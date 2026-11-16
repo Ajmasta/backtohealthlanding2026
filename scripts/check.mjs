@@ -235,7 +235,7 @@ async function checkHome(path, size) {
           const again = await page.run(() => { const v = document.querySelector('.app-watch video'); return { hint: document.querySelector('.app-phone').classList.contains('hint-on'), paused: v.paused, t: v.currentTime }; });
           await sleep(700);
           const moved = await page.run(() => document.querySelector('.app-watch video').currentTime);
-          note(where, 'assessment again: video restarts', again.hint && !again.paused && moved !== again.t && again.t < 12, JSON.stringify({ ...again, later: moved }));
+          note(where, 'assessment again: video restarts', again.hint && !again.paused && moved !== again.t && again.t < 7, JSON.stringify({ ...again, later: moved }));
           await sleep(200);
           continue;
         }

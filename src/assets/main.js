@@ -386,7 +386,8 @@
   }, { threshold: .25 });
   document.querySelectorAll('.lazy-video').forEach(function (v) {
     if (reduce) { v.src = v.dataset.src; v.controls = true; v.loop = false; }
-    else player.observe(v);
+    // The demonstration in the phone is started by the movement test itself, below.
+    else if (!v.closest('.app-phone')) player.observe(v);
   });
 
   // The pain scale, as in the app (PainScale): a disc with the number in its clinical colour, the band
@@ -461,18 +462,44 @@
       if (!inPlace() || phone.classList.contains('hint-on')) return;
       if (Date.now() - lastMove < 180) { waiting = setTimeout(arrive, 90); return; }
       phone.classList.add('hint-on');
-      // The demonstration starts again from standing, so the person sees the whole bend on arrival.
-      if (demo && !phone.classList.contains('tried') && !reduce) {
-        if (!demo.src) demo.src = demo.dataset.src;
-        // (Unless it has only just begun as the section came in: starting it twice shows as a jump.)
-        if (demo.currentTime > 5 || demo.ended) { try { demo.currentTime = 0; } catch (e) {} }
-        var p = demo.play();
-        if (p && p.catch) p.catch(function () {});
-      }
     }
+    // The demonstration has one owner, and one rule: it plays from standing whenever half of it is in the
+    // window, and goes back to standing once it has left. It is fetched as soon as the page has loaded
+    // (it is small), so it is ready before the person gets there.
     // The clip from the app is a slow 16 seconds: shown faster here, the movement reads at a glance.
     var demo = phone.querySelector('.app-watch video');
-    if (demo) { demo.defaultPlaybackRate = 2.5; demo.playbackRate = 2.5; demo.addEventListener('loadeddata', function () { demo.playbackRate = 2.5; }); }
+    if (demo && !reduce) {
+      var playing = false;
+      var fetchDemo = function () { if (!demo.src) { demo.preload = 'auto'; demo.src = demo.dataset.src; demo.load(); } };
+      var watch = function () {
+        var r = demo.getBoundingClientRect();
+        var seen = r.height > 0 ? (Math.min(r.bottom, innerHeight) - Math.max(r.top, 0)) / r.height : 0;
+        if (seen >= .5 && !document.hidden) {
+          fetchDemo();
+          if (!demo.paused && playing) return;
+          playing = true;
+          demo.playbackRate = 2.5;
+          var p = demo.play();
+          // A browser that refuses to start it (energy saving, for one) leaves the person a play button.
+          if (p && p.catch) p.catch(function (err) { if (err && err.name === 'NotAllowedError') demo.controls = true; });
+        } else if (seen <= 0 && playing) {
+          playing = false;
+          demo.pause();
+          try { demo.currentTime = 0; } catch (e) {}
+        }
+      };
+      demo.defaultPlaybackRate = 2.5; demo.playbackRate = 2.5;
+      // Whenever the browser has more of the clip ready, or the page comes back to the front: try again.
+      ['loadeddata', 'canplay', 'stalled', 'suspend'].forEach(function (name) { demo.addEventListener(name, function () { demo.playbackRate = 2.5; watch(); }); });
+      document.addEventListener('visibilitychange', watch);
+      addEventListener('scroll', watch, { passive: true });
+      addEventListener('resize', watch);
+      addEventListener('load', function () { fetchDemo(); watch(); });
+      document.getElementById('did-it').addEventListener('click', function () { setTimeout(watch, 0); });
+      dots.forEach(function (d) { d.addEventListener('click', function () { setTimeout(watch, 0); }); });
+      if (document.readyState === 'complete') fetchDemo();
+      watch();
+    }
     // Gone from the window altogether: the next arrival plays again.
     new IntersectionObserver(function (entries) {
       if (!entries[0].isIntersecting) phone.classList.remove('hint-on');
