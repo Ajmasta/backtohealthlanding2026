@@ -14,6 +14,6 @@ done
 ffmpeg -loglevel error -y -i "$src/demo.mp4" -vf fps=12 "$tmp/in/%04d.png"
 args=""; for f in "$tmp"/in/*.png; do args="$args $f $tmp/out/$(basename "$f")"; done
 python3 -I "$here/stylize-evaluation.py" $args
-ffmpeg -loglevel error -y -framerate 12 -i "$tmp/out/%04d.png" -an -c:v libx264 -crf 24 -preset slow -pix_fmt yuv420p -movflags +faststart "$out/flexion-demo.mp4"
+ffmpeg -loglevel error -y -framerate 30 -i "$tmp/out/%04d.png" -an -c:v libx264 -crf 21 -preset slow -profile:v main -bf 0 -g 15 -pix_fmt yuv420p -movflags +faststart "$out/flexion-demo.mp4"
 rm -rf "$tmp"
 echo "Made the movement test media in $out"

@@ -466,7 +466,8 @@
     // The demonstration has one owner, and one rule: it plays from standing whenever half of it is in the
     // window, and goes back to standing once it has left. It is fetched as soon as the page has loaded
     // (it is small), so it is ready before the person gets there.
-    // The clip from the app is a slow 16 seconds: shown faster here, the movement reads at a glance.
+    // The clip from the app is a slow 16 seconds. The file here is already sped up (6 seconds, see
+    // make-evaluation-media.sh): asking the browser to play the slow one fast made it stutter.
     var demo = phone.querySelector('.app-watch video');
     if (demo && !reduce) {
       var playing = false;
@@ -478,7 +479,6 @@
           fetchDemo();
           if (!demo.paused && playing) return;
           playing = true;
-          demo.playbackRate = 2.5;
           var p = demo.play();
           // A browser that refuses to start it (energy saving, for one) leaves the person a play button.
           if (p && p.catch) p.catch(function (err) { if (err && err.name === 'NotAllowedError') demo.controls = true; });
@@ -488,9 +488,8 @@
           try { demo.currentTime = 0; } catch (e) {}
         }
       };
-      demo.defaultPlaybackRate = 2.5; demo.playbackRate = 2.5;
       // Whenever the browser has more of the clip ready, or the page comes back to the front: try again.
-      ['loadeddata', 'canplay', 'stalled', 'suspend'].forEach(function (name) { demo.addEventListener(name, function () { demo.playbackRate = 2.5; watch(); }); });
+      ['loadeddata', 'canplay', 'stalled', 'suspend'].forEach(function (name) { demo.addEventListener(name, watch); });
       document.addEventListener('visibilitychange', watch);
       addEventListener('scroll', watch, { passive: true });
       addEventListener('resize', watch);
