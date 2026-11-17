@@ -1,19 +1,15 @@
 #!/bin/sh
 # Makes the movement-test pictures and demo video of the home page from the app's own media
-# (assets/movement/flexion: 0.png … 9.png and demo.mp4), drawn as flat illustrations in the brand's colours.
-# Needs ffmpeg, cwebp and Python with numpy and Pillow.
+# (assets/movement/flexion: 0.png … 9.png and demo.mp4): the same photos as in the app, only resized.
+# The demo is sped up 2.5 times in the file itself (16 s become 6), with a keyframe every half second.
+# Needs ffmpeg and cwebp.
 # Run: npm run evaluation -- /path/to/app/assets/movement/flexion
 set -e
-src="$1"; here="$(cd "$(dirname "$0")" && pwd)"; out="$here/../src/assets/evaluation"; tmp="$(mktemp -d)"
+src="$1"; here="$(cd "$(dirname "$0")" && pwd)"; out="$here/../src/assets/evaluation"
 [ -f "$src/demo.mp4" ] || { echo "Not found: $src/demo.mp4. Pass the app's assets/movement/flexion folder."; exit 1; }
-mkdir -p "$out" "$tmp/in" "$tmp/out"
+mkdir -p "$out"
 for i in 0 1 2 3 4 5 6 7 8 9; do
-  python3 -I "$here/stylize-evaluation.py" "$src/$i.png" "$tmp/$i.png"
-  cwebp -quiet -q 82 "$tmp/$i.png" -o "$out/flexion-$i.webp"
+  cwebp -quiet -q 84 -resize 640 0 "$src/$i.png" -o "$out/flexion-$i.webp"
 done
-ffmpeg -loglevel error -y -i "$src/demo.mp4" -vf fps=12 "$tmp/in/%04d.png"
-args=""; for f in "$tmp"/in/*.png; do args="$args $f $tmp/out/$(basename "$f")"; done
-python3 -I "$here/stylize-evaluation.py" $args
-ffmpeg -loglevel error -y -framerate 30 -i "$tmp/out/%04d.png" -an -c:v libx264 -crf 21 -preset slow -profile:v main -bf 0 -g 15 -pix_fmt yuv420p -movflags +faststart "$out/flexion-demo.mp4"
-rm -rf "$tmp"
+ffmpeg -loglevel error -y -i "$src/demo.mp4" -an -vf "setpts=PTS/2.5,fps=30,scale=640:576:flags=lanczos" -c:v libx264 -crf 23 -preset slow -profile:v main -bf 0 -g 15 -pix_fmt yuv420p -movflags +faststart "$out/flexion-demo.mp4"
 echo "Made the movement test media in $out"

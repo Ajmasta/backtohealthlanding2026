@@ -38,7 +38,7 @@ scripts/
 - **The app's exercises or lessons changed**: `npm run sync -- /path/to/monorepo` (the folder holding `mobile/` and `design/`), then build. It needs `cwebp` (`brew install webp`) and `pip install fonttools brotli`.
 - **The logo or tagline changed**: sync, then `npm run images`.
 - **The 3D exercises shown**: `SHOWCASE` in `site.config.mjs`, then `npm run exercises -- /path/to/livraison-exercices-3d` (needs ffmpeg and cwebp). Family 4 is left out: its 3D clips are still copies of family 1.
-- **The movement test pictures and video**: `npm run evaluation -- /path/to/app/assets/movement/flexion` redraws the app's photos as flat illustrations in the brand's colours (needs ffmpeg, cwebp, and Python with numpy and Pillow; about 7 minutes).
+- **The movement test pictures and video**: `npm run evaluation -- /path/to/app/assets/movement/flexion` resizes the app's own photos and speeds up its demo clip (needs ffmpeg and cwebp; a few seconds).
 - **The app's words** (the test, the pain scale): the `app` section of the language files repeats `src/i18n/fr.json` of the app. Keep them identical.
 
 Before publishing: Pierre-Henri validates the text, the contact address is confirmed, and the screens become real app screenshots.
