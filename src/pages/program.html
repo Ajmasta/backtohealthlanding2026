@@ -1,0 +1,89 @@
+{{> head}}<body class="doc-page">
+
+<header class="top scrolled" id="top">
+  <a class="brand" href="../" aria-label="{{program.home}}"><span class="brand-tree" aria-hidden="true">{{svg.tree}}</span><span class="brand-name">{{nav.brand}} <small class="brand-alt">{{nav.brandAlt}}</small></span></a>
+  <nav>
+    <a class="lang" href="{{otherLangHref}}" hreflang="{{program.otherLang}}" aria-label="{{program.otherLangLabel}}">{{program.otherLang}}</a>
+    <a class="btn btn-small" href="{{mailto}}">{{nav.cta}}</a>
+  </nav>
+</header>
+
+<main class="doc">
+  <p class="label">{{program.label}}</p>
+  <h1>{{program.title}}</h1>
+  <p class="lead">{{program.lead}}</p>
+  <p class="status">{{program.status}}</p>
+
+  <h2>{{program.glanceTitle}}</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>{{program.colPillar}}</th><th>{{program.colLength}}</th><th>{{program.colRhythm}}</th><th>{{program.colSession}}</th></tr></thead>
+      <tbody>{{glanceRows}}</tbody>
+    </table>
+  </div>
+  <p class="note">{{program.glanceNote}}</p>
+
+  <h2>{{program.evalTitle}}</h2>
+  <ul class="ticks">{{evalItems}}</ul>
+
+  <h2>{{program.eduTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.eduIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.eduProgress}}</dd></div>
+  </dl>
+  <h3>{{program.eduListTitle}}</h3>
+  <div class="families">{{lessonCards}}</div>
+
+  <h2>{{program.exTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.exIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.exProgress}}</dd></div>
+    <div><dt>{{program.exampleLabel}}</dt><dd>{{program.exExample}}</dd></div>
+  </dl>
+  <h3>{{program.familiesTitle}}</h3>
+  <div class="families">{{familyCards}}</div>
+
+  <h2>{{program.medTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.medIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.medProgress}}</dd></div>
+  </dl>
+  <h3>{{program.medThemesTitle}}</h3>
+  <ul class="ticks">{{medThemes}}</ul>
+
+  <h2>{{program.walkTitle}}</h2>
+  <dl class="pillar">
+    <div><dt>{{program.ideaLabel}}</dt><dd>{{program.walkIdea}}</dd></div>
+    <div><dt>{{program.progressLabel}}</dt><dd>{{program.walkProgress}}</dd></div>
+    <div><dt>{{program.exampleLabel}}</dt><dd>{{program.walkExample}}</dd></div>
+  </dl>
+
+  <h2>{{program.afterTitle}}</h2>
+  <ul class="ticks">{{afterItems}}</ul>
+
+  <h2>{{program.followTitle}}</h2>
+  <ul class="ticks">{{followItems}}</ul>
+
+  <h2>{{pros.sourcesTitle}}</h2>
+  <ul class="sources">
+    {{#each pros.sources}}<li><a href="{{.url}}">{{.title}}</a></li>{{/each}}
+  </ul>
+
+  <div class="card card-tint philo">
+    <h3>{{program.philoTitle}}</h3>
+    <p>{{program.philoBody}}</p>
+  </div>
+
+  <div class="card doc-cta">
+    <h3>{{pros.ctaTitle}}</h3>
+    <p>{{pros.ctaBody}}</p>
+    <a class="btn" href="{{mailtoPro}}">{{pros.cta}}</a>
+  </div>
+
+  <footer class="doc-foot">
+    <p>{{footer.disclaimer}}</p>
+    <p class="foot-row"><span>© 2026 {{nav.brandFull}} · {{footer.place}}</span><a href="../">{{program.home}}</a><a href="{{otherLangHref}}">{{program.otherLangLabel}}</a></p>
+  </footer>
+</main>
+</body>
+</html>

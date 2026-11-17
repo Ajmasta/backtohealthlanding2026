@@ -1,0 +1,115 @@
+{
+  "lessonModules": [
+    {
+      "title": "Bien commencer",
+      "lessons": [
+        "Pourquoi ce programme"
+      ]
+    },
+    {
+      "title": "Généralités",
+      "lessons": [
+        "La douleur",
+        "La douleur chronique au dos",
+        "Principe général de traitement"
+      ]
+    },
+    {
+      "title": "Reprendre confiance",
+      "lessons": [
+        "Mon dos est solide",
+        "Les mouvements que je redoute",
+        "L’alarme du cerveau",
+        "Les poussées"
+      ]
+    },
+    {
+      "title": "Hygiène de vie",
+      "lessons": [
+        "Introduction générale",
+        "Alimentation",
+        "Sommeil",
+        "Activité physique",
+        "Le travail et les proches"
+      ]
+    },
+    {
+      "title": "Techniques de gestion de la douleur",
+      "lessons": [
+        "Tension musculaire",
+        "Thermothérapie",
+        "Médicaments",
+        "S’orienter dans les soins"
+      ]
+    },
+    {
+      "title": "Approche par acceptation et engagement",
+      "lessons": [
+        "Restructuration cognitive",
+        "Acceptation",
+        "Activation psychomotrice",
+        "Anxiété et douleur chronique",
+        "L’humeur : quand demander de l’aide"
+      ]
+    },
+    {
+      "title": "Et après",
+      "lessons": [
+        "Continuer à votre façon"
+      ]
+    }
+  ],
+  "exerciseFamilies": [
+    [
+      "Extension lombaire couché assistée",
+      "Extension lombaire couché sur les coudes",
+      "Extension lombaire couché sur les coudes (plus longtemps)",
+      "Extension lombaire assistée debout",
+      "Extension lombaire debout"
+    ],
+    [
+      "Délordose couché",
+      "Couché, un genou à la poitrine",
+      "Couché, deux genoux à la poitrine",
+      "Posture de l’enfant",
+      "Flexion assis",
+      "Flexion assis, un côté",
+      "Enroulement de la colonne avec appui au mur",
+      "Enroulement de la colonne debout"
+    ],
+    [
+      "Rotation assise assistée",
+      "Rotation assise active",
+      "Rotation couchée passive",
+      "Rotation couchée active"
+    ],
+    [
+      "Activation abdominale profonde couché",
+      "Pont fessier",
+      "Bird-dog (quadrupédie, bras et jambe opposés)",
+      "Planche latérale"
+    ],
+    [
+      "Push-up au mur",
+      "Push-up surélevé",
+      "Push-up surélevé (plus bas)",
+      "Push-up classique"
+    ],
+    [
+      "Squat assisté avec appui",
+      "Quart de squat",
+      "Squat complet",
+      "Squat avec élastique",
+      "Squat sauté"
+    ],
+    [
+      "Fente",
+      "Fente bulgare",
+      "Squat sur une jambe"
+    ],
+    [
+      "Abduction de hanche, couché sur le côté",
+      "Marche de crabe avec élastique"
+    ]
+  ]
+}

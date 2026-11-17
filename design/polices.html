@@ -1,0 +1,111 @@
+<title>Polices Crescendos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Figtree:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,600&family=Inter:wght@400;600&family=Newsreader:opsz,wght@6..72,500&family=Lora:wght@600&family=Literata:opsz,wght@7..72,600&family=Merriweather:wght@700&family=Source+Sans+3:wght@400;600&family=Playfair+Display:wght@600&family=Lato:wght@400;700&family=DM+Serif+Display&family=DM+Sans:wght@400;600&display=swap">
+<style>
+  /* Layout: one column of specimens, each showing the same real lines of the site, so only the type changes. */
+  :root {
+    --fond: #f4f9fd; --surface: #fff; --ligne: #cfe2f1; --halo: #e3f1fb;
+    --encre: #0f2147; --encre-texte: #2c3e66; --encre-douce: #4f6385; --tronc: #004aad;
+    --ui: Figtree, "SF Pro Text", Roboto, system-ui, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--fond); color: var(--encre); font: 400 16px/1.5 var(--ui); padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  main { max-width: 920px; margin: 0 auto; display: grid; gap: 28px; }
+  header h1 { font: 600 28px/1.2 var(--ui); margin: 0 0 10px; }
+  header p { margin: 0; max-width: 62ch; color: var(--encre-texte); }
+  .note { background: var(--halo); border-radius: 14px; padding: 14px 18px; color: var(--encre-texte); max-width: none; }
+  .note strong { color: var(--encre); }
+
+  .spec { background: var(--surface); border: 1px solid var(--ligne); border-radius: 24px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 18px; min-width: 0; }
+  .spec.now { border-style: dashed; background: transparent; }
+  .tag { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; font: 600 13px/1.4 var(--ui); letter-spacing: .08em; text-transform: uppercase; color: var(--tronc); }
+  .tag b { background: var(--tronc); color: #fff; border-radius: 8px; padding: 2px 9px; letter-spacing: .04em; }
+  .tag span { color: var(--encre-douce); font-weight: 400; letter-spacing: 0; text-transform: none; font-size: 14px; }
+  .h1 { font-size: clamp(32px, 5.4vw, 52px); line-height: 1.12; letter-spacing: -.01em; margin: 0; text-wrap: balance; font-family: var(--d); font-weight: var(--dw); }
+  .h2 { font-size: clamp(22px, 3vw, 30px); line-height: 1.22; margin: 0; text-wrap: balance; font-family: var(--d); font-weight: var(--dw); }
+  .body { font: 400 17px/1.55 var(--s); color: var(--encre-texte); margin: 0; max-width: 62ch; }
+  .row { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+  .btn { font: var(--sw) 17px/22px var(--s); background: var(--tronc); color: #fff; border-radius: 16px; padding: 15px 26px; }
+  .num { font-family: var(--d); font-weight: var(--dw); font-size: 26px; }
+  .lig { font-family: var(--d); font-weight: var(--dw); font-size: 24px; color: var(--tronc); margin: 0; }
+  .why { font: 400 15px/1.5 var(--ui); color: var(--encre-douce); margin: 0; border-top: 1px solid var(--ligne); padding-top: 14px; max-width: none; }
+  .why strong { color: var(--encre); font-weight: 600; }
+</style>
+
+<main>
+  <header>
+    <h1>Polices pour Crescendos : 6 options</h1>
+    <p>Même style qu’aujourd’hui : titres en sérif, texte courant sans sérif. Chaque option montre les mêmes phrases du site, dont « difficiles », le mot qui te gênait. Toutes sont des polices Google, gratuites, utilisables sur le site et dans l’application.</p>
+  </header>
+  <p class="note"><strong>Ce qui cloche aujourd’hui :</strong> Fraunces est une police volontairement « bancale » : ses f se penchent et se collent (ff, fi, ffi), et certaines lettres changent de forme selon la taille. C’est son caractère, mais sur « difficiles » ça fait bizarre. Les options A à F ont des formes régulières.</p>
+
+  <section class="spec now" style="--d: Fraunces, Georgia, serif; --dw: 500; --s: Figtree, system-ui, sans-serif; --sw: 600">
+    <p class="tag">Aujourd’hui <span>Fraunces + Figtree</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+  </section>
+
+  <section class="spec" style="--d: 'Source Serif 4', Georgia, serif; --dw: 600; --s: Inter, system-ui, sans-serif; --sw: 600">
+    <p class="tag"><b>A</b> Source Serif 4 + Inter <span>sobre, très lisible</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+    <p class="why"><strong>Pour qui :</strong> le choix le plus sûr. Sérif classique d’Adobe, Inter est la police d’interface la plus répandue. Crédible, médical sans être froid.</p>
+  </section>
+
+  <section class="spec" style="--d: Newsreader, Georgia, serif; --dw: 500; --s: Figtree, system-ui, sans-serif; --sw: 600">
+    <p class="tag"><b>B</b> Newsreader + Figtree <span>éditorial, chaleureux</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+    <p class="why"><strong>Pour qui :</strong> le plus proche de l’ambiance actuelle, sans les bizarreries. On garde Figtree pour le texte : seul le titre change, dans le site comme dans l’application.</p>
+  </section>
+
+  <section class="spec" style="--d: Literata, Georgia, serif; --dw: 600; --s: Figtree, system-ui, sans-serif; --sw: 600">
+    <p class="tag"><b>C</b> Literata + Figtree <span>doux, fait pour la lecture</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+    <p class="why"><strong>Pour qui :</strong> la police de Google Play Livres, dessinée pour les écrans de téléphone. Formes rondes et rassurantes, bien adaptées aux leçons de l’application.</p>
+  </section>
+
+  <section class="spec" style="--d: Lora, Georgia, serif; --dw: 600; --s: Inter, system-ui, sans-serif; --sw: 600">
+    <p class="tag"><b>D</b> Lora + Inter <span>élégant, calme</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+    <p class="why"><strong>Pour qui :</strong> très utilisée en santé et bien-être. Courbes légèrement calligraphiques, plus « humaine » que A, un peu moins moderne.</p>
+  </section>
+
+  <section class="spec" style="--d: Merriweather, Georgia, serif; --dw: 700; --s: 'Source Sans 3', system-ui, sans-serif; --sw: 600">
+    <p class="tag"><b>E</b> Merriweather + Source Sans 3 <span>solide, institutionnel</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+    <p class="why"><strong>Pour qui :</strong> le ton d’un organisme de santé. Très robuste à l’écran, mais plus lourde : les titres prennent plus de place.</p>
+  </section>
+
+  <section class="spec" style="--d: 'DM Serif Display', Georgia, serif; --dw: 400; --s: 'DM Sans', system-ui, sans-serif; --sw: 600">
+    <p class="tag"><b>F</b> DM Serif Display + DM Sans <span>affirmé, grand public</span></p>
+    <p class="h1">Simple, même les jours difficiles.</p>
+    <p class="h2">Bien plus que des exercices : quatre volets pour ton dos.</p>
+    <p class="body">Quand la douleur dure, le corps, les pensées et le quotidien jouent tous un rôle. Tu apprends à comprendre ta douleur, à bouger, à méditer et à marcher, à ton rythme.</p>
+    <div class="row"><span class="btn">Me prévenir du lancement</span><span class="num">8 à 12 semaines · 2/10</span></div>
+    <p class="lig">difficiles · efficace · affiche · confiance · fluide</p>
+    <p class="why"><strong>Pour qui :</strong> une marque d’application grand public. Titres contrastés et marquants ; un seul poids disponible, donc moins souple pour les petits titres.</p>
+  </section>
+</main>
